@@ -1,0 +1,797 @@
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"interface.cpp"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text._ZN3Iic9ReadBytesEhhPh,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ZN3Iic9ReadBytesEhhPh
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ZN3Iic9ReadBytesEhhPh:
+  27              		.fnstart
+  28              	.LVL0:
+  29              	.LFB143:
+  30              		.file 1 "Sys/Driver/interface.cpp"
+   1:Sys/Driver/interface.cpp **** /*
+   2:Sys/Driver/interface.cpp ****  * @Description: 
+   3:Sys/Driver/interface.cpp ****  * @Version: 1.0
+   4:Sys/Driver/interface.cpp ****  * @Author: zhaohe
+   5:Sys/Driver/interface.cpp ****  * @Date: 2022-07-07 23:44:16
+   6:Sys/Driver/interface.cpp ****  * @LastEditors: zhaohe
+   7:Sys/Driver/interface.cpp ****  * @LastEditTime: 2022-07-09 02:58:45
+   8:Sys/Driver/interface.cpp ****  * @FilePath: \ZH_FLIGHT\Sys\Driver\interface.cpp
+   9:Sys/Driver/interface.cpp ****  * Copyright (C) 2022 zhaohe. All rights reserved.
+  10:Sys/Driver/interface.cpp ****  */
+  11:Sys/Driver/interface.cpp **** #include "interface.h"
+  12:Sys/Driver/interface.cpp **** 
+  13:Sys/Driver/interface.cpp **** Spi::Spi(SPI_HandleTypeDef *hspi, GPIO_TypeDef *cs_port, uint16_t cs_pin)
+  14:Sys/Driver/interface.cpp **** {
+  15:Sys/Driver/interface.cpp ****     _hspi = hspi;
+  16:Sys/Driver/interface.cpp ****     _cs_port = cs_port;
+  17:Sys/Driver/interface.cpp ****     _cs_pin = cs_pin;
+  18:Sys/Driver/interface.cpp **** }
+  19:Sys/Driver/interface.cpp **** 
+  20:Sys/Driver/interface.cpp **** void Spi::ReadBytes(uint8_t address, uint8_t len, uint8_t *dataBuf)
+  21:Sys/Driver/interface.cpp **** {
+  22:Sys/Driver/interface.cpp ****     uint8_t _address = address | 0x80;
+  23:Sys/Driver/interface.cpp ****     _Enable();
+  24:Sys/Driver/interface.cpp ****     HAL_SPI_Transmit(_hspi, &_address, 1, 0x01f4);
+  25:Sys/Driver/interface.cpp ****     HAL_SPI_Receive(_hspi, dataBuf, len, 0x01f4);
+  26:Sys/Driver/interface.cpp ****     _Disable();
+  27:Sys/Driver/interface.cpp **** }
+  28:Sys/Driver/interface.cpp **** 
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s 			page 2
+
+
+  29:Sys/Driver/interface.cpp **** void Spi::WriteReg(uint8_t address, uint8_t value)
+  30:Sys/Driver/interface.cpp **** {
+  31:Sys/Driver/interface.cpp ****     _Enable();
+  32:Sys/Driver/interface.cpp ****     while (HAL_SPI_GetState(_hspi) == HAL_SPI_STATE_BUSY_TX_RX);
+  33:Sys/Driver/interface.cpp ****     HAL_SPI_TransmitReceive(_hspi, &address, NULL, 1, 0x01f4);
+  34:Sys/Driver/interface.cpp ****     while (HAL_SPI_GetState(_hspi) == HAL_SPI_STATE_BUSY_TX_RX);
+  35:Sys/Driver/interface.cpp ****     HAL_SPI_TransmitReceive(_hspi, &value, NULL, 1, 0x01f4);
+  36:Sys/Driver/interface.cpp ****     _Disable();
+  37:Sys/Driver/interface.cpp **** }
+  38:Sys/Driver/interface.cpp **** 
+  39:Sys/Driver/interface.cpp **** void Spi::_Enable()
+  40:Sys/Driver/interface.cpp **** {
+  41:Sys/Driver/interface.cpp ****     HAL_GPIO_WritePin(_cs_port, _cs_pin, GPIO_PIN_RESET);
+  42:Sys/Driver/interface.cpp **** }
+  43:Sys/Driver/interface.cpp **** 
+  44:Sys/Driver/interface.cpp **** void Spi::_Disable()
+  45:Sys/Driver/interface.cpp **** {
+  46:Sys/Driver/interface.cpp ****     HAL_GPIO_WritePin(_cs_port, _cs_pin, GPIO_PIN_SET);
+  47:Sys/Driver/interface.cpp **** }
+  48:Sys/Driver/interface.cpp **** 
+  49:Sys/Driver/interface.cpp **** 
+  50:Sys/Driver/interface.cpp **** 
+  51:Sys/Driver/interface.cpp **** Iic::Iic(I2C_HandleTypeDef *hi2c, uint16_t device_address)
+  52:Sys/Driver/interface.cpp **** {
+  53:Sys/Driver/interface.cpp ****     _hi2c = hi2c;
+  54:Sys/Driver/interface.cpp ****     _device_address = _device_address;
+  55:Sys/Driver/interface.cpp **** }
+  56:Sys/Driver/interface.cpp **** 
+  57:Sys/Driver/interface.cpp **** void Iic::ReadBytes(uint8_t address, uint8_t len, uint8_t *dataBuf)
+  58:Sys/Driver/interface.cpp **** {
+  31              		.loc 1 58 1 view -0
+  32              		.cfi_startproc
+  33              		@ args = 0, pretend = 0, frame = 0
+  34              		@ frame_needed = 0, uses_anonymous_args = 0
+  35              		.loc 1 58 1 is_stmt 0 view .LVU1
+  36 0000 10B5     		push	{r4, lr}
+  37              		.save {r4, lr}
+  38              	.LCFI0:
+  39              		.cfi_def_cfa_offset 8
+  40              		.cfi_offset 4, -8
+  41              		.cfi_offset 14, -4
+  42              		.pad #16
+  43 0002 84B0     		sub	sp, sp, #16
+  44              	.LCFI1:
+  45              		.cfi_def_cfa_offset 24
+  59:Sys/Driver/interface.cpp ****     HAL_I2C_Mem_Read(_hi2c, _device_address, address, I2C_MEMADD_SIZE_8BIT, dataBuf, len, 0x01f4);
+  46              		.loc 1 59 5 is_stmt 1 view .LVU2
+  47              		.loc 1 59 21 is_stmt 0 view .LVU3
+  48 0004 4FF4FA74 		mov	r4, #500
+  49 0008 0294     		str	r4, [sp, #8]
+  50 000a 0192     		str	r2, [sp, #4]
+  51 000c 0093     		str	r3, [sp]
+  52 000e 0123     		movs	r3, #1
+  53              	.LVL1:
+  54              		.loc 1 59 21 view .LVU4
+  55 0010 0A46     		mov	r2, r1
+  56              	.LVL2:
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s 			page 3
+
+
+  57              		.loc 1 59 21 view .LVU5
+  58 0012 0189     		ldrh	r1, [r0, #8]
+  59              	.LVL3:
+  60              		.loc 1 59 21 view .LVU6
+  61 0014 4068     		ldr	r0, [r0, #4]
+  62              	.LVL4:
+  63              		.loc 1 59 21 view .LVU7
+  64 0016 FFF7FEFF 		bl	HAL_I2C_Mem_Read
+  65              	.LVL5:
+  60:Sys/Driver/interface.cpp **** }
+  66              		.loc 1 60 1 view .LVU8
+  67 001a 04B0     		add	sp, sp, #16
+  68              	.LCFI2:
+  69              		.cfi_def_cfa_offset 8
+  70              		@ sp needed
+  71 001c 10BD     		pop	{r4, pc}
+  72              		.cfi_endproc
+  73              	.LFE143:
+  74              		.fnend
+  76              		.section	.text._ZN3Iic8WriteRegEhh,"ax",%progbits
+  77              		.align	1
+  78              		.global	_ZN3Iic8WriteRegEhh
+  79              		.syntax unified
+  80              		.thumb
+  81              		.thumb_func
+  83              	_ZN3Iic8WriteRegEhh:
+  84              		.fnstart
+  85              	.LVL6:
+  86              	.LFB144:
+  61:Sys/Driver/interface.cpp **** 
+  62:Sys/Driver/interface.cpp **** void Iic::WriteReg(uint8_t address, uint8_t value)
+  63:Sys/Driver/interface.cpp **** {
+  87              		.loc 1 63 1 is_stmt 1 view -0
+  88              		.cfi_startproc
+  89              		@ args = 0, pretend = 0, frame = 8
+  90              		@ frame_needed = 0, uses_anonymous_args = 0
+  91              		.loc 1 63 1 is_stmt 0 view .LVU10
+  92 0000 00B5     		push	{lr}
+  93              		.save {lr}
+  94              	.LCFI3:
+  95              		.cfi_def_cfa_offset 4
+  96              		.cfi_offset 14, -4
+  97              		.pad #28
+  98 0002 87B0     		sub	sp, sp, #28
+  99              	.LCFI4:
+ 100              		.cfi_def_cfa_offset 32
+ 101 0004 8DF81720 		strb	r2, [sp, #23]
+  64:Sys/Driver/interface.cpp ****     HAL_I2C_Mem_Write(_hi2c, _device_address, address, I2C_MEMADD_SIZE_8BIT, &value, 1, 0x01f4);
+ 102              		.loc 1 64 5 is_stmt 1 view .LVU11
+ 103              		.loc 1 64 22 is_stmt 0 view .LVU12
+ 104 0008 4FF4FA73 		mov	r3, #500
+ 105 000c 0293     		str	r3, [sp, #8]
+ 106 000e 0123     		movs	r3, #1
+ 107 0010 0193     		str	r3, [sp, #4]
+ 108 0012 0DF11702 		add	r2, sp, #23
+ 109              	.LVL7:
+ 110              		.loc 1 64 22 view .LVU13
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s 			page 4
+
+
+ 111 0016 0092     		str	r2, [sp]
+ 112 0018 0A46     		mov	r2, r1
+ 113              	.LVL8:
+ 114              		.loc 1 64 22 view .LVU14
+ 115 001a 0189     		ldrh	r1, [r0, #8]
+ 116              	.LVL9:
+ 117              		.loc 1 64 22 view .LVU15
+ 118 001c 4068     		ldr	r0, [r0, #4]
+ 119              	.LVL10:
+ 120              		.loc 1 64 22 view .LVU16
+ 121 001e FFF7FEFF 		bl	HAL_I2C_Mem_Write
+ 122              	.LVL11:
+  65:Sys/Driver/interface.cpp **** }...
+ 123              		.loc 1 65 1 view .LVU17
+ 124 0022 07B0     		add	sp, sp, #28
+ 125              	.LCFI5:
+ 126              		.cfi_def_cfa_offset 4
+ 127              		@ sp needed
+ 128 0024 5DF804FB 		ldr	pc, [sp], #4
+ 129              		.cfi_endproc
+ 130              	.LFE144:
+ 131              		.fnend
+ 133              		.section	.text._ZN3SpiC2EP19__SPI_HandleTypeDefP12GPIO_TypeDeft,"ax",%progbits
+ 134              		.align	1
+ 135              		.global	_ZN3SpiC2EP19__SPI_HandleTypeDefP12GPIO_TypeDeft
+ 136              		.syntax unified
+ 137              		.thumb
+ 138              		.thumb_func
+ 140              	_ZN3SpiC2EP19__SPI_HandleTypeDefP12GPIO_TypeDeft:
+ 141              		.fnstart
+ 142              	.LVL12:
+ 143              	.LFB134:
+  13:Sys/Driver/interface.cpp **** Spi::Spi(SPI_HandleTypeDef *hspi, GPIO_TypeDef *cs_port, uint16_t cs_pin)
+ 144              		.loc 1 13 1 is_stmt 1 view -0
+ 145              		.cfi_startproc
+ 146              		@ args = 0, pretend = 0, frame = 0
+ 147              		@ frame_needed = 0, uses_anonymous_args = 0
+ 148              		@ link register save eliminated.
+  13:Sys/Driver/interface.cpp **** Spi::Spi(SPI_HandleTypeDef *hspi, GPIO_TypeDef *cs_port, uint16_t cs_pin)
+ 149              		.loc 1 13 1 is_stmt 0 view .LVU19
+ 150 0000 10B4     		push	{r4}
+ 151              	.LCFI6:
+ 152              		.cfi_def_cfa_offset 4
+ 153              		.cfi_offset 4, -4
+ 154              	.LVL13:
+ 155              	.LBB10:
+ 156              	.LBB11:
+ 157              	.LBI11:
+ 158              		.file 2 "Sys/Driver/interface.h"
+   1:Sys/Driver/interface.h **** /*
+   2:Sys/Driver/interface.h ****  * @Description:
+   3:Sys/Driver/interface.h ****  * @Version: 1.0
+   4:Sys/Driver/interface.h ****  * @Author: zhaohe
+   5:Sys/Driver/interface.h ****  * @Date: 2022-07-07 23:44:27
+   6:Sys/Driver/interface.h ****  * @LastEditors: zhaohe
+   7:Sys/Driver/interface.h ****  * @LastEditTime: 2022-07-09 02:58:53
+   8:Sys/Driver/interface.h ****  * @FilePath: \ZH_FLIGHT\Sys\Driver\interface.h
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s 			page 5
+
+
+   9:Sys/Driver/interface.h ****  * Copyright (C) 2022 zhaohe. All rights reserved.
+  10:Sys/Driver/interface.h ****  */
+  11:Sys/Driver/interface.h **** #ifndef __INTERFACE_H__
+  12:Sys/Driver/interface.h **** #define __INTERFACE_H__
+  13:Sys/Driver/interface.h **** #include "main.h"
+  14:Sys/Driver/interface.h **** 
+  15:Sys/Driver/interface.h **** class Interface
+ 159              		.loc 2 15 7 is_stmt 1 view .LVU20
+ 160              	.LBB12:
+ 161 0002 054C     		ldr	r4, .L7
+ 162 0004 0460     		str	r4, [r0]
+ 163              	.LVL14:
+ 164              		.loc 2 15 7 is_stmt 0 view .LVU21
+ 165              	.LBE12:
+ 166              	.LBE11:
+  13:Sys/Driver/interface.cpp **** Spi::Spi(SPI_HandleTypeDef *hspi, GPIO_TypeDef *cs_port, uint16_t cs_pin)
+ 167              		.loc 1 13 73 view .LVU22
+ 168 0006 054C     		ldr	r4, .L7+4
+ 169 0008 0460     		str	r4, [r0]
+  15:Sys/Driver/interface.cpp ****     _hspi = hspi;
+ 170              		.loc 1 15 5 is_stmt 1 view .LVU23
+  15:Sys/Driver/interface.cpp ****     _hspi = hspi;
+ 171              		.loc 1 15 11 is_stmt 0 view .LVU24
+ 172 000a 4160     		str	r1, [r0, #4]
+  16:Sys/Driver/interface.cpp ****     _cs_port = cs_port;
+ 173              		.loc 1 16 5 is_stmt 1 view .LVU25
+  16:Sys/Driver/interface.cpp ****     _cs_port = cs_port;
+ 174              		.loc 1 16 14 is_stmt 0 view .LVU26
+ 175 000c 8260     		str	r2, [r0, #8]
+  17:Sys/Driver/interface.cpp ****     _cs_pin = cs_pin;
+ 176              		.loc 1 17 5 is_stmt 1 view .LVU27
+  17:Sys/Driver/interface.cpp ****     _cs_pin = cs_pin;
+ 177              		.loc 1 17 13 is_stmt 0 view .LVU28
+ 178 000e 8381     		strh	r3, [r0, #12]	@ movhi
+ 179              	.LBE10:
+  18:Sys/Driver/interface.cpp **** }
+ 180              		.loc 1 18 1 view .LVU29
+ 181 0010 5DF8044B 		ldr	r4, [sp], #4
+ 182              	.LCFI7:
+ 183              		.cfi_restore 4
+ 184              		.cfi_def_cfa_offset 0
+ 185 0014 7047     		bx	lr
+ 186              	.L8:
+ 187 0016 00BF     		.align	2
+ 188              	.L7:
+ 189 0018 08000000 		.word	_ZTV9Interface+8
+ 190 001c 08000000 		.word	.LANCHOR0+8
+ 191              		.cfi_endproc
+ 192              	.LFE134:
+ 193              		.cantunwind
+ 194              		.fnend
+ 196              		.global	_ZN3SpiC1EP19__SPI_HandleTypeDefP12GPIO_TypeDeft
+ 197              		.thumb_set _ZN3SpiC1EP19__SPI_HandleTypeDefP12GPIO_TypeDeft,_ZN3SpiC2EP19__SPI_HandleTypeDefP12GPI
+ 198              		.section	.text._ZN3Spi7_EnableEv,"ax",%progbits
+ 199              		.align	1
+ 200              		.global	_ZN3Spi7_EnableEv
+ 201              		.syntax unified
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s 			page 6
+
+
+ 202              		.thumb
+ 203              		.thumb_func
+ 205              	_ZN3Spi7_EnableEv:
+ 206              		.fnstart
+ 207              	.LVL15:
+ 208              	.LFB138:
+  40:Sys/Driver/interface.cpp **** {
+ 209              		.loc 1 40 1 is_stmt 1 view -0
+ 210              		.cfi_startproc
+ 211              		@ args = 0, pretend = 0, frame = 0
+ 212              		@ frame_needed = 0, uses_anonymous_args = 0
+  40:Sys/Driver/interface.cpp **** {
+ 213              		.loc 1 40 1 is_stmt 0 view .LVU31
+ 214 0000 08B5     		push	{r3, lr}
+ 215              		.save {r3, lr}
+ 216              	.LCFI8:
+ 217              		.cfi_def_cfa_offset 8
+ 218              		.cfi_offset 3, -8
+ 219              		.cfi_offset 14, -4
+  41:Sys/Driver/interface.cpp ****     HAL_GPIO_WritePin(_cs_port, _cs_pin, GPIO_PIN_RESET);
+ 220              		.loc 1 41 5 is_stmt 1 view .LVU32
+  41:Sys/Driver/interface.cpp ****     HAL_GPIO_WritePin(_cs_port, _cs_pin, GPIO_PIN_RESET);
+ 221              		.loc 1 41 22 is_stmt 0 view .LVU33
+ 222 0002 0022     		movs	r2, #0
+ 223 0004 8189     		ldrh	r1, [r0, #12]
+ 224 0006 8068     		ldr	r0, [r0, #8]
+ 225              	.LVL16:
+  41:Sys/Driver/interface.cpp ****     HAL_GPIO_WritePin(_cs_port, _cs_pin, GPIO_PIN_RESET);
+ 226              		.loc 1 41 22 view .LVU34
+ 227 0008 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 228              	.LVL17:
+  42:Sys/Driver/interface.cpp **** }
+ 229              		.loc 1 42 1 view .LVU35
+ 230 000c 08BD     		pop	{r3, pc}
+ 231              		.cfi_endproc
+ 232              	.LFE138:
+ 233              		.fnend
+ 235              		.section	.text._ZN3Spi8_DisableEv,"ax",%progbits
+ 236              		.align	1
+ 237              		.global	_ZN3Spi8_DisableEv
+ 238              		.syntax unified
+ 239              		.thumb
+ 240              		.thumb_func
+ 242              	_ZN3Spi8_DisableEv:
+ 243              		.fnstart
+ 244              	.LVL18:
+ 245              	.LFB139:
+  45:Sys/Driver/interface.cpp **** {
+ 246              		.loc 1 45 1 is_stmt 1 view -0
+ 247              		.cfi_startproc
+ 248              		@ args = 0, pretend = 0, frame = 0
+ 249              		@ frame_needed = 0, uses_anonymous_args = 0
+  45:Sys/Driver/interface.cpp **** {
+ 250              		.loc 1 45 1 is_stmt 0 view .LVU37
+ 251 0000 08B5     		push	{r3, lr}
+ 252              		.save {r3, lr}
+ 253              	.LCFI9:
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s 			page 7
+
+
+ 254              		.cfi_def_cfa_offset 8
+ 255              		.cfi_offset 3, -8
+ 256              		.cfi_offset 14, -4
+  46:Sys/Driver/interface.cpp ****     HAL_GPIO_WritePin(_cs_port, _cs_pin, GPIO_PIN_SET);
+ 257              		.loc 1 46 5 is_stmt 1 view .LVU38
+  46:Sys/Driver/interface.cpp ****     HAL_GPIO_WritePin(_cs_port, _cs_pin, GPIO_PIN_SET);
+ 258              		.loc 1 46 22 is_stmt 0 view .LVU39
+ 259 0002 0122     		movs	r2, #1
+ 260 0004 8189     		ldrh	r1, [r0, #12]
+ 261 0006 8068     		ldr	r0, [r0, #8]
+ 262              	.LVL19:
+  46:Sys/Driver/interface.cpp ****     HAL_GPIO_WritePin(_cs_port, _cs_pin, GPIO_PIN_SET);
+ 263              		.loc 1 46 22 view .LVU40
+ 264 0008 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 265              	.LVL20:
+  47:Sys/Driver/interface.cpp **** }
+ 266              		.loc 1 47 1 view .LVU41
+ 267 000c 08BD     		pop	{r3, pc}
+ 268              		.cfi_endproc
+ 269              	.LFE139:
+ 270              		.fnend
+ 272              		.section	.text._ZN3Spi9ReadBytesEhhPh,"ax",%progbits
+ 273              		.align	1
+ 274              		.global	_ZN3Spi9ReadBytesEhhPh
+ 275              		.syntax unified
+ 276              		.thumb
+ 277              		.thumb_func
+ 279              	_ZN3Spi9ReadBytesEhhPh:
+ 280              		.fnstart
+ 281              	.LVL21:
+ 282              	.LFB136:
+  21:Sys/Driver/interface.cpp **** {
+ 283              		.loc 1 21 1 is_stmt 1 view -0
+ 284              		.cfi_startproc
+ 285              		@ args = 0, pretend = 0, frame = 8
+ 286              		@ frame_needed = 0, uses_anonymous_args = 0
+  21:Sys/Driver/interface.cpp **** {
+ 287              		.loc 1 21 1 is_stmt 0 view .LVU43
+ 288 0000 70B5     		push	{r4, r5, r6, lr}
+ 289              		.save {r4, r5, r6, lr}
+ 290              	.LCFI10:
+ 291              		.cfi_def_cfa_offset 16
+ 292              		.cfi_offset 4, -16
+ 293              		.cfi_offset 5, -12
+ 294              		.cfi_offset 6, -8
+ 295              		.cfi_offset 14, -4
+ 296              		.pad #8
+ 297 0002 82B0     		sub	sp, sp, #8
+ 298              	.LCFI11:
+ 299              		.cfi_def_cfa_offset 24
+ 300 0004 0446     		mov	r4, r0
+ 301 0006 1646     		mov	r6, r2
+ 302 0008 1D46     		mov	r5, r3
+  22:Sys/Driver/interface.cpp ****     uint8_t _address = address | 0x80;
+ 303              		.loc 1 22 5 is_stmt 1 view .LVU44
+  22:Sys/Driver/interface.cpp ****     uint8_t _address = address | 0x80;
+ 304              		.loc 1 22 32 is_stmt 0 view .LVU45
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s 			page 8
+
+
+ 305 000a 41F08001 		orr	r1, r1, #128
+ 306              	.LVL22:
+  22:Sys/Driver/interface.cpp ****     uint8_t _address = address | 0x80;
+ 307              		.loc 1 22 13 view .LVU46
+ 308 000e 8DF80710 		strb	r1, [sp, #7]
+  23:Sys/Driver/interface.cpp ****     _Enable();
+ 309              		.loc 1 23 5 is_stmt 1 view .LVU47
+  23:Sys/Driver/interface.cpp ****     _Enable();
+ 310              		.loc 1 23 12 is_stmt 0 view .LVU48
+ 311 0012 FFF7FEFF 		bl	_ZN3Spi7_EnableEv
+ 312              	.LVL23:
+  24:Sys/Driver/interface.cpp ****     HAL_SPI_Transmit(_hspi, &_address, 1, 0x01f4);
+ 313              		.loc 1 24 5 is_stmt 1 view .LVU49
+  24:Sys/Driver/interface.cpp ****     HAL_SPI_Transmit(_hspi, &_address, 1, 0x01f4);
+ 314              		.loc 1 24 21 is_stmt 0 view .LVU50
+ 315 0016 4FF4FA73 		mov	r3, #500
+ 316 001a 0122     		movs	r2, #1
+ 317 001c 0DF10701 		add	r1, sp, #7
+ 318 0020 6068     		ldr	r0, [r4, #4]
+ 319 0022 FFF7FEFF 		bl	HAL_SPI_Transmit
+ 320              	.LVL24:
+  25:Sys/Driver/interface.cpp ****     HAL_SPI_Receive(_hspi, dataBuf, len, 0x01f4);
+ 321              		.loc 1 25 5 is_stmt 1 view .LVU51
+  25:Sys/Driver/interface.cpp ****     HAL_SPI_Receive(_hspi, dataBuf, len, 0x01f4);
+ 322              		.loc 1 25 20 is_stmt 0 view .LVU52
+ 323 0026 4FF4FA73 		mov	r3, #500
+ 324 002a 3246     		mov	r2, r6
+ 325 002c 2946     		mov	r1, r5
+ 326 002e 6068     		ldr	r0, [r4, #4]
+ 327 0030 FFF7FEFF 		bl	HAL_SPI_Receive
+ 328              	.LVL25:
+  26:Sys/Driver/interface.cpp ****     _Disable();
+ 329              		.loc 1 26 5 is_stmt 1 view .LVU53
+  26:Sys/Driver/interface.cpp ****     _Disable();
+ 330              		.loc 1 26 13 is_stmt 0 view .LVU54
+ 331 0034 2046     		mov	r0, r4
+ 332 0036 FFF7FEFF 		bl	_ZN3Spi8_DisableEv
+ 333              	.LVL26:
+  27:Sys/Driver/interface.cpp **** }
+ 334              		.loc 1 27 1 view .LVU55
+ 335 003a 02B0     		add	sp, sp, #8
+ 336              	.LCFI12:
+ 337              		.cfi_def_cfa_offset 16
+ 338              		@ sp needed
+ 339 003c 70BD     		pop	{r4, r5, r6, pc}
+  27:Sys/Driver/interface.cpp **** }
+ 340              		.loc 1 27 1 view .LVU56
+ 341              		.cfi_endproc
+ 342              	.LFE136:
+ 343              		.fnend
+ 345              		.section	.text._ZN3Spi8WriteRegEhh,"ax",%progbits
+ 346              		.align	1
+ 347              		.global	_ZN3Spi8WriteRegEhh
+ 348              		.syntax unified
+ 349              		.thumb
+ 350              		.thumb_func
+ 352              	_ZN3Spi8WriteRegEhh:
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s 			page 9
+
+
+ 353              		.fnstart
+ 354              	.LVL27:
+ 355              	.LFB137:
+  30:Sys/Driver/interface.cpp **** {
+ 356              		.loc 1 30 1 is_stmt 1 view -0
+ 357              		.cfi_startproc
+ 358              		@ args = 0, pretend = 0, frame = 8
+ 359              		@ frame_needed = 0, uses_anonymous_args = 0
+  30:Sys/Driver/interface.cpp **** {
+ 360              		.loc 1 30 1 is_stmt 0 view .LVU58
+ 361 0000 10B5     		push	{r4, lr}
+ 362              		.save {r4, lr}
+ 363              	.LCFI13:
+ 364              		.cfi_def_cfa_offset 8
+ 365              		.cfi_offset 4, -8
+ 366              		.cfi_offset 14, -4
+ 367              		.pad #16
+ 368 0002 84B0     		sub	sp, sp, #16
+ 369              	.LCFI14:
+ 370              		.cfi_def_cfa_offset 24
+ 371 0004 0446     		mov	r4, r0
+ 372 0006 8DF80F10 		strb	r1, [sp, #15]
+ 373 000a 8DF80E20 		strb	r2, [sp, #14]
+  31:Sys/Driver/interface.cpp ****     _Enable();
+ 374              		.loc 1 31 5 is_stmt 1 view .LVU59
+  31:Sys/Driver/interface.cpp ****     _Enable();
+ 375              		.loc 1 31 12 is_stmt 0 view .LVU60
+ 376 000e FFF7FEFF 		bl	_ZN3Spi7_EnableEv
+ 377              	.LVL28:
+ 378              	.L16:
+  32:Sys/Driver/interface.cpp ****     while (HAL_SPI_GetState(_hspi) == HAL_SPI_STATE_BUSY_TX_RX);
+ 379              		.loc 1 32 5 is_stmt 1 view .LVU61
+  32:Sys/Driver/interface.cpp ****     while (HAL_SPI_GetState(_hspi) == HAL_SPI_STATE_BUSY_TX_RX);
+ 380              		.loc 1 32 36 view .LVU62
+  32:Sys/Driver/interface.cpp ****     while (HAL_SPI_GetState(_hspi) == HAL_SPI_STATE_BUSY_TX_RX);
+ 381              		.loc 1 32 28 is_stmt 0 view .LVU63
+ 382 0012 6068     		ldr	r0, [r4, #4]
+ 383 0014 FFF7FEFF 		bl	HAL_SPI_GetState
+ 384              	.LVL29:
+  32:Sys/Driver/interface.cpp ****     while (HAL_SPI_GetState(_hspi) == HAL_SPI_STATE_BUSY_TX_RX);
+ 385              		.loc 1 32 36 view .LVU64
+ 386 0018 0528     		cmp	r0, #5
+ 387 001a FAD0     		beq	.L16
+  33:Sys/Driver/interface.cpp ****     HAL_SPI_TransmitReceive(_hspi, &address, NULL, 1, 0x01f4);
+ 388              		.loc 1 33 5 is_stmt 1 view .LVU65
+  33:Sys/Driver/interface.cpp ****     HAL_SPI_TransmitReceive(_hspi, &address, NULL, 1, 0x01f4);
+ 389              		.loc 1 33 28 is_stmt 0 view .LVU66
+ 390 001c 4FF4FA73 		mov	r3, #500
+ 391 0020 0093     		str	r3, [sp]
+ 392 0022 0123     		movs	r3, #1
+ 393 0024 0022     		movs	r2, #0
+ 394 0026 0DF10F01 		add	r1, sp, #15
+ 395 002a 6068     		ldr	r0, [r4, #4]
+ 396 002c FFF7FEFF 		bl	HAL_SPI_TransmitReceive
+ 397              	.LVL30:
+ 398              	.L17:
+  34:Sys/Driver/interface.cpp ****     while (HAL_SPI_GetState(_hspi) == HAL_SPI_STATE_BUSY_TX_RX);
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s 			page 10
+
+
+ 399              		.loc 1 34 5 is_stmt 1 view .LVU67
+  34:Sys/Driver/interface.cpp ****     while (HAL_SPI_GetState(_hspi) == HAL_SPI_STATE_BUSY_TX_RX);
+ 400              		.loc 1 34 36 view .LVU68
+  34:Sys/Driver/interface.cpp ****     while (HAL_SPI_GetState(_hspi) == HAL_SPI_STATE_BUSY_TX_RX);
+ 401              		.loc 1 34 28 is_stmt 0 view .LVU69
+ 402 0030 6068     		ldr	r0, [r4, #4]
+ 403 0032 FFF7FEFF 		bl	HAL_SPI_GetState
+ 404              	.LVL31:
+  34:Sys/Driver/interface.cpp ****     while (HAL_SPI_GetState(_hspi) == HAL_SPI_STATE_BUSY_TX_RX);
+ 405              		.loc 1 34 36 view .LVU70
+ 406 0036 0528     		cmp	r0, #5
+ 407 0038 FAD0     		beq	.L17
+  35:Sys/Driver/interface.cpp ****     HAL_SPI_TransmitReceive(_hspi, &value, NULL, 1, 0x01f4);
+ 408              		.loc 1 35 5 is_stmt 1 view .LVU71
+  35:Sys/Driver/interface.cpp ****     HAL_SPI_TransmitReceive(_hspi, &value, NULL, 1, 0x01f4);
+ 409              		.loc 1 35 28 is_stmt 0 view .LVU72
+ 410 003a 4FF4FA73 		mov	r3, #500
+ 411 003e 0093     		str	r3, [sp]
+ 412 0040 0123     		movs	r3, #1
+ 413 0042 0022     		movs	r2, #0
+ 414 0044 0DF10E01 		add	r1, sp, #14
+ 415 0048 6068     		ldr	r0, [r4, #4]
+ 416 004a FFF7FEFF 		bl	HAL_SPI_TransmitReceive
+ 417              	.LVL32:
+  36:Sys/Driver/interface.cpp ****     _Disable();
+ 418              		.loc 1 36 5 is_stmt 1 view .LVU73
+  36:Sys/Driver/interface.cpp ****     _Disable();
+ 419              		.loc 1 36 13 is_stmt 0 view .LVU74
+ 420 004e 2046     		mov	r0, r4
+ 421 0050 FFF7FEFF 		bl	_ZN3Spi8_DisableEv
+ 422              	.LVL33:
+  37:Sys/Driver/interface.cpp **** }
+ 423              		.loc 1 37 1 view .LVU75
+ 424 0054 04B0     		add	sp, sp, #16
+ 425              	.LCFI15:
+ 426              		.cfi_def_cfa_offset 8
+ 427              		@ sp needed
+ 428 0056 10BD     		pop	{r4, pc}
+  37:Sys/Driver/interface.cpp **** }
+ 429              		.loc 1 37 1 view .LVU76
+ 430              		.cfi_endproc
+ 431              	.LFE137:
+ 432              		.fnend
+ 434              		.section	.text._ZN3IicC2EP17I2C_HandleTypeDeft,"ax",%progbits
+ 435              		.align	1
+ 436              		.global	_ZN3IicC2EP17I2C_HandleTypeDeft
+ 437              		.syntax unified
+ 438              		.thumb
+ 439              		.thumb_func
+ 441              	_ZN3IicC2EP17I2C_HandleTypeDeft:
+ 442              		.fnstart
+ 443              	.LVL34:
+ 444              	.LFB141:
+  51:Sys/Driver/interface.cpp **** Iic::Iic(I2C_HandleTypeDef *hi2c, uint16_t device_address)
+ 445              		.loc 1 51 1 is_stmt 1 view -0
+ 446              		.cfi_startproc
+ 447              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s 			page 11
+
+
+ 448              		@ frame_needed = 0, uses_anonymous_args = 0
+ 449              		@ link register save eliminated.
+ 450              	.LBB13:
+ 451              	.LBB14:
+ 452              	.LBI14:
+ 453              		.loc 2 15 7 view .LVU78
+ 454              	.LBB15:
+ 455 0000 024A     		ldr	r2, .L20
+ 456              	.LVL35:
+ 457              		.loc 2 15 7 is_stmt 0 view .LVU79
+ 458 0002 0260     		str	r2, [r0]
+ 459              	.LVL36:
+ 460              		.loc 2 15 7 view .LVU80
+ 461              	.LBE15:
+ 462              	.LBE14:
+  51:Sys/Driver/interface.cpp **** Iic::Iic(I2C_HandleTypeDef *hi2c, uint16_t device_address)
+ 463              		.loc 1 51 58 view .LVU81
+ 464 0004 024A     		ldr	r2, .L20+4
+ 465 0006 0260     		str	r2, [r0]
+  53:Sys/Driver/interface.cpp ****     _hi2c = hi2c;
+ 466              		.loc 1 53 5 is_stmt 1 view .LVU82
+  53:Sys/Driver/interface.cpp ****     _hi2c = hi2c;
+ 467              		.loc 1 53 11 is_stmt 0 view .LVU83
+ 468 0008 4160     		str	r1, [r0, #4]
+  54:Sys/Driver/interface.cpp ****     _device_address = _device_address;
+ 469              		.loc 1 54 5 is_stmt 1 view .LVU84
+ 470              	.LBE13:
+  55:Sys/Driver/interface.cpp **** }
+ 471              		.loc 1 55 1 is_stmt 0 view .LVU85
+ 472 000a 7047     		bx	lr
+ 473              	.L21:
+ 474              		.align	2
+ 475              	.L20:
+ 476 000c 08000000 		.word	_ZTV9Interface+8
+ 477 0010 08000000 		.word	.LANCHOR1+8
+ 478              		.cfi_endproc
+ 479              	.LFE141:
+ 480              		.cantunwind
+ 481              		.fnend
+ 483              		.global	_ZN3IicC1EP17I2C_HandleTypeDeft
+ 484              		.thumb_set _ZN3IicC1EP17I2C_HandleTypeDeft,_ZN3IicC2EP17I2C_HandleTypeDeft
+ 485              		.weak	_ZTS9Interface
+ 486              		.section	.rodata._ZTS9Interface,"aG",%progbits,_ZTS9Interface,comdat
+ 487              		.align	2
+ 490              	_ZTS9Interface:
+ 491 0000 39496E74 		.ascii	"9Interface\000"
+ 491      65726661 
+ 491      636500
+ 492              		.weak	_ZTI9Interface
+ 493              		.section	.rodata._ZTI9Interface,"aG",%progbits,_ZTI9Interface,comdat
+ 494              		.align	2
+ 497              	_ZTI9Interface:
+ 498 0000 08000000 		.word	_ZTVN10__cxxabiv117__class_type_infoE+8
+ 499 0004 00000000 		.word	_ZTS9Interface
+ 500              		.global	_ZTS3Spi
+ 501              		.global	_ZTI3Spi
+ 502              		.global	_ZTS3Iic
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s 			page 12
+
+
+ 503              		.global	_ZTI3Iic
+ 504              		.weak	_ZTV9Interface
+ 505              		.section	.rodata._ZTV9Interface,"aG",%progbits,_ZTV9Interface,comdat
+ 506              		.align	2
+ 509              	_ZTV9Interface:
+ 510 0000 00000000 		.word	0
+ 511 0004 00000000 		.word	_ZTI9Interface
+ 512 0008 00000000 		.word	__cxa_pure_virtual
+ 513 000c 00000000 		.word	__cxa_pure_virtual
+ 514              		.global	_ZTV3Spi
+ 515              		.global	_ZTV3Iic
+ 516              		.section	.rodata._ZTI3Iic,"a"
+ 517              		.align	2
+ 520              	_ZTI3Iic:
+ 521 0000 08000000 		.word	_ZTVN10__cxxabiv120__si_class_type_infoE+8
+ 522 0004 00000000 		.word	_ZTS3Iic
+ 523 0008 00000000 		.word	_ZTI9Interface
+ 524              		.section	.rodata._ZTI3Spi,"a"
+ 525              		.align	2
+ 528              	_ZTI3Spi:
+ 529 0000 08000000 		.word	_ZTVN10__cxxabiv120__si_class_type_infoE+8
+ 530 0004 00000000 		.word	_ZTS3Spi
+ 531 0008 00000000 		.word	_ZTI9Interface
+ 532              		.section	.rodata._ZTS3Iic,"a"
+ 533              		.align	2
+ 536              	_ZTS3Iic:
+ 537 0000 33496963 		.ascii	"3Iic\000"
+ 537      00
+ 538              		.section	.rodata._ZTS3Spi,"a"
+ 539              		.align	2
+ 542              	_ZTS3Spi:
+ 543 0000 33537069 		.ascii	"3Spi\000"
+ 543      00
+ 544              		.section	.rodata._ZTV3Iic,"a"
+ 545              		.align	2
+ 546              		.set	.LANCHOR1,. + 0
+ 549              	_ZTV3Iic:
+ 550 0000 00000000 		.word	0
+ 551 0004 00000000 		.word	_ZTI3Iic
+ 552 0008 00000000 		.word	_ZN3Iic9ReadBytesEhhPh
+ 553 000c 00000000 		.word	_ZN3Iic8WriteRegEhh
+ 554              		.section	.rodata._ZTV3Spi,"a"
+ 555              		.align	2
+ 556              		.set	.LANCHOR0,. + 0
+ 559              	_ZTV3Spi:
+ 560 0000 00000000 		.word	0
+ 561 0004 00000000 		.word	_ZTI3Spi
+ 562 0008 00000000 		.word	_ZN3Spi9ReadBytesEhhPh
+ 563 000c 00000000 		.word	_ZN3Spi8WriteRegEhh
+ 564              		.text
+ 565              	.Letext0:
+ 566              		.file 3 "e:\\gcc\\2021.10\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 567              		.file 4 "e:\\gcc\\2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 568              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h"
+ 569              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 570              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 571              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s 			page 13
+
+
+ 572              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 573              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h"
+ 574              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h"
+ 575              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s 			page 14
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 interface.cpp
+C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s:20     .text._ZN3Iic9ReadBytesEhhPh:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s:26     .text._ZN3Iic9ReadBytesEhhPh:00000000 _ZN3Iic9ReadBytesEhhPh
+.ARM.exidx.text._ZN3Iic9ReadBytesEhhPh:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s:77     .text._ZN3Iic8WriteRegEhh:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s:83     .text._ZN3Iic8WriteRegEhh:00000000 _ZN3Iic8WriteRegEhh
+.ARM.exidx.text._ZN3Iic8WriteRegEhh:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s:134    .text._ZN3SpiC2EP19__SPI_HandleTypeDefP12GPIO_TypeDeft:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s:140    .text._ZN3SpiC2EP19__SPI_HandleTypeDefP12GPIO_TypeDeft:00000000 _ZN3SpiC2EP19__SPI_HandleTypeDefP12GPIO_TypeDeft
+C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s:189    .text._ZN3SpiC2EP19__SPI_HandleTypeDefP12GPIO_TypeDeft:00000018 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s:509    .rodata._ZTV9Interface:00000000 _ZTV9Interface
+.ARM.exidx.text._ZN3SpiC2EP19__SPI_HandleTypeDefP12GPIO_TypeDeft:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s:140    .text._ZN3SpiC2EP19__SPI_HandleTypeDefP12GPIO_TypeDeft:00000000 _ZN3SpiC1EP19__SPI_HandleTypeDefP12GPIO_TypeDeft
+C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s:199    .text._ZN3Spi7_EnableEv:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s:205    .text._ZN3Spi7_EnableEv:00000000 _ZN3Spi7_EnableEv
+.ARM.extab.text._ZN3Spi7_EnableEv:00000000 $d
+.ARM.exidx.text._ZN3Spi7_EnableEv:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s:236    .text._ZN3Spi8_DisableEv:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s:242    .text._ZN3Spi8_DisableEv:00000000 _ZN3Spi8_DisableEv
+.ARM.extab.text._ZN3Spi8_DisableEv:00000000 $d
+.ARM.exidx.text._ZN3Spi8_DisableEv:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s:273    .text._ZN3Spi9ReadBytesEhhPh:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s:279    .text._ZN3Spi9ReadBytesEhhPh:00000000 _ZN3Spi9ReadBytesEhhPh
+.ARM.exidx.text._ZN3Spi9ReadBytesEhhPh:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s:346    .text._ZN3Spi8WriteRegEhh:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s:352    .text._ZN3Spi8WriteRegEhh:00000000 _ZN3Spi8WriteRegEhh
+.ARM.exidx.text._ZN3Spi8WriteRegEhh:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s:435    .text._ZN3IicC2EP17I2C_HandleTypeDeft:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s:441    .text._ZN3IicC2EP17I2C_HandleTypeDeft:00000000 _ZN3IicC2EP17I2C_HandleTypeDeft
+C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s:476    .text._ZN3IicC2EP17I2C_HandleTypeDeft:0000000c $d
+.ARM.exidx.text._ZN3IicC2EP17I2C_HandleTypeDeft:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s:441    .text._ZN3IicC2EP17I2C_HandleTypeDeft:00000000 _ZN3IicC1EP17I2C_HandleTypeDeft
+C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s:490    .rodata._ZTS9Interface:00000000 _ZTS9Interface
+C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s:487    .rodata._ZTS9Interface:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s:497    .rodata._ZTI9Interface:00000000 _ZTI9Interface
+C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s:494    .rodata._ZTI9Interface:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s:542    .rodata._ZTS3Spi:00000000 _ZTS3Spi
+C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s:528    .rodata._ZTI3Spi:00000000 _ZTI3Spi
+C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s:536    .rodata._ZTS3Iic:00000000 _ZTS3Iic
+C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s:520    .rodata._ZTI3Iic:00000000 _ZTI3Iic
+C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s:506    .rodata._ZTV9Interface:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s:559    .rodata._ZTV3Spi:00000000 _ZTV3Spi
+C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s:549    .rodata._ZTV3Iic:00000000 _ZTV3Iic
+C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s:517    .rodata._ZTI3Iic:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s:525    .rodata._ZTI3Spi:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s:533    .rodata._ZTS3Iic:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s:539    .rodata._ZTS3Spi:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s:545    .rodata._ZTV3Iic:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s:555    .rodata._ZTV3Spi:00000000 $d
+
+UNDEFINED SYMBOLS
+HAL_I2C_Mem_Read
+__aeabi_unwind_cpp_pr0
+HAL_I2C_Mem_Write
+HAL_GPIO_WritePin
+__aeabi_unwind_cpp_pr1
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s 			page 15
+
+
+HAL_SPI_Transmit
+HAL_SPI_Receive
+HAL_SPI_GetState
+HAL_SPI_TransmitReceive
+_ZTVN10__cxxabiv117__class_type_infoE
+__cxa_pure_virtual
+_ZTVN10__cxxabiv120__si_class_type_infoE
