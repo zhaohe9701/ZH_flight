@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccVEvG3s.s 			page 1
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccaXpDoY.s 			page 1
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
    1              		.cpu cortex-m4
@@ -58,7 +62,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccVEvG3s.s 			page 1
   28:Core/Src/dma.c **** /*----------------------------------------------------------------------------*/
   29:Core/Src/dma.c **** /* Configure DMA                                                              */
   30:Core/Src/dma.c **** /*----------------------------------------------------------------------------*/
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccVEvG3s.s 			page 2
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccaXpDoY.s 			page 2
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
   31:Core/Src/dma.c **** 
@@ -118,7 +126,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccVEvG3s.s 			page 1
   69 0028 03F48003 		and	r3, r3, #4194304
   70 002c 0193     		str	r3, [sp, #4]
   71              		.loc 1 44 3 view .LVU11
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccVEvG3s.s 			page 3
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccaXpDoY.s 			page 3
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
   72 002e 019B     		ldr	r3, [sp, #4]
@@ -178,7 +190,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccVEvG3s.s 			page 1
  112 006a 1020     		movs	r0, #16
  113 006c FFF7FEFF 		bl	HAL_NVIC_EnableIRQ
  114              	.LVL7:
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccVEvG3s.s 			page 4
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccaXpDoY.s 			page 4
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
   59:Core/Src/dma.c ****   /* DMA1_Stream7_IRQn interrupt configuration */
@@ -238,19 +254,33 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccVEvG3s.s 			page 1
  159              	.Letext0:
  160              		.file 2 "e:\\gcc\\2021.10\\arm-none-eabi\\include\\machine\\_default_types.h"
  161              		.file 3 "e:\\gcc\\2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccVEvG3s.s 			page 5
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccaXpDoY.s 			page 5
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  162              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h"
  163              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccVEvG3s.s 			page 6
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccaXpDoY.s 			page 6
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 dma.c
+<<<<<<< HEAD
 C:\Users\zhaohe\AppData\Local\Temp\ccVEvG3s.s:20     .text.MX_DMA_Init:00000000 $t
 C:\Users\zhaohe\AppData\Local\Temp\ccVEvG3s.s:26     .text.MX_DMA_Init:00000000 MX_DMA_Init
 C:\Users\zhaohe\AppData\Local\Temp\ccVEvG3s.s:154    .text.MX_DMA_Init:000000a4 $d
+=======
+C:\Users\zhaohe\AppData\Local\Temp\ccaXpDoY.s:20     .text.MX_DMA_Init:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccaXpDoY.s:26     .text.MX_DMA_Init:00000000 MX_DMA_Init
+C:\Users\zhaohe\AppData\Local\Temp\ccaXpDoY.s:154    .text.MX_DMA_Init:000000a4 $d
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 UNDEFINED SYMBOLS
 HAL_NVIC_SetPriority

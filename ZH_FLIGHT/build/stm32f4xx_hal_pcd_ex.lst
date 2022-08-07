@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc5G8t8l.s 			page 1
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccJRXKke.s 			page 1
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
    1              		.cpu cortex-m4
@@ -58,7 +62,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc5G8t8l.s 			page 1
   27:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c ****   * @{
   28:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c ****   */
   29:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c **** 
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc5G8t8l.s 			page 2
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccJRXKke.s 			page 2
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
   30:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c **** /** @defgroup PCDEx PCDEx
@@ -118,7 +126,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc5G8t8l.s 			page 1
   73:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c ****   uint32_t Tx_Offset;
   41              		.loc 1 73 3 view .LVU3
   74:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c **** 
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc5G8t8l.s 			page 3
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccJRXKke.s 			page 3
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
   75:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c ****   /*  TXn min size = 16 words. (n  : Transmit FIFO index)
@@ -178,7 +190,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc5G8t8l.s 			page 1
   66              		.cfi_def_cfa_offset 0
   67 0014 7047     		bx	lr
   68              	.LVL4:
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc5G8t8l.s 			page 4
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccJRXKke.s 			page 4
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
   69              	.L2:
@@ -238,7 +254,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc5G8t8l.s 			page 1
  108 003a F2D3     		bcc	.L5
  100:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c ****   }
  109              		.loc 1 100 5 is_stmt 1 view .LVU30
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc5G8t8l.s 			page 5
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccJRXKke.s 			page 5
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  100:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c ****   }
@@ -298,7 +318,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc5G8t8l.s 			page 1
  152              		.weak	HAL_PCDEx_LPM_Callback
  153              		.syntax unified
  154              		.thumb
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc5G8t8l.s 			page 6
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccJRXKke.s 			page 6
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  155              		.thumb_func
@@ -358,7 +382,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc5G8t8l.s 			page 1
  168:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c **** 
  169:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c ****   /* Check Detect flag */
  170:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c ****   if ((USBx->GCCFG & USB_OTG_GCCFG_DCDET) == USB_OTG_GCCFG_DCDET)
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc5G8t8l.s 			page 7
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccJRXKke.s 			page 7
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  171:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c ****   {
@@ -418,7 +446,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc5G8t8l.s 			page 1
  225:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c ****   (void)HAL_PCDEx_DeActivateBCD(hpcd);
  226:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c **** 
  227:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c ****   /* Check for the Timeout, else start USB Device */
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc5G8t8l.s 			page 8
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccJRXKke.s 			page 8
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  228:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c ****   if ((HAL_GetTick() - tickstart) > 1000U)
@@ -478,7 +510,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc5G8t8l.s 			page 1
  282:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c ****   USBx->GCCFG &= ~(USB_OTG_GCCFG_BCDEN);
  283:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c **** 
  284:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c ****   hpcd->battery_charging_active = 0U;
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc5G8t8l.s 			page 9
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccJRXKke.s 			page 9
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  285:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c **** 
@@ -538,7 +574,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc5G8t8l.s 			page 1
  185              		@ frame_needed = 0, uses_anonymous_args = 0
  186              		@ link register save eliminated.
  316:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c ****   /* Prevent unused argument(s) compilation warning */
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc5G8t8l.s 			page 10
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccJRXKke.s 			page 10
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  317:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c ****   UNUSED(hpcd);
@@ -562,11 +602,16 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc5G8t8l.s 			page 1
  199              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
  200              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h"
  201              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h"
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc5G8t8l.s 			page 11
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccJRXKke.s 			page 11
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f4xx_hal_pcd_ex.c
+<<<<<<< HEAD
 C:\Users\zhaohe\AppData\Local\Temp\cc5G8t8l.s:20     .text.HAL_PCDEx_SetTxFiFo:00000000 $t
 C:\Users\zhaohe\AppData\Local\Temp\cc5G8t8l.s:26     .text.HAL_PCDEx_SetTxFiFo:00000000 HAL_PCDEx_SetTxFiFo
 C:\Users\zhaohe\AppData\Local\Temp\cc5G8t8l.s:122    .text.HAL_PCDEx_SetRxFiFo:00000000 $t
@@ -575,5 +620,15 @@ C:\Users\zhaohe\AppData\Local\Temp\cc5G8t8l.s:151    .text.HAL_PCDEx_LPM_Callbac
 C:\Users\zhaohe\AppData\Local\Temp\cc5G8t8l.s:157    .text.HAL_PCDEx_LPM_Callback:00000000 HAL_PCDEx_LPM_Callback
 C:\Users\zhaohe\AppData\Local\Temp\cc5G8t8l.s:173    .text.HAL_PCDEx_BCD_Callback:00000000 $t
 C:\Users\zhaohe\AppData\Local\Temp\cc5G8t8l.s:179    .text.HAL_PCDEx_BCD_Callback:00000000 HAL_PCDEx_BCD_Callback
+=======
+C:\Users\zhaohe\AppData\Local\Temp\ccJRXKke.s:20     .text.HAL_PCDEx_SetTxFiFo:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccJRXKke.s:26     .text.HAL_PCDEx_SetTxFiFo:00000000 HAL_PCDEx_SetTxFiFo
+C:\Users\zhaohe\AppData\Local\Temp\ccJRXKke.s:122    .text.HAL_PCDEx_SetRxFiFo:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccJRXKke.s:128    .text.HAL_PCDEx_SetRxFiFo:00000000 HAL_PCDEx_SetRxFiFo
+C:\Users\zhaohe\AppData\Local\Temp\ccJRXKke.s:151    .text.HAL_PCDEx_LPM_Callback:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccJRXKke.s:157    .text.HAL_PCDEx_LPM_Callback:00000000 HAL_PCDEx_LPM_Callback
+C:\Users\zhaohe\AppData\Local\Temp\ccJRXKke.s:173    .text.HAL_PCDEx_BCD_Callback:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccJRXKke.s:179    .text.HAL_PCDEx_BCD_Callback:00000000 HAL_PCDEx_BCD_Callback
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 NO UNDEFINED SYMBOLS

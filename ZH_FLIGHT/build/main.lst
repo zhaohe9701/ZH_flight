@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccuTDLE3.s 			page 1
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccOENspC.s 			page 1
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
    1              		.cpu cortex-m4
@@ -58,7 +62,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccuTDLE3.s 			page 1
   29:Core/Src/main.c **** 
   30:Core/Src/main.c **** /* Private includes ----------------------------------------------------------*/
   31:Core/Src/main.c **** /* USER CODE BEGIN Includes */
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccuTDLE3.s 			page 2
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccOENspC.s 			page 2
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
   32:Core/Src/main.c **** 
@@ -118,7 +126,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccuTDLE3.s 			page 1
   86:Core/Src/main.c **** 
   87:Core/Src/main.c ****   /* Configure the system clock */
   88:Core/Src/main.c ****   SystemClock_Config();
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccuTDLE3.s 			page 3
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccOENspC.s 			page 3
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
   89:Core/Src/main.c **** 
@@ -178,7 +190,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccuTDLE3.s 			page 1
  143:Core/Src/main.c ****   __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
  144:Core/Src/main.c **** 
  145:Core/Src/main.c ****   /** Initializes the RCC Oscillators according to the specified parameters
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccuTDLE3.s 			page 4
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccOENspC.s 			page 4
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  146:Core/Src/main.c ****   * in the RCC_OscInitTypeDef structure.
@@ -238,7 +254,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccuTDLE3.s 			page 1
   43              		.loc 1 184 3 view .LVU2
   44 000c 2620     		movs	r0, #38
   45 000e FFF7FEFF 		bl	HAL_NVIC_EnableIRQ
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccuTDLE3.s 			page 5
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccOENspC.s 			page 5
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
   46              	.LVL1:
@@ -298,7 +318,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccuTDLE3.s 			page 1
  205:Core/Src/main.c **** 
  206:Core/Src/main.c ****   /* USER CODE END Callback 0 */
  207:Core/Src/main.c ****   if (htim->Instance == TIM1) {
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccuTDLE3.s 			page 6
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccOENspC.s 			page 6
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
   82              		.loc 1 207 3 is_stmt 1 view .LVU8
@@ -358,7 +382,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccuTDLE3.s 			page 1
  223:Core/Src/main.c ****   __disable_irq();
  122              		.loc 1 223 3 view .LVU15
  123              	.LBB4:
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccuTDLE3.s 			page 7
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccOENspC.s 			page 7
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  124              	.LBI4:
@@ -418,7 +446,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccuTDLE3.s 			page 1
   53:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __NO_RETURN                            __attribute__((__noreturn__))
   54:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
   55:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __USED
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccuTDLE3.s 			page 8
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccOENspC.s 			page 8
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
   56:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __USED                                 __attribute__((used))
@@ -478,7 +510,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccuTDLE3.s 			page 1
  110:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __ALIGNED
  111:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __ALIGNED(x)                           __attribute__((aligned(x)))
  112:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccuTDLE3.s 			page 9
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccOENspC.s 			page 9
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  113:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __RESTRICT
@@ -538,7 +574,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccuTDLE3.s 			page 1
  147              		.global	SystemClock_Config
  148              		.syntax unified
  149              		.thumb
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccuTDLE3.s 			page 10
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccOENspC.s 			page 10
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  150              		.thumb_func
@@ -598,7 +638,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccuTDLE3.s 			page 1
  195              	.LBE6:
  142:Core/Src/main.c ****   __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
  196              		.loc 1 142 3 view .LVU31
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccuTDLE3.s 			page 11
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccOENspC.s 			page 11
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  143:Core/Src/main.c **** 
@@ -658,7 +702,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccuTDLE3.s 			page 1
  234              		.loc 1 153 3 is_stmt 1 view .LVU48
  153:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
  235              		.loc 1 153 30 is_stmt 0 view .LVU49
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccuTDLE3.s 			page 12
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccOENspC.s 			page 12
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  236 005e A822     		movs	r2, #168
@@ -718,7 +766,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccuTDLE3.s 			page 1
  170:Core/Src/main.c ****   {
  272              		.loc 1 170 7 is_stmt 0 view .LVU68
  273 0084 0521     		movs	r1, #5
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccuTDLE3.s 			page 13
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccOENspC.s 			page 13
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  274 0086 03A8     		add	r0, sp, #12
@@ -778,7 +830,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccuTDLE3.s 			page 1
  324 0002 FFF7FEFF 		bl	HAL_Init
  325              	.LVL13:
   88:Core/Src/main.c **** 
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccuTDLE3.s 			page 14
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccOENspC.s 			page 14
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  326              		.loc 1 88 3 view .LVU75
@@ -838,7 +894,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccuTDLE3.s 			page 1
  367              	.LVL27:
  368              	.L20:
  121:Core/Src/main.c ****   {
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccuTDLE3.s 			page 15
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccOENspC.s 			page 15
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  369              		.loc 1 121 3 discriminator 1 view .LVU89
@@ -869,11 +929,16 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccuTDLE3.s 			page 1
  393              		.file 18 "Core/Inc/i2c.h"
  394              		.file 19 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h"
  395              		.file 20 "<built-in>"
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccuTDLE3.s 			page 16
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccOENspC.s 			page 16
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
+<<<<<<< HEAD
 C:\Users\zhaohe\AppData\Local\Temp\ccuTDLE3.s:20     .text.MX_NVIC_Init:00000000 $t
 C:\Users\zhaohe\AppData\Local\Temp\ccuTDLE3.s:25     .text.MX_NVIC_Init:00000000 MX_NVIC_Init
 C:\Users\zhaohe\AppData\Local\Temp\ccuTDLE3.s:63     .text.HAL_TIM_PeriodElapsedCallback:00000000 $t
@@ -886,6 +951,20 @@ C:\Users\zhaohe\AppData\Local\Temp\ccuTDLE3.s:152    .text.SystemClock_Config:00
 C:\Users\zhaohe\AppData\Local\Temp\ccuTDLE3.s:299    .text.SystemClock_Config:0000009c $d
 C:\Users\zhaohe\AppData\Local\Temp\ccuTDLE3.s:305    .text.main:00000000 $t
 C:\Users\zhaohe\AppData\Local\Temp\ccuTDLE3.s:311    .text.main:00000000 main
+=======
+C:\Users\zhaohe\AppData\Local\Temp\ccOENspC.s:20     .text.MX_NVIC_Init:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccOENspC.s:25     .text.MX_NVIC_Init:00000000 MX_NVIC_Init
+C:\Users\zhaohe\AppData\Local\Temp\ccOENspC.s:63     .text.HAL_TIM_PeriodElapsedCallback:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccOENspC.s:69     .text.HAL_TIM_PeriodElapsedCallback:00000000 HAL_TIM_PeriodElapsedCallback
+C:\Users\zhaohe\AppData\Local\Temp\ccOENspC.s:103    .text.HAL_TIM_PeriodElapsedCallback:00000014 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccOENspC.s:108    .text.Error_Handler:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccOENspC.s:114    .text.Error_Handler:00000000 Error_Handler
+C:\Users\zhaohe\AppData\Local\Temp\ccOENspC.s:146    .text.SystemClock_Config:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccOENspC.s:152    .text.SystemClock_Config:00000000 SystemClock_Config
+C:\Users\zhaohe\AppData\Local\Temp\ccOENspC.s:299    .text.SystemClock_Config:0000009c $d
+C:\Users\zhaohe\AppData\Local\Temp\ccOENspC.s:305    .text.main:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccOENspC.s:311    .text.main:00000000 main
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 UNDEFINED SYMBOLS
 HAL_NVIC_SetPriority

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cchEXyRg.s 			page 1
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccwWH2CG.s 			page 1
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
    1              		.cpu cortex-m4
@@ -58,7 +62,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cchEXyRg.s 			page 1
   28:Core/Src/gpio.c **** /*----------------------------------------------------------------------------*/
   29:Core/Src/gpio.c **** /* Configure GPIO                                                             */
   30:Core/Src/gpio.c **** /*----------------------------------------------------------------------------*/
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cchEXyRg.s 			page 2
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccwWH2CG.s 			page 2
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
   31:Core/Src/gpio.c **** /* USER CODE BEGIN 1 */
@@ -118,7 +126,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cchEXyRg.s 			page 1
   65 0024 0192     		str	r2, [sp, #4]
   66              		.loc 1 48 3 view .LVU7
   67 0026 019A     		ldr	r2, [sp, #4]
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cchEXyRg.s 			page 3
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccwWH2CG.s 			page 3
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
   68              	.LBE2:
@@ -178,7 +190,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cchEXyRg.s 			page 1
   53:Core/Src/gpio.c ****   /*Configure GPIO pin Output Level */
   54:Core/Src/gpio.c ****   HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_RESET);
  118              		.loc 1 54 3 view .LVU27
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cchEXyRg.s 			page 4
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccwWH2CG.s 			page 4
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  119 0064 1B4D     		ldr	r5, .L3+4
@@ -238,7 +254,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cchEXyRg.s 			page 1
  158              		.loc 1 69 3 is_stmt 1 view .LVU42
  159              		.loc 1 69 24 is_stmt 0 view .LVU43
  160 009c 0794     		str	r4, [sp, #28]
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cchEXyRg.s 			page 5
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccwWH2CG.s 			page 5
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
   70:Core/Src/gpio.c ****   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -298,7 +318,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cchEXyRg.s 			page 1
  201              		.align	2
  202              	.L3:
  203 00d0 00380240 		.word	1073887232
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cchEXyRg.s 			page 6
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccwWH2CG.s 			page 6
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  204 00d4 00080240 		.word	1073874944
@@ -312,14 +336,24 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cchEXyRg.s 			page 1
  213              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h"
  214              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
  215              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cchEXyRg.s 			page 7
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccwWH2CG.s 			page 7
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 gpio.c
+<<<<<<< HEAD
 C:\Users\zhaohe\AppData\Local\Temp\cchEXyRg.s:20     .text.MX_GPIO_Init:00000000 $t
 C:\Users\zhaohe\AppData\Local\Temp\cchEXyRg.s:26     .text.MX_GPIO_Init:00000000 MX_GPIO_Init
 C:\Users\zhaohe\AppData\Local\Temp\cchEXyRg.s:203    .text.MX_GPIO_Init:000000d0 $d
+=======
+C:\Users\zhaohe\AppData\Local\Temp\ccwWH2CG.s:20     .text.MX_GPIO_Init:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccwWH2CG.s:26     .text.MX_GPIO_Init:00000000 MX_GPIO_Init
+C:\Users\zhaohe\AppData\Local\Temp\ccwWH2CG.s:203    .text.MX_GPIO_Init:000000d0 $d
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 UNDEFINED SYMBOLS
 HAL_GPIO_WritePin

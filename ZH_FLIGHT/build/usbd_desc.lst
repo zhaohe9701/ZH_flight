@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccisOPap.s 			page 1
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s 			page 1
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
    1              		.cpu cortex-m4
@@ -58,7 +62,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccisOPap.s 			page 1
   27:USB_DEVICE/App/usbd_desc.c **** 
   28:USB_DEVICE/App/usbd_desc.c **** /* USER CODE END INCLUDE */
   29:USB_DEVICE/App/usbd_desc.c **** 
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccisOPap.s 			page 2
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s 			page 2
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
   30:USB_DEVICE/App/usbd_desc.c **** /* Private typedef -----------------------------------------------------------*/
@@ -118,7 +126,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccisOPap.s 			page 1
   84:USB_DEVICE/App/usbd_desc.c **** 
   85:USB_DEVICE/App/usbd_desc.c **** /* USER CODE END 0 */
   86:USB_DEVICE/App/usbd_desc.c **** 
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccisOPap.s 			page 3
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s 			page 3
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
   87:USB_DEVICE/App/usbd_desc.c **** /** @defgroup USBD_DESC_Private_Macros USBD_DESC_Private_Macros
@@ -178,7 +190,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccisOPap.s 			page 1
  141:USB_DEVICE/App/usbd_desc.c **** , USBD_FS_ManufacturerStrDescriptor
  142:USB_DEVICE/App/usbd_desc.c **** , USBD_FS_ProductStrDescriptor
  143:USB_DEVICE/App/usbd_desc.c **** , USBD_FS_SerialStrDescriptor
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccisOPap.s 			page 4
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s 			page 4
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  144:USB_DEVICE/App/usbd_desc.c **** , USBD_FS_ConfigStrDescriptor
@@ -238,7 +254,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccisOPap.s 			page 1
  198:USB_DEVICE/App/usbd_desc.c ****   USB_DEVICE_CAPABITY_TYPE,
  199:USB_DEVICE/App/usbd_desc.c ****   0x2,
  200:USB_DEVICE/App/usbd_desc.c ****   0x2,  /* LPM capability bit set*/
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccisOPap.s 			page 5
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s 			page 5
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  201:USB_DEVICE/App/usbd_desc.c ****   0x0,
@@ -298,7 +318,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccisOPap.s 			page 1
  255:USB_DEVICE/App/usbd_desc.c ****   * @param  length : Pointer to data length variable
  256:USB_DEVICE/App/usbd_desc.c ****   * @retval Pointer to descriptor buffer
  257:USB_DEVICE/App/usbd_desc.c ****   */
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccisOPap.s 			page 6
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s 			page 6
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  258:USB_DEVICE/App/usbd_desc.c **** uint8_t * USBD_FS_DeviceDescriptor(USBD_SpeedTypeDef speed, uint16_t *length)
@@ -358,7 +382,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccisOPap.s 			page 1
   69              		.loc 1 274 3 view .LVU9
   70              		.loc 1 274 11 is_stmt 0 view .LVU10
   71 0000 0423     		movs	r3, #4
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccisOPap.s 			page 7
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s 			page 7
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
   72 0002 0B80     		strh	r3, [r1]	@ movhi
@@ -418,7 +446,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccisOPap.s 			page 1
  308:USB_DEVICE/App/usbd_desc.c **** }
  309:USB_DEVICE/App/usbd_desc.c **** 
  310:USB_DEVICE/App/usbd_desc.c **** /**
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccisOPap.s 			page 8
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s 			page 8
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  311:USB_DEVICE/App/usbd_desc.c ****   * @brief  Return the serial number string descriptor
@@ -478,7 +510,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccisOPap.s 			page 1
  365:USB_DEVICE/App/usbd_desc.c ****   return USBD_StrDesc;
  366:USB_DEVICE/App/usbd_desc.c **** }
  367:USB_DEVICE/App/usbd_desc.c **** 
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccisOPap.s 			page 9
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s 			page 9
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  368:USB_DEVICE/App/usbd_desc.c **** #if (USBD_LPM_ENABLED == 1)
@@ -538,7 +574,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccisOPap.s 			page 1
  100              		.loc 1 416 3 view .LVU16
  101              		.loc 1 416 12 is_stmt 0 view .LVU17
  102 0000 0023     		movs	r3, #0
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccisOPap.s 			page 10
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s 			page 10
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  103              	.LVL5:
@@ -598,7 +638,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccisOPap.s 			page 1
  416:USB_DEVICE/App/usbd_desc.c ****   {
  140              		.loc 1 416 17 is_stmt 1 discriminator 2 view .LVU33
  416:USB_DEVICE/App/usbd_desc.c ****   {
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccisOPap.s 			page 11
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s 			page 11
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  141              		.loc 1 416 3 is_stmt 0 discriminator 2 view .LVU34
@@ -658,7 +702,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccisOPap.s 			page 1
  390:USB_DEVICE/App/usbd_desc.c **** 
  188              		.loc 1 390 3 view .LVU44
  392:USB_DEVICE/App/usbd_desc.c ****   deviceserial1 = *(uint32_t *) DEVICE_ID2;
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccisOPap.s 			page 12
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s 			page 12
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  189              		.loc 1 392 3 view .LVU45
@@ -718,7 +766,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccisOPap.s 			page 1
  230 002e 00BF     		.align	2
  231              	.L21:
  232 0030 0070FF1F 		.word	536834048
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccisOPap.s 			page 13
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s 			page 13
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  233 0034 00000000 		.word	.LANCHOR2
@@ -778,7 +830,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccisOPap.s 			page 1
  279      6C20436F 
  279      6D506F72 
  280              		.section	.text.USBD_FS_ProductStrDescriptor,"ax",%progbits
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccisOPap.s 			page 14
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s 			page 14
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  281              		.align	1
@@ -838,7 +894,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccisOPap.s 			page 1
  325              	.LVL25:
  292:USB_DEVICE/App/usbd_desc.c ****   }
  326              		.loc 1 292 5 view .LVU78
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccisOPap.s 			page 15
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s 			page 15
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  327 0016 FFF7FEFF 		bl	USBD_GetString
@@ -898,7 +958,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccisOPap.s 			page 1
  372              		.loc 1 306 3 view .LVU85
  373 000a FFF7FEFF 		bl	USBD_GetString
  374              	.LVL30:
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccisOPap.s 			page 16
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s 			page 16
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  307:USB_DEVICE/App/usbd_desc.c **** }
@@ -958,7 +1022,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccisOPap.s 			page 1
  340:USB_DEVICE/App/usbd_desc.c ****   }
  421              		.loc 1 340 5 view .LVU94
  422 000a FFF7FEFF 		bl	USBD_GetString
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccisOPap.s 			page 17
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s 			page 17
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  423              	.LVL34:
@@ -1018,7 +1086,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccisOPap.s 			page 1
  468              		.loc 1 356 1 is_stmt 0 view .LVU102
  469 0000 08B5     		push	{r3, lr}
  470              	.LCFI7:
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccisOPap.s 			page 18
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s 			page 18
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  471              		.cfi_def_cfa_offset 8
@@ -1078,7 +1150,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccisOPap.s 			page 1
  515              		.global	USBD_LangIDDesc
  516              		.global	USBD_FS_DeviceDesc
  517              		.global	FS_Desc
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccisOPap.s 			page 19
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s 			page 19
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  518              		.section	.bss.USBD_StrDesc,"aw",%nobits
@@ -1131,11 +1207,16 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccisOPap.s 			page 1
  564              		.file 4 "Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h"
  565              		.file 5 "USB_DEVICE/App/usbd_desc.h"
  566              		.file 6 "Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h"
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccisOPap.s 			page 20
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s 			page 20
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 usbd_desc.c
+<<<<<<< HEAD
 C:\Users\zhaohe\AppData\Local\Temp\ccisOPap.s:20     .text.USBD_FS_DeviceDescriptor:00000000 $t
 C:\Users\zhaohe\AppData\Local\Temp\ccisOPap.s:26     .text.USBD_FS_DeviceDescriptor:00000000 USBD_FS_DeviceDescriptor
 C:\Users\zhaohe\AppData\Local\Temp\ccisOPap.s:49     .text.USBD_FS_DeviceDescriptor:00000008 $d
@@ -1176,6 +1257,48 @@ C:\Users\zhaohe\AppData\Local\Temp\ccisOPap.s:526    .data.FS_Desc:00000000 $d
 C:\Users\zhaohe\AppData\Local\Temp\ccisOPap.s:538    .data.USBD_FS_DeviceDesc:00000000 $d
 C:\Users\zhaohe\AppData\Local\Temp\ccisOPap.s:546    .data.USBD_LangIDDesc:00000000 $d
 C:\Users\zhaohe\AppData\Local\Temp\ccisOPap.s:553    .data.USBD_StringSerial:00000000 $d
+=======
+C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s:20     .text.USBD_FS_DeviceDescriptor:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s:26     .text.USBD_FS_DeviceDescriptor:00000000 USBD_FS_DeviceDescriptor
+C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s:49     .text.USBD_FS_DeviceDescriptor:00000008 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s:54     .text.USBD_FS_LangIDStrDescriptor:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s:60     .text.USBD_FS_LangIDStrDescriptor:00000000 USBD_FS_LangIDStrDescriptor
+C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s:82     .text.USBD_FS_LangIDStrDescriptor:00000008 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s:87     .text.IntToUnicode:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s:92     .text.IntToUnicode:00000000 IntToUnicode
+C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s:170    .text.Get_SerialNum:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s:175    .text.Get_SerialNum:00000000 Get_SerialNum
+C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s:232    .text.Get_SerialNum:00000030 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s:238    .text.USBD_FS_SerialStrDescriptor:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s:244    .text.USBD_FS_SerialStrDescriptor:00000000 USBD_FS_SerialStrDescriptor
+C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s:272    .text.USBD_FS_SerialStrDescriptor:00000010 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s:277    .rodata.USBD_FS_ProductStrDescriptor.str1.4:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s:281    .text.USBD_FS_ProductStrDescriptor:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s:287    .text.USBD_FS_ProductStrDescriptor:00000000 USBD_FS_ProductStrDescriptor
+C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s:334    .text.USBD_FS_ProductStrDescriptor:0000001c $d
+C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s:340    .rodata.USBD_FS_ManufacturerStrDescriptor.str1.4:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s:344    .text.USBD_FS_ManufacturerStrDescriptor:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s:350    .text.USBD_FS_ManufacturerStrDescriptor:00000000 USBD_FS_ManufacturerStrDescriptor
+C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s:382    .text.USBD_FS_ManufacturerStrDescriptor:00000014 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s:388    .rodata.USBD_FS_ConfigStrDescriptor.str1.4:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s:392    .text.USBD_FS_ConfigStrDescriptor:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s:398    .text.USBD_FS_ConfigStrDescriptor:00000000 USBD_FS_ConfigStrDescriptor
+C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s:445    .text.USBD_FS_ConfigStrDescriptor:0000001c $d
+C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s:451    .rodata.USBD_FS_InterfaceStrDescriptor.str1.4:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s:455    .text.USBD_FS_InterfaceStrDescriptor:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s:461    .text.USBD_FS_InterfaceStrDescriptor:00000000 USBD_FS_InterfaceStrDescriptor
+C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s:508    .text.USBD_FS_InterfaceStrDescriptor:0000001c $d
+C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s:557    .data.USBD_StringSerial:00000000 USBD_StringSerial
+C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s:523    .bss.USBD_StrDesc:00000000 USBD_StrDesc
+C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s:550    .data.USBD_LangIDDesc:00000000 USBD_LangIDDesc
+C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s:542    .data.USBD_FS_DeviceDesc:00000000 USBD_FS_DeviceDesc
+C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s:529    .data.FS_Desc:00000000 FS_Desc
+C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s:519    .bss.USBD_StrDesc:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s:526    .data.FS_Desc:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s:538    .data.USBD_FS_DeviceDesc:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s:546    .data.USBD_LangIDDesc:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccR4eFac.s:553    .data.USBD_StringSerial:00000000 $d
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 UNDEFINED SYMBOLS
 USBD_GetString

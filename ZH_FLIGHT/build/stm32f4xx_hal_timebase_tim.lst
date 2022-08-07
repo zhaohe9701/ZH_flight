@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccBa4INk.s 			page 1
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccVIfGXP.s 			page 1
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
    1              		.cpu cortex-m4
@@ -58,7 +62,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccBa4INk.s 			page 1
   27:Core/Src/stm32f4xx_hal_timebase_tim.c **** /* Private variables ---------------------------------------------------------*/
   28:Core/Src/stm32f4xx_hal_timebase_tim.c **** TIM_HandleTypeDef        htim1;
   29:Core/Src/stm32f4xx_hal_timebase_tim.c **** /* Private function prototypes -----------------------------------------------*/
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccBa4INk.s 			page 2
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccVIfGXP.s 			page 2
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
   30:Core/Src/stm32f4xx_hal_timebase_tim.c **** /* Private functions ---------------------------------------------------------*/
@@ -118,7 +126,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccBa4INk.s 			page 1
   54:Core/Src/stm32f4xx_hal_timebase_tim.c ****   __HAL_RCC_TIM1_CLK_ENABLE();
   60              		.loc 1 54 3 view .LVU9
   61              	.LBB2:
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccBa4INk.s 			page 3
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccVIfGXP.s 			page 3
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
   62              		.loc 1 54 3 view .LVU10
@@ -178,7 +190,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccBa4INk.s 			page 1
   66:Core/Src/stm32f4xx_hal_timebase_tim.c **** 
   67:Core/Src/stm32f4xx_hal_timebase_tim.c ****   /* Initialize TIMx peripheral as follow:
   68:Core/Src/stm32f4xx_hal_timebase_tim.c ****   + Period = [(TIM1CLK/1000) - 1]. to have a (1/1000) s time base.
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccBa4INk.s 			page 4
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccVIfGXP.s 			page 4
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
   69:Core/Src/stm32f4xx_hal_timebase_tim.c ****   + Prescaler = (uwTimclock/1000000 - 1) to have a 1MHz counter clock.
@@ -238,7 +254,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccBa4INk.s 			page 1
  139 0062 0448     		ldr	r0, .L6+8
  140 0064 FFF7FEFF 		bl	HAL_TIM_Base_Start_IT
  141              	.LVL11:
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccBa4INk.s 			page 5
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccVIfGXP.s 			page 5
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  142 0068 F9E7     		b	.L2
@@ -298,7 +318,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccBa4INk.s 			page 1
  187              		.thumb_func
  189              	HAL_ResumeTick:
  190              	.LFB132:
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccBa4INk.s 			page 6
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccVIfGXP.s 			page 6
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
   99:Core/Src/stm32f4xx_hal_timebase_tim.c **** 
@@ -352,11 +376,16 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccBa4INk.s 			page 1
  226              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
  227              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
  228              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccBa4INk.s 			page 7
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccVIfGXP.s 			page 7
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f4xx_hal_timebase_tim.c
+<<<<<<< HEAD
 C:\Users\zhaohe\AppData\Local\Temp\ccBa4INk.s:20     .text.HAL_InitTick:00000000 $t
 C:\Users\zhaohe\AppData\Local\Temp\ccBa4INk.s:26     .text.HAL_InitTick:00000000 HAL_InitTick
 C:\Users\zhaohe\AppData\Local\Temp\ccBa4INk.s:146    .text.HAL_InitTick:0000006c $d
@@ -368,6 +397,19 @@ C:\Users\zhaohe\AppData\Local\Temp\ccBa4INk.s:189    .text.HAL_ResumeTick:000000
 C:\Users\zhaohe\AppData\Local\Temp\ccBa4INk.s:207    .text.HAL_ResumeTick:00000010 $d
 C:\Users\zhaohe\AppData\Local\Temp\ccBa4INk.s:217    .bss.htim1:00000000 htim1
 C:\Users\zhaohe\AppData\Local\Temp\ccBa4INk.s:213    .bss.htim1:00000000 $d
+=======
+C:\Users\zhaohe\AppData\Local\Temp\ccVIfGXP.s:20     .text.HAL_InitTick:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccVIfGXP.s:26     .text.HAL_InitTick:00000000 HAL_InitTick
+C:\Users\zhaohe\AppData\Local\Temp\ccVIfGXP.s:146    .text.HAL_InitTick:0000006c $d
+C:\Users\zhaohe\AppData\Local\Temp\ccVIfGXP.s:154    .text.HAL_SuspendTick:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccVIfGXP.s:160    .text.HAL_SuspendTick:00000000 HAL_SuspendTick
+C:\Users\zhaohe\AppData\Local\Temp\ccVIfGXP.s:178    .text.HAL_SuspendTick:00000010 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccVIfGXP.s:183    .text.HAL_ResumeTick:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccVIfGXP.s:189    .text.HAL_ResumeTick:00000000 HAL_ResumeTick
+C:\Users\zhaohe\AppData\Local\Temp\ccVIfGXP.s:207    .text.HAL_ResumeTick:00000010 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccVIfGXP.s:217    .bss.htim1:00000000 htim1
+C:\Users\zhaohe\AppData\Local\Temp\ccVIfGXP.s:213    .bss.htim1:00000000 $d
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 UNDEFINED SYMBOLS
 HAL_NVIC_SetPriority
