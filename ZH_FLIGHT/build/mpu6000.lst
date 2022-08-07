@@ -1,0 +1,1590 @@
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"mpu6000.cpp"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text._ZN7Mpu60005GetIdEv,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ZN7Mpu60005GetIdEv
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ZN7Mpu60005GetIdEv:
+  27              		.fnstart
+  28              	.LVL0:
+  29              	.LFB137:
+  30              		.file 1 "Sys/Sensor/mpu6000.cpp"
+   1:Sys/Sensor/mpu6000.cpp **** /*
+   2:Sys/Sensor/mpu6000.cpp ****  * @Description:
+   3:Sys/Sensor/mpu6000.cpp ****  * @Version: 1.0
+   4:Sys/Sensor/mpu6000.cpp ****  * @Author: zhaohe
+   5:Sys/Sensor/mpu6000.cpp ****  * @Date: 2022-07-07 23:41:27
+   6:Sys/Sensor/mpu6000.cpp ****  * @LastEditors: zhaohe
+   7:Sys/Sensor/mpu6000.cpp ****  * @LastEditTime: 2022-08-07 22:29:41
+   8:Sys/Sensor/mpu6000.cpp ****  * @FilePath: \ZH_FLIGHT\Sys\Sensor\mpu6000.cpp
+   9:Sys/Sensor/mpu6000.cpp ****  * Copyright (C) 2022 zhaohe. All rights reserved.
+  10:Sys/Sensor/mpu6000.cpp ****  */
+  11:Sys/Sensor/mpu6000.cpp **** #include "imu.h"
+  12:Sys/Sensor/mpu6000.cpp **** #include "mpu6000.h"
+  13:Sys/Sensor/mpu6000.cpp **** 
+  14:Sys/Sensor/mpu6000.cpp **** Mpu6000::Mpu6000(Interface *interface)
+  15:Sys/Sensor/mpu6000.cpp **** {
+  16:Sys/Sensor/mpu6000.cpp ****     _interface = interface;
+  17:Sys/Sensor/mpu6000.cpp **** }
+  18:Sys/Sensor/mpu6000.cpp **** 
+  19:Sys/Sensor/mpu6000.cpp **** void Mpu6000::Init()
+  20:Sys/Sensor/mpu6000.cpp **** {
+  21:Sys/Sensor/mpu6000.cpp ****     HAL_Delay(100);
+  22:Sys/Sensor/mpu6000.cpp ****     _interface->WriteReg(MPU_PWR_MGMT1_REG, 0X80); //复位MPU6000
+  23:Sys/Sensor/mpu6000.cpp ****     HAL_Delay(100);
+  24:Sys/Sensor/mpu6000.cpp ****     _interface->WriteReg(MPU_SIGPATH_RST_REG, 0X04 | 0x02 | 0x01);
+  25:Sys/Sensor/mpu6000.cpp ****     HAL_Delay(100);
+  26:Sys/Sensor/mpu6000.cpp ****     _interface->WriteReg(MPU_PWR_MGMT1_REG, 0X03); //复位MPU6000
+  27:Sys/Sensor/mpu6000.cpp ****     HAL_Delay(15);
+  28:Sys/Sensor/mpu6000.cpp ****     _interface->WriteReg(MPU_USER_CTRL_REG, 0x10); //屏蔽IIC接口
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s 			page 2
+
+
+  29:Sys/Sensor/mpu6000.cpp ****     HAL_Delay(15);
+  30:Sys/Sensor/mpu6000.cpp ****     _interface->WriteReg(MPU_PWR_MGMT2_REG, 0X00); //加速度与陀螺仪都工作
+  31:Sys/Sensor/mpu6000.cpp ****     HAL_Delay(15);
+  32:Sys/Sensor/mpu6000.cpp ****     _interface->WriteReg(MPU_SAMPLE_RATE_REG, GODR_1000Hz); //设置采样率1000Hz
+  33:Sys/Sensor/mpu6000.cpp ****     HAL_Delay(15);
+  34:Sys/Sensor/mpu6000.cpp ****     _interface->WriteReg(MPU_CFG_REG, _GetLpfValue(GODR_1000Hz)); //设置低通滤波器
+  35:Sys/Sensor/mpu6000.cpp ****     HAL_Delay(15);
+  36:Sys/Sensor/mpu6000.cpp ****     _interface->WriteReg(MPU_GYRO_CFG_REG, GFS_2000DPS); //陀螺仪传感器量程
+  37:Sys/Sensor/mpu6000.cpp ****     HAL_Delay(15);
+  38:Sys/Sensor/mpu6000.cpp ****     _interface->WriteReg(MPU_ACCEL_CFG_REG, AFS_16G); //加速度传感器量程
+  39:Sys/Sensor/mpu6000.cpp ****     HAL_Delay(15);
+  40:Sys/Sensor/mpu6000.cpp ****     _gyro_sensitivity = 1.0f / (_GetGyroLsb(GFS_2000DPS));
+  41:Sys/Sensor/mpu6000.cpp **** 
+  42:Sys/Sensor/mpu6000.cpp ****     _acc_sensitivity = 1.0f / (_GetAccLsb(AFS_16G)) * 1000.0f;
+  43:Sys/Sensor/mpu6000.cpp **** 
+  44:Sys/Sensor/mpu6000.cpp ****     _acc_lsb = _GetAccLsb(AFS_16G);
+  45:Sys/Sensor/mpu6000.cpp ****     _interface->WriteReg(MPU_INTBP_CFG_REG, 0x90);
+  46:Sys/Sensor/mpu6000.cpp ****     HAL_Delay(10);
+  47:Sys/Sensor/mpu6000.cpp ****     _interface->WriteReg(MPU_INT_EN_REG, DATA_RDY_EN); //使能数据就绪中断
+  48:Sys/Sensor/mpu6000.cpp **** }
+  49:Sys/Sensor/mpu6000.cpp **** 
+  50:Sys/Sensor/mpu6000.cpp **** uint8_t Mpu6000::GetId()
+  51:Sys/Sensor/mpu6000.cpp **** {
+  31              		.loc 1 51 1 view -0
+  32              		.cfi_startproc
+  33              		@ args = 0, pretend = 0, frame = 8
+  34              		@ frame_needed = 0, uses_anonymous_args = 0
+  35              		.loc 1 51 1 is_stmt 0 view .LVU1
+  36 0000 10B5     		push	{r4, lr}
+  37              		.save {r4, lr}
+  38              	.LCFI0:
+  39              		.cfi_def_cfa_offset 8
+  40              		.cfi_offset 4, -8
+  41              		.cfi_offset 14, -4
+  42              		.pad #8
+  43 0002 82B0     		sub	sp, sp, #8
+  44              	.LCFI1:
+  45              		.cfi_def_cfa_offset 16
+  52:Sys/Sensor/mpu6000.cpp ****     uint8_t id;
+  46              		.loc 1 52 5 is_stmt 1 view .LVU2
+  53:Sys/Sensor/mpu6000.cpp ****     _interface->ReadBytes(MPU_DEVICE_ID_REG, 1, &id);
+  47              		.loc 1 53 5 view .LVU3
+  48 0004 4068     		ldr	r0, [r0, #4]
+  49              	.LVL1:
+  50              		.loc 1 53 52 is_stmt 0 view .LVU4
+  51 0006 0368     		ldr	r3, [r0]
+  52 0008 1C68     		ldr	r4, [r3]
+  53              		.loc 1 53 26 view .LVU5
+  54 000a 0DF10703 		add	r3, sp, #7
+  55 000e 0122     		movs	r2, #1
+  56 0010 7521     		movs	r1, #117
+  57 0012 A047     		blx	r4
+  58              	.LVL2:
+  54:Sys/Sensor/mpu6000.cpp ****     return id;
+  59              		.loc 1 54 5 is_stmt 1 view .LVU6
+  55:Sys/Sensor/mpu6000.cpp **** }
+  60              		.loc 1 55 1 is_stmt 0 view .LVU7
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s 			page 3
+
+
+  61 0014 9DF80700 		ldrb	r0, [sp, #7]	@ zero_extendqisi2
+  62 0018 02B0     		add	sp, sp, #8
+  63              	.LCFI2:
+  64              		.cfi_def_cfa_offset 8
+  65              		@ sp needed
+  66 001a 10BD     		pop	{r4, pc}
+  67              		.cfi_endproc
+  68              	.LFE137:
+  69              		.fnend
+  71              		.global	__aeabi_i2d
+  72              		.global	__aeabi_ddiv
+  73              		.global	__aeabi_dadd
+  74              		.global	__aeabi_dmul
+  75              		.global	__aeabi_d2f
+  76              		.section	.text._ZN7Mpu600014GetTemperatureEv,"ax",%progbits
+  77              		.align	1
+  78              		.global	_ZN7Mpu600014GetTemperatureEv
+  79              		.syntax unified
+  80              		.thumb
+  81              		.thumb_func
+  83              	_ZN7Mpu600014GetTemperatureEv:
+  84              		.fnstart
+  85              	.LVL3:
+  86              	.LFB138:
+  56:Sys/Sensor/mpu6000.cpp **** 
+  57:Sys/Sensor/mpu6000.cpp **** float Mpu6000::GetTemperature()
+  58:Sys/Sensor/mpu6000.cpp **** {
+  87              		.loc 1 58 1 is_stmt 1 view -0
+  88              		.cfi_startproc
+  89              		@ args = 0, pretend = 0, frame = 8
+  90              		@ frame_needed = 0, uses_anonymous_args = 0
+  91              		.loc 1 58 1 is_stmt 0 view .LVU9
+  92 0000 10B5     		push	{r4, lr}
+  93              		.save {r4, lr}
+  94              	.LCFI3:
+  95              		.cfi_def_cfa_offset 8
+  96              		.cfi_offset 4, -8
+  97              		.cfi_offset 14, -4
+  98              		.pad #8
+  99 0002 82B0     		sub	sp, sp, #8
+ 100              	.LCFI4:
+ 101              		.cfi_def_cfa_offset 16
+  59:Sys/Sensor/mpu6000.cpp ****     uint8_t buf[2];
+ 102              		.loc 1 59 5 is_stmt 1 view .LVU10
+  60:Sys/Sensor/mpu6000.cpp ****     short raw;
+ 103              		.loc 1 60 5 view .LVU11
+  61:Sys/Sensor/mpu6000.cpp ****     float temp;
+ 104              		.loc 1 61 5 view .LVU12
+  62:Sys/Sensor/mpu6000.cpp ****     _interface->ReadBytes(MPU_TEMP_OUTH_REG, 2, buf);
+ 105              		.loc 1 62 5 view .LVU13
+ 106 0004 4068     		ldr	r0, [r0, #4]
+ 107              	.LVL4:
+ 108              		.loc 1 62 52 is_stmt 0 view .LVU14
+ 109 0006 0368     		ldr	r3, [r0]
+ 110 0008 1C68     		ldr	r4, [r3]
+ 111              		.loc 1 62 26 view .LVU15
+ 112 000a 01AB     		add	r3, sp, #4
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s 			page 4
+
+
+ 113 000c 0222     		movs	r2, #2
+ 114 000e 4121     		movs	r1, #65
+ 115 0010 A047     		blx	r4
+ 116              	.LVL5:
+  63:Sys/Sensor/mpu6000.cpp ****     raw = (buf[0] << 8) | buf[1];
+ 117              		.loc 1 63 5 is_stmt 1 view .LVU16
+ 118              		.loc 1 63 17 is_stmt 0 view .LVU17
+ 119 0012 9DF80430 		ldrb	r3, [sp, #4]	@ zero_extendqisi2
+ 120              		.loc 1 63 19 view .LVU18
+ 121 0016 1B02     		lsls	r3, r3, #8
+ 122              		.loc 1 63 25 view .LVU19
+ 123 0018 1BB2     		sxth	r3, r3
+ 124              		.loc 1 63 32 view .LVU20
+ 125 001a 9DF80500 		ldrb	r0, [sp, #5]	@ zero_extendqisi2
+ 126              	.LVL6:
+  64:Sys/Sensor/mpu6000.cpp ****     temp = (36.53 + ((double)raw) / 340) * 100;
+ 127              		.loc 1 64 5 is_stmt 1 view .LVU21
+ 128              		.loc 1 64 22 is_stmt 0 view .LVU22
+ 129 001e 1843     		orrs	r0, r0, r3
+ 130              	.LVL7:
+ 131              		.loc 1 64 22 view .LVU23
+ 132 0020 FFF7FEFF 		bl	__aeabi_i2d
+ 133              	.LVL8:
+ 134              		.loc 1 64 35 view .LVU24
+ 135 0024 0022     		movs	r2, #0
+ 136 0026 0E4B     		ldr	r3, .L5+8
+ 137 0028 FFF7FEFF 		bl	__aeabi_ddiv
+ 138              	.LVL9:
+ 139              		.loc 1 64 19 view .LVU25
+ 140 002c 0AA3     		adr	r3, .L5
+ 141 002e D3E90023 		ldrd	r2, [r3]
+ 142 0032 FFF7FEFF 		bl	__aeabi_dadd
+ 143              	.LVL10:
+ 144              		.loc 1 64 42 view .LVU26
+ 145 0036 0022     		movs	r2, #0
+ 146 0038 0A4B     		ldr	r3, .L5+12
+ 147 003a FFF7FEFF 		bl	__aeabi_dmul
+ 148              	.LVL11:
+ 149              		.loc 1 64 10 view .LVU27
+ 150 003e FFF7FEFF 		bl	__aeabi_d2f
+ 151              	.LVL12:
+ 152 0042 00EE100A 		vmov	s0, r0
+ 153              	.LVL13:
+  65:Sys/Sensor/mpu6000.cpp ****     return temp / 100.0f;
+ 154              		.loc 1 65 5 is_stmt 1 view .LVU28
+  66:Sys/Sensor/mpu6000.cpp **** }
+ 155              		.loc 1 66 1 is_stmt 0 view .LVU29
+ 156 0046 DFED087A 		vldr.32	s15, .L5+16
+ 157 004a 80EE270A 		vdiv.f32	s0, s0, s15
+ 158 004e 02B0     		add	sp, sp, #8
+ 159              	.LCFI5:
+ 160              		.cfi_def_cfa_offset 8
+ 161              		@ sp needed
+ 162 0050 10BD     		pop	{r4, pc}
+ 163              	.L6:
+ 164 0052 00BFAFF3 		.align	3
+ 164      0080
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s 			page 5
+
+
+ 165              	.L5:
+ 166 0058 A4703D0A 		.word	171798692
+ 167 005c D7434240 		.word	1078084567
+ 168 0060 00407540 		.word	1081425920
+ 169 0064 00005940 		.word	1079574528
+ 170 0068 0000C842 		.word	1120403456
+ 171              		.cfi_endproc
+ 172              	.LFE138:
+ 173              		.fnend
+ 175              		.section	.text._ZN7Mpu600011GetGyroDataER10SensorData,"ax",%progbits
+ 176              		.align	1
+ 177              		.global	_ZN7Mpu600011GetGyroDataER10SensorData
+ 178              		.syntax unified
+ 179              		.thumb
+ 180              		.thumb_func
+ 182              	_ZN7Mpu600011GetGyroDataER10SensorData:
+ 183              		.fnstart
+ 184              	.LVL14:
+ 185              	.LFB139:
+  67:Sys/Sensor/mpu6000.cpp **** 
+  68:Sys/Sensor/mpu6000.cpp **** /**
+  69:Sys/Sensor/mpu6000.cpp ****  * @description: Get gyroscope data
+  70:Sys/Sensor/mpu6000.cpp ****  * @param {float} *gx
+  71:Sys/Sensor/mpu6000.cpp ****  * @param {float} *gy
+  72:Sys/Sensor/mpu6000.cpp ****  * @param {float} *gz
+  73:Sys/Sensor/mpu6000.cpp ****  * @return {*}
+  74:Sys/Sensor/mpu6000.cpp ****  */
+  75:Sys/Sensor/mpu6000.cpp **** void Mpu6000::GetGyroData(SensorData &sensor_data)
+  76:Sys/Sensor/mpu6000.cpp **** {
+ 186              		.loc 1 76 1 is_stmt 1 view -0
+ 187              		.cfi_startproc
+ 188              		@ args = 0, pretend = 0, frame = 8
+ 189              		@ frame_needed = 0, uses_anonymous_args = 0
+ 190              		.loc 1 76 1 is_stmt 0 view .LVU31
+ 191 0000 70B5     		push	{r4, r5, r6, lr}
+ 192              		.save {r4, r5, r6, lr}
+ 193              	.LCFI6:
+ 194              		.cfi_def_cfa_offset 16
+ 195              		.cfi_offset 4, -16
+ 196              		.cfi_offset 5, -12
+ 197              		.cfi_offset 6, -8
+ 198              		.cfi_offset 14, -4
+ 199              		.pad #8
+ 200 0002 82B0     		sub	sp, sp, #8
+ 201              	.LCFI7:
+ 202              		.cfi_def_cfa_offset 24
+ 203 0004 0446     		mov	r4, r0
+ 204 0006 0D46     		mov	r5, r1
+  77:Sys/Sensor/mpu6000.cpp ****     uint8_t buf[6];
+ 205              		.loc 1 77 5 is_stmt 1 view .LVU32
+  78:Sys/Sensor/mpu6000.cpp ****     _interface->ReadBytes(MPU_GYRO_XOUTH_REG, 6, buf);
+ 206              		.loc 1 78 5 view .LVU33
+ 207 0008 4068     		ldr	r0, [r0, #4]
+ 208              	.LVL15:
+ 209              		.loc 1 78 53 is_stmt 0 view .LVU34
+ 210 000a 0368     		ldr	r3, [r0]
+ 211 000c 1E68     		ldr	r6, [r3]
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s 			page 6
+
+
+ 212              		.loc 1 78 26 view .LVU35
+ 213 000e 6B46     		mov	r3, sp
+ 214 0010 0622     		movs	r2, #6
+ 215 0012 4321     		movs	r1, #67
+ 216              	.LVL16:
+ 217              		.loc 1 78 26 view .LVU36
+ 218 0014 B047     		blx	r6
+ 219              	.LVL17:
+  79:Sys/Sensor/mpu6000.cpp ****     uint16_t gx_raw, gy_raw, gz_raw;
+ 220              		.loc 1 79 5 is_stmt 1 view .LVU37
+  80:Sys/Sensor/mpu6000.cpp **** 
+  81:Sys/Sensor/mpu6000.cpp ****     gx_raw = ((uint16_t)buf[0] << 8) | buf[1];
+ 221              		.loc 1 81 5 view .LVU38
+ 222              		.loc 1 81 30 is_stmt 0 view .LVU39
+ 223 0016 9DF80030 		ldrb	r3, [sp]	@ zero_extendqisi2
+ 224              		.loc 1 81 45 view .LVU40
+ 225 001a 9DF80110 		ldrb	r1, [sp, #1]	@ zero_extendqisi2
+ 226              		.loc 1 81 38 view .LVU41
+ 227 001e 41EA0321 		orr	r1, r1, r3, lsl #8
+ 228 0022 09B2     		sxth	r1, r1
+ 229              	.LVL18:
+  82:Sys/Sensor/mpu6000.cpp ****     gy_raw = ((uint16_t)buf[2] << 8) | buf[3];
+ 230              		.loc 1 82 5 is_stmt 1 view .LVU42
+ 231              		.loc 1 82 30 is_stmt 0 view .LVU43
+ 232 0024 9DF80230 		ldrb	r3, [sp, #2]	@ zero_extendqisi2
+ 233              		.loc 1 82 45 view .LVU44
+ 234 0028 9DF80320 		ldrb	r2, [sp, #3]	@ zero_extendqisi2
+ 235              		.loc 1 82 38 view .LVU45
+ 236 002c 42EA0322 		orr	r2, r2, r3, lsl #8
+ 237 0030 12B2     		sxth	r2, r2
+ 238              	.LVL19:
+  83:Sys/Sensor/mpu6000.cpp ****     gz_raw = ((uint16_t)buf[4] << 8) | buf[5];
+ 239              		.loc 1 83 5 is_stmt 1 view .LVU46
+ 240              		.loc 1 83 30 is_stmt 0 view .LVU47
+ 241 0032 9DF80400 		ldrb	r0, [sp, #4]	@ zero_extendqisi2
+ 242              		.loc 1 83 45 view .LVU48
+ 243 0036 9DF80530 		ldrb	r3, [sp, #5]	@ zero_extendqisi2
+ 244              		.loc 1 83 38 view .LVU49
+ 245 003a 43EA0023 		orr	r3, r3, r0, lsl #8
+ 246 003e 1BB2     		sxth	r3, r3
+ 247              	.LVL20:
+  84:Sys/Sensor/mpu6000.cpp ****     sensor_data.gyr.x = (float)((int16_t)(gx_raw)-_bias_gyro_x) * _gyro_sensitivity;
+ 248              		.loc 1 84 5 is_stmt 1 view .LVU50
+ 249              		.loc 1 84 51 is_stmt 0 view .LVU51
+ 250 0040 B4F91800 		ldrsh	r0, [r4, #24]
+ 251              		.loc 1 84 50 view .LVU52
+ 252 0044 091A     		subs	r1, r1, r0
+ 253              	.LVL21:
+ 254              		.loc 1 84 50 view .LVU53
+ 255 0046 07EE901A 		vmov	s15, r1	@ int
+ 256              		.loc 1 84 25 view .LVU54
+ 257 004a F8EEE77A 		vcvt.f32.s32	s15, s15
+ 258              		.loc 1 84 67 view .LVU55
+ 259 004e 94ED037A 		vldr.32	s14, [r4, #12]
+ 260              		.loc 1 84 65 view .LVU56
+ 261 0052 67EE877A 		vmul.f32	s15, s15, s14
+ 262              		.loc 1 84 23 view .LVU57
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s 			page 7
+
+
+ 263 0056 C5ED067A 		vstr.32	s15, [r5, #24]
+  85:Sys/Sensor/mpu6000.cpp ****     sensor_data.gyr.y = (float)((int16_t)(gy_raw)-_bias_gyro_y) * _gyro_sensitivity;
+ 264              		.loc 1 85 5 is_stmt 1 view .LVU58
+ 265              		.loc 1 85 51 is_stmt 0 view .LVU59
+ 266 005a B4F91A10 		ldrsh	r1, [r4, #26]
+ 267              		.loc 1 85 50 view .LVU60
+ 268 005e 521A     		subs	r2, r2, r1
+ 269              	.LVL22:
+ 270              		.loc 1 85 50 view .LVU61
+ 271 0060 07EE902A 		vmov	s15, r2	@ int
+ 272              		.loc 1 85 25 view .LVU62
+ 273 0064 F8EEE77A 		vcvt.f32.s32	s15, s15
+ 274              		.loc 1 85 67 view .LVU63
+ 275 0068 94ED037A 		vldr.32	s14, [r4, #12]
+ 276              		.loc 1 85 65 view .LVU64
+ 277 006c 67EE877A 		vmul.f32	s15, s15, s14
+ 278              		.loc 1 85 23 view .LVU65
+ 279 0070 C5ED077A 		vstr.32	s15, [r5, #28]
+  86:Sys/Sensor/mpu6000.cpp ****     sensor_data.gyr.z = (float)((int16_t)(gz_raw)-_bias_gyro_z) * _gyro_sensitivity;
+ 280              		.loc 1 86 5 is_stmt 1 view .LVU66
+ 281              		.loc 1 86 51 is_stmt 0 view .LVU67
+ 282 0074 B4F91C20 		ldrsh	r2, [r4, #28]
+ 283              		.loc 1 86 50 view .LVU68
+ 284 0078 9B1A     		subs	r3, r3, r2
+ 285              	.LVL23:
+ 286              		.loc 1 86 50 view .LVU69
+ 287 007a 07EE903A 		vmov	s15, r3	@ int
+ 288              		.loc 1 86 25 view .LVU70
+ 289 007e F8EEE77A 		vcvt.f32.s32	s15, s15
+ 290              		.loc 1 86 67 view .LVU71
+ 291 0082 94ED037A 		vldr.32	s14, [r4, #12]
+ 292              		.loc 1 86 65 view .LVU72
+ 293 0086 67EE877A 		vmul.f32	s15, s15, s14
+ 294              		.loc 1 86 23 view .LVU73
+ 295 008a C5ED087A 		vstr.32	s15, [r5, #32]
+  87:Sys/Sensor/mpu6000.cpp **** }
+ 296              		.loc 1 87 1 view .LVU74
+ 297 008e 02B0     		add	sp, sp, #8
+ 298              	.LCFI8:
+ 299              		.cfi_def_cfa_offset 16
+ 300              	.LVL24:
+ 301              		.loc 1 87 1 view .LVU75
+ 302              		@ sp needed
+ 303 0090 70BD     		pop	{r4, r5, r6, pc}
+ 304              		.loc 1 87 1 view .LVU76
+ 305              		.cfi_endproc
+ 306              	.LFE139:
+ 307              		.fnend
+ 309              		.section	.text._ZN7Mpu600010GetAccDataER10SensorData,"ax",%progbits
+ 310              		.align	1
+ 311              		.global	_ZN7Mpu600010GetAccDataER10SensorData
+ 312              		.syntax unified
+ 313              		.thumb
+ 314              		.thumb_func
+ 316              	_ZN7Mpu600010GetAccDataER10SensorData:
+ 317              		.fnstart
+ 318              	.LVL25:
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s 			page 8
+
+
+ 319              	.LFB140:
+  88:Sys/Sensor/mpu6000.cpp **** 
+  89:Sys/Sensor/mpu6000.cpp **** /**
+  90:Sys/Sensor/mpu6000.cpp ****  * @description: Get accelerometer data
+  91:Sys/Sensor/mpu6000.cpp ****  * @param {float} *ax
+  92:Sys/Sensor/mpu6000.cpp ****  * @param {float} *ay
+  93:Sys/Sensor/mpu6000.cpp ****  * @param {float} *az
+  94:Sys/Sensor/mpu6000.cpp ****  * @return {*}
+  95:Sys/Sensor/mpu6000.cpp ****  */
+  96:Sys/Sensor/mpu6000.cpp **** void Mpu6000::GetAccData(SensorData &sensor_data)
+  97:Sys/Sensor/mpu6000.cpp **** {
+ 320              		.loc 1 97 1 is_stmt 1 view -0
+ 321              		.cfi_startproc
+ 322              		@ args = 0, pretend = 0, frame = 8
+ 323              		@ frame_needed = 0, uses_anonymous_args = 0
+ 324              		.loc 1 97 1 is_stmt 0 view .LVU78
+ 325 0000 70B5     		push	{r4, r5, r6, lr}
+ 326              		.save {r4, r5, r6, lr}
+ 327              	.LCFI9:
+ 328              		.cfi_def_cfa_offset 16
+ 329              		.cfi_offset 4, -16
+ 330              		.cfi_offset 5, -12
+ 331              		.cfi_offset 6, -8
+ 332              		.cfi_offset 14, -4
+ 333              		.pad #8
+ 334 0002 82B0     		sub	sp, sp, #8
+ 335              	.LCFI10:
+ 336              		.cfi_def_cfa_offset 24
+ 337 0004 0446     		mov	r4, r0
+ 338 0006 0D46     		mov	r5, r1
+  98:Sys/Sensor/mpu6000.cpp ****     uint8_t buf[6];
+ 339              		.loc 1 98 5 is_stmt 1 view .LVU79
+  99:Sys/Sensor/mpu6000.cpp ****     _interface->ReadBytes(MPU_ACCEL_XOUTH_REG, 6, buf);
+ 340              		.loc 1 99 5 view .LVU80
+ 341 0008 4068     		ldr	r0, [r0, #4]
+ 342              	.LVL26:
+ 343              		.loc 1 99 54 is_stmt 0 view .LVU81
+ 344 000a 0368     		ldr	r3, [r0]
+ 345 000c 1E68     		ldr	r6, [r3]
+ 346              		.loc 1 99 26 view .LVU82
+ 347 000e 6B46     		mov	r3, sp
+ 348 0010 0622     		movs	r2, #6
+ 349 0012 3B21     		movs	r1, #59
+ 350              	.LVL27:
+ 351              		.loc 1 99 26 view .LVU83
+ 352 0014 B047     		blx	r6
+ 353              	.LVL28:
+ 100:Sys/Sensor/mpu6000.cpp ****     uint16_t ax_raw, ay_raw, az_raw;
+ 354              		.loc 1 100 5 is_stmt 1 view .LVU84
+ 101:Sys/Sensor/mpu6000.cpp **** 
+ 102:Sys/Sensor/mpu6000.cpp ****     ax_raw = ((uint16_t)buf[0] << 8) | buf[1];
+ 355              		.loc 1 102 5 view .LVU85
+ 356              		.loc 1 102 30 is_stmt 0 view .LVU86
+ 357 0016 9DF80030 		ldrb	r3, [sp]	@ zero_extendqisi2
+ 358              		.loc 1 102 45 view .LVU87
+ 359 001a 9DF80110 		ldrb	r1, [sp, #1]	@ zero_extendqisi2
+ 360              		.loc 1 102 38 view .LVU88
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s 			page 9
+
+
+ 361 001e 41EA0321 		orr	r1, r1, r3, lsl #8
+ 362 0022 09B2     		sxth	r1, r1
+ 363              	.LVL29:
+ 103:Sys/Sensor/mpu6000.cpp ****     ay_raw = ((uint16_t)buf[2] << 8) | buf[3];
+ 364              		.loc 1 103 5 is_stmt 1 view .LVU89
+ 365              		.loc 1 103 30 is_stmt 0 view .LVU90
+ 366 0024 9DF80230 		ldrb	r3, [sp, #2]	@ zero_extendqisi2
+ 367              		.loc 1 103 45 view .LVU91
+ 368 0028 9DF80320 		ldrb	r2, [sp, #3]	@ zero_extendqisi2
+ 369              		.loc 1 103 38 view .LVU92
+ 370 002c 42EA0322 		orr	r2, r2, r3, lsl #8
+ 371 0030 12B2     		sxth	r2, r2
+ 372              	.LVL30:
+ 104:Sys/Sensor/mpu6000.cpp ****     az_raw = ((uint16_t)buf[4] << 8) | buf[5];
+ 373              		.loc 1 104 5 is_stmt 1 view .LVU93
+ 374              		.loc 1 104 30 is_stmt 0 view .LVU94
+ 375 0032 9DF80400 		ldrb	r0, [sp, #4]	@ zero_extendqisi2
+ 376              		.loc 1 104 45 view .LVU95
+ 377 0036 9DF80530 		ldrb	r3, [sp, #5]	@ zero_extendqisi2
+ 378              		.loc 1 104 38 view .LVU96
+ 379 003a 43EA0023 		orr	r3, r3, r0, lsl #8
+ 380 003e 1BB2     		sxth	r3, r3
+ 381              	.LVL31:
+ 105:Sys/Sensor/mpu6000.cpp ****     sensor_data.acc.x = (float)((int16_t)(ax_raw) - _bias_acc_x) * _acc_sensitivity;
+ 382              		.loc 1 105 5 is_stmt 1 view .LVU97
+ 383              		.loc 1 105 53 is_stmt 0 view .LVU98
+ 384 0040 B4F91200 		ldrsh	r0, [r4, #18]
+ 385              		.loc 1 105 51 view .LVU99
+ 386 0044 091A     		subs	r1, r1, r0
+ 387              	.LVL32:
+ 388              		.loc 1 105 51 view .LVU100
+ 389 0046 07EE901A 		vmov	s15, r1	@ int
+ 390              		.loc 1 105 25 view .LVU101
+ 391 004a F8EEE77A 		vcvt.f32.s32	s15, s15
+ 392              		.loc 1 105 68 view .LVU102
+ 393 004e 94ED027A 		vldr.32	s14, [r4, #8]
+ 394              		.loc 1 105 66 view .LVU103
+ 395 0052 67EE877A 		vmul.f32	s15, s15, s14
+ 396              		.loc 1 105 23 view .LVU104
+ 397 0056 C5ED007A 		vstr.32	s15, [r5]
+ 398              	.LVL33:
+ 106:Sys/Sensor/mpu6000.cpp **** 	sensor_data.acc.y = (float)((int16_t)(ay_raw) - _bias_acc_y) * _acc_sensitivity;
+ 399              		.loc 1 106 2 is_stmt 1 view .LVU105
+ 400              		.loc 1 106 50 is_stmt 0 view .LVU106
+ 401 005a B4F91410 		ldrsh	r1, [r4, #20]
+ 402              		.loc 1 106 48 view .LVU107
+ 403 005e 521A     		subs	r2, r2, r1
+ 404              	.LVL34:
+ 405              		.loc 1 106 48 view .LVU108
+ 406 0060 07EE902A 		vmov	s15, r2	@ int
+ 407              		.loc 1 106 22 view .LVU109
+ 408 0064 F8EEE77A 		vcvt.f32.s32	s15, s15
+ 409              		.loc 1 106 65 view .LVU110
+ 410 0068 94ED027A 		vldr.32	s14, [r4, #8]
+ 411              		.loc 1 106 63 view .LVU111
+ 412 006c 67EE877A 		vmul.f32	s15, s15, s14
+ 413              		.loc 1 106 20 view .LVU112
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s 			page 10
+
+
+ 414 0070 C5ED017A 		vstr.32	s15, [r5, #4]
+ 107:Sys/Sensor/mpu6000.cpp **** 	sensor_data.acc.z = (float)((int16_t)(az_raw) - _bias_acc_z) * _acc_sensitivity;
+ 415              		.loc 1 107 2 is_stmt 1 view .LVU113
+ 416              		.loc 1 107 50 is_stmt 0 view .LVU114
+ 417 0074 B4F91620 		ldrsh	r2, [r4, #22]
+ 418              		.loc 1 107 48 view .LVU115
+ 419 0078 9B1A     		subs	r3, r3, r2
+ 420              	.LVL35:
+ 421              		.loc 1 107 48 view .LVU116
+ 422 007a 07EE903A 		vmov	s15, r3	@ int
+ 423              		.loc 1 107 22 view .LVU117
+ 424 007e F8EEE77A 		vcvt.f32.s32	s15, s15
+ 425              		.loc 1 107 65 view .LVU118
+ 426 0082 94ED027A 		vldr.32	s14, [r4, #8]
+ 427              		.loc 1 107 63 view .LVU119
+ 428 0086 67EE877A 		vmul.f32	s15, s15, s14
+ 429              		.loc 1 107 20 view .LVU120
+ 430 008a C5ED027A 		vstr.32	s15, [r5, #8]
+ 108:Sys/Sensor/mpu6000.cpp **** }
+ 431              		.loc 1 108 1 view .LVU121
+ 432 008e 02B0     		add	sp, sp, #8
+ 433              	.LCFI11:
+ 434              		.cfi_def_cfa_offset 16
+ 435              		@ sp needed
+ 436 0090 70BD     		pop	{r4, r5, r6, pc}
+ 437              		.loc 1 108 1 view .LVU122
+ 438              		.cfi_endproc
+ 439              	.LFE140:
+ 440              		.fnend
+ 442              		.section	.text._ZN7Mpu6000C2EP9Interface,"ax",%progbits
+ 443              		.align	1
+ 444              		.global	_ZN7Mpu6000C2EP9Interface
+ 445              		.syntax unified
+ 446              		.thumb
+ 447              		.thumb_func
+ 449              	_ZN7Mpu6000C2EP9Interface:
+ 450              		.fnstart
+ 451              	.LVL36:
+ 452              	.LFB134:
+  14:Sys/Sensor/mpu6000.cpp **** {
+ 453              		.loc 1 14 1 is_stmt 1 view -0
+ 454              		.cfi_startproc
+ 455              		@ args = 0, pretend = 0, frame = 0
+ 456              		@ frame_needed = 0, uses_anonymous_args = 0
+ 457              		@ link register save eliminated.
+ 458              	.LBB6:
+ 459              	.LBB7:
+ 460              	.LBI7:
+ 461              		.file 2 "Sys/Sensor/imu.h"
+   1:Sys/Sensor/imu.h **** /*
+   2:Sys/Sensor/imu.h ****  * @Description:
+   3:Sys/Sensor/imu.h ****  * @Version: 1.0
+   4:Sys/Sensor/imu.h ****  * @Author: zhaohe
+   5:Sys/Sensor/imu.h ****  * @Date: 2022-07-07 23:41:39
+   6:Sys/Sensor/imu.h ****  * @LastEditors: zhaohe
+   7:Sys/Sensor/imu.h ****  * @LastEditTime: 2022-08-07 22:29:37
+   8:Sys/Sensor/imu.h ****  * @FilePath: \ZH_FLIGHT\Sys\Sensor\imu.h
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s 			page 11
+
+
+   9:Sys/Sensor/imu.h ****  * Copyright (C) 2022 zhaohe. All rights reserved.
+  10:Sys/Sensor/imu.h ****  */
+  11:Sys/Sensor/imu.h **** 
+  12:Sys/Sensor/imu.h **** #ifndef __IMU_H__
+  13:Sys/Sensor/imu.h **** #define __IMU_H__
+  14:Sys/Sensor/imu.h **** 
+  15:Sys/Sensor/imu.h **** #include "interface.h"
+  16:Sys/Sensor/imu.h **** #include "sensor.h"
+  17:Sys/Sensor/imu.h **** 
+  18:Sys/Sensor/imu.h **** class Imu
+ 462              		.loc 2 18 7 view .LVU124
+ 463              	.LBB8:
+ 464 0000 114A     		ldr	r2, .L12
+ 465 0002 0260     		str	r2, [r0]
+ 466              	.LVL37:
+ 467              		.loc 2 18 7 is_stmt 0 view .LVU125
+ 468              	.LBE8:
+ 469              	.LBE7:
+  14:Sys/Sensor/mpu6000.cpp **** {
+ 470              		.loc 1 14 38 view .LVU126
+ 471 0004 114A     		ldr	r2, .L12+4
+ 472 0006 0260     		str	r2, [r0]
+ 473 0008 0022     		movs	r2, #0
+ 474 000a 4260     		str	r2, [r0, #4]
+ 475 000c DFF840C0 		ldr	ip, .L12+8
+ 476 0010 C0F808C0 		str	ip, [r0, #8]	@ float
+ 477 0014 DFF83CC0 		ldr	ip, .L12+12
+ 478 0018 C0F80CC0 		str	ip, [r0, #12]	@ float
+ 479 001c 4FF4006C 		mov	ip, #2048
+ 480 0020 A0F810C0 		strh	ip, [r0, #16]	@ movhi
+ 481 0024 4FF0280C 		mov	ip, #40
+ 482 0028 A0F812C0 		strh	ip, [r0, #18]	@ movhi
+ 483 002c 8282     		strh	r2, [r0, #20]	@ movhi
+ 484 002e AA22     		movs	r2, #170
+ 485 0030 C282     		strh	r2, [r0, #22]	@ movhi
+ 486 0032 4FF6F472 		movw	r2, #65524
+ 487 0036 0283     		strh	r2, [r0, #24]	@ movhi
+ 488 0038 1722     		movs	r2, #23
+ 489 003a 4283     		strh	r2, [r0, #26]	@ movhi
+ 490 003c 4FF6F672 		movw	r2, #65526
+ 491 0040 8283     		strh	r2, [r0, #28]	@ movhi
+  16:Sys/Sensor/mpu6000.cpp **** }
+ 492              		.loc 1 16 5 is_stmt 1 view .LVU127
+  16:Sys/Sensor/mpu6000.cpp **** }
+ 493              		.loc 1 16 16 is_stmt 0 view .LVU128
+ 494 0042 4160     		str	r1, [r0, #4]
+ 495              	.LBE6:
+  17:Sys/Sensor/mpu6000.cpp **** 
+ 496              		.loc 1 17 1 view .LVU129
+ 497 0044 7047     		bx	lr
+ 498              	.L13:
+ 499 0046 00BF     		.align	2
+ 500              	.L12:
+ 501 0048 08000000 		.word	_ZTV3Imu+8
+ 502 004c 08000000 		.word	.LANCHOR0+8
+ 503 0050 23DBF93E 		.word	1056561955
+ 504 0054 1405FA3B 		.word	1006241044
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s 			page 12
+
+
+ 505              		.cfi_endproc
+ 506              	.LFE134:
+ 507              		.cantunwind
+ 508              		.fnend
+ 510              		.global	_ZN7Mpu6000C1EP9Interface
+ 511              		.thumb_set _ZN7Mpu6000C1EP9Interface,_ZN7Mpu6000C2EP9Interface
+ 512              		.section	.text._ZN7Mpu600012_GetLpfValueEh,"ax",%progbits
+ 513              		.align	1
+ 514              		.global	_ZN7Mpu600012_GetLpfValueEh
+ 515              		.syntax unified
+ 516              		.thumb
+ 517              		.thumb_func
+ 519              	_ZN7Mpu600012_GetLpfValueEh:
+ 520              		.fnstart
+ 521              	.LVL38:
+ 522              	.LFB141:
+ 109:Sys/Sensor/mpu6000.cpp **** 
+ 110:Sys/Sensor/mpu6000.cpp **** 
+ 111:Sys/Sensor/mpu6000.cpp **** 
+ 112:Sys/Sensor/mpu6000.cpp **** uint8_t Mpu6000::_GetLpfValue(const uint8_t frq)
+ 113:Sys/Sensor/mpu6000.cpp **** {
+ 523              		.loc 1 113 1 is_stmt 1 view -0
+ 524              		.cfi_startproc
+ 525              		@ args = 0, pretend = 0, frame = 0
+ 526              		@ frame_needed = 0, uses_anonymous_args = 0
+ 527              		@ link register save eliminated.
+ 114:Sys/Sensor/mpu6000.cpp ****     uint8_t lpf = 0x01;
+ 528              		.loc 1 114 5 view .LVU131
+ 115:Sys/Sensor/mpu6000.cpp ****     switch (frq)
+ 529              		.loc 1 115 5 view .LVU132
+ 530 0000 0929     		cmp	r1, #9
+ 531 0002 01D0     		beq	.L16
+ 114:Sys/Sensor/mpu6000.cpp ****     uint8_t lpf = 0x01;
+ 532              		.loc 1 114 13 is_stmt 0 view .LVU133
+ 533 0004 0120     		movs	r0, #1
+ 534              	.LVL39:
+ 114:Sys/Sensor/mpu6000.cpp ****     uint8_t lpf = 0x01;
+ 535              		.loc 1 114 13 view .LVU134
+ 536 0006 7047     		bx	lr
+ 537              	.LVL40:
+ 538              	.L16:
+ 116:Sys/Sensor/mpu6000.cpp ****     {
+ 117:Sys/Sensor/mpu6000.cpp ****     case GODR_1000Hz:
+ 118:Sys/Sensor/mpu6000.cpp ****         lpf = 0x01;
+ 119:Sys/Sensor/mpu6000.cpp ****         break;
+ 120:Sys/Sensor/mpu6000.cpp ****     case GODR_500Hz:
+ 121:Sys/Sensor/mpu6000.cpp ****         lpf = 0x01;
+ 122:Sys/Sensor/mpu6000.cpp ****         break;
+ 123:Sys/Sensor/mpu6000.cpp ****     case GODR_100Hz:
+ 124:Sys/Sensor/mpu6000.cpp ****         lpf = 0x02;
+ 539              		.loc 1 124 13 view .LVU135
+ 540 0008 0220     		movs	r0, #2
+ 541              	.LVL41:
+ 125:Sys/Sensor/mpu6000.cpp ****         break;
+ 126:Sys/Sensor/mpu6000.cpp ****     default:
+ 127:Sys/Sensor/mpu6000.cpp ****         break;
+ 128:Sys/Sensor/mpu6000.cpp ****     }
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s 			page 13
+
+
+ 129:Sys/Sensor/mpu6000.cpp ****     return lpf;
+ 542              		.loc 1 129 5 is_stmt 1 view .LVU136
+ 130:Sys/Sensor/mpu6000.cpp **** }
+ 543              		.loc 1 130 1 is_stmt 0 view .LVU137
+ 544 000a 7047     		bx	lr
+ 545              		.cfi_endproc
+ 546              	.LFE141:
+ 547              		.cantunwind
+ 548              		.fnend
+ 550              		.section	.text._ZN7Mpu600010_GetAccLsbEh,"ax",%progbits
+ 551              		.align	1
+ 552              		.global	_ZN7Mpu600010_GetAccLsbEh
+ 553              		.syntax unified
+ 554              		.thumb
+ 555              		.thumb_func
+ 557              	_ZN7Mpu600010_GetAccLsbEh:
+ 558              		.fnstart
+ 559              	.LVL42:
+ 560              	.LFB142:
+ 131:Sys/Sensor/mpu6000.cpp **** 
+ 132:Sys/Sensor/mpu6000.cpp **** float Mpu6000::_GetAccLsb(uint8_t afs)
+ 133:Sys/Sensor/mpu6000.cpp **** {
+ 561              		.loc 1 133 1 is_stmt 1 view -0
+ 562              		.cfi_startproc
+ 563              		@ args = 0, pretend = 0, frame = 0
+ 564              		@ frame_needed = 0, uses_anonymous_args = 0
+ 565              		@ link register save eliminated.
+ 134:Sys/Sensor/mpu6000.cpp ****     float lsb = 4096.0f;
+ 566              		.loc 1 134 5 view .LVU139
+ 135:Sys/Sensor/mpu6000.cpp ****     switch (afs)
+ 567              		.loc 1 135 5 view .LVU140
+ 568 0000 0829     		cmp	r1, #8
+ 569 0002 08D0     		beq	.L19
+ 570 0004 1829     		cmp	r1, #24
+ 571 0006 09D0     		beq	.L20
+ 572 0008 11B1     		cbz	r1, .L22
+ 573 000a 9FED060A 		vldr.32	s0, .L23
+ 136:Sys/Sensor/mpu6000.cpp ****     {
+ 137:Sys/Sensor/mpu6000.cpp ****     case AFS_2G:
+ 138:Sys/Sensor/mpu6000.cpp ****         lsb = 16384.0f;
+ 139:Sys/Sensor/mpu6000.cpp ****         break;
+ 140:Sys/Sensor/mpu6000.cpp **** 
+ 141:Sys/Sensor/mpu6000.cpp ****     case AFS_4G:
+ 142:Sys/Sensor/mpu6000.cpp ****         lsb = 8192.0f;
+ 143:Sys/Sensor/mpu6000.cpp ****         break;
+ 144:Sys/Sensor/mpu6000.cpp **** 
+ 145:Sys/Sensor/mpu6000.cpp ****     case AFS_8G:
+ 146:Sys/Sensor/mpu6000.cpp ****         lsb = 4096.0f;
+ 147:Sys/Sensor/mpu6000.cpp ****         break;
+ 148:Sys/Sensor/mpu6000.cpp **** 
+ 149:Sys/Sensor/mpu6000.cpp ****     case AFS_16G:
+ 150:Sys/Sensor/mpu6000.cpp ****         lsb = 2048.0f;
+ 151:Sys/Sensor/mpu6000.cpp ****         break;
+ 152:Sys/Sensor/mpu6000.cpp **** 
+ 153:Sys/Sensor/mpu6000.cpp ****     default:
+ 154:Sys/Sensor/mpu6000.cpp ****         break;
+ 155:Sys/Sensor/mpu6000.cpp ****     }
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s 			page 14
+
+
+ 156:Sys/Sensor/mpu6000.cpp ****     return lsb;
+ 574              		.loc 1 156 5 view .LVU141
+ 157:Sys/Sensor/mpu6000.cpp **** }
+ 575              		.loc 1 157 1 is_stmt 0 view .LVU142
+ 576 000e 7047     		bx	lr
+ 577              	.L22:
+ 138:Sys/Sensor/mpu6000.cpp ****         break;
+ 578              		.loc 1 138 13 view .LVU143
+ 579 0010 9FED050A 		vldr.32	s0, .L23+4
+ 580 0014 7047     		bx	lr
+ 581              	.L19:
+ 142:Sys/Sensor/mpu6000.cpp ****         break;
+ 582              		.loc 1 142 13 view .LVU144
+ 583 0016 9FED050A 		vldr.32	s0, .L23+8
+ 584 001a 7047     		bx	lr
+ 585              	.L20:
+ 150:Sys/Sensor/mpu6000.cpp ****         break;
+ 586              		.loc 1 150 13 view .LVU145
+ 587 001c 9FED040A 		vldr.32	s0, .L23+12
+ 588 0020 7047     		bx	lr
+ 589              	.L24:
+ 590 0022 00BF     		.align	2
+ 591              	.L23:
+ 592 0024 00008045 		.word	1166016512
+ 593 0028 00008046 		.word	1182793728
+ 594 002c 00000046 		.word	1174405120
+ 595 0030 00000045 		.word	1157627904
+ 596              		.cfi_endproc
+ 597              	.LFE142:
+ 598              		.cantunwind
+ 599              		.fnend
+ 601              		.section	.text._ZN7Mpu600011_GetGyroLsbEh,"ax",%progbits
+ 602              		.align	1
+ 603              		.global	_ZN7Mpu600011_GetGyroLsbEh
+ 604              		.syntax unified
+ 605              		.thumb
+ 606              		.thumb_func
+ 608              	_ZN7Mpu600011_GetGyroLsbEh:
+ 609              		.fnstart
+ 610              	.LVL43:
+ 611              	.LFB143:
+ 158:Sys/Sensor/mpu6000.cpp **** 
+ 159:Sys/Sensor/mpu6000.cpp **** float Mpu6000::_GetGyroLsb(uint8_t afs)
+ 160:Sys/Sensor/mpu6000.cpp **** {
+ 612              		.loc 1 160 1 is_stmt 1 view -0
+ 613              		.cfi_startproc
+ 614              		@ args = 0, pretend = 0, frame = 0
+ 615              		@ frame_needed = 0, uses_anonymous_args = 0
+ 616              		@ link register save eliminated.
+ 161:Sys/Sensor/mpu6000.cpp ****     float lsb = 16.4f;
+ 617              		.loc 1 161 5 view .LVU147
+ 162:Sys/Sensor/mpu6000.cpp ****     switch (afs)
+ 618              		.loc 1 162 5 view .LVU148
+ 619 0000 0829     		cmp	r1, #8
+ 620 0002 08D0     		beq	.L27
+ 621 0004 1029     		cmp	r1, #16
+ 622 0006 09D0     		beq	.L28
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s 			page 15
+
+
+ 623 0008 11B1     		cbz	r1, .L30
+ 624 000a 9FED060A 		vldr.32	s0, .L31
+ 163:Sys/Sensor/mpu6000.cpp ****     {
+ 164:Sys/Sensor/mpu6000.cpp ****     case GFS_250DPS:
+ 165:Sys/Sensor/mpu6000.cpp ****         lsb = 131.0f;
+ 166:Sys/Sensor/mpu6000.cpp ****         break;
+ 167:Sys/Sensor/mpu6000.cpp **** 
+ 168:Sys/Sensor/mpu6000.cpp ****     case GFS_500DPS:
+ 169:Sys/Sensor/mpu6000.cpp ****         lsb = 65.5f;
+ 170:Sys/Sensor/mpu6000.cpp ****         break;
+ 171:Sys/Sensor/mpu6000.cpp **** 
+ 172:Sys/Sensor/mpu6000.cpp ****     case GFS_1000DPS:
+ 173:Sys/Sensor/mpu6000.cpp ****         lsb = 32.8f;
+ 174:Sys/Sensor/mpu6000.cpp ****         break;
+ 175:Sys/Sensor/mpu6000.cpp **** 
+ 176:Sys/Sensor/mpu6000.cpp ****     case GFS_2000DPS:
+ 177:Sys/Sensor/mpu6000.cpp ****         lsb = 16.4f;
+ 178:Sys/Sensor/mpu6000.cpp ****         break;
+ 179:Sys/Sensor/mpu6000.cpp **** 
+ 180:Sys/Sensor/mpu6000.cpp ****     default:
+ 181:Sys/Sensor/mpu6000.cpp ****         break;
+ 182:Sys/Sensor/mpu6000.cpp ****     }
+ 183:Sys/Sensor/mpu6000.cpp ****     return lsb;
+ 625              		.loc 1 183 5 view .LVU149
+ 184:Sys/Sensor/mpu6000.cpp **** }
+ 626              		.loc 1 184 1 is_stmt 0 view .LVU150
+ 627 000e 7047     		bx	lr
+ 628              	.L30:
+ 165:Sys/Sensor/mpu6000.cpp ****         break;
+ 629              		.loc 1 165 13 view .LVU151
+ 630 0010 9FED050A 		vldr.32	s0, .L31+4
+ 631 0014 7047     		bx	lr
+ 632              	.L27:
+ 169:Sys/Sensor/mpu6000.cpp ****         break;
+ 633              		.loc 1 169 13 view .LVU152
+ 634 0016 9FED050A 		vldr.32	s0, .L31+8
+ 635 001a 7047     		bx	lr
+ 636              	.L28:
+ 173:Sys/Sensor/mpu6000.cpp ****         break;
+ 637              		.loc 1 173 13 view .LVU153
+ 638 001c 9FED040A 		vldr.32	s0, .L31+12
+ 639 0020 7047     		bx	lr
+ 640              	.L32:
+ 641 0022 00BF     		.align	2
+ 642              	.L31:
+ 643 0024 33338341 		.word	1099117363
+ 644 0028 00000343 		.word	1124270080
+ 645 002c 00008342 		.word	1115881472
+ 646 0030 33330342 		.word	1107505971
+ 647              		.cfi_endproc
+ 648              	.LFE143:
+ 649              		.cantunwind
+ 650              		.fnend
+ 652              		.section	.text._ZN7Mpu60004InitEv,"ax",%progbits
+ 653              		.align	1
+ 654              		.global	_ZN7Mpu60004InitEv
+ 655              		.syntax unified
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s 			page 16
+
+
+ 656              		.thumb
+ 657              		.thumb_func
+ 659              	_ZN7Mpu60004InitEv:
+ 660              		.fnstart
+ 661              	.LVL44:
+ 662              	.LFB136:
+  20:Sys/Sensor/mpu6000.cpp ****     HAL_Delay(100);
+ 663              		.loc 1 20 1 is_stmt 1 view -0
+ 664              		.cfi_startproc
+ 665              		@ args = 0, pretend = 0, frame = 0
+ 666              		@ frame_needed = 0, uses_anonymous_args = 0
+  20:Sys/Sensor/mpu6000.cpp ****     HAL_Delay(100);
+ 667              		.loc 1 20 1 is_stmt 0 view .LVU155
+ 668 0000 70B5     		push	{r4, r5, r6, lr}
+ 669              		.save {r4, r5, r6, lr}
+ 670              	.LCFI12:
+ 671              		.cfi_def_cfa_offset 16
+ 672              		.cfi_offset 4, -16
+ 673              		.cfi_offset 5, -12
+ 674              		.cfi_offset 6, -8
+ 675              		.cfi_offset 14, -4
+ 676 0002 2DED028B 		vpush.64	{d8}
+ 677              		.vsave {d8}
+ 678              	.LCFI13:
+ 679              		.cfi_def_cfa_offset 24
+ 680              		.cfi_offset 80, -24
+ 681              		.cfi_offset 81, -20
+ 682 0006 0446     		mov	r4, r0
+  21:Sys/Sensor/mpu6000.cpp ****     _interface->WriteReg(MPU_PWR_MGMT1_REG, 0X80); //复位MPU6000
+ 683              		.loc 1 21 5 is_stmt 1 view .LVU156
+  21:Sys/Sensor/mpu6000.cpp ****     _interface->WriteReg(MPU_PWR_MGMT1_REG, 0X80); //复位MPU6000
+ 684              		.loc 1 21 14 is_stmt 0 view .LVU157
+ 685 0008 6420     		movs	r0, #100
+ 686              	.LVL45:
+  21:Sys/Sensor/mpu6000.cpp ****     _interface->WriteReg(MPU_PWR_MGMT1_REG, 0X80); //复位MPU6000
+ 687              		.loc 1 21 14 view .LVU158
+ 688 000a FFF7FEFF 		bl	HAL_Delay
+ 689              	.LVL46:
+  22:Sys/Sensor/mpu6000.cpp ****     HAL_Delay(100);
+ 690              		.loc 1 22 5 is_stmt 1 view .LVU159
+ 691 000e 6068     		ldr	r0, [r4, #4]
+  22:Sys/Sensor/mpu6000.cpp ****     HAL_Delay(100);
+ 692              		.loc 1 22 49 is_stmt 0 view .LVU160
+ 693 0010 0368     		ldr	r3, [r0]
+ 694 0012 5B68     		ldr	r3, [r3, #4]
+  22:Sys/Sensor/mpu6000.cpp ****     HAL_Delay(100);
+ 695              		.loc 1 22 25 view .LVU161
+ 696 0014 8022     		movs	r2, #128
+ 697 0016 6B21     		movs	r1, #107
+ 698 0018 9847     		blx	r3
+ 699              	.LVL47:
+  23:Sys/Sensor/mpu6000.cpp ****     _interface->WriteReg(MPU_SIGPATH_RST_REG, 0X04 | 0x02 | 0x01);
+ 700              		.loc 1 23 5 is_stmt 1 view .LVU162
+  23:Sys/Sensor/mpu6000.cpp ****     _interface->WriteReg(MPU_SIGPATH_RST_REG, 0X04 | 0x02 | 0x01);
+ 701              		.loc 1 23 14 is_stmt 0 view .LVU163
+ 702 001a 6420     		movs	r0, #100
+ 703 001c FFF7FEFF 		bl	HAL_Delay
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s 			page 17
+
+
+ 704              	.LVL48:
+  24:Sys/Sensor/mpu6000.cpp ****     HAL_Delay(100);
+ 705              		.loc 1 24 5 is_stmt 1 view .LVU164
+ 706 0020 6068     		ldr	r0, [r4, #4]
+  24:Sys/Sensor/mpu6000.cpp ****     HAL_Delay(100);
+ 707              		.loc 1 24 65 is_stmt 0 view .LVU165
+ 708 0022 0368     		ldr	r3, [r0]
+ 709 0024 5B68     		ldr	r3, [r3, #4]
+  24:Sys/Sensor/mpu6000.cpp ****     HAL_Delay(100);
+ 710              		.loc 1 24 25 view .LVU166
+ 711 0026 0722     		movs	r2, #7
+ 712 0028 6821     		movs	r1, #104
+ 713 002a 9847     		blx	r3
+ 714              	.LVL49:
+  25:Sys/Sensor/mpu6000.cpp ****     _interface->WriteReg(MPU_PWR_MGMT1_REG, 0X03); //复位MPU6000
+ 715              		.loc 1 25 5 is_stmt 1 view .LVU167
+  25:Sys/Sensor/mpu6000.cpp ****     _interface->WriteReg(MPU_PWR_MGMT1_REG, 0X03); //复位MPU6000
+ 716              		.loc 1 25 14 is_stmt 0 view .LVU168
+ 717 002c 6420     		movs	r0, #100
+ 718 002e FFF7FEFF 		bl	HAL_Delay
+ 719              	.LVL50:
+  26:Sys/Sensor/mpu6000.cpp ****     HAL_Delay(15);
+ 720              		.loc 1 26 5 is_stmt 1 view .LVU169
+ 721 0032 6068     		ldr	r0, [r4, #4]
+  26:Sys/Sensor/mpu6000.cpp ****     HAL_Delay(15);
+ 722              		.loc 1 26 49 is_stmt 0 view .LVU170
+ 723 0034 0368     		ldr	r3, [r0]
+ 724 0036 5B68     		ldr	r3, [r3, #4]
+  26:Sys/Sensor/mpu6000.cpp ****     HAL_Delay(15);
+ 725              		.loc 1 26 25 view .LVU171
+ 726 0038 0322     		movs	r2, #3
+ 727 003a 6B21     		movs	r1, #107
+ 728 003c 9847     		blx	r3
+ 729              	.LVL51:
+  27:Sys/Sensor/mpu6000.cpp ****     _interface->WriteReg(MPU_USER_CTRL_REG, 0x10); //屏蔽IIC接口
+ 730              		.loc 1 27 5 is_stmt 1 view .LVU172
+  27:Sys/Sensor/mpu6000.cpp ****     _interface->WriteReg(MPU_USER_CTRL_REG, 0x10); //屏蔽IIC接口
+ 731              		.loc 1 27 14 is_stmt 0 view .LVU173
+ 732 003e 0F20     		movs	r0, #15
+ 733 0040 FFF7FEFF 		bl	HAL_Delay
+ 734              	.LVL52:
+  28:Sys/Sensor/mpu6000.cpp ****     HAL_Delay(15);
+ 735              		.loc 1 28 5 is_stmt 1 view .LVU174
+ 736 0044 6068     		ldr	r0, [r4, #4]
+  28:Sys/Sensor/mpu6000.cpp ****     HAL_Delay(15);
+ 737              		.loc 1 28 49 is_stmt 0 view .LVU175
+ 738 0046 0368     		ldr	r3, [r0]
+ 739 0048 5B68     		ldr	r3, [r3, #4]
+  28:Sys/Sensor/mpu6000.cpp ****     HAL_Delay(15);
+ 740              		.loc 1 28 25 view .LVU176
+ 741 004a 1022     		movs	r2, #16
+ 742 004c 6A21     		movs	r1, #106
+ 743 004e 9847     		blx	r3
+ 744              	.LVL53:
+  29:Sys/Sensor/mpu6000.cpp ****     _interface->WriteReg(MPU_PWR_MGMT2_REG, 0X00); //加速度与陀螺仪都工作
+ 745              		.loc 1 29 5 is_stmt 1 view .LVU177
+  29:Sys/Sensor/mpu6000.cpp ****     _interface->WriteReg(MPU_PWR_MGMT2_REG, 0X00); //加速度与陀螺仪都工作
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s 			page 18
+
+
+ 746              		.loc 1 29 14 is_stmt 0 view .LVU178
+ 747 0050 0F20     		movs	r0, #15
+ 748 0052 FFF7FEFF 		bl	HAL_Delay
+ 749              	.LVL54:
+  30:Sys/Sensor/mpu6000.cpp ****     HAL_Delay(15);
+ 750              		.loc 1 30 5 is_stmt 1 view .LVU179
+ 751 0056 6068     		ldr	r0, [r4, #4]
+  30:Sys/Sensor/mpu6000.cpp ****     HAL_Delay(15);
+ 752              		.loc 1 30 49 is_stmt 0 view .LVU180
+ 753 0058 0368     		ldr	r3, [r0]
+ 754 005a 5B68     		ldr	r3, [r3, #4]
+  30:Sys/Sensor/mpu6000.cpp ****     HAL_Delay(15);
+ 755              		.loc 1 30 25 view .LVU181
+ 756 005c 0022     		movs	r2, #0
+ 757 005e 6C21     		movs	r1, #108
+ 758 0060 9847     		blx	r3
+ 759              	.LVL55:
+  31:Sys/Sensor/mpu6000.cpp ****     _interface->WriteReg(MPU_SAMPLE_RATE_REG, GODR_1000Hz); //设置采样率1000Hz
+ 760              		.loc 1 31 5 is_stmt 1 view .LVU182
+  31:Sys/Sensor/mpu6000.cpp ****     _interface->WriteReg(MPU_SAMPLE_RATE_REG, GODR_1000Hz); //设置采样率1000Hz
+ 761              		.loc 1 31 14 is_stmt 0 view .LVU183
+ 762 0062 0F20     		movs	r0, #15
+ 763 0064 FFF7FEFF 		bl	HAL_Delay
+ 764              	.LVL56:
+  32:Sys/Sensor/mpu6000.cpp ****     HAL_Delay(15);
+ 765              		.loc 1 32 5 is_stmt 1 view .LVU184
+ 766 0068 6068     		ldr	r0, [r4, #4]
+  32:Sys/Sensor/mpu6000.cpp ****     HAL_Delay(15);
+ 767              		.loc 1 32 58 is_stmt 0 view .LVU185
+ 768 006a 0368     		ldr	r3, [r0]
+ 769 006c 5B68     		ldr	r3, [r3, #4]
+  32:Sys/Sensor/mpu6000.cpp ****     HAL_Delay(15);
+ 770              		.loc 1 32 25 view .LVU186
+ 771 006e 0022     		movs	r2, #0
+ 772 0070 1921     		movs	r1, #25
+ 773 0072 9847     		blx	r3
+ 774              	.LVL57:
+  33:Sys/Sensor/mpu6000.cpp ****     _interface->WriteReg(MPU_CFG_REG, _GetLpfValue(GODR_1000Hz)); //设置低通滤波器
+ 775              		.loc 1 33 5 is_stmt 1 view .LVU187
+  33:Sys/Sensor/mpu6000.cpp ****     _interface->WriteReg(MPU_CFG_REG, _GetLpfValue(GODR_1000Hz)); //设置低通滤波器
+ 776              		.loc 1 33 14 is_stmt 0 view .LVU188
+ 777 0074 0F20     		movs	r0, #15
+ 778 0076 FFF7FEFF 		bl	HAL_Delay
+ 779              	.LVL58:
+  34:Sys/Sensor/mpu6000.cpp ****     HAL_Delay(15);
+ 780              		.loc 1 34 5 is_stmt 1 view .LVU189
+ 781 007a 6568     		ldr	r5, [r4, #4]
+  34:Sys/Sensor/mpu6000.cpp ****     HAL_Delay(15);
+ 782              		.loc 1 34 64 is_stmt 0 view .LVU190
+ 783 007c 2B68     		ldr	r3, [r5]
+ 784 007e 5E68     		ldr	r6, [r3, #4]
+  34:Sys/Sensor/mpu6000.cpp ****     HAL_Delay(15);
+ 785              		.loc 1 34 25 view .LVU191
+ 786 0080 0021     		movs	r1, #0
+ 787 0082 2046     		mov	r0, r4
+ 788 0084 FFF7FEFF 		bl	_ZN7Mpu600012_GetLpfValueEh
+ 789              	.LVL59:
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s 			page 19
+
+
+ 790 0088 0246     		mov	r2, r0
+ 791 008a 1A21     		movs	r1, #26
+ 792 008c 2846     		mov	r0, r5
+ 793 008e B047     		blx	r6
+ 794              	.LVL60:
+  35:Sys/Sensor/mpu6000.cpp ****     _interface->WriteReg(MPU_GYRO_CFG_REG, GFS_2000DPS); //陀螺仪传感器量程
+ 795              		.loc 1 35 5 is_stmt 1 view .LVU192
+  35:Sys/Sensor/mpu6000.cpp ****     _interface->WriteReg(MPU_GYRO_CFG_REG, GFS_2000DPS); //陀螺仪传感器量程
+ 796              		.loc 1 35 14 is_stmt 0 view .LVU193
+ 797 0090 0F20     		movs	r0, #15
+ 798 0092 FFF7FEFF 		bl	HAL_Delay
+ 799              	.LVL61:
+  36:Sys/Sensor/mpu6000.cpp ****     HAL_Delay(15);
+ 800              		.loc 1 36 5 is_stmt 1 view .LVU194
+ 801 0096 6068     		ldr	r0, [r4, #4]
+  36:Sys/Sensor/mpu6000.cpp ****     HAL_Delay(15);
+ 802              		.loc 1 36 55 is_stmt 0 view .LVU195
+ 803 0098 0368     		ldr	r3, [r0]
+ 804 009a 5B68     		ldr	r3, [r3, #4]
+  36:Sys/Sensor/mpu6000.cpp ****     HAL_Delay(15);
+ 805              		.loc 1 36 25 view .LVU196
+ 806 009c 1822     		movs	r2, #24
+ 807 009e 1B21     		movs	r1, #27
+ 808 00a0 9847     		blx	r3
+ 809              	.LVL62:
+  37:Sys/Sensor/mpu6000.cpp ****     _interface->WriteReg(MPU_ACCEL_CFG_REG, AFS_16G); //加速度传感器量程
+ 810              		.loc 1 37 5 is_stmt 1 view .LVU197
+  37:Sys/Sensor/mpu6000.cpp ****     _interface->WriteReg(MPU_ACCEL_CFG_REG, AFS_16G); //加速度传感器量程
+ 811              		.loc 1 37 14 is_stmt 0 view .LVU198
+ 812 00a2 0F20     		movs	r0, #15
+ 813 00a4 FFF7FEFF 		bl	HAL_Delay
+ 814              	.LVL63:
+  38:Sys/Sensor/mpu6000.cpp ****     HAL_Delay(15);
+ 815              		.loc 1 38 5 is_stmt 1 view .LVU199
+ 816 00a8 6068     		ldr	r0, [r4, #4]
+  38:Sys/Sensor/mpu6000.cpp ****     HAL_Delay(15);
+ 817              		.loc 1 38 52 is_stmt 0 view .LVU200
+ 818 00aa 0368     		ldr	r3, [r0]
+ 819 00ac 5B68     		ldr	r3, [r3, #4]
+  38:Sys/Sensor/mpu6000.cpp ****     HAL_Delay(15);
+ 820              		.loc 1 38 25 view .LVU201
+ 821 00ae 1822     		movs	r2, #24
+ 822 00b0 1C21     		movs	r1, #28
+ 823 00b2 9847     		blx	r3
+ 824              	.LVL64:
+  39:Sys/Sensor/mpu6000.cpp ****     _gyro_sensitivity = 1.0f / (_GetGyroLsb(GFS_2000DPS));
+ 825              		.loc 1 39 5 is_stmt 1 view .LVU202
+  39:Sys/Sensor/mpu6000.cpp ****     _gyro_sensitivity = 1.0f / (_GetGyroLsb(GFS_2000DPS));
+ 826              		.loc 1 39 14 is_stmt 0 view .LVU203
+ 827 00b4 0F20     		movs	r0, #15
+ 828 00b6 FFF7FEFF 		bl	HAL_Delay
+ 829              	.LVL65:
+  40:Sys/Sensor/mpu6000.cpp **** 
+ 830              		.loc 1 40 5 is_stmt 1 view .LVU204
+  40:Sys/Sensor/mpu6000.cpp **** 
+ 831              		.loc 1 40 44 is_stmt 0 view .LVU205
+ 832 00ba 1821     		movs	r1, #24
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s 			page 20
+
+
+ 833 00bc 2046     		mov	r0, r4
+ 834 00be FFF7FEFF 		bl	_ZN7Mpu600011_GetGyroLsbEh
+ 835              	.LVL66:
+  40:Sys/Sensor/mpu6000.cpp **** 
+ 836              		.loc 1 40 30 view .LVU206
+ 837 00c2 B7EE008A 		vmov.f32	s16, #1.0e+0
+ 838 00c6 C8EE007A 		vdiv.f32	s15, s16, s0
+  40:Sys/Sensor/mpu6000.cpp **** 
+ 839              		.loc 1 40 23 view .LVU207
+ 840 00ca C4ED037A 		vstr.32	s15, [r4, #12]
+  42:Sys/Sensor/mpu6000.cpp **** 
+ 841              		.loc 1 42 5 is_stmt 1 view .LVU208
+  42:Sys/Sensor/mpu6000.cpp **** 
+ 842              		.loc 1 42 42 is_stmt 0 view .LVU209
+ 843 00ce 1821     		movs	r1, #24
+ 844 00d0 2046     		mov	r0, r4
+ 845 00d2 FFF7FEFF 		bl	_ZN7Mpu600010_GetAccLsbEh
+ 846              	.LVL67:
+  42:Sys/Sensor/mpu6000.cpp **** 
+ 847              		.loc 1 42 29 view .LVU210
+ 848 00d6 C8EE007A 		vdiv.f32	s15, s16, s0
+  42:Sys/Sensor/mpu6000.cpp **** 
+ 849              		.loc 1 42 53 view .LVU211
+ 850 00da 9FED0E7A 		vldr.32	s14, .L35
+ 851 00de 67EE877A 		vmul.f32	s15, s15, s14
+  42:Sys/Sensor/mpu6000.cpp **** 
+ 852              		.loc 1 42 22 view .LVU212
+ 853 00e2 C4ED027A 		vstr.32	s15, [r4, #8]
+  44:Sys/Sensor/mpu6000.cpp ****     _interface->WriteReg(MPU_INTBP_CFG_REG, 0x90);
+ 854              		.loc 1 44 5 is_stmt 1 view .LVU213
+  44:Sys/Sensor/mpu6000.cpp ****     _interface->WriteReg(MPU_INTBP_CFG_REG, 0x90);
+ 855              		.loc 1 44 14 is_stmt 0 view .LVU214
+ 856 00e6 BCEEC00A 		vcvt.u32.f32	s0, s0
+ 857 00ea 10EE103A 		vmov	r3, s0	@ int
+ 858 00ee 2382     		strh	r3, [r4, #16]	@ movhi
+  45:Sys/Sensor/mpu6000.cpp ****     HAL_Delay(10);
+ 859              		.loc 1 45 5 is_stmt 1 view .LVU215
+ 860 00f0 6068     		ldr	r0, [r4, #4]
+  45:Sys/Sensor/mpu6000.cpp ****     HAL_Delay(10);
+ 861              		.loc 1 45 49 is_stmt 0 view .LVU216
+ 862 00f2 0368     		ldr	r3, [r0]
+ 863 00f4 5B68     		ldr	r3, [r3, #4]
+  45:Sys/Sensor/mpu6000.cpp ****     HAL_Delay(10);
+ 864              		.loc 1 45 25 view .LVU217
+ 865 00f6 9022     		movs	r2, #144
+ 866 00f8 3721     		movs	r1, #55
+ 867 00fa 9847     		blx	r3
+ 868              	.LVL68:
+  46:Sys/Sensor/mpu6000.cpp ****     _interface->WriteReg(MPU_INT_EN_REG, DATA_RDY_EN); //使能数据就绪中断
+ 869              		.loc 1 46 5 is_stmt 1 view .LVU218
+  46:Sys/Sensor/mpu6000.cpp ****     _interface->WriteReg(MPU_INT_EN_REG, DATA_RDY_EN); //使能数据就绪中断
+ 870              		.loc 1 46 14 is_stmt 0 view .LVU219
+ 871 00fc 0A20     		movs	r0, #10
+ 872 00fe FFF7FEFF 		bl	HAL_Delay
+ 873              	.LVL69:
+  47:Sys/Sensor/mpu6000.cpp **** }
+ 874              		.loc 1 47 5 is_stmt 1 view .LVU220
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s 			page 21
+
+
+ 875 0102 6068     		ldr	r0, [r4, #4]
+  47:Sys/Sensor/mpu6000.cpp **** }
+ 876              		.loc 1 47 53 is_stmt 0 view .LVU221
+ 877 0104 0368     		ldr	r3, [r0]
+ 878 0106 5B68     		ldr	r3, [r3, #4]
+  47:Sys/Sensor/mpu6000.cpp **** }
+ 879              		.loc 1 47 25 view .LVU222
+ 880 0108 0122     		movs	r2, #1
+ 881 010a 3821     		movs	r1, #56
+ 882 010c 9847     		blx	r3
+ 883              	.LVL70:
+  48:Sys/Sensor/mpu6000.cpp **** 
+ 884              		.loc 1 48 1 view .LVU223
+ 885 010e BDEC028B 		vldm	sp!, {d8}
+ 886              	.LCFI14:
+ 887              		.cfi_restore 80
+ 888              		.cfi_restore 81
+ 889              		.cfi_def_cfa_offset 16
+ 890 0112 70BD     		pop	{r4, r5, r6, pc}
+ 891              	.LVL71:
+ 892              	.L36:
+  48:Sys/Sensor/mpu6000.cpp **** 
+ 893              		.loc 1 48 1 view .LVU224
+ 894              		.align	2
+ 895              	.L35:
+ 896 0114 00007A44 		.word	1148846080
+ 897              		.cfi_endproc
+ 898              	.LFE136:
+ 899              		.fnend
+ 901              		.section	.text._ZN7Mpu600015_GetGyroRawDataEPsS0_S0_,"ax",%progbits
+ 902              		.align	1
+ 903              		.global	_ZN7Mpu600015_GetGyroRawDataEPsS0_S0_
+ 904              		.syntax unified
+ 905              		.thumb
+ 906              		.thumb_func
+ 908              	_ZN7Mpu600015_GetGyroRawDataEPsS0_S0_:
+ 909              		.fnstart
+ 910              	.LVL72:
+ 911              	.LFB144:
+ 185:Sys/Sensor/mpu6000.cpp **** 
+ 186:Sys/Sensor/mpu6000.cpp **** void Mpu6000::_GetGyroRawData(int16_t *gx, int16_t *gy, int16_t *gz)
+ 187:Sys/Sensor/mpu6000.cpp **** {
+ 912              		.loc 1 187 1 is_stmt 1 view -0
+ 913              		.cfi_startproc
+ 914              		@ args = 0, pretend = 0, frame = 8
+ 915              		@ frame_needed = 0, uses_anonymous_args = 0
+ 916              		.loc 1 187 1 is_stmt 0 view .LVU226
+ 917 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 918              		.save {r4, r5, r6, r7, lr}
+ 919              	.LCFI15:
+ 920              		.cfi_def_cfa_offset 20
+ 921              		.cfi_offset 4, -20
+ 922              		.cfi_offset 5, -16
+ 923              		.cfi_offset 6, -12
+ 924              		.cfi_offset 7, -8
+ 925              		.cfi_offset 14, -4
+ 926              		.pad #12
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s 			page 22
+
+
+ 927 0002 83B0     		sub	sp, sp, #12
+ 928              	.LCFI16:
+ 929              		.cfi_def_cfa_offset 32
+ 930 0004 0E46     		mov	r6, r1
+ 931 0006 1546     		mov	r5, r2
+ 932 0008 1C46     		mov	r4, r3
+ 188:Sys/Sensor/mpu6000.cpp ****     uint8_t buf[6];
+ 933              		.loc 1 188 5 is_stmt 1 view .LVU227
+ 189:Sys/Sensor/mpu6000.cpp ****     _interface->ReadBytes(MPU_GYRO_XOUTH_REG, 6, buf);
+ 934              		.loc 1 189 5 view .LVU228
+ 935 000a 4068     		ldr	r0, [r0, #4]
+ 936              	.LVL73:
+ 937              		.loc 1 189 53 is_stmt 0 view .LVU229
+ 938 000c 0368     		ldr	r3, [r0]
+ 939              	.LVL74:
+ 940              		.loc 1 189 53 view .LVU230
+ 941 000e 1F68     		ldr	r7, [r3]
+ 942              		.loc 1 189 26 view .LVU231
+ 943 0010 6B46     		mov	r3, sp
+ 944 0012 0622     		movs	r2, #6
+ 945              	.LVL75:
+ 946              		.loc 1 189 26 view .LVU232
+ 947 0014 4321     		movs	r1, #67
+ 948              	.LVL76:
+ 949              		.loc 1 189 26 view .LVU233
+ 950 0016 B847     		blx	r7
+ 951              	.LVL77:
+ 190:Sys/Sensor/mpu6000.cpp ****     uint16_t gx_raw, gy_raw, gz_raw;
+ 952              		.loc 1 190 5 is_stmt 1 view .LVU234
+ 191:Sys/Sensor/mpu6000.cpp **** 
+ 192:Sys/Sensor/mpu6000.cpp ****     gx_raw = ((uint16_t)buf[0] << 8) | buf[1];
+ 953              		.loc 1 192 5 view .LVU235
+ 954              		.loc 1 192 30 is_stmt 0 view .LVU236
+ 955 0018 9DF80030 		ldrb	r3, [sp]	@ zero_extendqisi2
+ 956              		.loc 1 192 45 view .LVU237
+ 957 001c 9DF80110 		ldrb	r1, [sp, #1]	@ zero_extendqisi2
+ 958              		.loc 1 192 38 view .LVU238
+ 959 0020 41EA0321 		orr	r1, r1, r3, lsl #8
+ 960              	.LVL78:
+ 193:Sys/Sensor/mpu6000.cpp ****     gy_raw = ((uint16_t)buf[2] << 8) | buf[3];
+ 961              		.loc 1 193 5 is_stmt 1 view .LVU239
+ 962              		.loc 1 193 30 is_stmt 0 view .LVU240
+ 963 0024 9DF80230 		ldrb	r3, [sp, #2]	@ zero_extendqisi2
+ 964              		.loc 1 193 45 view .LVU241
+ 965 0028 9DF80320 		ldrb	r2, [sp, #3]	@ zero_extendqisi2
+ 966              		.loc 1 193 38 view .LVU242
+ 967 002c 42EA0322 		orr	r2, r2, r3, lsl #8
+ 968              	.LVL79:
+ 194:Sys/Sensor/mpu6000.cpp ****     gz_raw = ((uint16_t)buf[4] << 8) | buf[5];
+ 969              		.loc 1 194 5 is_stmt 1 view .LVU243
+ 970              		.loc 1 194 30 is_stmt 0 view .LVU244
+ 971 0030 9DF80400 		ldrb	r0, [sp, #4]	@ zero_extendqisi2
+ 972              		.loc 1 194 45 view .LVU245
+ 973 0034 9DF80530 		ldrb	r3, [sp, #5]	@ zero_extendqisi2
+ 974              		.loc 1 194 38 view .LVU246
+ 975 0038 43EA0023 		orr	r3, r3, r0, lsl #8
+ 976              	.LVL80:
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s 			page 23
+
+
+ 195:Sys/Sensor/mpu6000.cpp ****     *gx = (int16_t)(gx_raw);
+ 977              		.loc 1 195 5 is_stmt 1 view .LVU247
+ 978              		.loc 1 195 9 is_stmt 0 view .LVU248
+ 979 003c 3180     		strh	r1, [r6]	@ movhi
+ 196:Sys/Sensor/mpu6000.cpp **** 	*gy = (int16_t)(gy_raw);
+ 980              		.loc 1 196 2 is_stmt 1 view .LVU249
+ 981              		.loc 1 196 6 is_stmt 0 view .LVU250
+ 982 003e 2A80     		strh	r2, [r5]	@ movhi
+ 197:Sys/Sensor/mpu6000.cpp **** 	*gz = (int16_t)(gz_raw);
+ 983              		.loc 1 197 2 is_stmt 1 view .LVU251
+ 984              		.loc 1 197 6 is_stmt 0 view .LVU252
+ 985 0040 2380     		strh	r3, [r4]	@ movhi
+ 198:Sys/Sensor/mpu6000.cpp **** }
+ 986              		.loc 1 198 1 view .LVU253
+ 987 0042 03B0     		add	sp, sp, #12
+ 988              	.LCFI17:
+ 989              		.cfi_def_cfa_offset 20
+ 990              		@ sp needed
+ 991 0044 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 992              		.loc 1 198 1 view .LVU254
+ 993              		.cfi_endproc
+ 994              	.LFE144:
+ 995              		.fnend
+ 997              		.section	.text._ZN7Mpu600014_GetAccRawDataEPsS0_S0_,"ax",%progbits
+ 998              		.align	1
+ 999              		.global	_ZN7Mpu600014_GetAccRawDataEPsS0_S0_
+ 1000              		.syntax unified
+ 1001              		.thumb
+ 1002              		.thumb_func
+ 1004              	_ZN7Mpu600014_GetAccRawDataEPsS0_S0_:
+ 1005              		.fnstart
+ 1006              	.LVL81:
+ 1007              	.LFB145:
+ 199:Sys/Sensor/mpu6000.cpp **** void Mpu6000::_GetAccRawData(int16_t *ax, int16_t *ay, int16_t *az)
+ 200:Sys/Sensor/mpu6000.cpp **** {
+ 1008              		.loc 1 200 1 is_stmt 1 view -0
+ 1009              		.cfi_startproc
+ 1010              		@ args = 0, pretend = 0, frame = 8
+ 1011              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1012              		.loc 1 200 1 is_stmt 0 view .LVU256
+ 1013 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 1014              		.save {r4, r5, r6, r7, lr}
+ 1015              	.LCFI18:
+ 1016              		.cfi_def_cfa_offset 20
+ 1017              		.cfi_offset 4, -20
+ 1018              		.cfi_offset 5, -16
+ 1019              		.cfi_offset 6, -12
+ 1020              		.cfi_offset 7, -8
+ 1021              		.cfi_offset 14, -4
+ 1022              		.pad #12
+ 1023 0002 83B0     		sub	sp, sp, #12
+ 1024              	.LCFI19:
+ 1025              		.cfi_def_cfa_offset 32
+ 1026 0004 0E46     		mov	r6, r1
+ 1027 0006 1546     		mov	r5, r2
+ 1028 0008 1C46     		mov	r4, r3
+ 201:Sys/Sensor/mpu6000.cpp ****     uint8_t buf[6];
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s 			page 24
+
+
+ 1029              		.loc 1 201 5 is_stmt 1 view .LVU257
+ 202:Sys/Sensor/mpu6000.cpp ****     _interface->ReadBytes(MPU_ACCEL_XOUTH_REG, 6, buf);
+ 1030              		.loc 1 202 5 view .LVU258
+ 1031 000a 4068     		ldr	r0, [r0, #4]
+ 1032              	.LVL82:
+ 1033              		.loc 1 202 54 is_stmt 0 view .LVU259
+ 1034 000c 0368     		ldr	r3, [r0]
+ 1035              	.LVL83:
+ 1036              		.loc 1 202 54 view .LVU260
+ 1037 000e 1F68     		ldr	r7, [r3]
+ 1038              		.loc 1 202 26 view .LVU261
+ 1039 0010 6B46     		mov	r3, sp
+ 1040 0012 0622     		movs	r2, #6
+ 1041              	.LVL84:
+ 1042              		.loc 1 202 26 view .LVU262
+ 1043 0014 3B21     		movs	r1, #59
+ 1044              	.LVL85:
+ 1045              		.loc 1 202 26 view .LVU263
+ 1046 0016 B847     		blx	r7
+ 1047              	.LVL86:
+ 203:Sys/Sensor/mpu6000.cpp ****     uint16_t ax_raw, ay_raw, az_raw;
+ 1048              		.loc 1 203 5 is_stmt 1 view .LVU264
+ 204:Sys/Sensor/mpu6000.cpp **** 
+ 205:Sys/Sensor/mpu6000.cpp ****     ax_raw = ((uint16_t)buf[0] << 8) | buf[1];
+ 1049              		.loc 1 205 5 view .LVU265
+ 1050              		.loc 1 205 30 is_stmt 0 view .LVU266
+ 1051 0018 9DF80030 		ldrb	r3, [sp]	@ zero_extendqisi2
+ 1052              		.loc 1 205 45 view .LVU267
+ 1053 001c 9DF80110 		ldrb	r1, [sp, #1]	@ zero_extendqisi2
+ 1054              		.loc 1 205 38 view .LVU268
+ 1055 0020 41EA0321 		orr	r1, r1, r3, lsl #8
+ 1056              	.LVL87:
+ 206:Sys/Sensor/mpu6000.cpp ****     ay_raw = ((uint16_t)buf[2] << 8) | buf[3];
+ 1057              		.loc 1 206 5 is_stmt 1 view .LVU269
+ 1058              		.loc 1 206 30 is_stmt 0 view .LVU270
+ 1059 0024 9DF80230 		ldrb	r3, [sp, #2]	@ zero_extendqisi2
+ 1060              		.loc 1 206 45 view .LVU271
+ 1061 0028 9DF80320 		ldrb	r2, [sp, #3]	@ zero_extendqisi2
+ 1062              		.loc 1 206 38 view .LVU272
+ 1063 002c 42EA0322 		orr	r2, r2, r3, lsl #8
+ 1064              	.LVL88:
+ 207:Sys/Sensor/mpu6000.cpp ****     az_raw = ((uint16_t)buf[4] << 8) | buf[5];
+ 1065              		.loc 1 207 5 is_stmt 1 view .LVU273
+ 1066              		.loc 1 207 30 is_stmt 0 view .LVU274
+ 1067 0030 9DF80400 		ldrb	r0, [sp, #4]	@ zero_extendqisi2
+ 1068              		.loc 1 207 45 view .LVU275
+ 1069 0034 9DF80530 		ldrb	r3, [sp, #5]	@ zero_extendqisi2
+ 1070              		.loc 1 207 38 view .LVU276
+ 1071 0038 43EA0023 		orr	r3, r3, r0, lsl #8
+ 1072              	.LVL89:
+ 208:Sys/Sensor/mpu6000.cpp ****     *ax = (int16_t)(ax_raw);
+ 1073              		.loc 1 208 5 is_stmt 1 view .LVU277
+ 1074              		.loc 1 208 9 is_stmt 0 view .LVU278
+ 1075 003c 3180     		strh	r1, [r6]	@ movhi
+ 209:Sys/Sensor/mpu6000.cpp **** 	*ay = (int16_t)(ay_raw);
+ 1076              		.loc 1 209 2 is_stmt 1 view .LVU279
+ 1077              		.loc 1 209 6 is_stmt 0 view .LVU280
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s 			page 25
+
+
+ 1078 003e 2A80     		strh	r2, [r5]	@ movhi
+ 210:Sys/Sensor/mpu6000.cpp **** 	*az = (int16_t)(az_raw);
+ 1079              		.loc 1 210 2 is_stmt 1 view .LVU281
+ 1080              		.loc 1 210 6 is_stmt 0 view .LVU282
+ 1081 0040 2380     		strh	r3, [r4]	@ movhi
+ 211:Sys/Sensor/mpu6000.cpp **** }...
+ 1082              		.loc 1 211 1 view .LVU283
+ 1083 0042 03B0     		add	sp, sp, #12
+ 1084              	.LCFI20:
+ 1085              		.cfi_def_cfa_offset 20
+ 1086              		@ sp needed
+ 1087 0044 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 1088              		.loc 1 211 1 view .LVU284
+ 1089              		.cfi_endproc
+ 1090              	.LFE145:
+ 1091              		.fnend
+ 1093              		.weak	_ZTS3Imu
+ 1094              		.section	.rodata._ZTS3Imu,"aG",%progbits,_ZTS3Imu,comdat
+ 1095              		.align	2
+ 1098              	_ZTS3Imu:
+ 1099 0000 33496D75 		.ascii	"3Imu\000"
+ 1099      00
+ 1100              		.weak	_ZTI3Imu
+ 1101              		.section	.rodata._ZTI3Imu,"aG",%progbits,_ZTI3Imu,comdat
+ 1102              		.align	2
+ 1105              	_ZTI3Imu:
+ 1106 0000 08000000 		.word	_ZTVN10__cxxabiv117__class_type_infoE+8
+ 1107 0004 00000000 		.word	_ZTS3Imu
+ 1108              		.global	_ZTS7Mpu6000
+ 1109              		.global	_ZTI7Mpu6000
+ 1110              		.weak	_ZTV3Imu
+ 1111              		.section	.rodata._ZTV3Imu,"aG",%progbits,_ZTV3Imu,comdat
+ 1112              		.align	2
+ 1115              	_ZTV3Imu:
+ 1116 0000 00000000 		.word	0
+ 1117 0004 00000000 		.word	_ZTI3Imu
+ 1118 0008 00000000 		.word	__cxa_pure_virtual
+ 1119 000c 00000000 		.word	__cxa_pure_virtual
+ 1120 0010 00000000 		.word	__cxa_pure_virtual
+ 1121 0014 00000000 		.word	__cxa_pure_virtual
+ 1122 0018 00000000 		.word	__cxa_pure_virtual
+ 1123              		.global	_ZTV7Mpu6000
+ 1124              		.section	.rodata._ZTI7Mpu6000,"a"
+ 1125              		.align	2
+ 1128              	_ZTI7Mpu6000:
+ 1129 0000 08000000 		.word	_ZTVN10__cxxabiv120__si_class_type_infoE+8
+ 1130 0004 00000000 		.word	_ZTS7Mpu6000
+ 1131 0008 00000000 		.word	_ZTI3Imu
+ 1132              		.section	.rodata._ZTS7Mpu6000,"a"
+ 1133              		.align	2
+ 1136              	_ZTS7Mpu6000:
+ 1137 0000 374D7075 		.ascii	"7Mpu6000\000"
+ 1137      36303030 
+ 1137      00
+ 1138              		.section	.rodata._ZTV7Mpu6000,"a"
+ 1139              		.align	2
+ 1140              		.set	.LANCHOR0,. + 0
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s 			page 26
+
+
+ 1143              	_ZTV7Mpu6000:
+ 1144 0000 00000000 		.word	0
+ 1145 0004 00000000 		.word	_ZTI7Mpu6000
+ 1146 0008 00000000 		.word	_ZN7Mpu60004InitEv
+ 1147 000c 00000000 		.word	_ZN7Mpu60005GetIdEv
+ 1148 0010 00000000 		.word	_ZN7Mpu600014GetTemperatureEv
+ 1149 0014 00000000 		.word	_ZN7Mpu600011GetGyroDataER10SensorData
+ 1150 0018 00000000 		.word	_ZN7Mpu600010GetAccDataER10SensorData
+ 1151              		.text
+ 1152              	.Letext0:
+ 1153              		.file 3 "e:\\gcc\\2021.10\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 1154              		.file 4 "e:\\gcc\\2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 1155              		.file 5 "Sys/Type/type.h"
+ 1156              		.file 6 "Sys/Sensor/sensor.h"
+ 1157              		.file 7 "Sys/Sensor/mpu6000.h"
+ 1158              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s 			page 27
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 mpu6000.cpp
+C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s:20     .text._ZN7Mpu60005GetIdEv:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s:26     .text._ZN7Mpu60005GetIdEv:00000000 _ZN7Mpu60005GetIdEv
+.ARM.exidx.text._ZN7Mpu60005GetIdEv:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s:77     .text._ZN7Mpu600014GetTemperatureEv:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s:83     .text._ZN7Mpu600014GetTemperatureEv:00000000 _ZN7Mpu600014GetTemperatureEv
+C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s:166    .text._ZN7Mpu600014GetTemperatureEv:00000058 $d
+.ARM.exidx.text._ZN7Mpu600014GetTemperatureEv:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s:176    .text._ZN7Mpu600011GetGyroDataER10SensorData:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s:182    .text._ZN7Mpu600011GetGyroDataER10SensorData:00000000 _ZN7Mpu600011GetGyroDataER10SensorData
+.ARM.exidx.text._ZN7Mpu600011GetGyroDataER10SensorData:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s:310    .text._ZN7Mpu600010GetAccDataER10SensorData:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s:316    .text._ZN7Mpu600010GetAccDataER10SensorData:00000000 _ZN7Mpu600010GetAccDataER10SensorData
+.ARM.exidx.text._ZN7Mpu600010GetAccDataER10SensorData:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s:443    .text._ZN7Mpu6000C2EP9Interface:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s:449    .text._ZN7Mpu6000C2EP9Interface:00000000 _ZN7Mpu6000C2EP9Interface
+C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s:501    .text._ZN7Mpu6000C2EP9Interface:00000048 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s:1115   .rodata._ZTV3Imu:00000000 _ZTV3Imu
+.ARM.exidx.text._ZN7Mpu6000C2EP9Interface:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s:449    .text._ZN7Mpu6000C2EP9Interface:00000000 _ZN7Mpu6000C1EP9Interface
+C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s:513    .text._ZN7Mpu600012_GetLpfValueEh:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s:519    .text._ZN7Mpu600012_GetLpfValueEh:00000000 _ZN7Mpu600012_GetLpfValueEh
+.ARM.exidx.text._ZN7Mpu600012_GetLpfValueEh:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s:551    .text._ZN7Mpu600010_GetAccLsbEh:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s:557    .text._ZN7Mpu600010_GetAccLsbEh:00000000 _ZN7Mpu600010_GetAccLsbEh
+C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s:592    .text._ZN7Mpu600010_GetAccLsbEh:00000024 $d
+.ARM.exidx.text._ZN7Mpu600010_GetAccLsbEh:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s:602    .text._ZN7Mpu600011_GetGyroLsbEh:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s:608    .text._ZN7Mpu600011_GetGyroLsbEh:00000000 _ZN7Mpu600011_GetGyroLsbEh
+C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s:643    .text._ZN7Mpu600011_GetGyroLsbEh:00000024 $d
+.ARM.exidx.text._ZN7Mpu600011_GetGyroLsbEh:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s:653    .text._ZN7Mpu60004InitEv:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s:659    .text._ZN7Mpu60004InitEv:00000000 _ZN7Mpu60004InitEv
+C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s:896    .text._ZN7Mpu60004InitEv:00000114 $d
+.ARM.exidx.text._ZN7Mpu60004InitEv:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s:902    .text._ZN7Mpu600015_GetGyroRawDataEPsS0_S0_:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s:908    .text._ZN7Mpu600015_GetGyroRawDataEPsS0_S0_:00000000 _ZN7Mpu600015_GetGyroRawDataEPsS0_S0_
+.ARM.exidx.text._ZN7Mpu600015_GetGyroRawDataEPsS0_S0_:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s:998    .text._ZN7Mpu600014_GetAccRawDataEPsS0_S0_:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s:1004   .text._ZN7Mpu600014_GetAccRawDataEPsS0_S0_:00000000 _ZN7Mpu600014_GetAccRawDataEPsS0_S0_
+.ARM.exidx.text._ZN7Mpu600014_GetAccRawDataEPsS0_S0_:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s:1098   .rodata._ZTS3Imu:00000000 _ZTS3Imu
+C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s:1095   .rodata._ZTS3Imu:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s:1105   .rodata._ZTI3Imu:00000000 _ZTI3Imu
+C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s:1102   .rodata._ZTI3Imu:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s:1136   .rodata._ZTS7Mpu6000:00000000 _ZTS7Mpu6000
+C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s:1128   .rodata._ZTI7Mpu6000:00000000 _ZTI7Mpu6000
+C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s:1112   .rodata._ZTV3Imu:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s:1143   .rodata._ZTV7Mpu6000:00000000 _ZTV7Mpu6000
+C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s:1125   .rodata._ZTI7Mpu6000:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s:1133   .rodata._ZTS7Mpu6000:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s:1139   .rodata._ZTV7Mpu6000:00000000 $d
+
+UNDEFINED SYMBOLS
+__aeabi_unwind_cpp_pr0
+__aeabi_i2d
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccNr9gOj.s 			page 28
+
+
+__aeabi_ddiv
+__aeabi_dadd
+__aeabi_dmul
+__aeabi_d2f
+HAL_Delay
+_ZTVN10__cxxabiv117__class_type_infoE
+__cxa_pure_virtual
+_ZTVN10__cxxabiv120__si_class_type_infoE

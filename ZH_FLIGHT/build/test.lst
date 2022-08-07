@@ -1,0 +1,65 @@
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc3QRqEt.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"test.cpp"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.test_func,"ax",%progbits
+  20              		.align	1
+  21              		.global	test_func
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	test_func:
+  27              		.fnstart
+  28              	.LFB131:
+  29              		.file 1 "Sys/Src/test.cpp"
+   1:Sys/Src/test.cpp **** #include "test.h"
+   2:Sys/Src/test.cpp **** 
+   3:Sys/Src/test.cpp **** void test_func()
+   4:Sys/Src/test.cpp **** {
+  30              		.loc 1 4 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		@ link register save eliminated.
+   5:Sys/Src/test.cpp ****     Test test;
+  35              		.loc 1 5 5 view .LVU1
+   6:Sys/Src/test.cpp ****     test.func();
+  36              		.loc 1 6 5 view .LVU2
+  37              	.LVL0:
+   7:Sys/Src/test.cpp **** }
+  38              		.loc 1 7 1 is_stmt 0 view .LVU3
+  39 0000 7047     		bx	lr
+  40              		.cfi_endproc
+  41              	.LFE131:
+  42              		.cantunwind
+  43              		.fnend
+  45              		.text
+  46              	.Letext0:
+  47              		.file 2 "Sys/Inc/test.h"
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc3QRqEt.s 			page 2
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 test.cpp
+C:\Users\zhaohe\AppData\Local\Temp\cc3QRqEt.s:20     .text.test_func:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\cc3QRqEt.s:26     .text.test_func:00000000 test_func
+        .ARM.exidx.text.test_func:00000000 $d
+
+NO UNDEFINED SYMBOLS
