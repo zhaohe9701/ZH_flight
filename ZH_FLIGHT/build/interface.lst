@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s 			page 1
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s 			page 1
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
    1              		.cpu cortex-m4
@@ -58,7 +62,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s 			page 1
   26:Sys/Driver/interface.cpp ****     _Disable();
   27:Sys/Driver/interface.cpp **** }
   28:Sys/Driver/interface.cpp **** 
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s 			page 2
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s 			page 2
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
   29:Sys/Driver/interface.cpp **** void Spi::WriteReg(uint8_t address, uint8_t value)
@@ -118,7 +126,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s 			page 1
   54              		.loc 1 59 21 view .LVU4
   55 0010 0A46     		mov	r2, r1
   56              	.LVL2:
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s 			page 3
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s 			page 3
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
   57              		.loc 1 59 21 view .LVU5
@@ -178,7 +190,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s 			page 1
  108 0012 0DF11702 		add	r2, sp, #23
  109              	.LVL7:
  110              		.loc 1 64 22 view .LVU13
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s 			page 4
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s 			page 4
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  111 0016 0092     		str	r2, [sp]
@@ -238,7 +254,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s 			page 1
    6:Sys/Driver/interface.h ****  * @LastEditors: zhaohe
    7:Sys/Driver/interface.h ****  * @LastEditTime: 2022-07-09 02:58:53
    8:Sys/Driver/interface.h ****  * @FilePath: \ZH_FLIGHT\Sys\Driver\interface.h
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s 			page 5
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s 			page 5
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
    9:Sys/Driver/interface.h ****  * Copyright (C) 2022 zhaohe. All rights reserved.
@@ -298,7 +318,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s 			page 1
  199              		.align	1
  200              		.global	_ZN3Spi7_EnableEv
  201              		.syntax unified
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s 			page 6
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s 			page 6
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  202              		.thumb
@@ -358,7 +382,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s 			page 1
  251 0000 08B5     		push	{r3, lr}
  252              		.save {r3, lr}
  253              	.LCFI9:
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s 			page 7
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s 			page 7
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  254              		.cfi_def_cfa_offset 8
@@ -418,7 +446,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s 			page 1
  303              		.loc 1 22 5 is_stmt 1 view .LVU44
   22:Sys/Driver/interface.cpp ****     uint8_t _address = address | 0x80;
  304              		.loc 1 22 32 is_stmt 0 view .LVU45
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s 			page 8
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s 			page 8
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  305 000a 41F08001 		orr	r1, r1, #128
@@ -478,7 +510,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s 			page 1
  349              		.thumb
  350              		.thumb_func
  352              	_ZN3Spi8WriteRegEhh:
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s 			page 9
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s 			page 9
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  353              		.fnstart
@@ -538,7 +574,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s 			page 1
  397              	.LVL30:
  398              	.L17:
   34:Sys/Driver/interface.cpp ****     while (HAL_SPI_GetState(_hspi) == HAL_SPI_STATE_BUSY_TX_RX);
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s 			page 10
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s 			page 10
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  399              		.loc 1 34 5 is_stmt 1 view .LVU67
@@ -598,7 +638,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s 			page 1
  445              		.loc 1 51 1 is_stmt 1 view -0
  446              		.cfi_startproc
  447              		@ args = 0, pretend = 0, frame = 0
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s 			page 11
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s 			page 11
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  448              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -658,7 +702,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s 			page 1
  500              		.global	_ZTS3Spi
  501              		.global	_ZTI3Spi
  502              		.global	_ZTS3Iic
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s 			page 12
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s 			page 12
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  503              		.global	_ZTI3Iic
@@ -718,18 +766,27 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s 			page 1
  569              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
  570              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
  571              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s 			page 13
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s 			page 13
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  572              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
  573              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h"
  574              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h"
  575              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s 			page 14
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s 			page 14
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 interface.cpp
+<<<<<<< HEAD
 C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s:20     .text._ZN3Iic9ReadBytesEhhPh:00000000 $t
 C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s:26     .text._ZN3Iic9ReadBytesEhhPh:00000000 _ZN3Iic9ReadBytesEhhPh
 .ARM.exidx.text._ZN3Iic9ReadBytesEhhPh:00000000 $d
@@ -778,6 +835,56 @@ C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s:533    .rodata._ZTS3Iic:00000000 $
 C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s:539    .rodata._ZTS3Spi:00000000 $d
 C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s:545    .rodata._ZTV3Iic:00000000 $d
 C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s:555    .rodata._ZTV3Spi:00000000 $d
+=======
+C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s:20     .text._ZN3Iic9ReadBytesEhhPh:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s:26     .text._ZN3Iic9ReadBytesEhhPh:00000000 _ZN3Iic9ReadBytesEhhPh
+.ARM.exidx.text._ZN3Iic9ReadBytesEhhPh:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s:77     .text._ZN3Iic8WriteRegEhh:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s:83     .text._ZN3Iic8WriteRegEhh:00000000 _ZN3Iic8WriteRegEhh
+.ARM.exidx.text._ZN3Iic8WriteRegEhh:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s:134    .text._ZN3SpiC2EP19__SPI_HandleTypeDefP12GPIO_TypeDeft:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s:140    .text._ZN3SpiC2EP19__SPI_HandleTypeDefP12GPIO_TypeDeft:00000000 _ZN3SpiC2EP19__SPI_HandleTypeDefP12GPIO_TypeDeft
+C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s:189    .text._ZN3SpiC2EP19__SPI_HandleTypeDefP12GPIO_TypeDeft:00000018 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s:509    .rodata._ZTV9Interface:00000000 _ZTV9Interface
+.ARM.exidx.text._ZN3SpiC2EP19__SPI_HandleTypeDefP12GPIO_TypeDeft:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s:140    .text._ZN3SpiC2EP19__SPI_HandleTypeDefP12GPIO_TypeDeft:00000000 _ZN3SpiC1EP19__SPI_HandleTypeDefP12GPIO_TypeDeft
+C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s:199    .text._ZN3Spi7_EnableEv:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s:205    .text._ZN3Spi7_EnableEv:00000000 _ZN3Spi7_EnableEv
+.ARM.extab.text._ZN3Spi7_EnableEv:00000000 $d
+.ARM.exidx.text._ZN3Spi7_EnableEv:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s:236    .text._ZN3Spi8_DisableEv:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s:242    .text._ZN3Spi8_DisableEv:00000000 _ZN3Spi8_DisableEv
+.ARM.extab.text._ZN3Spi8_DisableEv:00000000 $d
+.ARM.exidx.text._ZN3Spi8_DisableEv:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s:273    .text._ZN3Spi9ReadBytesEhhPh:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s:279    .text._ZN3Spi9ReadBytesEhhPh:00000000 _ZN3Spi9ReadBytesEhhPh
+.ARM.exidx.text._ZN3Spi9ReadBytesEhhPh:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s:346    .text._ZN3Spi8WriteRegEhh:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s:352    .text._ZN3Spi8WriteRegEhh:00000000 _ZN3Spi8WriteRegEhh
+.ARM.exidx.text._ZN3Spi8WriteRegEhh:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s:435    .text._ZN3IicC2EP17I2C_HandleTypeDeft:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s:441    .text._ZN3IicC2EP17I2C_HandleTypeDeft:00000000 _ZN3IicC2EP17I2C_HandleTypeDeft
+C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s:476    .text._ZN3IicC2EP17I2C_HandleTypeDeft:0000000c $d
+.ARM.exidx.text._ZN3IicC2EP17I2C_HandleTypeDeft:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s:441    .text._ZN3IicC2EP17I2C_HandleTypeDeft:00000000 _ZN3IicC1EP17I2C_HandleTypeDeft
+C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s:490    .rodata._ZTS9Interface:00000000 _ZTS9Interface
+C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s:487    .rodata._ZTS9Interface:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s:497    .rodata._ZTI9Interface:00000000 _ZTI9Interface
+C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s:494    .rodata._ZTI9Interface:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s:542    .rodata._ZTS3Spi:00000000 _ZTS3Spi
+C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s:528    .rodata._ZTI3Spi:00000000 _ZTI3Spi
+C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s:536    .rodata._ZTS3Iic:00000000 _ZTS3Iic
+C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s:520    .rodata._ZTI3Iic:00000000 _ZTI3Iic
+C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s:506    .rodata._ZTV9Interface:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s:559    .rodata._ZTV3Spi:00000000 _ZTV3Spi
+C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s:549    .rodata._ZTV3Iic:00000000 _ZTV3Iic
+C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s:517    .rodata._ZTI3Iic:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s:525    .rodata._ZTI3Spi:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s:533    .rodata._ZTS3Iic:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s:539    .rodata._ZTS3Spi:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s:545    .rodata._ZTV3Iic:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s:555    .rodata._ZTV3Spi:00000000 $d
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 UNDEFINED SYMBOLS
 HAL_I2C_Mem_Read
@@ -785,7 +892,11 @@ __aeabi_unwind_cpp_pr0
 HAL_I2C_Mem_Write
 HAL_GPIO_WritePin
 __aeabi_unwind_cpp_pr1
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccT1WQSS.s 			page 15
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccwd1Ntm.s 			page 15
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 HAL_SPI_Transmit

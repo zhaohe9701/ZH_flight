@@ -156,7 +156,11 @@ C_INCLUDES =  \
 -ISys/Config \
 -ISys/Driver \
 -ISys/Type \
+<<<<<<< HEAD
 -ISys/Flight \
+=======
+-ISys/flight \
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 -IUSB_DEVICE/App \
 -IUSB_DEVICE/Target \
 -IDrivers/STM32F4xx_HAL_Driver/Inc \

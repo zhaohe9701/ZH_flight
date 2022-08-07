@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 1
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
    1              		.cpu cortex-m4
@@ -58,7 +62,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
   28:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****   *          ===================================================================
   29:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****   *           This driver manages the "Universal Serial Bus Class Definitions for Communications De
   30:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****   *           Revision 1.2 November 16, 2007" and the sub-protocol specification of "Universal Seri
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 2
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 2
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
   31:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****   *           Communications Class Subclass Specification for PSTN Devices Revision 1.2 February 9,
@@ -118,7 +126,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
   85:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****   * @}
   86:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****   */
   87:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c **** 
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 3
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 3
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
   88:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c **** 
@@ -178,7 +190,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
  142:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c **** USBD_ClassTypeDef  USBD_CDC =
  143:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c **** {
  144:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****   USBD_CDC_Init,
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 4
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 4
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  145:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****   USBD_CDC_DeInit,
@@ -238,7 +254,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
  199:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****   0x00,                                       /* iInterface */
  200:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c **** 
  201:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****   /* Header Functional Descriptor */
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 5
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 5
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  202:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****   0x05,                                       /* bLength: Endpoint Descriptor size */
@@ -298,7 +318,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
  256:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****   0x00,                                       /* bInterval */
  257:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c **** 
  258:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****   /* Endpoint IN Descriptor */
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 6
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 6
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  259:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****   0x07,                                       /* bLength: Endpoint Descriptor size */
@@ -358,7 +382,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
  313:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****   if (pdev->dev_speed == USBD_SPEED_HIGH)
  314:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****   {
  315:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****     /* Open EP IN */
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 7
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 7
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  316:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****     (void)USBD_LL_OpenEP(pdev, CDCInEpAdd, USBD_EP_TYPE_BULK,
@@ -418,7 +446,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
  370:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****                                  CDC_DATA_HS_OUT_PACKET_SIZE);
  371:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****   }
  372:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****   else
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 8
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 8
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  373:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****   {
@@ -478,7 +510,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
  427:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****   * @brief  USBD_CDC_Setup
  428:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****   *         Handle the CDC specific requests
  429:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****   * @param  pdev: instance
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 9
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 9
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  430:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****   * @param  req: usb requests
@@ -538,7 +574,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
  484:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****           else
  485:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****           {
  486:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****             USBD_CtlError(pdev, req);
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 10
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 10
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  487:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****             ret = USBD_FAIL;
@@ -598,7 +638,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
  541:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c **** 
  542:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****   if (pdev->pClassDataCmsit[pdev->classId] == NULL)
  543:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****   {
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 11
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 11
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  544:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****     return (uint8_t)USBD_FAIL;
@@ -658,7 +702,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
  598:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c **** /**
  599:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****   * @brief  USBD_CDC_EP0_RxReady
  600:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****   *         Handle EP0 Rx Ready event
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 12
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 12
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  601:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****   * @param  pdev: device instance
@@ -718,7 +766,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
   68 0028 9847     		blx	r3
   69              	.LVL3:
  616:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****                                                                      (uint8_t *)hcdc->data,
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 13
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 13
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  617:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****                                                                      (uint16_t)hcdc->CmdLength);
@@ -778,7 +830,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
  634:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****   USBD_EpDescTypeDef *pEpInDesc = USBD_GetEpDesc(USBD_CDC_CfgDesc, CDC_IN_EP);
  635:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c **** 
  636:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****   if (pEpCmdDesc != NULL)
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 14
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 14
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  637:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****   {
@@ -838,7 +894,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
  691:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****   */
  692:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c **** static uint8_t *USBD_CDC_GetOtherSpeedCfgDesc(uint16_t *length)
  693:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c **** {
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 15
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 15
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  694:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****   USBD_EpDescTypeDef *pEpCmdDesc = USBD_GetEpDesc(USBD_CDC_CfgDesc, CDC_CMD_EP);
@@ -898,7 +958,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
  125              		.cfi_endproc
  126              	.LFE143:
  128              		.section	.text.USBD_CDC_GetOtherSpeedCfgDesc,"ax",%progbits
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 16
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 16
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  129              		.align	1
@@ -958,7 +1022,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
  174              		.loc 1 696 35 is_stmt 0 view .LVU38
  175 001a 8121     		movs	r1, #129
  176 001c 3846     		mov	r0, r7
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 17
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 17
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  177              	.LVL15:
@@ -1018,7 +1086,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
  214              		.loc 1 715 1 is_stmt 0 view .LVU55
  215 0040 0048     		ldr	r0, .L15
  216              	.LVL17:
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 18
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 18
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  715:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c **** 
@@ -1078,7 +1150,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
  264              		.loc 1 633 36 is_stmt 0 view .LVU64
  265 0010 0121     		movs	r1, #1
  266 0012 3846     		mov	r0, r7
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 19
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 19
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  267              	.LVL23:
@@ -1138,7 +1214,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
  305 0036 0271     		strb	r2, [r0, #4]
  306 0038 0022     		movs	r2, #0
  307 003a 4271     		strb	r2, [r0, #5]
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 20
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 20
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  308              	.L20:
@@ -1198,7 +1278,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
  354 0004 0F4F     		ldr	r7, .L29
  355 0006 8221     		movs	r1, #130
  356 0008 3846     		mov	r0, r7
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 21
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 21
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  357              	.LVL31:
@@ -1258,7 +1342,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
  396 002e 0222     		movs	r2, #2
  397 0030 6271     		strb	r2, [r4, #5]
  398              	.L26:
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 22
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 22
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  677:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****   {
@@ -1318,7 +1406,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
  443              	.LCFI4:
  444              		.cfi_def_cfa_offset 16
  445              		.cfi_offset 3, -16
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 23
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 23
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  446              		.cfi_offset 4, -12
@@ -1378,7 +1470,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
  484 0030 0020     		movs	r0, #0
  485              	.L32:
  596:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c **** 
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 24
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 24
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  486              		.loc 1 596 1 view .LVU134
@@ -1438,7 +1534,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
  531 0010 84B3     		cbz	r4, .L38
  547:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c **** 
  532              		.loc 1 547 3 is_stmt 1 view .LVU146
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 25
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 25
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  533              	.LVL50:
@@ -1498,7 +1598,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
  571              		.loc 1 562 8 view .LVU162
  572 004a ABB1     		cbz	r3, .L39
  564:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****     }
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 26
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 26
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  573              		.loc 1 564 7 is_stmt 1 view .LVU163
@@ -1558,7 +1662,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
  614              		.loc 1 544 12 view .LVU176
  615 0076 F0E7     		b	.L36
  616              	.LVL63:
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 27
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 27
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  617              	.L39:
@@ -1618,7 +1726,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
  662              		.loc 1 439 12 is_stmt 0 view .LVU187
  663 0016 ADF80420 		strh	r2, [sp, #4]	@ movhi
  440:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c **** 
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 28
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 28
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  664              		.loc 1 440 3 is_stmt 1 view .LVU188
@@ -1678,7 +1790,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
  701              		.loc 1 464 29 discriminator 1 view .LVU205
  702 0044 D2B2     		uxtb	r2, r2
  703 0046 12E0     		b	.L48
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 29
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 29
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  704              	.L59:
@@ -1738,7 +1854,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
  744              		.loc 1 466 11 is_stmt 1 discriminator 4 view .LVU219
  466:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****         }
  745              		.loc 1 466 17 is_stmt 0 discriminator 4 view .LVU220
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 30
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 30
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  746 0072 3946     		mov	r1, r7
@@ -1798,7 +1918,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
  789 00a0 30       		.byte	(.L49-.L51)/2
  790 00a1 30       		.byte	(.L49-.L51)/2
  791 00a2 30       		.byte	(.L49-.L51)/2
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 31
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 31
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  792 00a3 30       		.byte	(.L49-.L51)/2
@@ -1858,7 +1982,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
  834 00d0 032B     		cmp	r3, #3
  835 00d2 04D0     		beq	.L61
  498:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****             ret = USBD_FAIL;
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 32
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 32
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  836              		.loc 1 498 13 is_stmt 1 view .LVU244
@@ -1918,7 +2046,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
  877              		.loc 1 516 11 view .LVU257
  517:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****       }
  878              		.loc 1 517 11 view .LVU258
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 33
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 33
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  516:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****           break;
@@ -1978,7 +2110,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
  390:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****   UNUSED(cfgidx);
  926              		.loc 1 390 1 is_stmt 0 view .LVU268
  927 0000 38B5     		push	{r3, r4, r5, lr}
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 34
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 34
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  928              	.LCFI10:
@@ -2038,7 +2174,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
  966              		.loc 1 412 45 is_stmt 0 view .LVU284
  967 0026 A4F84E50 		strh	r5, [r4, #78]	@ movhi
  415:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****   {
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 35
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 35
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  968              		.loc 1 415 3 is_stmt 1 view .LVU285
@@ -2098,7 +2238,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
  1005              		.loc 1 424 1 is_stmt 0 view .LVU302
  1006 0060 0020     		movs	r0, #0
  1007 0062 38BD     		pop	{r3, r4, r5, pc}
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 36
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 36
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  424:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c **** 
@@ -2158,7 +2302,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
  1052 0018 FFF7FEFF 		bl	memset
  1053              	.LVL107:
  303:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****   pdev->pClassData = pdev->pClassDataCmsit[pdev->classId];
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 37
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 37
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  1054              		.loc 1 303 3 is_stmt 1 view .LVU315
@@ -2218,7 +2366,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
  1092              		.loc 1 328 5 is_stmt 1 view .LVU331
  328:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****   }
  1093              		.loc 1 328 47 is_stmt 0 view .LVU332
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 38
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 38
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  1094 0054 1023     		movs	r3, #16
@@ -2278,7 +2430,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
  361:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****   {
  1132              		.loc 1 361 11 is_stmt 0 view .LVU349
  1133 008a D5F80422 		ldr	r2, [r5, #516]
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 39
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 39
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  361:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****   {
@@ -2338,7 +2494,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
  1174 00bc FFF7FEFF 		bl	USBD_LL_OpenEP
  1175              	.LVL116:
  336:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c **** 
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 40
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 40
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  1176              		.loc 1 336 5 is_stmt 1 view .LVU364
@@ -2398,7 +2558,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
  1219              		.align	1
  1220              		.global	USBD_CDC_RegisterInterface
  1221              		.syntax unified
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 41
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 41
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  1222              		.thumb
@@ -2458,7 +2622,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
  1257              	.LFE144:
  1259              		.section	.text.USBD_CDC_SetTxBuffer,"ax",%progbits
  1260              		.align	1
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 42
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 42
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  1261              		.global	USBD_CDC_SetTxBuffer
@@ -2518,7 +2686,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
  1294              		.loc 1 769 10 view .LVU400
  1295 0016 7047     		bx	lr
  1296              	.LVL129:
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 43
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 43
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  1297              	.L79:
@@ -2578,7 +2750,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
  788:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c **** 
  789:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****   return (uint8_t)USBD_OK;
  1334              		.loc 1 789 3 is_stmt 1 view .LVU411
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 44
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 44
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  1335              		.loc 1 789 10 is_stmt 0 view .LVU412
@@ -2638,7 +2814,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
  802:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c **** 
  803:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c **** #ifdef USE_USBD_COMPOSITE
  804:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****   /* Get the Endpoints addresses allocated for this class instance */
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 45
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 45
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  805:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****   CDCInEpAdd  = USBD_CoreGetEPAdd(pdev, USBD_EP_IN, USBD_EP_TYPE_BULK);
@@ -2698,7 +2878,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
  821:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c **** 
  1403              		.loc 1 821 5 is_stmt 1 view .LVU434
  821:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c **** 
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 46
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 46
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  1404              		.loc 1 821 11 is_stmt 0 view .LVU435
@@ -2758,7 +2942,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
  837:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****   USBD_CDC_HandleTypeDef *hcdc = (USBD_CDC_HandleTypeDef *)pdev->pClassDataCmsit[pdev->classId];
  1446              		.loc 1 837 3 is_stmt 1 view .LVU443
  1447              		.loc 1 837 86 is_stmt 0 view .LVU444
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 47
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 47
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  1448 0002 D0F8D432 		ldr	r3, [r0, #724]
@@ -2818,7 +3006,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
  858:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****                                  CDC_DATA_FS_OUT_PACKET_SIZE);
  1476              		.loc 1 858 5 is_stmt 1 view .LVU455
  858:Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c ****                                  CDC_DATA_FS_OUT_PACKET_SIZE);
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 48
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 48
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  1477              		.loc 1 858 11 is_stmt 0 view .LVU456
@@ -2878,7 +3070,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
  1524      0010
  1525 002c 09040100 		.ascii	"\011\004\001\000\002\012\000\000\000\007\005\001\002"
  1525      020A0000 
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 49
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 49
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  1525      00070501 
@@ -2908,11 +3104,16 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 1
  1546              		.file 12 "Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h"
  1547              		.file 13 "USB_DEVICE/Target/usbd_conf.h"
  1548              		.file 14 "<built-in>"
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 50
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 50
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 usbd_cdc.c
+<<<<<<< HEAD
 C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s:20     .text.USBD_CDC_EP0_RxReady:00000000 $t
 C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s:25     .text.USBD_CDC_EP0_RxReady:00000000 USBD_CDC_EP0_RxReady
 C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s:97     .text.USBD_CDC_GetDeviceQualifierDescriptor:00000000 $t
@@ -2955,6 +3156,50 @@ C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s:1517   .data.USBD_CDC_CfgDesc:0000
 C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s:1521   .data.USBD_CDC_CfgDesc:00000000 USBD_CDC_CfgDesc
 C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s:1528   .data.USBD_CDC_DeviceQualifierDesc:00000000 $d
 C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s:1532   .data.USBD_CDC_DeviceQualifierDesc:00000000 USBD_CDC_DeviceQualifierDesc
+=======
+C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s:20     .text.USBD_CDC_EP0_RxReady:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s:25     .text.USBD_CDC_EP0_RxReady:00000000 USBD_CDC_EP0_RxReady
+C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s:97     .text.USBD_CDC_GetDeviceQualifierDescriptor:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s:103    .text.USBD_CDC_GetDeviceQualifierDescriptor:00000000 USBD_CDC_GetDeviceQualifierDescriptor
+C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s:124    .text.USBD_CDC_GetDeviceQualifierDescriptor:00000008 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s:129    .text.USBD_CDC_GetOtherSpeedCfgDesc:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s:134    .text.USBD_CDC_GetOtherSpeedCfgDesc:00000000 USBD_CDC_GetOtherSpeedCfgDesc
+C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s:224    .text.USBD_CDC_GetOtherSpeedCfgDesc:00000044 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s:229    .text.USBD_CDC_GetFSCfgDesc:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s:234    .text.USBD_CDC_GetFSCfgDesc:00000000 USBD_CDC_GetFSCfgDesc
+C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s:324    .text.USBD_CDC_GetFSCfgDesc:00000044 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s:329    .text.USBD_CDC_GetHSCfgDesc:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s:334    .text.USBD_CDC_GetHSCfgDesc:00000000 USBD_CDC_GetHSCfgDesc
+C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s:424    .text.USBD_CDC_GetHSCfgDesc:00000044 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s:429    .text.USBD_CDC_DataOut:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s:434    .text.USBD_CDC_DataOut:00000000 USBD_CDC_DataOut
+C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s:499    .text.USBD_CDC_DataIn:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s:504    .text.USBD_CDC_DataIn:00000000 USBD_CDC_DataIn
+C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s:625    .text.USBD_CDC_Setup:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s:630    .text.USBD_CDC_Setup:00000000 USBD_CDC_Setup
+C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s:787    .text.USBD_CDC_Setup:0000009e $d
+C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s:799    .text.USBD_CDC_Setup:000000aa $t
+C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s:914    .text.USBD_CDC_DeInit:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s:919    .text.USBD_CDC_DeInit:00000000 USBD_CDC_DeInit
+C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s:1013   .text.USBD_CDC_Init:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s:1018   .text.USBD_CDC_Init:00000000 USBD_CDC_Init
+C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s:1219   .text.USBD_CDC_RegisterInterface:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s:1225   .text.USBD_CDC_RegisterInterface:00000000 USBD_CDC_RegisterInterface
+C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s:1260   .text.USBD_CDC_SetTxBuffer:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s:1266   .text.USBD_CDC_SetTxBuffer:00000000 USBD_CDC_SetTxBuffer
+C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s:1307   .text.USBD_CDC_SetRxBuffer:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s:1313   .text.USBD_CDC_SetRxBuffer:00000000 USBD_CDC_SetRxBuffer
+C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s:1351   .text.USBD_CDC_TransmitPacket:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s:1357   .text.USBD_CDC_TransmitPacket:00000000 USBD_CDC_TransmitPacket
+C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s:1427   .text.USBD_CDC_ReceivePacket:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s:1433   .text.USBD_CDC_ReceivePacket:00000000 USBD_CDC_ReceivePacket
+C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s:1501   .data.USBD_CDC:00000000 USBD_CDC
+C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s:1498   .data.USBD_CDC:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s:1517   .data.USBD_CDC_CfgDesc:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s:1521   .data.USBD_CDC_CfgDesc:00000000 USBD_CDC_CfgDesc
+C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s:1528   .data.USBD_CDC_DeviceQualifierDesc:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s:1532   .data.USBD_CDC_DeviceQualifierDesc:00000000 USBD_CDC_DeviceQualifierDesc
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 UNDEFINED SYMBOLS
 USBD_GetEpDesc
@@ -2968,7 +3213,11 @@ USBD_static_free
 USBD_static_malloc
 memset
 USBD_LL_OpenEP
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccQdDVSF.s 			page 51
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccmaQz9b.s 			page 51
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 USBD_LL_PrepareReceive

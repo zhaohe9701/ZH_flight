@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 1
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
    1              		.cpu cortex-m4
@@ -58,7 +62,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
   28:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****       The SPI HAL driver can be used as follows:
   29:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
   30:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****       (#) Declare a SPI_HandleTypeDef handle structure, for example:
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 2
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 2
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
   31:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****           SPI_HandleTypeDef  hspi;
@@ -118,7 +126,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
   85:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****             (++) AbortCpltCallback     : SPI Abort callback
   86:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****             (++) MspInitCallback       : SPI Msp Init callback
   87:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****             (++) MspDeInitCallback     : SPI Msp DeInit callback
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 3
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 3
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
   88:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****           This function takes as parameters the HAL peripheral handle, the Callback ID
@@ -178,7 +190,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  142:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****        +-------------------------------------------------------------------------------------------
  143:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****        |         |                | 2Lines Fullduplex   |     2Lines RxOnly    |         1Line     
  144:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****        | Process | Transfer mode  |---------------------|----------------------|-------------------
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 4
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 4
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  145:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****        |         |                |  Master  |  Slave   |  Master   |  Slave   |  Master   |  Slave
@@ -238,7 +254,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** /* Includes ------------------------------------------------------------------*/
  200:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** #include "stm32f4xx_hal.h"
  201:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 5
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 5
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  202:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** /** @addtogroup STM32F4xx_HAL_Driver
@@ -298,7 +318,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  256:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** static void SPI_AbortTx_ISR(SPI_HandleTypeDef *hspi);
  257:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** static void SPI_CloseRxTx_ISR(SPI_HandleTypeDef *hspi);
  258:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** static void SPI_CloseRx_ISR(SPI_HandleTypeDef *hspi);
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 6
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 6
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  259:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** static void SPI_CloseTx_ISR(SPI_HandleTypeDef *hspi);
@@ -358,7 +382,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  313:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   /* Check the SPI handle allocation */
  314:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   if (hspi == NULL)
  315:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   {
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 7
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 7
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  316:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     return HAL_ERROR;
@@ -418,7 +446,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  370:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     hspi->TxRxCpltCallback     = HAL_SPI_TxRxCpltCallback;     /* Legacy weak TxRxCpltCallback     
  371:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     hspi->TxHalfCpltCallback   = HAL_SPI_TxHalfCpltCallback;   /* Legacy weak TxHalfCpltCallback   
  372:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     hspi->RxHalfCpltCallback   = HAL_SPI_RxHalfCpltCallback;   /* Legacy weak RxHalfCpltCallback   
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 8
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 8
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  373:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     hspi->TxRxHalfCpltCallback = HAL_SPI_TxRxHalfCpltCallback; /* Legacy weak TxRxHalfCpltCallback 
@@ -478,7 +510,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  427:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
  428:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   return HAL_OK;
  429:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** }
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 9
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 9
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  430:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
@@ -538,7 +574,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  484:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   UNUSED(hspi);
  485:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
  486:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   /* NOTE : This function should not be modified, when the callback is needed,
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 10
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 10
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  487:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****             the HAL_SPI_MspInit should be implemented in the user file
@@ -598,7 +638,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  541:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****         hspi->RxCpltCallback = pCallback;
  542:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****         break;
  543:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 11
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 11
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  544:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****       case HAL_SPI_TX_RX_COMPLETE_CB_ID :
@@ -658,7 +702,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  598:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****         /* Update the error code */
  599:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****         SET_BIT(hspi->ErrorCode, HAL_SPI_ERROR_INVALID_CALLBACK);
  600:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 12
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 12
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  601:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****         /* Return error status */
@@ -718,7 +766,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  655:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****       case HAL_SPI_RX_HALF_COMPLETE_CB_ID :
  656:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****         hspi->RxHalfCpltCallback = HAL_SPI_RxHalfCpltCallback;     /* Legacy weak RxHalfCpltCallbac
  657:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****         break;
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 13
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 13
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  658:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
@@ -778,7 +830,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  712:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     SET_BIT(hspi->ErrorCode, HAL_SPI_ERROR_INVALID_CALLBACK);
  713:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
  714:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     /* Return error status */
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 14
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 14
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  715:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     status =  HAL_ERROR;
@@ -838,7 +894,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  769:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t
  770:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** {
  771:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   uint32_t tickstart;
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 15
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 15
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  772:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   HAL_StatusTypeDef errorcode = HAL_OK;
@@ -898,7 +958,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  826:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
  827:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   /* Check if the SPI is already enabled */
  828:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   if ((hspi->Instance->CR1 & SPI_CR1_SPE) != SPI_CR1_SPE)
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 16
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 16
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  829:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   {
@@ -958,7 +1022,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  883:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****       {
  884:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****         /* Timeout management */
  885:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****         if ((((HAL_GetTick() - tickstart) >=  Timeout) && (Timeout != HAL_MAX_DELAY)) || (Timeout =
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 17
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 17
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  886:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****         {
@@ -1018,7 +1086,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  940:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   HAL_StatusTypeDef errorcode = HAL_OK;
  941:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
  942:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   if ((hspi->Init.Mode == SPI_MODE_MASTER) && (hspi->Init.Direction == SPI_DIRECTION_2LINES))
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 18
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 18
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  943:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   {
@@ -1078,7 +1150,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  997:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   }
  998:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
  999:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   /* Check if the SPI is already enabled */
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 19
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 19
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 1000:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   if ((hspi->Instance->CR1 & SPI_CR1_SPE) != SPI_CR1_SPE)
@@ -1138,7 +1214,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 1054:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
 1055:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** #if (USE_SPI_CRC != 0U)
 1056:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   /* Handle the CRC Transmission */
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 20
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 20
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 1057:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   if (hspi->Init.CRCCalculation == SPI_CRCCALCULATION_ENABLE)
@@ -1198,7 +1278,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 1111:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   if (hspi->ErrorCode != HAL_SPI_ERROR_NONE)
 1112:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   {
 1113:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     errorcode = HAL_ERROR;
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 21
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 21
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 1114:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   }
@@ -1258,7 +1342,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 1168:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   if ((pTxData == NULL) || (pRxData == NULL) || (Size == 0U))
 1169:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   {
 1170:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     errorcode = HAL_ERROR;
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 22
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 22
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 1171:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     goto error;
@@ -1318,7 +1406,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 1225:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****         /* Next Data is a reception (Rx). Tx not allowed */
 1226:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****         txallowed = 0U;
 1227:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 23
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 23
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 1228:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** #if (USE_SPI_CRC != 0U)
@@ -1378,7 +1470,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 1282:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****       /* Wait until RXNE flag is reset */
 1283:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****       if ((__HAL_SPI_GET_FLAG(hspi, SPI_FLAG_RXNE)) && (hspi->RxXferCount > 0U))
 1284:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****       {
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 24
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 24
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 1285:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****         (*(uint8_t *)hspi->pRxBuffPtr) = hspi->Instance->DR;
@@ -1438,7 +1534,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 1339:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     __HAL_SPI_CLEAR_OVRFLAG(hspi);
 1340:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   }
 1341:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 25
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 25
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 1342:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** error :
@@ -1498,7 +1598,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 1396:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   else
 1397:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   {
 1398:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     hspi->TxISR = SPI_TxISR_8BIT;
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 26
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 26
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 1399:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   }
@@ -1558,7 +1662,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 1453:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   __HAL_LOCK(hspi);
 1454:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
 1455:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   if (hspi->State != HAL_SPI_STATE_READY)
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 27
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 27
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 1456:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   {
@@ -1618,7 +1726,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 1510:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****             to avoid the risk of SPI interrupt handle execution before current
 1511:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****             process unlock */
 1512:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 28
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 28
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 1513:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   /* Check if the SPI is already enabled */
@@ -1678,7 +1790,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 1567:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     hspi->State = HAL_SPI_STATE_BUSY_TX_RX;
 1568:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   }
 1569:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 29
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 29
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 1570:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   /* Set the transaction information */
@@ -1738,7 +1854,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 1624:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** {
 1625:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   HAL_StatusTypeDef errorcode = HAL_OK;
 1626:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 30
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 30
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 1627:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   /* Check tx dma handle */
@@ -1798,7 +1918,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 1681:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   /* Set the SPI TxDMA transfer complete callback */
 1682:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   hspi->hdmatx->XferCpltCallback = SPI_DMATransmitCplt;
 1683:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 31
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 31
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 1684:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   /* Set the DMA error callback */
@@ -1858,7 +1982,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 1738:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   if ((hspi->Init.Direction == SPI_DIRECTION_2LINES) && (hspi->Init.Mode == SPI_MODE_MASTER))
 1739:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   {
 1740:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     hspi->State = HAL_SPI_STATE_BUSY_RX;
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 32
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 32
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 1741:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
@@ -1918,7 +2046,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 1795:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
 1796:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   /* Set the SPI Rx DMA transfer complete callback */
 1797:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   hspi->hdmarx->XferCpltCallback = SPI_DMAReceiveCplt;
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 33
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 33
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 1798:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
@@ -1978,7 +2110,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 1852:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
 1853:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   /* Check rx & tx dma handles */
 1854:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   assert_param(IS_SPI_DMA_HANDLE(hspi->hdmarx));
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 34
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 34
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 1855:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   assert_param(IS_SPI_DMA_HANDLE(hspi->hdmatx));
@@ -2038,7 +2174,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 1909:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   {
 1910:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     /* Set the SPI Rx DMA Half transfer complete callback */
 1911:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     hspi->hdmarx->XferHalfCpltCallback = SPI_DMAHalfReceiveCplt;
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 35
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 35
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 1912:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     hspi->hdmarx->XferCpltCallback     = SPI_DMAReceiveCplt;
@@ -2098,7 +2238,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 1966:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   }
 1967:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   /* Enable the SPI Error Interrupt Bit */
 1968:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   __HAL_SPI_ENABLE_IT(hspi, (SPI_IT_ERR));
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 36
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 36
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 1969:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
@@ -2158,7 +2302,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 2023:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
 2024:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   if (HAL_IS_BIT_SET(hspi->Instance->CR2, SPI_CR2_RXNEIE))
 2025:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   {
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 37
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 37
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 2026:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     hspi->RxISR = SPI_AbortRx_ISR;
@@ -2218,7 +2366,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 2080:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****       will lead to call HAL_SPI_AbortCpltCallback() at end of DMA abort procedure */
 2081:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****       hspi->hdmarx->XferAbortCallback = NULL;
 2082:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 38
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 38
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 2083:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****       /* Abort DMA Rx Handle linked to SPI Peripheral */
@@ -2278,7 +2430,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 2137:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** HAL_StatusTypeDef HAL_SPI_Abort_IT(SPI_HandleTypeDef *hspi)
 2138:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** {
 2139:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   HAL_StatusTypeDef errorcode;
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 39
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 39
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 2140:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   uint32_t abortcplt ;
@@ -2338,7 +2494,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 2194:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****        Otherwise, set it to NULL */
 2195:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     if (HAL_IS_BIT_SET(hspi->Instance->CR2, SPI_CR2_TXDMAEN))
 2196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     {
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 40
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 40
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 2197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****       hspi->hdmatx->XferAbortCallback = SPI_DMATxAbortCallback;
@@ -2398,7 +2558,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 2251:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****         abortcplt = 0U;
 2252:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****       }
 2253:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     }
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 41
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 41
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 2254:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   }
@@ -2458,7 +2622,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 2308:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
 2309:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   return HAL_OK;
 2310:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** }
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 42
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 42
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 2311:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
@@ -2518,7 +2686,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 2365:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
 2366:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   /* Disable the SPI DMA Tx & Rx requests */
 2367:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   CLEAR_BIT(hspi->Instance->CR2, SPI_CR2_TXDMAEN | SPI_CR2_RXDMAEN);
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 43
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 43
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 2368:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   hspi->State = HAL_SPI_STATE_READY;
@@ -2578,7 +2750,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 2422:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     }
 2423:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
 2424:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     /* SPI Frame error interrupt occurred ------------------------------------*/
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 44
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 44
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 2425:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     if (SPI_CHECK_FLAG(itflag, SPI_FLAG_FRE) != RESET)
@@ -2638,7 +2814,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 2479:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** /**
 2480:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   * @brief  Tx Transfer completed callback.
 2481:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   * @param  hspi pointer to a SPI_HandleTypeDef structure that contains
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 45
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 45
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 2482:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   *               the configuration information for SPI module.
@@ -2698,7 +2878,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 2536:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   UNUSED(hspi);
 2537:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
 2538:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   /* NOTE : This function should not be modified, when the callback is needed,
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 46
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 46
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 2539:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****             the HAL_SPI_TxHalfCpltCallback should be implemented in the user file
@@ -2758,7 +2942,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 2593:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
 2594:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** /**
 2595:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   * @brief  SPI Abort Complete callback.
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 47
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 47
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 2596:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   * @param  hspi SPI handle.
@@ -2818,7 +3006,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 2650:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** }
 2651:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
 2652:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** /**
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 48
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 48
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 2653:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   * @}
@@ -2878,7 +3070,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 2707:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****       hspi->ErrorCallback(hspi);
 2708:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** #else
 2709:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****       HAL_SPI_ErrorCallback(hspi);
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 49
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 49
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 2710:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** #endif /* USE_HAL_SPI_REGISTER_CALLBACKS */
@@ -2938,7 +3134,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 2764:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     {
 2765:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****       /* Disable Rx/Tx DMA Request (done by default to handle the case master rx direction 2 lines)
 2766:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****       CLEAR_BIT(hspi->Instance->CR2, SPI_CR2_TXDMAEN | SPI_CR2_RXDMAEN);
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 50
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 50
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 2767:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     }
@@ -2998,7 +3198,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 2821:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** #if (USE_SPI_CRC != 0U)
 2822:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   __IO uint32_t tmpreg = 0U;
 2823:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** #endif /* USE_SPI_CRC */
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 51
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 51
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 2824:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
@@ -3058,7 +3262,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 2878:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****       HAL_SPI_ErrorCallback(hspi);
 2879:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** #endif /* USE_HAL_SPI_REGISTER_CALLBACKS */
 2880:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****       return;
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 52
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 52
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 2881:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     }
@@ -3118,7 +3326,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 2935:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   SPI_HandleTypeDef *hspi = (SPI_HandleTypeDef *)(((DMA_HandleTypeDef *)hdma)->Parent); /* Derogati
 2936:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
 2937:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   /* Call user TxRx half complete callback */
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 53
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 53
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 2938:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** #if (USE_HAL_SPI_REGISTER_CALLBACKS == 1U)
@@ -3178,7 +3390,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 2992:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   *         Abort still ongoing for Rx DMA Handle.
 2993:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   * @param  hdma DMA handle.
 2994:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   * @retval None
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 54
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 54
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 2995:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   */
@@ -3238,7 +3454,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 3049:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   HAL_SPI_AbortCpltCallback(hspi);
 3050:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** #endif /* USE_HAL_SPI_REGISTER_CALLBACKS */
 3051:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** }
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 55
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 55
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 3052:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
@@ -3298,7 +3518,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 3106:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   /* Call user Abort complete callback */
 3107:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** #if (USE_HAL_SPI_REGISTER_CALLBACKS == 1U)
 3108:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   hspi->AbortCpltCallback(hspi);
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 56
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 56
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 3109:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** #else
@@ -3358,7 +3582,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 3163:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   tmpreg8 = *ptmpreg8;
 3164:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   /* To avoid GCC warning */
 3165:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   UNUSED(tmpreg8);
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 57
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 57
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 3166:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
@@ -3418,7 +3646,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 3220:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** {
 3221:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   /* Receive data in 16 Bit mode */
 3222:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   *((uint16_t *)hspi->pRxBuffPtr) = (uint16_t)(hspi->Instance->DR);
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 58
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 58
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 3223:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   hspi->pRxBuffPtr += sizeof(uint16_t);
@@ -3478,7 +3710,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 3277:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   /* Transmit data in 16 Bit mode */
 3278:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   hspi->Instance->DR = *((uint16_t *)hspi->pTxBuffPtr);
 3279:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   hspi->pTxBuffPtr += sizeof(uint16_t);
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 59
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 59
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 3280:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   hspi->TxXferCount--;
@@ -3538,7 +3774,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 3334:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   */
 3335:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** static void SPI_RxISR_8BIT(struct __SPI_HandleTypeDef *hspi)
 3336:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** {
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 60
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 60
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 3337:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   *hspi->pRxBuffPtr = (*(__IO uint8_t *)&hspi->Instance->DR);
@@ -3598,7 +3838,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 3391:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** static void SPI_RxISR_16BIT(struct __SPI_HandleTypeDef *hspi)
 3392:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** {
 3393:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   *((uint16_t *)hspi->pRxBuffPtr) = (uint16_t)(hspi->Instance->DR);
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 61
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 61
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 3394:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   hspi->pRxBuffPtr += sizeof(uint16_t);
@@ -3658,7 +3902,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 3448:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   */
 3449:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** static void SPI_TxISR_16BIT(struct __SPI_HandleTypeDef *hspi)
 3450:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** {
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 62
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 62
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 3451:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   /* Transmit data in 16 Bit mode */
@@ -3718,7 +3966,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 3505:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
 3506:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****         if ((hspi->Init.Mode == SPI_MODE_MASTER) && ((hspi->Init.Direction == SPI_DIRECTION_1LINE)
 3507:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****                                                      || (hspi->Init.Direction == SPI_DIRECTION_2LIN
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 63
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 63
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 3508:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****         {
@@ -3778,7 +4030,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 3562:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****       {
 3563:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****         SET_BIT(hspi->ErrorCode, HAL_SPI_ERROR_FLAG);
 3564:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****         return HAL_TIMEOUT;
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 64
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 64
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 3565:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****       }
@@ -3838,7 +4094,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 3619:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****       if (count == 0U)
 3620:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****       {
 3621:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****         break;
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 65
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 65
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 3622:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****       }
@@ -3898,7 +4158,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 3676:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     __HAL_SPI_CLEAR_CRCERRFLAG(hspi);
 3677:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     /* Call user error callback */
 3678:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** #if (USE_HAL_SPI_REGISTER_CALLBACKS == 1U)
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 66
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 66
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 3679:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     hspi->ErrorCallback(hspi);
@@ -3958,7 +4222,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 3733:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   /* Disable RXNE and ERR interrupt */
 3734:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   __HAL_SPI_DISABLE_IT(hspi, (SPI_IT_RXNE | SPI_IT_ERR));
 3735:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 67
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 67
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 3736:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   /* Check the end of the transaction */
@@ -4018,7 +4286,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 3790:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   * @param  hspi pointer to a SPI_HandleTypeDef structure that contains
 3791:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   *               the configuration information for SPI module.
 3792:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   * @retval None
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 68
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 68
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 3793:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   */
@@ -4078,7 +4350,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 3847:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** }
 3848:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
 3849:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** /**
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 69
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 69
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 3850:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   * @brief  Handle abort a Rx transaction.
@@ -4138,7 +4414,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
   64 0020 013B     		subs	r3, r3, #1
   65 0022 0093     		str	r3, [sp]
 3869:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   } while ((hspi->Instance->SR & SPI_FLAG_TXE) == RESET);
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 70
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 70
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
   66              		.loc 1 3869 11 is_stmt 1 view .LVU14
@@ -4198,7 +4478,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  104              		.loc 1 3883 1 view .LVU28
  105 005a 02B0     		add	sp, sp, #8
  106              	.LCFI1:
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 71
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 71
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  107              		.cfi_def_cfa_offset 0
@@ -4258,7 +4542,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  146              		.loc 1 3900 1 view .LVU34
  147 001a 7047     		bx	lr
  148              		.cfi_endproc
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 72
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 72
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  149              	.LFE184:
@@ -4318,7 +4606,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 3488:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
  196              		.loc 1 3488 3 is_stmt 1 view .LVU44
 3488:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 73
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 73
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  197              		.loc 1 3488 19 is_stmt 0 view .LVU45
@@ -4378,7 +4670,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  236 004e A0EB0A00 		sub	r0, r0, r10
 3497:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****       {
  237              		.loc 1 3497 10 view .LVU61
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 74
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 74
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  238 0052 4845     		cmp	r0, r9
@@ -4438,7 +4734,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 3516:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****         }
  279              		.loc 1 3516 11 is_stmt 1 discriminator 1 view .LVU75
 3519:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 75
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 75
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  280              		.loc 1 3519 9 discriminator 1 view .LVU76
@@ -4498,7 +4798,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  321 00c4 DFE7     		b	.L17
  322              	.L22:
 3535:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** }
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 76
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 76
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  323              		.loc 1 3535 10 is_stmt 0 view .LVU90
@@ -4558,7 +4862,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  372 0010 400D     		lsrs	r0, r0, #21
 3599:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   /* Erratasheet: BSY bit may stay high at the end of a data transfer in Slave mode */
  373              		.loc 1 3599 57 view .LVU98
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 77
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 77
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  374 0012 4FF47A73 		mov	r3, #1000
@@ -4618,7 +4926,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  412              	.LVL14:
 3604:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     {
  413              		.loc 1 3604 9 view .LVU115
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 78
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 78
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  414 0042 8021     		movs	r1, #128
@@ -4678,7 +4990,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  461              		.loc 1 3547 1 is_stmt 1 view -0
  462              		.cfi_startproc
  463              		@ args = 0, pretend = 0, frame = 0
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 79
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 79
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  464              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -4738,7 +5054,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  505 0028 FFF7FEFF 		bl	SPI_WaitFlagStateUntilTimeout
  506              	.LVL24:
 3561:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****       {
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 80
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 80
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  507              		.loc 1 3561 10 view .LVU138
@@ -4798,7 +5118,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 3572:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****         return HAL_TIMEOUT;
  549              		.loc 1 3572 9 is_stmt 1 view .LVU151
  550 0062 636D     		ldr	r3, [r4, #84]
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 81
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 81
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  551 0064 43F02003 		orr	r3, r3, #32
@@ -4858,7 +5182,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  596              		.weak	HAL_SPI_MspInit
  597              		.syntax unified
  598              		.thumb
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 82
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 82
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  599              		.thumb_func
@@ -4918,7 +5246,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  644              		.loc 1 324 3 view .LVU173
  325:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   assert_param(IS_SPI_FIRST_BIT(hspi->Init.FirstBit));
  645              		.loc 1 325 3 view .LVU174
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 83
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 83
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  326:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   assert_param(IS_SPI_TIMODE(hspi->Init.TIMode));
@@ -4978,7 +5310,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  680              		.loc 1 361 3 is_stmt 1 view .LVU194
  361:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   {
  681              		.loc 1 361 11 is_stmt 0 view .LVU195
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 84
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 84
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  682 0024 94F85130 		ldrb	r3, [r4, #81]	@ zero_extendqisi2
@@ -5038,7 +5374,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  730 008e 02F01002 		and	r2, r2, #16
  731 0092 2168     		ldr	r1, [r4]
  732 0094 1343     		orrs	r3, r3, r2
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 85
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 85
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  733 0096 4B60     		str	r3, [r1, #4]
@@ -5098,7 +5438,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  774              	.LFE130:
  776              		.section	.text.HAL_SPI_MspDeInit,"ax",%progbits
  777              		.align	1
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 86
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 86
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  778              		.weak	HAL_SPI_MspDeInit
@@ -5158,7 +5502,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  825 0008 80F85130 		strb	r3, [r0, #81]
  451:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
  826              		.loc 1 451 3 is_stmt 1 view .LVU225
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 87
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 87
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  827 000c 0268     		ldr	r2, [r0]
@@ -5218,7 +5566,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  871              	.LFB134:
  770:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   uint32_t tickstart;
  872              		.loc 1 770 1 is_stmt 1 view -0
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 88
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 88
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  873              		.cfi_startproc
@@ -5278,7 +5630,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  914              		.loc 1 782 15 discriminator 2 view .LVU251
  915 0022 0746     		mov	r7, r0
  916              	.LVL50:
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 89
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 89
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  783:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
@@ -5338,7 +5694,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  806:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   hspi->RxXferCount = 0U;
  952              		.loc 1 806 3 is_stmt 1 view .LVU271
  806:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   hspi->RxXferCount = 0U;
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 90
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 90
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  953              		.loc 1 806 21 is_stmt 0 view .LVU272
@@ -5398,7 +5758,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  867:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     {
  990              		.loc 1 867 5 is_stmt 1 view .LVU290
  867:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     {
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 91
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 91
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  991              		.loc 1 867 20 is_stmt 0 view .LVU291
@@ -5458,7 +5822,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  1031 00b4 43F48043 		orr	r3, r3, #16384
  1032 00b8 1360     		str	r3, [r2]
  1033 00ba D5E7     		b	.L67
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 92
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 92
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  1034              	.L95:
@@ -5518,7 +5886,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  1072              	.LVL52:
  856:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****         {
  1073              		.loc 1 856 30 view .LVU322
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 93
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 93
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  1074 00e4 C01B     		subs	r0, r0, r7
@@ -5578,7 +5950,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  1112              		.loc 1 851 9 is_stmt 1 view .LVU338
  851:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****       }
  1113              		.loc 1 851 13 is_stmt 0 view .LVU339
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 94
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 94
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  1114 0112 E38E     		ldrh	r3, [r4, #54]
@@ -5638,7 +6014,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  1153              		.loc 1 878 56 is_stmt 0 view .LVU354
  1154 0142 226B     		ldr	r2, [r4, #48]
  878:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****         hspi->pTxBuffPtr += sizeof(uint8_t);
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 95
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 95
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  1155              		.loc 1 878 51 view .LVU355
@@ -5698,7 +6078,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  1194              	.LBB2:
  910:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   }
  1195              		.loc 1 910 5 view .LVU371
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 96
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 96
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  1196 0178 0193     		str	r3, [sp, #4]
@@ -5758,7 +6142,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  923:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
  1235              		.loc 1 923 1 is_stmt 0 view .LVU387
  1236 019c 3046     		mov	r0, r6
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 97
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 97
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  1237 019e 03B0     		add	sp, sp, #12
@@ -5818,7 +6206,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  1288              		.cfi_offset 6, -20
  1289              		.cfi_offset 7, -16
  1290              		.cfi_offset 8, -12
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 98
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 98
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  1291              		.cfi_offset 9, -8
@@ -5878,7 +6270,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  1328              		.loc 1 1157 23 is_stmt 0 discriminator 2 view .LVU409
  1329 0026 94F85130 		ldrb	r3, [r4, #81]	@ zero_extendqisi2
  1330 002a DBB2     		uxtb	r3, r3
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 99
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 99
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  1331              	.LVL65:
@@ -5938,7 +6334,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  1369 0062 DBB2     		uxtb	r3, r3
 1175:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   {
  1370              		.loc 1 1175 6 view .LVU426
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 100
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 100
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  1371 0064 042B     		cmp	r3, #4
@@ -5998,7 +6398,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  1405 0084 6364     		str	r3, [r4, #68]
 1202:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   {
  1406              		.loc 1 1202 3 is_stmt 1 view .LVU447
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 101
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 101
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 1202:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   {
@@ -6058,7 +6462,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  1444              		.loc 1 1259 7 is_stmt 1 view .LVU464
 1259:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****       hspi->TxXferCount--;
  1445              		.loc 1 1259 24 is_stmt 0 view .LVU465
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 102
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 102
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  1446 00b0 236B     		ldr	r3, [r4, #48]
@@ -6118,7 +6526,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  1484              		.loc 1 1214 24 is_stmt 0 view .LVU481
  1485 00d4 236B     		ldr	r3, [r4, #48]
  1486 00d6 0233     		adds	r3, r3, #2
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 103
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 103
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  1487 00d8 2363     		str	r3, [r4, #48]
@@ -6178,7 +6590,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  1525 00fe A36B     		ldr	r3, [r4, #56]
  1526 0100 0233     		adds	r3, r3, #2
  1527 0102 A363     		str	r3, [r4, #56]
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 104
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 104
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 1242:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****         /* Next Data is a Transmission (Tx). Tx is allowed */
@@ -6238,7 +6654,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  1567 012e 53D0     		beq	.L109
  1568              	.L108:
 1220:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****       {
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 105
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 105
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  1569              		.loc 1 1220 7 is_stmt 1 view .LVU513
@@ -6298,7 +6718,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  1607              		.loc 1 1226 19 is_stmt 0 view .LVU529
  1608 015c 0027     		movs	r7, #0
  1609 015e C3E7     		b	.L106
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 106
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 106
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  1610              	.LVL79:
@@ -6358,7 +6782,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  1647              		.loc 1 1289 19 is_stmt 0 view .LVU546
  1648 0186 0127     		movs	r7, #1
  1649              	.LVL81:
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 107
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 107
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  1650              	.L113:
@@ -6418,7 +6846,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  1689 01b2 E28E     		ldrh	r2, [r4, #54]
  1690 01b4 92B2     		uxth	r2, r2
 1265:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****       {
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 108
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 108
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  1691              		.loc 1 1265 52 discriminator 1 view .LVU562
@@ -6478,7 +6910,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  1730 01de FFF7FEFF 		bl	SPI_EndRxTxTransaction
  1731              	.LVL86:
 1329:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   {
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 109
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 109
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  1732              		.loc 1 1329 6 view .LVU578
@@ -6538,7 +6974,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  1771              	.L99:
 1339:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   }
  1772              		.loc 1 1339 5 is_stmt 1 discriminator 1 view .LVU594
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 110
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 110
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 1343:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   __HAL_UNLOCK(hspi);
@@ -6598,7 +7038,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  1814 021e F0E7     		b	.L99
  1815              	.LVL97:
  1816              	.L123:
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 111
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 111
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 1170:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     goto error;
@@ -6658,7 +7102,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  1864              		@ frame_needed = 0, uses_anonymous_args = 0
  935:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** #if (USE_SPI_CRC != 0U)
  1865              		.loc 1 935 1 is_stmt 0 view .LVU617
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 112
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 112
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  1866 0000 2DE9F043 		push	{r4, r5, r6, r7, r8, r9, lr}
@@ -6718,7 +7166,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  1908              		.loc 1 953 15 discriminator 2 view .LVU629
  1909 002a 0746     		mov	r7, r0
  1910              	.LVL109:
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 113
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 113
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  955:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   {
@@ -6778,7 +7230,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  976:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   hspi->TxXferCount = 0U;
  1946              		.loc 1 976 21 is_stmt 0 view .LVU649
  1947 0060 A386     		strh	r3, [r4, #52]	@ movhi
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 114
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 114
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  977:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   hspi->RxISR       = NULL;
@@ -6838,7 +7294,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  942:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   {
  1985              		.loc 1 942 58 discriminator 1 view .LVU667
  1986 0088 A368     		ldr	r3, [r4, #8]
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 115
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 115
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  1987              	.LVL111:
@@ -6898,7 +7358,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 1023:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****         {
  2029              		.loc 1 1023 12 view .LVU680
  2030 00c0 A842     		cmp	r0, r5
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 116
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 116
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  2031 00c2 02D3     		bcc	.L142
@@ -6958,7 +7422,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  2069 00ee 9BB2     		uxth	r3, r3
 1018:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****       }
  2070              		.loc 1 1018 26 view .LVU697
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 117
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 117
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  2071 00f0 013B     		subs	r3, r3, #1
@@ -7018,7 +7486,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  2110 011e A36B     		ldr	r3, [r4, #56]
 1039:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****         hspi->pRxBuffPtr += sizeof(uint16_t);
  2111              		.loc 1 1039 41 view .LVU713
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 118
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 118
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  2112 0120 1A80     		strh	r2, [r3]	@ movhi
@@ -7078,7 +7550,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  957:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     goto error;
  2152              		.loc 1 957 15 view .LVU728
  2153 0156 0226     		movs	r6, #2
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 119
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 119
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  2154              	.LVL120:
@@ -7138,7 +7614,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  2198              		.cfi_endproc
  2199              	.LFE135:
  2201              		.section	.text.HAL_SPI_Transmit_IT,"ax",%progbits
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 120
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 120
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  2202              		.align	1
@@ -7198,7 +7678,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 1372:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   {
  2243              		.loc 1 1372 6 view .LVU753
  2244 001e 0128     		cmp	r0, #1
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 121
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 121
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  2245 0020 38D1     		bne	.L168
@@ -7258,7 +7742,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 1392:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   {
  2279              		.loc 1 1392 6 view .LVU774
  2280 003c AAB1     		cbz	r2, .L162
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 122
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 122
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 1394:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   }
@@ -7318,7 +7806,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  2321              	.L170:
 1405:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     SPI_1LINE_TX(hspi);
  2322              		.loc 1 1405 5 is_stmt 1 view .LVU789
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 123
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 123
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  2323 0070 1968     		ldr	r1, [r3]
@@ -7378,7 +7870,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  2366 009c 0220     		movs	r0, #2
 1431:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
  2367              		.loc 1 1431 1 view .LVU801
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 124
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 124
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  2368 009e 7047     		bx	lr
@@ -7438,7 +7934,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  2413 000e 8CF85000 		strb	r0, [ip, #80]
 1545:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
  2414              		.loc 1 1545 3 discriminator 2 view .LVU813
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 125
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 125
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 1548:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   tmp_mode            = hspi->Init.Mode;
@@ -7498,7 +7998,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  2453 003e 9CF85100 		ldrb	r0, [ip, #81]	@ zero_extendqisi2
  2454              	.LVL143:
 1565:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   {
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 126
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 126
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  2455              		.loc 1 1565 11 view .LVU830
@@ -7558,7 +8062,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  2490              	.LVL144:
 1580:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   {
  2491              		.loc 1 1580 6 view .LVU850
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 127
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 127
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  2492 0070 BBB1     		cbz	r3, .L178
@@ -7618,7 +8126,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  2531              		.loc 1 1588 5 is_stmt 1 view .LVU865
 1588:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   }
  2532              		.loc 1 1588 21 is_stmt 0 view .LVU866
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 128
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 128
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  2533 00a8 0F4B     		ldr	r3, .L192+12
@@ -7678,7 +8190,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 1560:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     goto error;
  2576              		.loc 1 1560 15 view .LVU878
  2577 00c8 F3E7     		b	.L176
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 129
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 129
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  2578              	.LVL156:
@@ -7738,7 +8254,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  2626              		.loc 1 1442 1 is_stmt 1 view -0
  2627              		.cfi_startproc
  2628              		@ args = 0, pretend = 0, frame = 0
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 130
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 130
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  2629              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -7798,7 +8318,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 1461:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   {
  2668              		.loc 1 1461 6 is_stmt 0 view .LVU902
  2669 0028 0029     		cmp	r1, #0
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 131
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 131
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  2670 002a 4BD0     		beq	.L197
@@ -7858,7 +8382,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 1481:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   {
  2704              		.loc 1 1481 17 is_stmt 0 view .LVU923
  2705 0058 DCF80C20 		ldr	r2, [ip, #12]
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 132
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 132
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  2706              	.LVL165:
@@ -7918,7 +8446,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 1449:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   }
  2746              		.loc 1 1449 5 is_stmt 1 view .LVU938
 1449:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   }
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 133
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 133
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  2747              		.loc 1 1449 12 is_stmt 0 view .LVU939
@@ -7978,7 +8510,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  2790              	.L196:
 1524:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
  2791              		.loc 1 1524 1 is_stmt 0 view .LVU951
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 134
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 134
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  2792 00ca 08BD     		pop	{r3, pc}
@@ -8038,7 +8574,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  2839 0002 90F85030 		ldrb	r3, [r0, #80]	@ zero_extendqisi2
  2840 0006 012B     		cmp	r3, #1
  2841 0008 61D0     		beq	.L215
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 135
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 135
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  2842 000a 0446     		mov	r4, r0
@@ -8098,7 +8638,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 1656:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   hspi->TxISR       = NULL;
  2878              		.loc 1 1656 3 is_stmt 1 view .LVU979
 1656:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   hspi->TxISR       = NULL;
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 136
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 136
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  2879              		.loc 1 1656 21 is_stmt 0 view .LVU980
@@ -8158,7 +8702,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  2914              		.loc 1 1685 7 is_stmt 0 view .LVU999
  2915 0052 A36C     		ldr	r3, [r4, #72]
 1685:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 137
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 137
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  2916              		.loc 1 1685 35 view .LVU1000
@@ -8218,7 +8766,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  2955 0082 1A60     		str	r2, [r3]
  2956              	.L214:
 1710:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 138
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 138
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  2957              		.loc 1 1710 3 view .LVU1016
@@ -8278,7 +8830,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  3001              	.L216:
 1638:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     goto error;
  3002              		.loc 1 1638 15 is_stmt 0 view .LVU1027
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 139
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 139
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  3003 00c2 0225     		movs	r5, #2
@@ -8338,7 +8894,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  3051              		.cfi_offset 5, -8
  3052              		.cfi_offset 14, -4
  3053 0002 0446     		mov	r4, r0
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 140
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 140
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 1849:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   HAL_SPI_StateTypeDef tmp_state;
@@ -8398,7 +8958,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  3089 0026 A568     		ldr	r5, [r4, #8]
  3090              	.LVL197:
 1868:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   {
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 141
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 141
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  3091              		.loc 1 1868 40 view .LVU1055
@@ -8458,7 +9022,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  3129              		.loc 1 1889 3 is_stmt 1 view .LVU1071
 1889:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   hspi->TxXferCount = Size;
  3130              		.loc 1 1889 21 is_stmt 0 view .LVU1072
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 142
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 142
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  3131 0052 A386     		strh	r3, [r4, #52]	@ movhi
@@ -8518,7 +9086,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  3165              		.loc 1 1917 40 view .LVU1092
  3166 006e 1A64     		str	r2, [r3, #64]
  3167              	.LVL201:
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 143
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 143
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 1918:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   }
@@ -8578,7 +9150,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  3206              		.loc 1 1933 5 view .LVU1108
  3207              	.LVL204:
 1935:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     goto error;
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 144
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 144
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  3208              		.loc 1 1935 5 view .LVU1109
@@ -8638,7 +9214,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  3247 00c2 A26C     		ldr	r2, [r4, #72]
 1945:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   hspi->hdmatx->XferErrorCallback    = NULL;
  3248              		.loc 1 1945 38 view .LVU1125
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 145
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 145
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  3249 00c4 D363     		str	r3, [r2, #60]
@@ -8698,7 +9278,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 1968:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
  3287              		.loc 1 1968 3 view .LVU1142
  3288 00f2 2268     		ldr	r2, [r4]
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 146
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 146
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  3289 00f4 5368     		ldr	r3, [r2, #4]
@@ -8758,7 +9342,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  3330 0122 0220     		movs	r0, #2
  3331              	.LVL215:
 1870:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     goto error;
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 147
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 147
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  3332              		.loc 1 1870 15 view .LVU1156
@@ -8818,7 +9406,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  3378              		.section	.text.HAL_SPI_Receive_DMA,"ax",%progbits
  3379              		.align	1
  3380              		.global	HAL_SPI_Receive_DMA
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 148
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 148
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  3381              		.syntax unified
@@ -8878,7 +9470,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 1750:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
  3424              		.loc 1 1750 3 discriminator 2 view .LVU1178
 1752:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   {
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 149
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 149
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  3425              		.loc 1 1752 3 discriminator 2 view .LVU1179
@@ -8938,7 +9534,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  3460              		.loc 1 1773 21 is_stmt 0 view .LVU1198
  3461 0042 6064     		str	r0, [r4, #68]
 1774:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   hspi->TxXferCount = 0U;
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 150
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 150
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  3462              		.loc 1 1774 3 is_stmt 1 view .LVU1199
@@ -8998,7 +9598,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  3498              		.loc 1 1806 3 is_stmt 1 view .LVU1217
 1806:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****                                  hspi->RxXferCount))
  3499              		.loc 1 1806 63 is_stmt 0 view .LVU1218
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 151
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 151
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  3500 0066 2168     		ldr	r1, [r4]
@@ -9058,7 +9662,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  3542              		.loc 1 1740 5 is_stmt 1 view .LVU1230
 1740:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
  3543              		.loc 1 1740 17 is_stmt 0 view .LVU1231
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 152
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 152
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  3544 00a4 0423     		movs	r3, #4
@@ -9118,7 +9726,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  3586 00d8 84F85130 		strb	r3, [r4, #81]
 1814:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   }
  3587              		.loc 1 1814 5 is_stmt 1 view .LVU1244
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 153
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 153
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  3588 00dc 00E0     		b	.L247
@@ -9178,7 +9790,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  3635 0000 10B5     		push	{r4, lr}
  3636              	.LCFI36:
  3637              		.cfi_def_cfa_offset 8
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 154
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 154
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  3638              		.cfi_offset 4, -8
@@ -9238,7 +9854,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  3677              		.loc 1 2009 5 is_stmt 1 view .LVU1268
 2009:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     /* Wait HAL_SPI_STATE_ABORT state */
  3678              		.loc 1 2009 17 is_stmt 0 view .LVU1269
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 155
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 155
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  3679 0032 424B     		ldr	r3, .L280+8
@@ -9298,7 +9918,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  3717 005a 13F0400F 		tst	r3, #64
  3718 005e 12D0     		beq	.L264
 2026:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     /* Wait HAL_SPI_STATE_ABORT state */
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 156
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 156
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  3719              		.loc 1 2026 5 is_stmt 1 view .LVU1286
@@ -9358,7 +9982,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  3757 0086 5368     		ldr	r3, [r2, #4]
 2042:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   {
  3758              		.loc 1 2042 6 view .LVU1303
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 157
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 157
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  3759 0088 13F0020F 		tst	r3, #2
@@ -9418,7 +10046,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  3796              		.loc 1 2068 9 is_stmt 1 view .LVU1320
 2068:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****       } while ((hspi->Instance->SR & SPI_FLAG_TXE) == RESET);
  3797              		.loc 1 2068 14 is_stmt 0 view .LVU1321
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 158
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 158
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  3798 00b0 039B     		ldr	r3, [sp, #12]
@@ -9478,7 +10110,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  3836 00de FFF7FEFF 		bl	HAL_DMA_Abort
  3837              	.LVL247:
 2084:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****       {
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 159
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 159
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  3838              		.loc 1 2084 10 view .LVU1338
@@ -9538,7 +10174,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  3877              		.loc 1 2113 3 view .LVU1353
  3878 010c 0022     		movs	r2, #0
  3879 010e 0092     		str	r2, [sp]
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 160
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 160
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 2113:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   __HAL_SPI_CLEAR_FREFLAG(hspi);
@@ -9598,7 +10238,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  3920 0130 ECE7     		b	.L274
  3921              	.L281:
  3922 0132 00BF     		.align	2
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 161
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 161
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  3923              	.L280:
@@ -9658,7 +10302,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  3968              	.LVL251:
 2309:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** }
  3969              		.loc 1 2309 10 discriminator 2 view .LVU1379
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 162
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 162
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  3970 0020 7047     		bx	lr
@@ -9718,7 +10366,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 2329:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** }
  4015              		.loc 1 2329 3 discriminator 2 view .LVU1391
 2329:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** }
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 163
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 163
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  4016              		.loc 1 2329 10 is_stmt 0 discriminator 2 view .LVU1392
@@ -9778,7 +10430,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  4062              		.loc 1 2350 5 is_stmt 1 view .LVU1402
 2350:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     {
  4063              		.loc 1 2350 19 is_stmt 0 view .LVU1403
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 164
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 164
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  4064 0008 FFF7FEFF 		bl	HAL_DMA_Abort
@@ -9838,7 +10494,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  4104              	.L290:
 2367:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   hspi->State = HAL_SPI_STATE_READY;
  4105              		.loc 1 2367 3 is_stmt 1 view .LVU1418
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 165
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 165
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  4106 0032 2268     		ldr	r2, [r4]
@@ -9898,7 +10558,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  4155              		@ args = 0, pretend = 0, frame = 0
  4156              		@ frame_needed = 0, uses_anonymous_args = 0
  4157              		@ link register save eliminated.
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 166
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 166
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 2504:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
@@ -9958,7 +10622,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  4209              		.thumb
  4210              		.thumb_func
  4212              	SPI_DMAHalfTransmitCplt:
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 167
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 167
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  4213              	.LVL272:
@@ -10018,7 +10686,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  4261              		.syntax unified
  4262              		.thumb
  4263              		.thumb_func
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 168
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 168
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  4265              	SPI_DMAHalfReceiveCplt:
@@ -10078,7 +10750,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  4313              		.align	1
  4314              		.syntax unified
  4315              		.thumb
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 169
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 169
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  4316              		.thumb_func
@@ -10138,7 +10814,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  4365              		.section	.text.SPI_CloseTx_ISR,"ax",%progbits
  4366              		.align	1
  4367              		.syntax unified
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 170
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 170
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  4368              		.thumb
@@ -10198,7 +10878,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 3805:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     {
  4411              		.loc 1 3805 15 is_stmt 0 view .LVU1475
  4412 0020 019B     		ldr	r3, [sp, #4]
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 171
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 171
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 3805:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     {
@@ -10258,7 +10942,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  4452 0052 636D     		ldr	r3, [r4, #84]
  4453 0054 43F02003 		orr	r3, r3, #32
  4454 0058 6365     		str	r3, [r4, #84]
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 172
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 172
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  4455              	.L310:
@@ -10318,7 +11006,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  4493              	.LCFI46:
  4494              		.cfi_remember_state
  4495              		.cfi_def_cfa_offset 8
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 173
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 173
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  4496              		@ sp needed
@@ -10378,7 +11070,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  4543 0008 1A73     		strb	r2, [r3, #12]
 3427:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   hspi->TxXferCount--;
  4544              		.loc 1 3427 3 is_stmt 1 view .LVU1516
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 174
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 174
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 3427:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   hspi->TxXferCount--;
@@ -10438,7 +11134,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  4589              		@ args = 0, pretend = 0, frame = 0
  4590              		@ frame_needed = 0, uses_anonymous_args = 0
 3450:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   /* Transmit data in 16 Bit mode */
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 175
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 175
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  4591              		.loc 1 3450 1 is_stmt 0 view .LVU1529
@@ -10498,7 +11198,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 3465:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   }
  4631              		.loc 1 3465 5 is_stmt 1 view .LVU1544
  4632 0022 FFF7FEFF 		bl	SPI_CloseTx_ISR
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 176
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 176
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  4633              	.LVL302:
@@ -10558,7 +11262,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  4680 0020 636D     		ldr	r3, [r4, #84]
  4681 0022 43F02003 		orr	r3, r3, #32
  4682 0026 6365     		str	r3, [r4, #84]
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 177
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 177
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  4683              	.L327:
@@ -10618,7 +11326,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  4721              	.LCFI52:
  4722              		.cfi_remember_state
  4723              		.cfi_def_cfa_offset 8
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 178
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 178
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  4724              		@ sp needed
@@ -10678,7 +11390,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  4769 000a 836B     		ldr	r3, [r0, #56]
 3338:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   hspi->RxXferCount--;
  4770              		.loc 1 3338 19 view .LVU1581
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 179
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 179
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  4771 000c 0133     		adds	r3, r3, #1
@@ -10738,7 +11454,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  4816              	.LCFI55:
  4817              		.cfi_def_cfa_offset 8
  4818              		.cfi_offset 3, -8
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 180
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 180
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  4819              		.cfi_offset 14, -4
@@ -10798,7 +11518,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  4857              		.loc 1 3416 1 is_stmt 0 view .LVU1608
  4858 0026 FBE7     		b	.L336
  4859              		.cfi_endproc
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 181
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 181
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  4860              	.LFE174:
@@ -10858,7 +11582,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  4905              		.loc 1 3645 3 is_stmt 1 view .LVU1619
  4906 0020 2168     		ldr	r1, [r4]
  4907 0022 4B68     		ldr	r3, [r1, #4]
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 182
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 182
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  4908 0024 23F02003 		bic	r3, r3, #32
@@ -10918,7 +11646,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  4946              		.loc 1 3659 6 view .LVU1635
  4947 0050 18B1     		cbz	r0, .L344
 3661:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   }
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 183
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 183
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  4948              		.loc 1 3661 5 is_stmt 1 view .LVU1636
@@ -10978,7 +11710,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  4986              		.loc 1 3701 9 is_stmt 1 view .LVU1652
 3701:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****         /* Call user TxRx complete callback */
  4987              		.loc 1 3701 21 is_stmt 0 view .LVU1653
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 184
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 184
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  4988 007a 0123     		movs	r3, #1
@@ -11038,7 +11774,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  5034              		.section	.text.SPI_2linesTxISR_8BIT,"ax",%progbits
  5035              		.align	1
  5036              		.syntax unified
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 185
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 185
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  5037              		.thumb
@@ -11098,7 +11838,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  5077              		.loc 1 3190 11 is_stmt 0 view .LVU1677
  5078 001a C38E     		ldrh	r3, [r0, #54]
  5079 001c 9BB2     		uxth	r3, r3
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 186
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 186
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 3190:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   {
@@ -11158,7 +11902,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 3123:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   hspi->pRxBuffPtr++;
  5126              		.loc 1 3123 3 is_stmt 1 view .LVU1688
 3123:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   hspi->pRxBuffPtr++;
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 187
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 187
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  5127              		.loc 1 3123 46 is_stmt 0 view .LVU1689
@@ -11218,7 +11966,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  5165 002e 03B1     		cbz	r3, .L361
  5166              	.LVL331:
  5167              	.L358:
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 188
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 188
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 3146:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
@@ -11278,7 +12030,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  5212 000e 0363     		str	r3, [r0, #48]
 3280:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
  5213              		.loc 1 3280 3 is_stmt 1 view .LVU1718
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 189
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 189
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 3280:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
@@ -11338,7 +12094,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  5258              	SPI_2linesRxISR_16BIT:
  5259              	.LVL338:
  5260              	.LFB171:
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 190
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 190
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 3220:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   /* Receive data in 16 Bit mode */
@@ -11398,7 +12158,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  5299              		.loc 1 3237 5 is_stmt 1 view .LVU1746
  5300 0020 0268     		ldr	r2, [r0]
  5301 0022 5368     		ldr	r3, [r2, #4]
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 191
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 191
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  5302 0024 23F04003 		bic	r3, r3, #64
@@ -11458,7 +12222,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  5347              		.loc 1 2956 3 is_stmt 1 view .LVU1757
  5348 0004 0268     		ldr	r2, [r0]
  5349 0006 5368     		ldr	r3, [r2, #4]
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 192
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 192
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  5350 0008 23F00303 		bic	r3, r3, #3
@@ -11518,7 +12286,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  5396              		.loc 1 2674 3 is_stmt 1 view .LVU1767
 2677:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
  5397              		.loc 1 2677 3 view .LVU1768
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 193
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 193
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 2677:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
@@ -11578,7 +12350,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 2695:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     {
  5438              		.loc 1 2695 8 view .LVU1783
  5439 0040 33B9     		cbnz	r3, .L375
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 194
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 194
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 2697:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     }
@@ -11638,7 +12414,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  5479              		.cfi_def_cfa_offset 12
  5480              		@ sp needed
  5481 0066 30BD     		pop	{r4, r5, pc}
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 195
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 195
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  5482              	.LVL351:
@@ -11698,7 +12478,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  5527              		.loc 1 2740 12 is_stmt 0 view .LVU1809
  5528 000a 2B68     		ldr	r3, [r5]
 2740:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   {
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 196
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 196
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  5529              		.loc 1 2740 22 view .LVU1810
@@ -11758,7 +12542,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  5569 0040 2023     		movs	r3, #32
  5570 0042 6365     		str	r3, [r4, #84]
  5571              	.L383:
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 197
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 197
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 2780:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     hspi->State = HAL_SPI_STATE_READY;
@@ -11818,7 +12606,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  5615              		.thumb
  5616              		.thumb_func
  5618              	SPI_DMATransmitReceiveCplt:
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 198
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 198
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  5619              	.LVL362:
@@ -11878,7 +12670,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  5659 0020 6421     		movs	r1, #100
  5660 0022 2046     		mov	r0, r4
  5661              	.LVL365:
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 199
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 199
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 2851:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     {
@@ -11938,7 +12734,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  5701              	.LVL368:
  5702              	.L393:
 2878:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** #endif /* USE_HAL_SPI_REGISTER_CALLBACKS */
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 200
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 200
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  5703              		.loc 1 2878 7 is_stmt 1 view .LVU1866
@@ -11998,7 +12798,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  5749 000c C3F38010 		ubfx	r0, r3, #6, #1
  5750              	.LVL373:
 2384:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****       (SPI_CHECK_FLAG(itflag, SPI_FLAG_RXNE) != RESET) && (SPI_CHECK_IT_SOURCE(itsource, SPI_IT_RXN
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 201
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 201
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  5751              		.loc 1 2384 6 view .LVU1877
@@ -12058,7 +12862,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  5790 004c C0B2     		uxtb	r0, r0
 2405:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****       {
  5791              		.loc 1 2405 10 view .LVU1893
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 202
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 202
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  5792 004e 0328     		cmp	r0, #3
@@ -12118,7 +12926,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  5832 0080 1060     		str	r0, [r2]
 2421:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     }
  5833              		.loc 1 2421 7 view .LVU1908
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 203
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 203
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  5834 0082 029A     		ldr	r2, [sp, #8]
@@ -12178,7 +12990,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  5872 00a6 5368     		ldr	r3, [r2, #4]
  5873 00a8 23F0E003 		bic	r3, r3, #224
  5874 00ac 5360     		str	r3, [r2, #4]
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 204
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 204
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 2436:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****       /* Disable the SPI DMA requests if enabled */
@@ -12238,7 +13054,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  5912              		.loc 1 2454 12 view .LVU1941
  5913 00de 8BB1     		cbz	r3, .L394
 2458:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****           if (HAL_OK != HAL_DMA_Abort_IT(hspi->hdmatx))
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 205
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 205
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  5914              		.loc 1 2458 11 is_stmt 1 view .LVU1942
@@ -12298,7 +13118,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  5954              		.loc 1 2477 1 is_stmt 0 view .LVU1956
  5955 0104 05B0     		add	sp, sp, #20
  5956              	.LCFI73:
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 206
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 206
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  5957              		.cfi_remember_state
@@ -12358,7 +13182,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  6002              		.thumb_func
  6004              	SPI_DMAAbortOnError:
  6005              	.LVL386:
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 207
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 207
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  6006              	.LFB166:
@@ -12418,7 +13246,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 2602:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
  6051              		.loc 1 2602 3 view .LVU1978
 2607:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 208
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 208
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  6052              		.loc 1 2607 1 is_stmt 0 view .LVU1979
@@ -12478,7 +13310,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  6097              		.loc 1 2147 36 view .LVU1990
  6098 0012 6422     		movs	r2, #100
  6099 0014 02FB03F3 		mul	r3, r2, r3
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 209
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 209
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 2147:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   count = resetcount;
@@ -12538,7 +13374,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  6137 0044 DBB2     		uxtb	r3, r3
 2166:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     /* Reset Timeout Counter */
  6138              		.loc 1 2166 5 view .LVU2008
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 210
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 210
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  6139 0046 072B     		cmp	r3, #7
@@ -12598,7 +13438,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 2183:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     /* Reset Timeout Counter */
  6177              		.loc 1 2183 18 is_stmt 0 view .LVU2025
  6178 006e 94F85130 		ldrb	r3, [r4, #81]	@ zero_extendqisi2
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 211
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 211
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  6179 0072 DBB2     		uxtb	r3, r3
@@ -12658,7 +13502,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 2209:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     {
  6217              		.loc 1 2209 5 is_stmt 1 view .LVU2042
 2209:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     {
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 212
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 212
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  6218              		.loc 1 2209 9 is_stmt 0 view .LVU2043
@@ -12718,7 +13566,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  6255              		.loc 1 2229 25 is_stmt 0 view .LVU2060
  6256 00c2 4023     		movs	r3, #64
  6257 00c4 6365     		str	r3, [r4, #84]
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 213
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 213
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 2146:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   resetcount = SPI_DEFAULT_TIMEOUT * (SystemCoreClock / 24U / 1000U);
@@ -12778,7 +13630,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  6297 00ec 30B1     		cbz	r0, .L429
 2246:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****         hspi->ErrorCode = HAL_SPI_ERROR_ABORT;
  6298              		.loc 1 2246 9 is_stmt 1 view .LVU2076
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 214
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 214
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 2246:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****         hspi->ErrorCode = HAL_SPI_ERROR_ABORT;
@@ -12838,7 +13694,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  6340 010a 0023     		movs	r3, #0
  6341 010c E387     		strh	r3, [r4, #62]	@ movhi
 2260:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 215
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 215
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  6342              		.loc 1 2260 5 is_stmt 1 view .LVU2090
@@ -12898,7 +13758,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  6380              		.loc 1 2276 5 view .LVU2106
  6381 0130 019B     		ldr	r3, [sp, #4]
  6382              	.LBE15:
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 216
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 216
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 2276:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
@@ -12958,7 +13822,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 3063:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
  6432              		.loc 1 3063 3 is_stmt 1 view .LVU2114
 3063:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 217
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 217
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  6433              		.loc 1 3063 22 is_stmt 0 view .LVU2115
@@ -13018,7 +13886,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 3082:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     {
  6474              		.loc 1 3082 5 is_stmt 1 view .LVU2129
 3082:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****     {
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 218
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 218
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  6475              		.loc 1 3082 21 is_stmt 0 view .LVU2130
@@ -13078,7 +13950,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  6513              		.loc 1 3100 3 view .LVU2146
 3101:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** 
  6514              		.loc 1 3101 3 view .LVU2147
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 219
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 219
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  6515              	.LBB17:
@@ -13138,7 +14014,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  6560              		.cfi_def_cfa_offset 4
  6561              		.cfi_offset 14, -4
  6562 0002 85B0     		sub	sp, sp, #20
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 220
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 220
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  6563              	.LCFI84:
@@ -13198,7 +14078,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 3015:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   } while ((hspi->Instance->SR & SPI_FLAG_TXE) == RESET);
  6601              		.loc 1 3015 10 is_stmt 0 view .LVU2175
  6602 002e 039B     		ldr	r3, [sp, #12]
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 221
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 221
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  6603 0030 013B     		subs	r3, r3, #1
@@ -13258,7 +14142,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
 3032:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   {
  6640              		.loc 1 3032 11 is_stmt 0 view .LVU2193
  6641 0056 436D     		ldr	r3, [r0, #84]
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 222
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 222
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 3032:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c ****   {
@@ -13318,7 +14206,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  6680 007a 80F85130 		strb	r3, [r0, #81]
 3049:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c **** #endif /* USE_HAL_SPI_REGISTER_CALLBACKS */
  6681              		.loc 1 3049 3 is_stmt 1 view .LVU2210
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 223
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 223
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  6682 007e FFF7FEFF 		bl	HAL_SPI_AbortCpltCallback
@@ -13378,7 +14270,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  6734              		.cfi_startproc
  6735              		@ args = 0, pretend = 0, frame = 0
  6736              		@ frame_needed = 0, uses_anonymous_args = 0
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 224
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 224
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  6737              		@ link register save eliminated.
@@ -13404,11 +14300,16 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 1
  6755              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h"
  6756              		.file 9 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
  6757              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s 			page 225
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 225
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f4xx_hal_spi.c
+<<<<<<< HEAD
 C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s:20     .text.SPI_AbortRx_ISR:00000000 $t
 C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s:25     .text.SPI_AbortRx_ISR:00000000 SPI_AbortRx_ISR
 C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s:113    .text.SPI_AbortRx_ISR:00000060 $d
@@ -13540,6 +14441,139 @@ C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s:6700   .text.HAL_SPI_GetState:0000
 C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s:6706   .text.HAL_SPI_GetState:00000000 HAL_SPI_GetState
 C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s:6724   .text.HAL_SPI_GetError:00000000 $t
 C:\Users\zhaohe\AppData\Local\Temp\ccHF5ete.s:6730   .text.HAL_SPI_GetError:00000000 HAL_SPI_GetError
+=======
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:20     .text.SPI_AbortRx_ISR:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:25     .text.SPI_AbortRx_ISR:00000000 SPI_AbortRx_ISR
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:113    .text.SPI_AbortRx_ISR:00000060 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:119    .text.SPI_AbortTx_ISR:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:124    .text.SPI_AbortTx_ISR:00000000 SPI_AbortTx_ISR
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:152    .text.SPI_WaitFlagStateUntilTimeout:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:157    .text.SPI_WaitFlagStateUntilTimeout:00000000 SPI_WaitFlagStateUntilTimeout
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:337    .text.SPI_WaitFlagStateUntilTimeout:000000d0 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:342    .text.SPI_EndRxTxTransaction:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:347    .text.SPI_EndRxTxTransaction:00000000 SPI_EndRxTxTransaction
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:447    .text.SPI_EndRxTxTransaction:00000060 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:453    .text.SPI_EndRxTransaction:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:458    .text.SPI_EndRxTransaction:00000000 SPI_EndRxTransaction
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:595    .text.HAL_SPI_MspInit:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:601    .text.HAL_SPI_MspInit:00000000 HAL_SPI_MspInit
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:616    .text.HAL_SPI_Init:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:622    .text.HAL_SPI_Init:00000000 HAL_SPI_Init
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:777    .text.HAL_SPI_MspDeInit:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:783    .text.HAL_SPI_MspDeInit:00000000 HAL_SPI_MspDeInit
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:798    .text.HAL_SPI_DeInit:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:804    .text.HAL_SPI_DeInit:00000000 HAL_SPI_DeInit
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:863    .text.HAL_SPI_Transmit:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:869    .text.HAL_SPI_Transmit:00000000 HAL_SPI_Transmit
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:1269   .text.HAL_SPI_TransmitReceive:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:1275   .text.HAL_SPI_TransmitReceive:00000000 HAL_SPI_TransmitReceive
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:1852   .text.HAL_SPI_Receive:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:1858   .text.HAL_SPI_Receive:00000000 HAL_SPI_Receive
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:2202   .text.HAL_SPI_Transmit_IT:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:2208   .text.HAL_SPI_Transmit_IT:00000000 HAL_SPI_Transmit_IT
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:2372   .text.HAL_SPI_Transmit_IT:000000a0 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:4584   .text.SPI_TxISR_16BIT:00000000 SPI_TxISR_16BIT
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:4522   .text.SPI_TxISR_8BIT:00000000 SPI_TxISR_8BIT
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:2378   .text.HAL_SPI_TransmitReceive_IT:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:2384   .text.HAL_SPI_TransmitReceive_IT:00000000 HAL_SPI_TransmitReceive_IT
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:2609   .text.HAL_SPI_TransmitReceive_IT:000000dc $d
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:5258   .text.SPI_2linesRxISR_16BIT:00000000 SPI_2linesRxISR_16BIT
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:5186   .text.SPI_2linesTxISR_16BIT:00000000 SPI_2linesTxISR_16BIT
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:5113   .text.SPI_2linesRxISR_8BIT:00000000 SPI_2linesRxISR_8BIT
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:5040   .text.SPI_2linesTxISR_8BIT:00000000 SPI_2linesTxISR_8BIT
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:2617   .text.HAL_SPI_Receive_IT:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:2623   .text.HAL_SPI_Receive_IT:00000000 HAL_SPI_Receive_IT
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:2806   .text.HAL_SPI_Receive_IT:000000d4 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:4807   .text.SPI_RxISR_16BIT:00000000 SPI_RxISR_16BIT
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:4745   .text.SPI_RxISR_8BIT:00000000 SPI_RxISR_8BIT
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:2812   .text.HAL_SPI_Transmit_DMA:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:2818   .text.HAL_SPI_Transmit_DMA:00000000 HAL_SPI_Transmit_DMA
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:3025   .text.HAL_SPI_Transmit_DMA:000000d4 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:4212   .text.SPI_DMAHalfTransmitCplt:00000000 SPI_DMAHalfTransmitCplt
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:5374   .text.SPI_DMATransmitCplt:00000000 SPI_DMATransmitCplt
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:5330   .text.SPI_DMAError:00000000 SPI_DMAError
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:3032   .text.HAL_SPI_TransmitReceive_DMA:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:3038   .text.HAL_SPI_TransmitReceive_DMA:00000000 HAL_SPI_TransmitReceive_DMA
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:3370   .text.HAL_SPI_TransmitReceive_DMA:0000013c $d
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:4318   .text.SPI_DMAHalfTransmitReceiveCplt:00000000 SPI_DMAHalfTransmitReceiveCplt
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:5618   .text.SPI_DMATransmitReceiveCplt:00000000 SPI_DMATransmitReceiveCplt
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 226
+
+
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:4265   .text.SPI_DMAHalfReceiveCplt:00000000 SPI_DMAHalfReceiveCplt
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:5501   .text.SPI_DMAReceiveCplt:00000000 SPI_DMAReceiveCplt
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:3379   .text.HAL_SPI_Receive_DMA:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:3385   .text.HAL_SPI_Receive_DMA:00000000 HAL_SPI_Receive_DMA
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:3614   .text.HAL_SPI_Receive_DMA:000000f0 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:3621   .text.HAL_SPI_Abort:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:3627   .text.HAL_SPI_Abort:00000000 HAL_SPI_Abort
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:3924   .text.HAL_SPI_Abort:00000134 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:3932   .text.HAL_SPI_DMAPause:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:3938   .text.HAL_SPI_DMAPause:00000000 HAL_SPI_DMAPause
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:3982   .text.HAL_SPI_DMAResume:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:3988   .text.HAL_SPI_DMAResume:00000000 HAL_SPI_DMAResume
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:4032   .text.HAL_SPI_DMAStop:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:4038   .text.HAL_SPI_DMAStop:00000000 HAL_SPI_DMAStop
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:4123   .text.HAL_SPI_TxCpltCallback:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:4129   .text.HAL_SPI_TxCpltCallback:00000000 HAL_SPI_TxCpltCallback
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:4144   .text.HAL_SPI_RxCpltCallback:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:4150   .text.HAL_SPI_RxCpltCallback:00000000 HAL_SPI_RxCpltCallback
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:4165   .text.HAL_SPI_TxRxCpltCallback:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:4171   .text.HAL_SPI_TxRxCpltCallback:00000000 HAL_SPI_TxRxCpltCallback
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:4186   .text.HAL_SPI_TxHalfCpltCallback:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:4192   .text.HAL_SPI_TxHalfCpltCallback:00000000 HAL_SPI_TxHalfCpltCallback
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:4207   .text.SPI_DMAHalfTransmitCplt:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:4239   .text.HAL_SPI_RxHalfCpltCallback:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:4245   .text.HAL_SPI_RxHalfCpltCallback:00000000 HAL_SPI_RxHalfCpltCallback
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:4260   .text.SPI_DMAHalfReceiveCplt:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:4292   .text.HAL_SPI_TxRxHalfCpltCallback:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:4298   .text.HAL_SPI_TxRxHalfCpltCallback:00000000 HAL_SPI_TxRxHalfCpltCallback
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:4313   .text.SPI_DMAHalfTransmitReceiveCplt:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:4345   .text.HAL_SPI_ErrorCallback:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:4351   .text.HAL_SPI_ErrorCallback:00000000 HAL_SPI_ErrorCallback
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:4366   .text.SPI_CloseTx_ISR:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:4371   .text.SPI_CloseTx_ISR:00000000 SPI_CloseTx_ISR
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:4511   .text.SPI_CloseTx_ISR:00000088 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:4517   .text.SPI_TxISR_8BIT:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:4579   .text.SPI_TxISR_16BIT:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:4640   .text.SPI_CloseRx_ISR:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:4645   .text.SPI_CloseRx_ISR:00000000 SPI_CloseRx_ISR
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:4740   .text.SPI_RxISR_8BIT:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:4802   .text.SPI_RxISR_16BIT:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:4863   .text.SPI_CloseRxTx_ISR:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:4868   .text.SPI_CloseRxTx_ISR:00000000 SPI_CloseRxTx_ISR
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:5029   .text.SPI_CloseRxTx_ISR:000000a8 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:5035   .text.SPI_2linesTxISR_8BIT:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:5108   .text.SPI_2linesRxISR_8BIT:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:5181   .text.SPI_2linesTxISR_16BIT:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:5253   .text.SPI_2linesRxISR_16BIT:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:5325   .text.SPI_DMAError:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:5369   .text.SPI_DMATransmitCplt:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:5496   .text.SPI_DMAReceiveCplt:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:5613   .text.SPI_DMATransmitReceiveCplt:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:5713   .text.HAL_SPI_IRQHandler:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:5719   .text.HAL_SPI_IRQHandler:00000000 HAL_SPI_IRQHandler
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:5994   .text.HAL_SPI_IRQHandler:00000120 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:6004   .text.SPI_DMAAbortOnError:00000000 SPI_DMAAbortOnError
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:5999   .text.SPI_DMAAbortOnError:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:6037   .text.HAL_SPI_AbortCpltCallback:00000000 $t
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s 			page 227
+
+
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:6043   .text.HAL_SPI_AbortCpltCallback:00000000 HAL_SPI_AbortCpltCallback
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:6058   .text.HAL_SPI_Abort_IT:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:6064   .text.HAL_SPI_Abort_IT:00000000 HAL_SPI_Abort_IT
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:6401   .text.HAL_SPI_Abort_IT:00000144 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:6550   .text.SPI_DMATxAbortCallback:00000000 SPI_DMATxAbortCallback
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:6416   .text.SPI_DMARxAbortCallback:00000000 SPI_DMARxAbortCallback
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:6411   .text.SPI_DMARxAbortCallback:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:6545   .text.SPI_DMATxAbortCallback:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:6694   .text.SPI_DMATxAbortCallback:00000088 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:6700   .text.HAL_SPI_GetState:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:6706   .text.HAL_SPI_GetState:00000000 HAL_SPI_GetState
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:6724   .text.HAL_SPI_GetError:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccIVOP6q.s:6730   .text.HAL_SPI_GetError:00000000 HAL_SPI_GetError
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 UNDEFINED SYMBOLS
 SystemCoreClock

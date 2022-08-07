@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccRkZpdA.s 			page 1
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccI4PGY6.s 			page 1
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
    1              		.cpu cortex-m4
@@ -58,7 +62,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccRkZpdA.s 			page 1
   28:Core/Src/spi.c **** 
   29:Core/Src/spi.c **** /* SPI1 init function */
   30:Core/Src/spi.c **** void MX_SPI1_Init(void)
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccRkZpdA.s 			page 2
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccI4PGY6.s 			page 2
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
   31:Core/Src/spi.c **** {
@@ -118,7 +126,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccRkZpdA.s 			page 1
   66 001e 0822     		movs	r2, #8
   67 0020 C261     		str	r2, [r0, #28]
   48:Core/Src/spi.c ****   hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccRkZpdA.s 			page 3
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccI4PGY6.s 			page 3
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
   68              		.loc 1 48 3 is_stmt 1 view .LVU17
@@ -178,7 +190,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccRkZpdA.s 			page 1
  111              	HAL_SPI_MspInit:
  112              	.LVL2:
  113              	.LFB131:
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccRkZpdA.s 			page 4
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccI4PGY6.s 			page 4
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
   61:Core/Src/spi.c **** 
@@ -238,7 +254,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccRkZpdA.s 			page 1
   86:Core/Src/spi.c **** 
   87:Core/Src/spi.c ****   /* USER CODE BEGIN SPI1_MspInit 1 */
   88:Core/Src/spi.c **** 
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccRkZpdA.s 			page 5
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccI4PGY6.s 			page 5
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
   89:Core/Src/spi.c ****   /* USER CODE END SPI1_MspInit 1 */
@@ -298,7 +318,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccRkZpdA.s 			page 1
   74:Core/Src/spi.c ****     /**SPI1 GPIO Configuration
  184              		.loc 1 74 5 view .LVU49
  185 004a 029B     		ldr	r3, [sp, #8]
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccRkZpdA.s 			page 6
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccI4PGY6.s 			page 6
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  186              	.LBE3:
@@ -358,7 +382,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccRkZpdA.s 			page 1
  230              	.LVL7:
  231              	.LFB132:
   92:Core/Src/spi.c **** 
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccRkZpdA.s 			page 7
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccI4PGY6.s 			page 7
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
   93:Core/Src/spi.c **** void HAL_SPI_MspDeInit(SPI_HandleTypeDef* spiHandle)
@@ -418,7 +446,11 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccRkZpdA.s 			page 1
  261 0016 E021     		movs	r1, #224
  262 0018 0348     		ldr	r0, .L17+8
  263              	.LVL10:
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccRkZpdA.s 			page 8
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccI4PGY6.s 			page 8
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
  109:Core/Src/spi.c **** 
@@ -456,11 +488,16 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccRkZpdA.s 			page 1
  294              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h"
  295              		.file 9 "Core/Inc/main.h"
  296              		.file 10 "Core/Inc/spi.h"
+<<<<<<< HEAD
 ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccRkZpdA.s 			page 9
+=======
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccI4PGY6.s 			page 9
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 spi.c
+<<<<<<< HEAD
 C:\Users\zhaohe\AppData\Local\Temp\ccRkZpdA.s:20     .text.MX_SPI1_Init:00000000 $t
 C:\Users\zhaohe\AppData\Local\Temp\ccRkZpdA.s:26     .text.MX_SPI1_Init:00000000 MX_SPI1_Init
 C:\Users\zhaohe\AppData\Local\Temp\ccRkZpdA.s:99     .text.MX_SPI1_Init:0000003c $d
@@ -472,6 +509,19 @@ C:\Users\zhaohe\AppData\Local\Temp\ccRkZpdA.s:229    .text.HAL_SPI_MspDeInit:000
 C:\Users\zhaohe\AppData\Local\Temp\ccRkZpdA.s:272    .text.HAL_SPI_MspDeInit:00000020 $d
 C:\Users\zhaohe\AppData\Local\Temp\ccRkZpdA.s:284    .bss.hspi1:00000000 hspi1
 C:\Users\zhaohe\AppData\Local\Temp\ccRkZpdA.s:280    .bss.hspi1:00000000 $d
+=======
+C:\Users\zhaohe\AppData\Local\Temp\ccI4PGY6.s:20     .text.MX_SPI1_Init:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccI4PGY6.s:26     .text.MX_SPI1_Init:00000000 MX_SPI1_Init
+C:\Users\zhaohe\AppData\Local\Temp\ccI4PGY6.s:99     .text.MX_SPI1_Init:0000003c $d
+C:\Users\zhaohe\AppData\Local\Temp\ccI4PGY6.s:105    .text.HAL_SPI_MspInit:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccI4PGY6.s:111    .text.HAL_SPI_MspInit:00000000 HAL_SPI_MspInit
+C:\Users\zhaohe\AppData\Local\Temp\ccI4PGY6.s:217    .text.HAL_SPI_MspInit:00000068 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccI4PGY6.s:223    .text.HAL_SPI_MspDeInit:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccI4PGY6.s:229    .text.HAL_SPI_MspDeInit:00000000 HAL_SPI_MspDeInit
+C:\Users\zhaohe\AppData\Local\Temp\ccI4PGY6.s:272    .text.HAL_SPI_MspDeInit:00000020 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccI4PGY6.s:284    .bss.hspi1:00000000 hspi1
+C:\Users\zhaohe\AppData\Local\Temp\ccI4PGY6.s:280    .bss.hspi1:00000000 $d
+>>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 
 UNDEFINED SYMBOLS
 HAL_SPI_Init
