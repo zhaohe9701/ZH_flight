@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccM1dJaf.s 			page 1
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc34k5EY.s 			page 1
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHeOQla.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -62,11 +58,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc34k5EY.s 			page 1
   28:USB_DEVICE/App/usb_device.c **** 
   29:USB_DEVICE/App/usb_device.c **** /* USER CODE BEGIN Includes */
   30:USB_DEVICE/App/usb_device.c **** 
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccM1dJaf.s 			page 2
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc34k5EY.s 			page 2
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHeOQla.s 			page 2
 
 
   31:USB_DEVICE/App/usb_device.c **** /* USER CODE END Includes */
@@ -126,11 +118,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc34k5EY.s 			page 1
   42 0006 1048     		ldr	r0, .L11+4
   43 0008 FFF7FEFF 		bl	USBD_Init
   44              	.LVL0:
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccM1dJaf.s 			page 3
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc34k5EY.s 			page 3
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHeOQla.s 			page 3
 
 
   45              		.loc 1 71 6 view .LVU3
@@ -190,11 +178,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc34k5EY.s 			page 1
   78 002c FFF7FEFF 		bl	Error_Handler
   79              	.LVL4:
   80 0030 EDE7     		b	.L2
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccM1dJaf.s 			page 4
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc34k5EY.s 			page 4
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHeOQla.s 			page 4
 
 
   81              	.L8:
@@ -245,28 +229,16 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc34k5EY.s 			page 1
  122              		.file 7 "USB_DEVICE/App/usbd_cdc_if.h"
  123              		.file 8 "Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h"
  124              		.file 9 "Core/Inc/main.h"
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccM1dJaf.s 			page 5
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc34k5EY.s 			page 5
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHeOQla.s 			page 5
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 usb_device.c
-<<<<<<< HEAD
-C:\Users\zhaohe\AppData\Local\Temp\ccM1dJaf.s:20     .text.MX_USB_DEVICE_Init:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccM1dJaf.s:26     .text.MX_USB_DEVICE_Init:00000000 MX_USB_DEVICE_Init
-C:\Users\zhaohe\AppData\Local\Temp\ccM1dJaf.s:100    .text.MX_USB_DEVICE_Init:00000044 $d
-C:\Users\zhaohe\AppData\Local\Temp\ccM1dJaf.s:113    .bss.hUsbDeviceFS:00000000 hUsbDeviceFS
-C:\Users\zhaohe\AppData\Local\Temp\ccM1dJaf.s:109    .bss.hUsbDeviceFS:00000000 $d
-=======
-C:\Users\zhaohe\AppData\Local\Temp\cc34k5EY.s:20     .text.MX_USB_DEVICE_Init:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\cc34k5EY.s:26     .text.MX_USB_DEVICE_Init:00000000 MX_USB_DEVICE_Init
-C:\Users\zhaohe\AppData\Local\Temp\cc34k5EY.s:100    .text.MX_USB_DEVICE_Init:00000044 $d
-C:\Users\zhaohe\AppData\Local\Temp\cc34k5EY.s:113    .bss.hUsbDeviceFS:00000000 hUsbDeviceFS
-C:\Users\zhaohe\AppData\Local\Temp\cc34k5EY.s:109    .bss.hUsbDeviceFS:00000000 $d
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+C:\Users\zhaohe\AppData\Local\Temp\ccHeOQla.s:20     .text.MX_USB_DEVICE_Init:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccHeOQla.s:26     .text.MX_USB_DEVICE_Init:00000000 MX_USB_DEVICE_Init
+C:\Users\zhaohe\AppData\Local\Temp\ccHeOQla.s:100    .text.MX_USB_DEVICE_Init:00000044 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccHeOQla.s:113    .bss.hUsbDeviceFS:00000000 hUsbDeviceFS
+C:\Users\zhaohe\AppData\Local\Temp\ccHeOQla.s:109    .bss.hUsbDeviceFS:00000000 $d
 
 UNDEFINED SYMBOLS
 USBD_Init

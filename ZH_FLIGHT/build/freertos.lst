@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccn9Gewn.s 			page 1
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccICMXRP.s 			page 1
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc69feBg.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -62,11 +58,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccICMXRP.s 			page 1
   21:Core/Src/freertos.c **** #include "FreeRTOS.h"
   22:Core/Src/freertos.c **** #include "task.h"
   23:Core/Src/freertos.c **** #include "main.h"
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccn9Gewn.s 			page 2
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccICMXRP.s 			page 2
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc69feBg.s 			page 2
 
 
   24:Core/Src/freertos.c **** #include "cmsis_os.h"
@@ -126,11 +118,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccICMXRP.s 			page 1
   78:Core/Src/freertos.c **** /**
   79:Core/Src/freertos.c ****   * @brief  FreeRTOS initialization
   80:Core/Src/freertos.c ****   * @param  None
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccn9Gewn.s 			page 3
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccICMXRP.s 			page 3
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc69feBg.s 			page 3
 
 
   81:Core/Src/freertos.c ****   * @retval None
@@ -190,11 +178,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccICMXRP.s 			page 1
  124:Core/Src/freertos.c ****   /* init code for USB_DEVICE */
  125:Core/Src/freertos.c ****   MX_USB_DEVICE_Init();
   45              		.loc 1 125 3 is_stmt 1 view .LVU2
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccn9Gewn.s 			page 4
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccICMXRP.s 			page 4
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc69feBg.s 			page 4
 
 
   46 0002 FFF7FEFF 		bl	MX_USB_DEVICE_Init
@@ -254,11 +238,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccICMXRP.s 			page 1
   88              	.L6:
   89 000e 00BF     		.align	2
   90              	.L5:
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccn9Gewn.s 			page 5
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccICMXRP.s 			page 5
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc69feBg.s 			page 5
 
 
   91 0010 00000000 		.word	.LANCHOR0
@@ -318,11 +298,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccICMXRP.s 			page 1
  141              	.L9:
  142 0028 00000000 		.word	.LANCHOR2
  143 002c 00000000 		.word	.LANCHOR3
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccn9Gewn.s 			page 6
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccICMXRP.s 			page 6
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc69feBg.s 			page 6
 
 
  144              		.cfi_endproc
@@ -371,50 +347,27 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccICMXRP.s 			page 1
  186              		.file 5 "Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h"
  187              		.file 6 "Middlewares/Third_Party/FreeRTOS/Source/include/task.h"
  188              		.file 7 "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h"
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccn9Gewn.s 			page 7
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccICMXRP.s 			page 7
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc69feBg.s 			page 7
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 freertos.c
-<<<<<<< HEAD
-C:\Users\zhaohe\AppData\Local\Temp\ccn9Gewn.s:17     .rodata.str1.4:00000000 $d
-C:\Users\zhaohe\AppData\Local\Temp\ccn9Gewn.s:24     .text.StartDefaultTask:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccn9Gewn.s:30     .text.StartDefaultTask:00000000 StartDefaultTask
-C:\Users\zhaohe\AppData\Local\Temp\ccn9Gewn.s:60     .text.vApplicationGetIdleTaskMemory:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccn9Gewn.s:66     .text.vApplicationGetIdleTaskMemory:00000000 vApplicationGetIdleTaskMemory
-C:\Users\zhaohe\AppData\Local\Temp\ccn9Gewn.s:91     .text.vApplicationGetIdleTaskMemory:00000010 $d
-C:\Users\zhaohe\AppData\Local\Temp\ccn9Gewn.s:97     .text.MX_FREERTOS_Init:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccn9Gewn.s:103    .text.MX_FREERTOS_Init:00000000 MX_FREERTOS_Init
-C:\Users\zhaohe\AppData\Local\Temp\ccn9Gewn.s:142    .text.MX_FREERTOS_Init:00000028 $d
-C:\Users\zhaohe\AppData\Local\Temp\ccn9Gewn.s:165    .bss.defaultTaskHandle:00000000 defaultTaskHandle
-C:\Users\zhaohe\AppData\Local\Temp\ccn9Gewn.s:149    .rodata:00000000 $d
-C:\Users\zhaohe\AppData\Local\Temp\ccn9Gewn.s:161    .bss.defaultTaskHandle:00000000 $d
-C:\Users\zhaohe\AppData\Local\Temp\ccn9Gewn.s:168    .bss.xIdleStack:00000000 $d
-C:\Users\zhaohe\AppData\Local\Temp\ccn9Gewn.s:172    .bss.xIdleStack:00000000 xIdleStack
-C:\Users\zhaohe\AppData\Local\Temp\ccn9Gewn.s:175    .bss.xIdleTaskTCBBuffer:00000000 $d
-C:\Users\zhaohe\AppData\Local\Temp\ccn9Gewn.s:179    .bss.xIdleTaskTCBBuffer:00000000 xIdleTaskTCBBuffer
-=======
-C:\Users\zhaohe\AppData\Local\Temp\ccICMXRP.s:17     .rodata.str1.4:00000000 $d
-C:\Users\zhaohe\AppData\Local\Temp\ccICMXRP.s:24     .text.StartDefaultTask:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccICMXRP.s:30     .text.StartDefaultTask:00000000 StartDefaultTask
-C:\Users\zhaohe\AppData\Local\Temp\ccICMXRP.s:60     .text.vApplicationGetIdleTaskMemory:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccICMXRP.s:66     .text.vApplicationGetIdleTaskMemory:00000000 vApplicationGetIdleTaskMemory
-C:\Users\zhaohe\AppData\Local\Temp\ccICMXRP.s:91     .text.vApplicationGetIdleTaskMemory:00000010 $d
-C:\Users\zhaohe\AppData\Local\Temp\ccICMXRP.s:97     .text.MX_FREERTOS_Init:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccICMXRP.s:103    .text.MX_FREERTOS_Init:00000000 MX_FREERTOS_Init
-C:\Users\zhaohe\AppData\Local\Temp\ccICMXRP.s:142    .text.MX_FREERTOS_Init:00000028 $d
-C:\Users\zhaohe\AppData\Local\Temp\ccICMXRP.s:165    .bss.defaultTaskHandle:00000000 defaultTaskHandle
-C:\Users\zhaohe\AppData\Local\Temp\ccICMXRP.s:149    .rodata:00000000 $d
-C:\Users\zhaohe\AppData\Local\Temp\ccICMXRP.s:161    .bss.defaultTaskHandle:00000000 $d
-C:\Users\zhaohe\AppData\Local\Temp\ccICMXRP.s:168    .bss.xIdleStack:00000000 $d
-C:\Users\zhaohe\AppData\Local\Temp\ccICMXRP.s:172    .bss.xIdleStack:00000000 xIdleStack
-C:\Users\zhaohe\AppData\Local\Temp\ccICMXRP.s:175    .bss.xIdleTaskTCBBuffer:00000000 $d
-C:\Users\zhaohe\AppData\Local\Temp\ccICMXRP.s:179    .bss.xIdleTaskTCBBuffer:00000000 xIdleTaskTCBBuffer
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+C:\Users\zhaohe\AppData\Local\Temp\cc69feBg.s:17     .rodata.str1.4:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\cc69feBg.s:24     .text.StartDefaultTask:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\cc69feBg.s:30     .text.StartDefaultTask:00000000 StartDefaultTask
+C:\Users\zhaohe\AppData\Local\Temp\cc69feBg.s:60     .text.vApplicationGetIdleTaskMemory:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\cc69feBg.s:66     .text.vApplicationGetIdleTaskMemory:00000000 vApplicationGetIdleTaskMemory
+C:\Users\zhaohe\AppData\Local\Temp\cc69feBg.s:91     .text.vApplicationGetIdleTaskMemory:00000010 $d
+C:\Users\zhaohe\AppData\Local\Temp\cc69feBg.s:97     .text.MX_FREERTOS_Init:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\cc69feBg.s:103    .text.MX_FREERTOS_Init:00000000 MX_FREERTOS_Init
+C:\Users\zhaohe\AppData\Local\Temp\cc69feBg.s:142    .text.MX_FREERTOS_Init:00000028 $d
+C:\Users\zhaohe\AppData\Local\Temp\cc69feBg.s:165    .bss.defaultTaskHandle:00000000 defaultTaskHandle
+C:\Users\zhaohe\AppData\Local\Temp\cc69feBg.s:149    .rodata:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\cc69feBg.s:161    .bss.defaultTaskHandle:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\cc69feBg.s:168    .bss.xIdleStack:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\cc69feBg.s:172    .bss.xIdleStack:00000000 xIdleStack
+C:\Users\zhaohe\AppData\Local\Temp\cc69feBg.s:175    .bss.xIdleTaskTCBBuffer:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\cc69feBg.s:179    .bss.xIdleTaskTCBBuffer:00000000 xIdleTaskTCBBuffer
 
 UNDEFINED SYMBOLS
 MX_USB_DEVICE_Init

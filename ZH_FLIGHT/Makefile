@@ -92,7 +92,10 @@ Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.c
 CXX_SOURCES =  \
 Sys/Driver/interface.cpp \
 Sys/Sensor/mpu6000.cpp \
-Sys/Type/type.cpp
+Sys/Type/type.cpp \
+Sys/Flight/controller.cpp \
+Sys/Flight/filter.cpp \
+Sys/Flight/pid.cpp \
 # ASM sources
 ASM_SOURCES =  \
 startup_stm32f405xx.s
@@ -154,13 +157,10 @@ C_INCLUDES =  \
 -ICore/Inc \
 -ISys/Sensor \
 -ISys/Config \
+-ISys/Math \
 -ISys/Driver \
 -ISys/Type \
-<<<<<<< HEAD
 -ISys/Flight \
-=======
--ISys/flight \
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 -IUSB_DEVICE/App \
 -IUSB_DEVICE/Target \
 -IDrivers/STM32F4xx_HAL_Driver/Inc \

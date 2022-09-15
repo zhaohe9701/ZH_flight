@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s 			page 1
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s 			page 1
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -62,11 +58,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s 			page 1
   28:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   */
   29:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** 
   30:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** /** @defgroup PWR PWR
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s 			page 2
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s 			page 2
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s 			page 2
 
 
   31:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   * @brief PWR HAL module driver
@@ -126,11 +118,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s 			page 1
   85:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** 
   86:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** /**
   87:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   * @brief Deinitializes the HAL PWR peripheral registers to their default reset values.
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s 			page 3
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s 			page 3
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s 			page 3
 
 
   88:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   * @retval None
@@ -190,11 +178,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s 			page 1
   63              		@ args = 0, pretend = 0, frame = 8
   64              		@ frame_needed = 0, uses_anonymous_args = 0
   65              		@ link register save eliminated.
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s 			page 4
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s 			page 4
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s 			page 4
 
 
   66 0000 82B0     		sub	sp, sp, #8
@@ -254,11 +238,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s 			page 1
  126:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   * @retval None
  127:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   */
  128:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** void HAL_PWR_DisableBkUpAccess(void)
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s 			page 5
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s 			page 5
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s 			page 5
 
 
  129:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** {
@@ -318,11 +298,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s 			page 1
  139:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** 
  140:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** /** @defgroup PWR_Exported_Functions_Group2 Peripheral Control functions 
  141:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   *  @brief Low Power modes configuration functions 
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s 			page 6
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s 			page 6
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s 			page 6
 
 
  142:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   *
@@ -382,11 +358,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s 			page 1
  196:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****     [..]
  197:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****       In Stop mode, all clocks in the 1.2V domain are stopped, the PLL, the HSI,
  198:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****       and the HSE RC oscillators are disabled. Internal SRAM and register contents 
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s 			page 7
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s 			page 7
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s 			page 7
 
 
  199:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****       are preserved.
@@ -446,11 +418,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s 			page 1
  253:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** @endverbatim
  254:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   * @{
  255:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   */
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s 			page 8
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s 			page 8
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s 			page 8
 
 
  256:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** 
@@ -510,11 +478,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s 			page 1
  182 002e DA60     		str	r2, [r3, #12]
  280:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** 
  281:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   /* Configure interrupt mode */
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s 			page 9
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s 			page 9
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s 			page 9
 
 
  282:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   if((sConfigPVD->Mode & PVD_MODE_IT) == PVD_MODE_IT)
@@ -574,11 +538,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s 			page 1
  219              		.loc 1 299 3 view .LVU42
  220              		.loc 1 299 17 is_stmt 0 view .LVU43
  221 0066 4368     		ldr	r3, [r0, #4]
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s 			page 10
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s 			page 10
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s 			page 10
 
 
  222              		.loc 1 299 5 view .LVU44
@@ -638,11 +598,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s 			page 1
  265 0008 00000E42 		.word	1108213760
  266              		.cfi_endproc
  267              	.LFE134:
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s 			page 11
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s 			page 11
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s 			page 11
 
 
  269              		.section	.text.HAL_PWR_DisablePVD,"ax",%progbits
@@ -702,11 +658,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s 			page 1
  332:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** void HAL_PWR_EnableWakeUpPin(uint32_t WakeUpPinx)
  333:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** {
  307              		.loc 1 333 1 is_stmt 1 view -0
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s 			page 12
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s 			page 12
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s 			page 12
 
 
  308              		.cfi_startproc
@@ -766,11 +718,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s 			page 1
  355:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   /* Disable the wake up pin */
  356:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   CLEAR_BIT(PWR->CSR, WakeUpPinx);
  343              		.loc 1 356 3 view .LVU61
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s 			page 13
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s 			page 13
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s 			page 13
 
 
  344 0000 024A     		ldr	r2, .L29
@@ -830,11 +778,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s 			page 1
  373              		.loc 1 383 3 view .LVU65
  384:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** 
  385:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   /* Clear SLEEPDEEP bit of Cortex System Control Register */
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s 			page 14
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s 			page 14
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s 			page 14
 
 
  386:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****   CLEAR_BIT(SCB->SCR, ((uint32_t)SCB_SCR_SLEEPDEEP_Msk));
@@ -894,11 +838,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s 			page 1
  411              	.L35:
  412 001c 00ED00E0 		.word	-536810240
  413              		.cfi_endproc
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s 			page 15
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s 			page 15
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s 			page 15
 
 
  414              	.LFE138:
@@ -958,11 +898,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s 			page 1
  439              		.loc 1 432 3 view .LVU78
  440 000c 094A     		ldr	r2, .L41+4
  441 000e 1369     		ldr	r3, [r2, #16]
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s 			page 16
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s 			page 16
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s 			page 16
 
 
  442 0010 43F00403 		orr	r3, r3, #4
@@ -1022,11 +958,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s 			page 1
  478              		.syntax unified
  479 002e F7E7     		b	.L39
  480              	.L42:
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s 			page 17
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s 			page 17
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s 			page 17
 
 
  481              		.align	2
@@ -1086,11 +1018,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s 			page 1
  512              		.loc 1 474 3 view .LVU90
  513              		.syntax unified
  514              	@ 474 "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c" 1
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s 			page 18
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s 			page 18
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s 			page 18
 
 
  515 0014 30BF     		wfi
@@ -1150,11 +1078,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s 			page 1
  503:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c ****    */ 
  504:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c **** }
  543              		.loc 1 504 1 view .LVU93
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s 			page 19
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s 			page 19
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s 			page 19
 
 
  544 0000 7047     		bx	lr
@@ -1214,11 +1138,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s 			page 1
  593              		.section	.text.HAL_PWR_EnableSleepOnExit,"ax",%progbits
  594              		.align	1
  595              		.global	HAL_PWR_EnableSleepOnExit
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s 			page 20
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s 			page 20
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s 			page 20
 
 
  596              		.syntax unified
@@ -1278,11 +1198,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s 			page 1
  630              		.loc 1 527 1 is_stmt 1 view -0
  631              		.cfi_startproc
  632              		@ args = 0, pretend = 0, frame = 0
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s 			page 21
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s 			page 21
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s 			page 21
 
 
  633              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -1342,11 +1258,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s 			page 1
  674              		.cfi_endproc
  675              	.LFE145:
  677              		.section	.text.HAL_PWR_DisableSEVOnPend,"ax",%progbits
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s 			page 22
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s 			page 22
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s 			page 22
 
 
  678              		.align	1
@@ -1394,117 +1306,60 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s 			page 1
  710              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h"
  711              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
  712              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h"
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s 			page 23
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s 			page 23
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s 			page 23
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f4xx_hal_pwr.c
-<<<<<<< HEAD
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:20     .text.HAL_PWR_DeInit:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:26     .text.HAL_PWR_DeInit:00000000 HAL_PWR_DeInit
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:48     .text.HAL_PWR_DeInit:00000014 $d
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:53     .text.HAL_PWR_EnableBkUpAccess:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:59     .text.HAL_PWR_EnableBkUpAccess:00000000 HAL_PWR_EnableBkUpAccess
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:92     .text.HAL_PWR_EnableBkUpAccess:00000014 $d
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:98     .text.HAL_PWR_DisableBkUpAccess:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:104    .text.HAL_PWR_DisableBkUpAccess:00000000 HAL_PWR_DisableBkUpAccess
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:137    .text.HAL_PWR_DisableBkUpAccess:00000014 $d
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:143    .text.HAL_PWR_ConfigPVD:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:149    .text.HAL_PWR_ConfigPVD:00000000 HAL_PWR_ConfigPVD
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:236    .text.HAL_PWR_ConfigPVD:0000007c $d
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:242    .text.HAL_PWR_EnablePVD:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:248    .text.HAL_PWR_EnablePVD:00000000 HAL_PWR_EnablePVD
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:265    .text.HAL_PWR_EnablePVD:00000008 $d
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:270    .text.HAL_PWR_DisablePVD:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:276    .text.HAL_PWR_DisablePVD:00000000 HAL_PWR_DisablePVD
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:293    .text.HAL_PWR_DisablePVD:00000008 $d
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:298    .text.HAL_PWR_EnableWakeUpPin:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:304    .text.HAL_PWR_EnableWakeUpPin:00000000 HAL_PWR_EnableWakeUpPin
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:323    .text.HAL_PWR_EnableWakeUpPin:0000000c $d
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:328    .text.HAL_PWR_DisableWakeUpPin:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:334    .text.HAL_PWR_DisableWakeUpPin:00000000 HAL_PWR_DisableWakeUpPin
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:353    .text.HAL_PWR_DisableWakeUpPin:0000000c $d
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:358    .text.HAL_PWR_EnterSLEEPMode:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:364    .text.HAL_PWR_EnterSLEEPMode:00000000 HAL_PWR_EnterSLEEPMode
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:412    .text.HAL_PWR_EnterSLEEPMode:0000001c $d
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:417    .text.HAL_PWR_EnterSTOPMode:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:423    .text.HAL_PWR_EnterSTOPMode:00000000 HAL_PWR_EnterSTOPMode
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:483    .text.HAL_PWR_EnterSTOPMode:00000030 $d
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:489    .text.HAL_PWR_EnterSTANDBYMode:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:495    .text.HAL_PWR_EnterSTANDBYMode:00000000 HAL_PWR_EnterSTANDBYMode
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:524    .text.HAL_PWR_EnterSTANDBYMode:00000018 $d
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:530    .text.HAL_PWR_PVDCallback:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:536    .text.HAL_PWR_PVDCallback:00000000 HAL_PWR_PVDCallback
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:549    .text.HAL_PWR_PVD_IRQHandler:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:555    .text.HAL_PWR_PVD_IRQHandler:00000000 HAL_PWR_PVD_IRQHandler
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:589    .text.HAL_PWR_PVD_IRQHandler:0000001c $d
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:594    .text.HAL_PWR_EnableSleepOnExit:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:600    .text.HAL_PWR_EnableSleepOnExit:00000000 HAL_PWR_EnableSleepOnExit
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:617    .text.HAL_PWR_EnableSleepOnExit:0000000c $d
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:622    .text.HAL_PWR_DisableSleepOnExit:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:628    .text.HAL_PWR_DisableSleepOnExit:00000000 HAL_PWR_DisableSleepOnExit
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:645    .text.HAL_PWR_DisableSleepOnExit:0000000c $d
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:650    .text.HAL_PWR_EnableSEVOnPend:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:656    .text.HAL_PWR_EnableSEVOnPend:00000000 HAL_PWR_EnableSEVOnPend
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:673    .text.HAL_PWR_EnableSEVOnPend:0000000c $d
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:678    .text.HAL_PWR_DisableSEVOnPend:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:684    .text.HAL_PWR_DisableSEVOnPend:00000000 HAL_PWR_DisableSEVOnPend
-C:\Users\zhaohe\AppData\Local\Temp\ccdysQ8w.s:701    .text.HAL_PWR_DisableSEVOnPend:0000000c $d
-=======
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:20     .text.HAL_PWR_DeInit:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:26     .text.HAL_PWR_DeInit:00000000 HAL_PWR_DeInit
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:48     .text.HAL_PWR_DeInit:00000014 $d
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:53     .text.HAL_PWR_EnableBkUpAccess:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:59     .text.HAL_PWR_EnableBkUpAccess:00000000 HAL_PWR_EnableBkUpAccess
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:92     .text.HAL_PWR_EnableBkUpAccess:00000014 $d
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:98     .text.HAL_PWR_DisableBkUpAccess:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:104    .text.HAL_PWR_DisableBkUpAccess:00000000 HAL_PWR_DisableBkUpAccess
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:137    .text.HAL_PWR_DisableBkUpAccess:00000014 $d
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:143    .text.HAL_PWR_ConfigPVD:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:149    .text.HAL_PWR_ConfigPVD:00000000 HAL_PWR_ConfigPVD
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:236    .text.HAL_PWR_ConfigPVD:0000007c $d
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:242    .text.HAL_PWR_EnablePVD:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:248    .text.HAL_PWR_EnablePVD:00000000 HAL_PWR_EnablePVD
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:265    .text.HAL_PWR_EnablePVD:00000008 $d
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:270    .text.HAL_PWR_DisablePVD:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:276    .text.HAL_PWR_DisablePVD:00000000 HAL_PWR_DisablePVD
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:293    .text.HAL_PWR_DisablePVD:00000008 $d
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:298    .text.HAL_PWR_EnableWakeUpPin:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:304    .text.HAL_PWR_EnableWakeUpPin:00000000 HAL_PWR_EnableWakeUpPin
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:323    .text.HAL_PWR_EnableWakeUpPin:0000000c $d
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:328    .text.HAL_PWR_DisableWakeUpPin:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:334    .text.HAL_PWR_DisableWakeUpPin:00000000 HAL_PWR_DisableWakeUpPin
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:353    .text.HAL_PWR_DisableWakeUpPin:0000000c $d
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:358    .text.HAL_PWR_EnterSLEEPMode:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:364    .text.HAL_PWR_EnterSLEEPMode:00000000 HAL_PWR_EnterSLEEPMode
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:412    .text.HAL_PWR_EnterSLEEPMode:0000001c $d
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:417    .text.HAL_PWR_EnterSTOPMode:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:423    .text.HAL_PWR_EnterSTOPMode:00000000 HAL_PWR_EnterSTOPMode
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:483    .text.HAL_PWR_EnterSTOPMode:00000030 $d
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:489    .text.HAL_PWR_EnterSTANDBYMode:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:495    .text.HAL_PWR_EnterSTANDBYMode:00000000 HAL_PWR_EnterSTANDBYMode
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:524    .text.HAL_PWR_EnterSTANDBYMode:00000018 $d
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:530    .text.HAL_PWR_PVDCallback:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:536    .text.HAL_PWR_PVDCallback:00000000 HAL_PWR_PVDCallback
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:549    .text.HAL_PWR_PVD_IRQHandler:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:555    .text.HAL_PWR_PVD_IRQHandler:00000000 HAL_PWR_PVD_IRQHandler
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:589    .text.HAL_PWR_PVD_IRQHandler:0000001c $d
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:594    .text.HAL_PWR_EnableSleepOnExit:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:600    .text.HAL_PWR_EnableSleepOnExit:00000000 HAL_PWR_EnableSleepOnExit
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:617    .text.HAL_PWR_EnableSleepOnExit:0000000c $d
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:622    .text.HAL_PWR_DisableSleepOnExit:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:628    .text.HAL_PWR_DisableSleepOnExit:00000000 HAL_PWR_DisableSleepOnExit
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:645    .text.HAL_PWR_DisableSleepOnExit:0000000c $d
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:650    .text.HAL_PWR_EnableSEVOnPend:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:656    .text.HAL_PWR_EnableSEVOnPend:00000000 HAL_PWR_EnableSEVOnPend
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:673    .text.HAL_PWR_EnableSEVOnPend:0000000c $d
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:678    .text.HAL_PWR_DisableSEVOnPend:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:684    .text.HAL_PWR_DisableSEVOnPend:00000000 HAL_PWR_DisableSEVOnPend
-C:\Users\zhaohe\AppData\Local\Temp\ccdQCNMH.s:701    .text.HAL_PWR_DisableSEVOnPend:0000000c $d
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:20     .text.HAL_PWR_DeInit:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:26     .text.HAL_PWR_DeInit:00000000 HAL_PWR_DeInit
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:48     .text.HAL_PWR_DeInit:00000014 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:53     .text.HAL_PWR_EnableBkUpAccess:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:59     .text.HAL_PWR_EnableBkUpAccess:00000000 HAL_PWR_EnableBkUpAccess
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:92     .text.HAL_PWR_EnableBkUpAccess:00000014 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:98     .text.HAL_PWR_DisableBkUpAccess:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:104    .text.HAL_PWR_DisableBkUpAccess:00000000 HAL_PWR_DisableBkUpAccess
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:137    .text.HAL_PWR_DisableBkUpAccess:00000014 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:143    .text.HAL_PWR_ConfigPVD:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:149    .text.HAL_PWR_ConfigPVD:00000000 HAL_PWR_ConfigPVD
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:236    .text.HAL_PWR_ConfigPVD:0000007c $d
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:242    .text.HAL_PWR_EnablePVD:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:248    .text.HAL_PWR_EnablePVD:00000000 HAL_PWR_EnablePVD
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:265    .text.HAL_PWR_EnablePVD:00000008 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:270    .text.HAL_PWR_DisablePVD:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:276    .text.HAL_PWR_DisablePVD:00000000 HAL_PWR_DisablePVD
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:293    .text.HAL_PWR_DisablePVD:00000008 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:298    .text.HAL_PWR_EnableWakeUpPin:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:304    .text.HAL_PWR_EnableWakeUpPin:00000000 HAL_PWR_EnableWakeUpPin
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:323    .text.HAL_PWR_EnableWakeUpPin:0000000c $d
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:328    .text.HAL_PWR_DisableWakeUpPin:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:334    .text.HAL_PWR_DisableWakeUpPin:00000000 HAL_PWR_DisableWakeUpPin
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:353    .text.HAL_PWR_DisableWakeUpPin:0000000c $d
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:358    .text.HAL_PWR_EnterSLEEPMode:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:364    .text.HAL_PWR_EnterSLEEPMode:00000000 HAL_PWR_EnterSLEEPMode
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:412    .text.HAL_PWR_EnterSLEEPMode:0000001c $d
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:417    .text.HAL_PWR_EnterSTOPMode:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:423    .text.HAL_PWR_EnterSTOPMode:00000000 HAL_PWR_EnterSTOPMode
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:483    .text.HAL_PWR_EnterSTOPMode:00000030 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:489    .text.HAL_PWR_EnterSTANDBYMode:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:495    .text.HAL_PWR_EnterSTANDBYMode:00000000 HAL_PWR_EnterSTANDBYMode
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:524    .text.HAL_PWR_EnterSTANDBYMode:00000018 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:530    .text.HAL_PWR_PVDCallback:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:536    .text.HAL_PWR_PVDCallback:00000000 HAL_PWR_PVDCallback
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:549    .text.HAL_PWR_PVD_IRQHandler:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:555    .text.HAL_PWR_PVD_IRQHandler:00000000 HAL_PWR_PVD_IRQHandler
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:589    .text.HAL_PWR_PVD_IRQHandler:0000001c $d
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:594    .text.HAL_PWR_EnableSleepOnExit:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:600    .text.HAL_PWR_EnableSleepOnExit:00000000 HAL_PWR_EnableSleepOnExit
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:617    .text.HAL_PWR_EnableSleepOnExit:0000000c $d
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:622    .text.HAL_PWR_DisableSleepOnExit:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:628    .text.HAL_PWR_DisableSleepOnExit:00000000 HAL_PWR_DisableSleepOnExit
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:645    .text.HAL_PWR_DisableSleepOnExit:0000000c $d
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:650    .text.HAL_PWR_EnableSEVOnPend:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:656    .text.HAL_PWR_EnableSEVOnPend:00000000 HAL_PWR_EnableSEVOnPend
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:673    .text.HAL_PWR_EnableSEVOnPend:0000000c $d
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:678    .text.HAL_PWR_DisableSEVOnPend:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:684    .text.HAL_PWR_DisableSEVOnPend:00000000 HAL_PWR_DisableSEVOnPend
+C:\Users\zhaohe\AppData\Local\Temp\ccyqXxxw.s:701    .text.HAL_PWR_DisableSEVOnPend:0000000c $d
 
 NO UNDEFINED SYMBOLS

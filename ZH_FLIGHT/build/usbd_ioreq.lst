@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc2Vu0Iw.s 			page 1
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccqctW93.s 			page 1
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccjGbpt8.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -62,11 +58,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccqctW93.s 			page 1
   27:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c **** /** @defgroup USBD_IOREQ
   28:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c ****   * @brief control I/O requests module
   29:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c ****   * @{
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc2Vu0Iw.s 			page 2
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccqctW93.s 			page 2
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccjGbpt8.s 			page 2
 
 
   30:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c ****   */
@@ -126,11 +118,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccqctW93.s 			page 1
   84:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c ****   * @retval status
   85:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c ****   */
   86:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c **** USBD_StatusTypeDef USBD_CtlSendData(USBD_HandleTypeDef *pdev,
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc2Vu0Iw.s 			page 3
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccqctW93.s 			page 3
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccjGbpt8.s 			page 3
 
 
   87:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c ****                                     uint8_t *pbuf, uint32_t len)
@@ -190,11 +178,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccqctW93.s 			page 1
   68              		.section	.text.USBD_CtlContinueSendData,"ax",%progbits
   69              		.align	1
   70              		.global	USBD_CtlContinueSendData
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc2Vu0Iw.s 			page 4
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccqctW93.s 			page 4
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccjGbpt8.s 			page 4
 
 
   71              		.syntax unified
@@ -254,11 +238,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccqctW93.s 			page 1
  110              		.thumb
  111              		.thumb_func
  113              	USBD_CtlPrepareRx:
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc2Vu0Iw.s 			page 5
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccqctW93.s 			page 5
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccjGbpt8.s 			page 5
 
 
  114              	.LVL8:
@@ -318,11 +298,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccqctW93.s 			page 1
  144              		.loc 1 144 9 view .LVU33
  145 0016 FFF7FEFF 		bl	USBD_LL_PrepareReceive
  146              	.LVL11:
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc2Vu0Iw.s 			page 6
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccqctW93.s 			page 6
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccjGbpt8.s 			page 6
 
 
  145:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c **** 
@@ -382,11 +358,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccqctW93.s 			page 1
  185              		.loc 1 162 3 is_stmt 1 view .LVU42
  163:Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c **** }
  186              		.loc 1 163 1 is_stmt 0 view .LVU43
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc2Vu0Iw.s 			page 7
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccqctW93.s 			page 7
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccjGbpt8.s 			page 7
 
 
  187 000c 0020     		movs	r0, #0
@@ -446,11 +418,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccqctW93.s 			page 1
  226 0014 08BD     		pop	{r3, pc}
  227              		.cfi_endproc
  228              	.LFE138:
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc2Vu0Iw.s 			page 8
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccqctW93.s 			page 8
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccjGbpt8.s 			page 8
 
 
  230              		.section	.text.USBD_CtlReceiveStatus,"ax",%progbits
@@ -510,11 +478,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccqctW93.s 			page 1
  269              		.align	1
  270              		.global	USBD_GetRxCount
  271              		.syntax unified
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc2Vu0Iw.s 			page 9
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccqctW93.s 			page 9
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccjGbpt8.s 			page 9
 
 
  272              		.thumb
@@ -558,46 +522,25 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccqctW93.s 			page 1
  300              		.file 3 "e:\\gcc\\2021.10\\arm-none-eabi\\include\\sys\\_stdint.h"
  301              		.file 4 "Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h"
  302              		.file 5 "Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_core.h"
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc2Vu0Iw.s 			page 10
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccqctW93.s 			page 10
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccjGbpt8.s 			page 10
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 usbd_ioreq.c
-<<<<<<< HEAD
-C:\Users\zhaohe\AppData\Local\Temp\cc2Vu0Iw.s:20     .text.USBD_CtlSendData:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\cc2Vu0Iw.s:26     .text.USBD_CtlSendData:00000000 USBD_CtlSendData
-C:\Users\zhaohe\AppData\Local\Temp\cc2Vu0Iw.s:69     .text.USBD_CtlContinueSendData:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\cc2Vu0Iw.s:75     .text.USBD_CtlContinueSendData:00000000 USBD_CtlContinueSendData
-C:\Users\zhaohe\AppData\Local\Temp\cc2Vu0Iw.s:107    .text.USBD_CtlPrepareRx:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\cc2Vu0Iw.s:113    .text.USBD_CtlPrepareRx:00000000 USBD_CtlPrepareRx
-C:\Users\zhaohe\AppData\Local\Temp\cc2Vu0Iw.s:155    .text.USBD_CtlContinueRx:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\cc2Vu0Iw.s:161    .text.USBD_CtlContinueRx:00000000 USBD_CtlContinueRx
-C:\Users\zhaohe\AppData\Local\Temp\cc2Vu0Iw.s:193    .text.USBD_CtlSendStatus:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\cc2Vu0Iw.s:199    .text.USBD_CtlSendStatus:00000000 USBD_CtlSendStatus
-C:\Users\zhaohe\AppData\Local\Temp\cc2Vu0Iw.s:231    .text.USBD_CtlReceiveStatus:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\cc2Vu0Iw.s:237    .text.USBD_CtlReceiveStatus:00000000 USBD_CtlReceiveStatus
-C:\Users\zhaohe\AppData\Local\Temp\cc2Vu0Iw.s:269    .text.USBD_GetRxCount:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\cc2Vu0Iw.s:275    .text.USBD_GetRxCount:00000000 USBD_GetRxCount
-=======
-C:\Users\zhaohe\AppData\Local\Temp\ccqctW93.s:20     .text.USBD_CtlSendData:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccqctW93.s:26     .text.USBD_CtlSendData:00000000 USBD_CtlSendData
-C:\Users\zhaohe\AppData\Local\Temp\ccqctW93.s:69     .text.USBD_CtlContinueSendData:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccqctW93.s:75     .text.USBD_CtlContinueSendData:00000000 USBD_CtlContinueSendData
-C:\Users\zhaohe\AppData\Local\Temp\ccqctW93.s:107    .text.USBD_CtlPrepareRx:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccqctW93.s:113    .text.USBD_CtlPrepareRx:00000000 USBD_CtlPrepareRx
-C:\Users\zhaohe\AppData\Local\Temp\ccqctW93.s:155    .text.USBD_CtlContinueRx:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccqctW93.s:161    .text.USBD_CtlContinueRx:00000000 USBD_CtlContinueRx
-C:\Users\zhaohe\AppData\Local\Temp\ccqctW93.s:193    .text.USBD_CtlSendStatus:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccqctW93.s:199    .text.USBD_CtlSendStatus:00000000 USBD_CtlSendStatus
-C:\Users\zhaohe\AppData\Local\Temp\ccqctW93.s:231    .text.USBD_CtlReceiveStatus:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccqctW93.s:237    .text.USBD_CtlReceiveStatus:00000000 USBD_CtlReceiveStatus
-C:\Users\zhaohe\AppData\Local\Temp\ccqctW93.s:269    .text.USBD_GetRxCount:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccqctW93.s:275    .text.USBD_GetRxCount:00000000 USBD_GetRxCount
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+C:\Users\zhaohe\AppData\Local\Temp\ccjGbpt8.s:20     .text.USBD_CtlSendData:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccjGbpt8.s:26     .text.USBD_CtlSendData:00000000 USBD_CtlSendData
+C:\Users\zhaohe\AppData\Local\Temp\ccjGbpt8.s:69     .text.USBD_CtlContinueSendData:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccjGbpt8.s:75     .text.USBD_CtlContinueSendData:00000000 USBD_CtlContinueSendData
+C:\Users\zhaohe\AppData\Local\Temp\ccjGbpt8.s:107    .text.USBD_CtlPrepareRx:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccjGbpt8.s:113    .text.USBD_CtlPrepareRx:00000000 USBD_CtlPrepareRx
+C:\Users\zhaohe\AppData\Local\Temp\ccjGbpt8.s:155    .text.USBD_CtlContinueRx:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccjGbpt8.s:161    .text.USBD_CtlContinueRx:00000000 USBD_CtlContinueRx
+C:\Users\zhaohe\AppData\Local\Temp\ccjGbpt8.s:193    .text.USBD_CtlSendStatus:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccjGbpt8.s:199    .text.USBD_CtlSendStatus:00000000 USBD_CtlSendStatus
+C:\Users\zhaohe\AppData\Local\Temp\ccjGbpt8.s:231    .text.USBD_CtlReceiveStatus:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccjGbpt8.s:237    .text.USBD_CtlReceiveStatus:00000000 USBD_CtlReceiveStatus
+C:\Users\zhaohe\AppData\Local\Temp\ccjGbpt8.s:269    .text.USBD_GetRxCount:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccjGbpt8.s:275    .text.USBD_GetRxCount:00000000 USBD_GetRxCount
 
 UNDEFINED SYMBOLS
 USBD_LL_Transmit

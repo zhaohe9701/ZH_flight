@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccfxL4Qs.s 			page 1
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccrztT3R.s 			page 1
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccKCgJ02.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -24,11 +20,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccrztT3R.s 			page 1
   17              	.Ltext0:
   18              		.cfi_sections	.debug_frame
   19              	.Letext0:
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccfxL4Qs.s 			page 2
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccrztT3R.s 			page 2
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccKCgJ02.s 			page 2
 
 
 DEFINED SYMBOLS

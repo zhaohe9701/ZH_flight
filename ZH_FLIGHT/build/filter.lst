@@ -1,0 +1,993 @@
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccDyfIS6.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"filter.cpp"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text._ZN13LowPassFilter13SetCutoffFreqEff,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ZN13LowPassFilter13SetCutoffFreqEff
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ZN13LowPassFilter13SetCutoffFreqEff:
+  27              		.fnstart
+  28              	.LVL0:
+  29              	.LFB225:
+  30              		.file 1 "Sys/Flight/filter.cpp"
+   1:Sys/Flight/filter.cpp **** /*
+   2:Sys/Flight/filter.cpp ****  * @Description:
+   3:Sys/Flight/filter.cpp ****  * @Version: 1.0
+   4:Sys/Flight/filter.cpp ****  * @Author: zhaohe
+   5:Sys/Flight/filter.cpp ****  * @Date: 2022-09-12 15:40:28
+   6:Sys/Flight/filter.cpp ****  * @LastEditors: zhaohe
+   7:Sys/Flight/filter.cpp ****  * @LastEditTime: 2022-09-12 16:14:12
+   8:Sys/Flight/filter.cpp ****  * @FilePath: \ZH_FLIGHT\Sys\Flight\filter.cpp
+   9:Sys/Flight/filter.cpp ****  * Copyright (C) 2022 zhaohe. All rights reserved.
+  10:Sys/Flight/filter.cpp ****  */
+  11:Sys/Flight/filter.cpp **** #include "filter.h"
+  12:Sys/Flight/filter.cpp **** #include "math_param.h"
+  13:Sys/Flight/filter.cpp **** #include <math.h>
+  14:Sys/Flight/filter.cpp **** 
+  15:Sys/Flight/filter.cpp **** void LowPassFilter::Init(float sample_freq, float cutoff_freq)
+  16:Sys/Flight/filter.cpp **** {
+  17:Sys/Flight/filter.cpp ****     SetCutoffFreq(sample_freq, cutoff_freq);
+  18:Sys/Flight/filter.cpp **** }
+  19:Sys/Flight/filter.cpp **** 
+  20:Sys/Flight/filter.cpp **** void LowPassFilter::SetCutoffFreq(float sample_freq, float cutoff_freq)
+  21:Sys/Flight/filter.cpp **** {
+  31              		.loc 1 21 1 view -0
+  32              		.cfi_startproc
+  33              		@ args = 0, pretend = 0, frame = 0
+  34              		@ frame_needed = 0, uses_anonymous_args = 0
+  35              		.loc 1 21 1 is_stmt 0 view .LVU1
+  36 0000 10B5     		push	{r4, lr}
+  37              	.LCFI0:
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccDyfIS6.s 			page 2
+
+
+  38              		.cfi_def_cfa_offset 8
+  39              		.cfi_offset 4, -8
+  40              		.cfi_offset 14, -4
+  41 0002 0446     		mov	r4, r0
+  22:Sys/Flight/filter.cpp ****     float fr = sample_freq / cutoff_freq;
+  42              		.loc 1 22 5 is_stmt 1 view .LVU2
+  43              		.loc 1 22 11 is_stmt 0 view .LVU3
+  44 0004 C0EE207A 		vdiv.f32	s15, s0, s1
+  45              	.LVL1:
+  23:Sys/Flight/filter.cpp ****     float ohm = tanf(PI / fr);
+  46              		.loc 1 23 5 is_stmt 1 view .LVU4
+  47              		.loc 1 23 21 is_stmt 0 view .LVU5
+  48 0008 9FED170A 		vldr.32	s0, .L3
+  49              	.LVL2:
+  50              		.loc 1 23 21 view .LVU6
+  51 000c 80EE270A 		vdiv.f32	s0, s0, s15
+  52 0010 FFF7FEFF 		bl	tanf
+  53              	.LVL3:
+  24:Sys/Flight/filter.cpp ****     float c = 1.0f + 2.0f * cosf(PI / 4.0f) * ohm + ohm * ohm;
+  54              		.loc 1 24 5 is_stmt 1 view .LVU7
+  55              		.loc 1 24 45 is_stmt 0 view .LVU8
+  56 0014 9FED157A 		vldr.32	s14, .L3+4
+  57 0018 60EE076A 		vmul.f32	s13, s0, s14
+  58              		.loc 1 24 20 view .LVU9
+  59 001c B7EE007A 		vmov.f32	s14, #1.0e+0
+  60 0020 76EE877A 		vadd.f32	s15, s13, s14
+  61              		.loc 1 24 57 view .LVU10
+  62 0024 20EE000A 		vmul.f32	s0, s0, s0
+  63              	.LVL4:
+  64              		.loc 1 24 11 view .LVU11
+  65 0028 77EE807A 		vadd.f32	s15, s15, s0
+  66              	.LVL5:
+  25:Sys/Flight/filter.cpp ****     _b0 = ohm * ohm / c;
+  67              		.loc 1 25 5 is_stmt 1 view .LVU12
+  68              		.loc 1 25 21 is_stmt 0 view .LVU13
+  69 002c 80EE276A 		vdiv.f32	s12, s0, s15
+  70              		.loc 1 25 9 view .LVU14
+  71 0030 84ED026A 		vstr.32	s12, [r4, #8]
+  26:Sys/Flight/filter.cpp ****     _b1 = 2.0f * _b0;
+  72              		.loc 1 26 5 is_stmt 1 view .LVU15
+  73              		.loc 1 26 16 is_stmt 0 view .LVU16
+  74 0034 76EE065A 		vadd.f32	s11, s12, s12
+  75              		.loc 1 26 9 view .LVU17
+  76 0038 C4ED035A 		vstr.32	s11, [r4, #12]
+  27:Sys/Flight/filter.cpp ****     _b2 = _b0;
+  77              		.loc 1 27 5 is_stmt 1 view .LVU18
+  78              		.loc 1 27 9 is_stmt 0 view .LVU19
+  79 003c 84ED046A 		vstr.32	s12, [r4, #16]
+  28:Sys/Flight/filter.cpp ****     _a1 = 2.0f * (ohm * ohm - 1.0f) / c;
+  80              		.loc 1 28 5 is_stmt 1 view .LVU20
+  81              		.loc 1 28 29 is_stmt 0 view .LVU21
+  82 0040 30EE476A 		vsub.f32	s12, s0, s14
+  83              		.loc 1 28 16 view .LVU22
+  84 0044 36EE066A 		vadd.f32	s12, s12, s12
+  85              		.loc 1 28 37 view .LVU23
+  86 0048 C6EE275A 		vdiv.f32	s11, s12, s15
+  87              		.loc 1 28 9 view .LVU24
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccDyfIS6.s 			page 3
+
+
+  88 004c C4ED005A 		vstr.32	s11, [r4]
+  29:Sys/Flight/filter.cpp ****     _a2 = (1.0f - 2.0f * cosf(PI / 4.0f) * ohm + ohm * ohm) / c;
+  89              		.loc 1 29 5 is_stmt 1 view .LVU25
+  90              		.loc 1 29 17 is_stmt 0 view .LVU26
+  91 0050 37EE667A 		vsub.f32	s14, s14, s13
+  92              		.loc 1 29 48 view .LVU27
+  93 0054 30EE070A 		vadd.f32	s0, s0, s14
+  94              		.loc 1 29 61 view .LVU28
+  95 0058 80EE277A 		vdiv.f32	s14, s0, s15
+  96              		.loc 1 29 9 view .LVU29
+  97 005c 84ED017A 		vstr.32	s14, [r4, #4]
+  30:Sys/Flight/filter.cpp ****     _delay_element_1 = 0.0f;
+  98              		.loc 1 30 5 is_stmt 1 view .LVU30
+  99              		.loc 1 30 22 is_stmt 0 view .LVU31
+ 100 0060 0023     		movs	r3, #0
+ 101 0062 6361     		str	r3, [r4, #20]	@ float
+  31:Sys/Flight/filter.cpp ****     _delay_element_2 = 0.0f;
+ 102              		.loc 1 31 5 is_stmt 1 view .LVU32
+ 103              		.loc 1 31 22 is_stmt 0 view .LVU33
+ 104 0064 A361     		str	r3, [r4, #24]	@ float
+  32:Sys/Flight/filter.cpp **** }
+ 105              		.loc 1 32 1 view .LVU34
+ 106 0066 10BD     		pop	{r4, pc}
+ 107              	.LVL6:
+ 108              	.L4:
+ 109              		.loc 1 32 1 view .LVU35
+ 110              		.align	2
+ 111              	.L3:
+ 112 0068 DB0F4940 		.word	1078530011
+ 113 006c F304B53F 		.word	1068827891
+ 114              		.cfi_endproc
+ 115              	.LFE225:
+ 116              		.cantunwind
+ 117              		.fnend
+ 119              		.section	.text._ZN13LowPassFilter4InitEff,"ax",%progbits
+ 120              		.align	1
+ 121              		.global	_ZN13LowPassFilter4InitEff
+ 122              		.syntax unified
+ 123              		.thumb
+ 124              		.thumb_func
+ 126              	_ZN13LowPassFilter4InitEff:
+ 127              		.fnstart
+ 128              	.LVL7:
+ 129              	.LFB224:
+  16:Sys/Flight/filter.cpp ****     SetCutoffFreq(sample_freq, cutoff_freq);
+ 130              		.loc 1 16 1 is_stmt 1 view -0
+ 131              		.cfi_startproc
+ 132              		@ args = 0, pretend = 0, frame = 0
+ 133              		@ frame_needed = 0, uses_anonymous_args = 0
+  16:Sys/Flight/filter.cpp ****     SetCutoffFreq(sample_freq, cutoff_freq);
+ 134              		.loc 1 16 1 is_stmt 0 view .LVU37
+ 135 0000 08B5     		push	{r3, lr}
+ 136              	.LCFI1:
+ 137              		.cfi_def_cfa_offset 8
+ 138              		.cfi_offset 3, -8
+ 139              		.cfi_offset 14, -4
+  17:Sys/Flight/filter.cpp **** }
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccDyfIS6.s 			page 4
+
+
+ 140              		.loc 1 17 5 is_stmt 1 view .LVU38
+  17:Sys/Flight/filter.cpp **** }
+ 141              		.loc 1 17 18 is_stmt 0 view .LVU39
+ 142 0002 FFF7FEFF 		bl	_ZN13LowPassFilter13SetCutoffFreqEff
+ 143              	.LVL8:
+  18:Sys/Flight/filter.cpp **** 
+ 144              		.loc 1 18 1 view .LVU40
+ 145 0006 08BD     		pop	{r3, pc}
+ 146              		.cfi_endproc
+ 147              	.LFE224:
+ 148              		.cantunwind
+ 149              		.fnend
+ 151              		.section	.text._ZN13LowPassFilter5ApplyEf,"ax",%progbits
+ 152              		.align	1
+ 153              		.global	_ZN13LowPassFilter5ApplyEf
+ 154              		.syntax unified
+ 155              		.thumb
+ 156              		.thumb_func
+ 158              	_ZN13LowPassFilter5ApplyEf:
+ 159              		.fnstart
+ 160              	.LVL9:
+ 161              	.LFB226:
+  33:Sys/Flight/filter.cpp **** 
+  34:Sys/Flight/filter.cpp **** float LowPassFilter::Apply(float sample)
+  35:Sys/Flight/filter.cpp **** {
+ 162              		.loc 1 35 1 is_stmt 1 view -0
+ 163              		.cfi_startproc
+ 164              		@ args = 0, pretend = 0, frame = 0
+ 165              		@ frame_needed = 0, uses_anonymous_args = 0
+ 166              		@ link register save eliminated.
+  36:Sys/Flight/filter.cpp ****     float delay_element_0 = sample - _delay_element_1 * _a1 - _delay_element_2 * _a2;
+ 167              		.loc 1 36 5 view .LVU42
+ 168              		.loc 1 36 38 is_stmt 0 view .LVU43
+ 169 0000 D0ED056A 		vldr.32	s13, [r0, #20]
+ 170              		.loc 1 36 57 view .LVU44
+ 171 0004 D0ED007A 		vldr.32	s15, [r0]
+ 172              		.loc 1 36 55 view .LVU45
+ 173 0008 66EEA77A 		vmul.f32	s15, s13, s15
+ 174              		.loc 1 36 36 view .LVU46
+ 175 000c 70EE677A 		vsub.f32	s15, s0, s15
+ 176              		.loc 1 36 63 view .LVU47
+ 177 0010 90ED067A 		vldr.32	s14, [r0, #24]
+ 178              		.loc 1 36 82 view .LVU48
+ 179 0014 90ED016A 		vldr.32	s12, [r0, #4]
+ 180              		.loc 1 36 80 view .LVU49
+ 181 0018 27EE066A 		vmul.f32	s12, s14, s12
+ 182              		.loc 1 36 11 view .LVU50
+ 183 001c 77EEC67A 		vsub.f32	s15, s15, s12
+ 184              	.LVL10:
+  37:Sys/Flight/filter.cpp **** 	if (!isfinite(delay_element_0)) 
+ 185              		.loc 1 37 2 is_stmt 1 view .LVU51
+ 186              	.LBB4:
+ 187              	.LBI4:
+ 188              		.file 2 "e:\\gcc\\2021.10\\arm-none-eabi\\include\\c++\\10.3.1\\cmath"
+   1:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** // -*- C++ -*- C forwarding header.
+   2:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+   3:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** // Copyright (C) 1997-2020 Free Software Foundation, Inc.
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccDyfIS6.s 			page 5
+
+
+   4:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** //
+   5:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** // This file is part of the GNU ISO C++ Library.  This library is free
+   6:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** // software; you can redistribute it and/or modify it under the
+   7:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** // terms of the GNU General Public License as published by the
+   8:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** // Free Software Foundation; either version 3, or (at your option)
+   9:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** // any later version.
+  10:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+  11:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** // This library is distributed in the hope that it will be useful,
+  12:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** // but WITHOUT ANY WARRANTY; without even the implied warranty of
+  13:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  14:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** // GNU General Public License for more details.
+  15:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+  16:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** // Under Section 7 of GPL version 3, you are granted additional
+  17:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** // permissions described in the GCC Runtime Library Exception, version
+  18:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** // 3.1, as published by the Free Software Foundation.
+  19:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+  20:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** // You should have received a copy of the GNU General Public License and
+  21:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** // a copy of the GCC Runtime Library Exception along with this program;
+  22:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** // see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
+  23:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** // <http://www.gnu.org/licenses/>.
+  24:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+  25:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** /** @file include/cmath
+  26:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****  *  This is a Standard C++ Library file.  You should @c \#include this file
+  27:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****  *  in your programs, rather than any of the @a *.h implementation files.
+  28:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****  *
+  29:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****  *  This is the C++ version of the Standard C Library header @c math.h,
+  30:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****  *  and its contents are (mostly) the same as that header, but are all
+  31:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****  *  contained in the namespace @c std (except for names which are defined
+  32:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****  *  as macros in C).
+  33:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****  */
+  34:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+  35:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** //
+  36:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** // ISO C++ 14882: 26.5  C library
+  37:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** //
+  38:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+  39:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #pragma GCC system_header
+  40:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+  41:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #include <bits/c++config.h>
+  42:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #include <bits/cpp_type_traits.h>
+  43:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #include <ext/type_traits.h>
+  44:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #define _GLIBCXX_INCLUDE_NEXT_C_HEADERS
+  45:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #include_next <math.h>
+  46:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #undef _GLIBCXX_INCLUDE_NEXT_C_HEADERS
+  47:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #include <bits/std_abs.h>
+  48:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+  49:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #ifndef _GLIBCXX_CMATH
+  50:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #define _GLIBCXX_CMATH 1
+  51:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+  52:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** // Get rid of those macros defined in <math.h> in lieu of real functions.
+  53:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #undef div
+  54:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #undef acos
+  55:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #undef asin
+  56:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #undef atan
+  57:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #undef atan2
+  58:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #undef ceil
+  59:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #undef cos
+  60:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #undef cosh
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccDyfIS6.s 			page 6
+
+
+  61:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #undef exp
+  62:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #undef fabs
+  63:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #undef floor
+  64:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #undef fmod
+  65:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #undef frexp
+  66:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #undef ldexp
+  67:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #undef log
+  68:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #undef log10
+  69:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #undef modf
+  70:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #undef pow
+  71:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #undef sin
+  72:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #undef sinh
+  73:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #undef sqrt
+  74:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #undef tan
+  75:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #undef tanh
+  76:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+  77:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** extern "C++"
+  78:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** {
+  79:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** namespace std _GLIBCXX_VISIBILITY(default)
+  80:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** {
+  81:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** _GLIBCXX_BEGIN_NAMESPACE_VERSION
+  82:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+  83:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   using ::acos;
+  84:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+  85:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+  86:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline _GLIBCXX_CONSTEXPR float
+  87:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   acos(float __x)
+  88:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_acosf(__x); }
+  89:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+  90:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline _GLIBCXX_CONSTEXPR long double
+  91:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   acos(long double __x)
+  92:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_acosl(__x); }
+  93:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #endif
+  94:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+  95:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   template<typename _Tp>
+  96:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     inline _GLIBCXX_CONSTEXPR
+  97:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value, 
+  98:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****                                     double>::__type
+  99:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     acos(_Tp __x)
+ 100:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     { return __builtin_acos(__x); }
+ 101:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 102:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   using ::asin;
+ 103:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 104:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 105:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 106:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   asin(float __x)
+ 107:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_asinf(__x); }
+ 108:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 109:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 110:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   asin(long double __x)
+ 111:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_asinl(__x); }
+ 112:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #endif
+ 113:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 114:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   template<typename _Tp>
+ 115:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     inline _GLIBCXX_CONSTEXPR
+ 116:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+ 117:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****                                     double>::__type
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccDyfIS6.s 			page 7
+
+
+ 118:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     asin(_Tp __x)
+ 119:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     { return __builtin_asin(__x); }
+ 120:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 121:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   using ::atan;
+ 122:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 123:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 124:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 125:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   atan(float __x)
+ 126:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_atanf(__x); }
+ 127:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 128:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 129:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   atan(long double __x)
+ 130:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_atanl(__x); }
+ 131:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #endif
+ 132:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 133:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   template<typename _Tp>
+ 134:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     inline _GLIBCXX_CONSTEXPR
+ 135:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+ 136:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****                                     double>::__type
+ 137:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     atan(_Tp __x)
+ 138:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     { return __builtin_atan(__x); }
+ 139:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 140:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   using ::atan2;
+ 141:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 142:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 143:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 144:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   atan2(float __y, float __x)
+ 145:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_atan2f(__y, __x); }
+ 146:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 147:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 148:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   atan2(long double __y, long double __x)
+ 149:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_atan2l(__y, __x); }
+ 150:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #endif
+ 151:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 152:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   template<typename _Tp, typename _Up>
+ 153:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     inline _GLIBCXX_CONSTEXPR
+ 154:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+ 155:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     atan2(_Tp __y, _Up __x)
+ 156:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     {
+ 157:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****       typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+ 158:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****       return atan2(__type(__y), __type(__x));
+ 159:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     }
+ 160:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 161:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   using ::ceil;
+ 162:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 163:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 164:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 165:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   ceil(float __x)
+ 166:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_ceilf(__x); }
+ 167:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 168:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 169:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   ceil(long double __x)
+ 170:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_ceill(__x); }
+ 171:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #endif
+ 172:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 173:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   template<typename _Tp>
+ 174:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     inline _GLIBCXX_CONSTEXPR
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccDyfIS6.s 			page 8
+
+
+ 175:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value, 
+ 176:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****                                     double>::__type
+ 177:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     ceil(_Tp __x)
+ 178:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     { return __builtin_ceil(__x); }
+ 179:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 180:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   using ::cos;
+ 181:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 182:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 183:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 184:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   cos(float __x)
+ 185:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_cosf(__x); }
+ 186:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 187:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 188:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   cos(long double __x)
+ 189:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_cosl(__x); }
+ 190:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #endif
+ 191:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 192:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   template<typename _Tp>
+ 193:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     inline _GLIBCXX_CONSTEXPR
+ 194:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+ 195:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****                                     double>::__type
+ 196:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     cos(_Tp __x)
+ 197:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     { return __builtin_cos(__x); }
+ 198:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 199:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   using ::cosh;
+ 200:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 201:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 202:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 203:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   cosh(float __x)
+ 204:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_coshf(__x); }
+ 205:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 206:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 207:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   cosh(long double __x)
+ 208:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_coshl(__x); }
+ 209:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #endif
+ 210:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 211:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   template<typename _Tp>
+ 212:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     inline _GLIBCXX_CONSTEXPR
+ 213:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+ 214:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****                                     double>::__type
+ 215:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     cosh(_Tp __x)
+ 216:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     { return __builtin_cosh(__x); }
+ 217:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 218:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   using ::exp;
+ 219:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 220:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 221:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 222:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   exp(float __x)
+ 223:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_expf(__x); }
+ 224:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 225:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 226:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   exp(long double __x)
+ 227:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_expl(__x); }
+ 228:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #endif
+ 229:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 230:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   template<typename _Tp>
+ 231:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     inline _GLIBCXX_CONSTEXPR
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccDyfIS6.s 			page 9
+
+
+ 232:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+ 233:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****                                     double>::__type
+ 234:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     exp(_Tp __x)
+ 235:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     { return __builtin_exp(__x); }
+ 236:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 237:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   using ::fabs;
+ 238:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 239:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 240:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 241:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   fabs(float __x)
+ 242:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_fabsf(__x); }
+ 243:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 244:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 245:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   fabs(long double __x)
+ 246:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_fabsl(__x); }
+ 247:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #endif
+ 248:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 249:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   template<typename _Tp>
+ 250:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     inline _GLIBCXX_CONSTEXPR
+ 251:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+ 252:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****                                     double>::__type
+ 253:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     fabs(_Tp __x)
+ 254:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     { return __builtin_fabs(__x); }
+ 255:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 256:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   using ::floor;
+ 257:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 258:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 259:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 260:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   floor(float __x)
+ 261:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_floorf(__x); }
+ 262:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 263:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 264:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   floor(long double __x)
+ 265:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_floorl(__x); }
+ 266:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #endif
+ 267:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 268:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   template<typename _Tp>
+ 269:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     inline _GLIBCXX_CONSTEXPR
+ 270:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+ 271:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****                                     double>::__type
+ 272:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     floor(_Tp __x)
+ 273:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     { return __builtin_floor(__x); }
+ 274:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 275:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   using ::fmod;
+ 276:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 277:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 278:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 279:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   fmod(float __x, float __y)
+ 280:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_fmodf(__x, __y); }
+ 281:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 282:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 283:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   fmod(long double __x, long double __y)
+ 284:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_fmodl(__x, __y); }
+ 285:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #endif
+ 286:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 287:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   template<typename _Tp, typename _Up>
+ 288:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     inline _GLIBCXX_CONSTEXPR
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccDyfIS6.s 			page 10
+
+
+ 289:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+ 290:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     fmod(_Tp __x, _Up __y)
+ 291:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     {
+ 292:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****       typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+ 293:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****       return fmod(__type(__x), __type(__y));
+ 294:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     }
+ 295:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 296:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   using ::frexp;
+ 297:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 298:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 299:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline float
+ 300:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   frexp(float __x, int* __exp)
+ 301:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_frexpf(__x, __exp); }
+ 302:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 303:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline long double
+ 304:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   frexp(long double __x, int* __exp)
+ 305:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_frexpl(__x, __exp); }
+ 306:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #endif
+ 307:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 308:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   template<typename _Tp>
+ 309:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     inline _GLIBCXX_CONSTEXPR
+ 310:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value, 
+ 311:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****                                     double>::__type
+ 312:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     frexp(_Tp __x, int* __exp)
+ 313:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     { return __builtin_frexp(__x, __exp); }
+ 314:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 315:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   using ::ldexp;
+ 316:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 317:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 318:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 319:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   ldexp(float __x, int __exp)
+ 320:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_ldexpf(__x, __exp); }
+ 321:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 322:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 323:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   ldexp(long double __x, int __exp)
+ 324:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_ldexpl(__x, __exp); }
+ 325:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #endif
+ 326:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 327:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   template<typename _Tp>
+ 328:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     inline _GLIBCXX_CONSTEXPR
+ 329:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value, 
+ 330:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****                                     double>::__type
+ 331:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     ldexp(_Tp __x, int __exp)
+ 332:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     { return __builtin_ldexp(__x, __exp); }
+ 333:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 334:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   using ::log;
+ 335:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 336:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 337:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 338:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   log(float __x)
+ 339:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_logf(__x); }
+ 340:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 341:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 342:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   log(long double __x)
+ 343:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_logl(__x); }
+ 344:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #endif
+ 345:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccDyfIS6.s 			page 11
+
+
+ 346:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   template<typename _Tp>
+ 347:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     inline _GLIBCXX_CONSTEXPR
+ 348:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value, 
+ 349:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****                                     double>::__type
+ 350:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     log(_Tp __x)
+ 351:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     { return __builtin_log(__x); }
+ 352:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 353:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   using ::log10;
+ 354:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 355:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 356:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 357:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   log10(float __x)
+ 358:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_log10f(__x); }
+ 359:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 360:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 361:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   log10(long double __x)
+ 362:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_log10l(__x); }
+ 363:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #endif
+ 364:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 365:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   template<typename _Tp>
+ 366:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     inline _GLIBCXX_CONSTEXPR
+ 367:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+ 368:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****                                     double>::__type
+ 369:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     log10(_Tp __x)
+ 370:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     { return __builtin_log10(__x); }
+ 371:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 372:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   using ::modf;
+ 373:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 374:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 375:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline float
+ 376:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   modf(float __x, float* __iptr)
+ 377:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_modff(__x, __iptr); }
+ 378:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 379:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline long double
+ 380:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   modf(long double __x, long double* __iptr)
+ 381:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_modfl(__x, __iptr); }
+ 382:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #endif
+ 383:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 384:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   using ::pow;
+ 385:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 386:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 387:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 388:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   pow(float __x, float __y)
+ 389:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_powf(__x, __y); }
+ 390:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 391:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 392:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   pow(long double __x, long double __y)
+ 393:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_powl(__x, __y); }
+ 394:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 395:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #if __cplusplus < 201103L
+ 396:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   // _GLIBCXX_RESOLVE_LIB_DEFECTS
+ 397:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   // DR 550. What should the return type of pow(float,int) be?
+ 398:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline double
+ 399:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   pow(double __x, int __i)
+ 400:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_powi(__x, __i); }
+ 401:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 402:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline float
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccDyfIS6.s 			page 12
+
+
+ 403:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   pow(float __x, int __n)
+ 404:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_powif(__x, __n); }
+ 405:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 406:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline long double
+ 407:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   pow(long double __x, int __n)
+ 408:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_powil(__x, __n); }
+ 409:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #endif
+ 410:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #endif
+ 411:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 412:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   template<typename _Tp, typename _Up>
+ 413:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     inline _GLIBCXX_CONSTEXPR
+ 414:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+ 415:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     pow(_Tp __x, _Up __y)
+ 416:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     {
+ 417:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****       typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+ 418:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****       return pow(__type(__x), __type(__y));
+ 419:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     }
+ 420:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 421:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   using ::sin;
+ 422:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 423:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 424:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 425:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   sin(float __x)
+ 426:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_sinf(__x); }
+ 427:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 428:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 429:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   sin(long double __x)
+ 430:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_sinl(__x); }
+ 431:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #endif
+ 432:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 433:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   template<typename _Tp>
+ 434:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     inline _GLIBCXX_CONSTEXPR
+ 435:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value, 
+ 436:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****                                     double>::__type
+ 437:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     sin(_Tp __x)
+ 438:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     { return __builtin_sin(__x); }
+ 439:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 440:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   using ::sinh;
+ 441:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 442:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 443:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 444:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   sinh(float __x)
+ 445:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_sinhf(__x); }
+ 446:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 447:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 448:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   sinh(long double __x)
+ 449:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_sinhl(__x); }
+ 450:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #endif
+ 451:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 452:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   template<typename _Tp>
+ 453:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     inline _GLIBCXX_CONSTEXPR
+ 454:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value, 
+ 455:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****                                     double>::__type
+ 456:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     sinh(_Tp __x)
+ 457:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     { return __builtin_sinh(__x); }
+ 458:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 459:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   using ::sqrt;
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccDyfIS6.s 			page 13
+
+
+ 460:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 461:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 462:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 463:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   sqrt(float __x)
+ 464:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_sqrtf(__x); }
+ 465:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 466:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 467:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   sqrt(long double __x)
+ 468:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_sqrtl(__x); }
+ 469:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #endif
+ 470:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 471:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   template<typename _Tp>
+ 472:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     inline _GLIBCXX_CONSTEXPR
+ 473:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value, 
+ 474:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****                                     double>::__type
+ 475:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     sqrt(_Tp __x)
+ 476:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     { return __builtin_sqrt(__x); }
+ 477:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 478:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   using ::tan;
+ 479:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 480:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 481:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 482:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   tan(float __x)
+ 483:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_tanf(__x); }
+ 484:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 485:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 486:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   tan(long double __x)
+ 487:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_tanl(__x); }
+ 488:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #endif
+ 489:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 490:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   template<typename _Tp>
+ 491:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     inline _GLIBCXX_CONSTEXPR
+ 492:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value, 
+ 493:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****                                     double>::__type
+ 494:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     tan(_Tp __x)
+ 495:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     { return __builtin_tan(__x); }
+ 496:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 497:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   using ::tanh;
+ 498:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 499:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 500:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 501:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   tanh(float __x)
+ 502:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_tanhf(__x); }
+ 503:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 504:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 505:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   tanh(long double __x)
+ 506:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_tanhl(__x); }
+ 507:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #endif
+ 508:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 509:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   template<typename _Tp>
+ 510:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     inline _GLIBCXX_CONSTEXPR
+ 511:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value, 
+ 512:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****                                     double>::__type
+ 513:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     tanh(_Tp __x)
+ 514:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     { return __builtin_tanh(__x); }
+ 515:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 516:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #if _GLIBCXX_USE_C99_MATH
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccDyfIS6.s 			page 14
+
+
+ 517:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #if !_GLIBCXX_USE_C99_FP_MACROS_DYNAMIC
+ 518:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 519:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** // These are possible macros imported from C99-land.
+ 520:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #undef fpclassify
+ 521:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #undef isfinite
+ 522:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #undef isinf
+ 523:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #undef isnan
+ 524:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #undef isnormal
+ 525:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #undef signbit
+ 526:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #undef isgreater
+ 527:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #undef isgreaterequal
+ 528:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #undef isless
+ 529:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #undef islessequal
+ 530:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #undef islessgreater
+ 531:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #undef isunordered
+ 532:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 533:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #if __cplusplus >= 201103L
+ 534:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 535:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #ifndef __CORRECT_ISO_CPP11_MATH_H_PROTO_FP
+ 536:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   constexpr int
+ 537:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   fpclassify(float __x)
+ 538:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_fpclassify(FP_NAN, FP_INFINITE, FP_NORMAL,
+ 539:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 				FP_SUBNORMAL, FP_ZERO, __x); }
+ 540:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 541:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   constexpr int
+ 542:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   fpclassify(double __x)
+ 543:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_fpclassify(FP_NAN, FP_INFINITE, FP_NORMAL,
+ 544:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 				FP_SUBNORMAL, FP_ZERO, __x); }
+ 545:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 546:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   constexpr int
+ 547:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   fpclassify(long double __x)
+ 548:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_fpclassify(FP_NAN, FP_INFINITE, FP_NORMAL,
+ 549:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 				FP_SUBNORMAL, FP_ZERO, __x); }
+ 550:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #endif
+ 551:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 552:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #ifndef __CORRECT_ISO_CPP11_MATH_H_PROTO_INT
+ 553:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   template<typename _Tp>
+ 554:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     constexpr typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+ 555:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****                                               int>::__type
+ 556:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     fpclassify(_Tp __x)
+ 557:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****     { return __x != 0 ? FP_NORMAL : FP_ZERO; }
+ 558:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #endif
+ 559:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** 
+ 560:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath **** #ifndef __CORRECT_ISO_CPP11_MATH_H_PROTO_FP
+ 561:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   constexpr bool
+ 562:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   isfinite(float __x)
+ 189              		.loc 2 562 3 view .LVU52
+ 190              	.LBB5:
+ 563:e:\gcc\2021.10\arm-none-eabi\include\c++\10.3.1\cmath ****   { return __builtin_isfinite(__x); }
+ 191              		.loc 2 563 5 view .LVU53
+ 192              		.loc 2 563 30 is_stmt 0 view .LVU54
+ 193 0020 F0EEE75A 		vabs.f32	s11, s15
+ 194              	.LVL11:
+ 195              		.loc 2 563 30 view .LVU55
+ 196              	.LBE5:
+ 197              	.LBE4:
+ 198              		.loc 1 37 2 view .LVU56
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccDyfIS6.s 			page 15
+
+
+ 199 0024 9FED0E6A 		vldr.32	s12, .L9
+ 200 0028 F4EE465A 		vcmp.f32	s11, s12
+ 201 002c F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 202 0030 01D8     		bhi	.L8
+  36:Sys/Flight/filter.cpp **** 	if (!isfinite(delay_element_0)) 
+ 203              		.loc 1 36 11 view .LVU57
+ 204 0032 B0EE670A 		vmov.f32	s0, s15
+ 205              	.LVL12:
+ 206              	.L8:
+  38:Sys/Flight/filter.cpp **** 	{
+  39:Sys/Flight/filter.cpp **** 		// don't allow bad values to propigate via the filter
+  40:Sys/Flight/filter.cpp **** 		delay_element_0 = sample;
+  41:Sys/Flight/filter.cpp **** 	}
+  42:Sys/Flight/filter.cpp **** 
+  43:Sys/Flight/filter.cpp **** 	float output = delay_element_0 * _b0 + _delay_element_1 * _b1 + _delay_element_2 * _b2;
+ 207              		.loc 1 43 2 is_stmt 1 view .LVU58
+ 208              		.loc 1 43 35 is_stmt 0 view .LVU59
+ 209 0036 D0ED027A 		vldr.32	s15, [r0, #8]
+ 210              		.loc 1 43 33 view .LVU60
+ 211 003a 67EE807A 		vmul.f32	s15, s15, s0
+ 212              		.loc 1 43 60 view .LVU61
+ 213 003e 90ED036A 		vldr.32	s12, [r0, #12]
+ 214              		.loc 1 43 58 view .LVU62
+ 215 0042 26EE866A 		vmul.f32	s12, s13, s12
+ 216              		.loc 1 43 39 view .LVU63
+ 217 0046 77EE867A 		vadd.f32	s15, s15, s12
+ 218              		.loc 1 43 85 view .LVU64
+ 219 004a 90ED046A 		vldr.32	s12, [r0, #16]
+ 220              		.loc 1 43 83 view .LVU65
+ 221 004e 27EE067A 		vmul.f32	s14, s14, s12
+ 222              	.LVL13:
+  44:Sys/Flight/filter.cpp **** 
+  45:Sys/Flight/filter.cpp **** 	_delay_element_2 = _delay_element_1;
+ 223              		.loc 1 45 2 is_stmt 1 view .LVU66
+ 224              		.loc 1 45 19 is_stmt 0 view .LVU67
+ 225 0052 C0ED066A 		vstr.32	s13, [r0, #24]
+  46:Sys/Flight/filter.cpp **** 	_delay_element_1 = delay_element_0;
+ 226              		.loc 1 46 2 is_stmt 1 view .LVU68
+ 227              		.loc 1 46 19 is_stmt 0 view .LVU69
+ 228 0056 80ED050A 		vstr.32	s0, [r0, #20]
+  47:Sys/Flight/filter.cpp **** 	return output;
+ 229              		.loc 1 47 2 is_stmt 1 view .LVU70
+  48:Sys/Flight/filter.cpp **** }
+ 230              		.loc 1 48 1 is_stmt 0 view .LVU71
+ 231 005a 37EE870A 		vadd.f32	s0, s15, s14
+ 232              	.LVL14:
+ 233              		.loc 1 48 1 view .LVU72
+ 234 005e 7047     		bx	lr
+ 235              	.L10:
+ 236              		.align	2
+ 237              	.L9:
+ 238 0060 FFFF7F7F 		.word	2139095039
+ 239              		.cfi_endproc
+ 240              	.LFE226:
+ 241              		.cantunwind
+ 242              		.fnend
+ 244              		.section	.text._ZN13LowPassFilter5ResetEf,"ax",%progbits
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccDyfIS6.s 			page 16
+
+
+ 245              		.align	1
+ 246              		.global	_ZN13LowPassFilter5ResetEf
+ 247              		.syntax unified
+ 248              		.thumb
+ 249              		.thumb_func
+ 251              	_ZN13LowPassFilter5ResetEf:
+ 252              		.fnstart
+ 253              	.LVL15:
+ 254              	.LFB227:
+  49:Sys/Flight/filter.cpp **** 
+  50:Sys/Flight/filter.cpp **** float LowPassFilter::Reset(float sample)
+  51:Sys/Flight/filter.cpp **** {
+ 255              		.loc 1 51 1 is_stmt 1 view -0
+ 256              		.cfi_startproc
+ 257              		@ args = 0, pretend = 0, frame = 0
+ 258              		@ frame_needed = 0, uses_anonymous_args = 0
+ 259              		.loc 1 51 1 is_stmt 0 view .LVU74
+ 260 0000 08B5     		push	{r3, lr}
+ 261              	.LCFI2:
+ 262              		.cfi_def_cfa_offset 8
+ 263              		.cfi_offset 3, -8
+ 264              		.cfi_offset 14, -4
+  52:Sys/Flight/filter.cpp ****     float dval = sample / (_b0 + _b1 + _b2);
+ 265              		.loc 1 52 5 is_stmt 1 view .LVU75
+ 266              		.loc 1 52 28 is_stmt 0 view .LVU76
+ 267 0002 D0ED027A 		vldr.32	s15, [r0, #8]
+ 268              		.loc 1 52 34 view .LVU77
+ 269 0006 90ED037A 		vldr.32	s14, [r0, #12]
+ 270              		.loc 1 52 32 view .LVU78
+ 271 000a 77EE877A 		vadd.f32	s15, s15, s14
+ 272              		.loc 1 52 40 view .LVU79
+ 273 000e 90ED047A 		vldr.32	s14, [r0, #16]
+ 274              		.loc 1 52 38 view .LVU80
+ 275 0012 77EE877A 		vadd.f32	s15, s15, s14
+ 276              		.loc 1 52 11 view .LVU81
+ 277 0016 80EE277A 		vdiv.f32	s14, s0, s15
+ 278              	.LVL16:
+  53:Sys/Flight/filter.cpp **** 	_delay_element_1 = dval;
+ 279              		.loc 1 53 2 is_stmt 1 view .LVU82
+ 280              		.loc 1 53 19 is_stmt 0 view .LVU83
+ 281 001a 80ED057A 		vstr.32	s14, [r0, #20]
+  54:Sys/Flight/filter.cpp **** 	_delay_element_2 = dval;
+ 282              		.loc 1 54 2 is_stmt 1 view .LVU84
+ 283              		.loc 1 54 19 is_stmt 0 view .LVU85
+ 284 001e 80ED067A 		vstr.32	s14, [r0, #24]
+  55:Sys/Flight/filter.cpp **** 	return Apply(sample);
+ 285              		.loc 1 55 2 is_stmt 1 view .LVU86
+ 286              		.loc 1 55 14 is_stmt 0 view .LVU87
+ 287 0022 FFF7FEFF 		bl	_ZN13LowPassFilter5ApplyEf
+ 288              	.LVL17:
+  56:Sys/Flight/filter.cpp **** }...
+ 289              		.loc 1 56 1 view .LVU88
+ 290 0026 08BD     		pop	{r3, pc}
+ 291              		.cfi_endproc
+ 292              	.LFE227:
+ 293              		.cantunwind
+ 294              		.fnend
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccDyfIS6.s 			page 17
+
+
+ 296              		.text
+ 297              	.Letext0:
+ 298              		.file 3 "Sys/Flight/filter.h"
+ 299              		.file 4 "e:\\gcc\\2021.10\\arm-none-eabi\\include\\c++\\10.3.1\\bits\\std_abs.h"
+ 300              		.file 5 "e:\\gcc\\2021.10\\arm-none-eabi\\include\\c++\\10.3.1\\arm-none-eabi\\thumb\\v7e-m+fp\\ha
+ 301              		.file 6 "e:\\gcc\\2021.10\\arm-none-eabi\\include\\math.h"
+ 302              		.file 7 "e:\\gcc\\2021.10\\arm-none-eabi\\include\\c++\\10.3.1\\math.h"
+ 303              		.file 8 "<built-in>"
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccDyfIS6.s 			page 18
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 filter.cpp
+C:\Users\zhaohe\AppData\Local\Temp\ccDyfIS6.s:20     .text._ZN13LowPassFilter13SetCutoffFreqEff:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccDyfIS6.s:26     .text._ZN13LowPassFilter13SetCutoffFreqEff:00000000 _ZN13LowPassFilter13SetCutoffFreqEff
+C:\Users\zhaohe\AppData\Local\Temp\ccDyfIS6.s:112    .text._ZN13LowPassFilter13SetCutoffFreqEff:00000068 $d
+.ARM.exidx.text._ZN13LowPassFilter13SetCutoffFreqEff:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccDyfIS6.s:120    .text._ZN13LowPassFilter4InitEff:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccDyfIS6.s:126    .text._ZN13LowPassFilter4InitEff:00000000 _ZN13LowPassFilter4InitEff
+.ARM.exidx.text._ZN13LowPassFilter4InitEff:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccDyfIS6.s:152    .text._ZN13LowPassFilter5ApplyEf:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccDyfIS6.s:158    .text._ZN13LowPassFilter5ApplyEf:00000000 _ZN13LowPassFilter5ApplyEf
+C:\Users\zhaohe\AppData\Local\Temp\ccDyfIS6.s:238    .text._ZN13LowPassFilter5ApplyEf:00000060 $d
+.ARM.exidx.text._ZN13LowPassFilter5ApplyEf:00000000 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccDyfIS6.s:245    .text._ZN13LowPassFilter5ResetEf:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccDyfIS6.s:251    .text._ZN13LowPassFilter5ResetEf:00000000 _ZN13LowPassFilter5ResetEf
+.ARM.exidx.text._ZN13LowPassFilter5ResetEf:00000000 $d
+
+UNDEFINED SYMBOLS
+tanf

@@ -13,7 +13,9 @@
                 "${workspaceFolder}/Core/Inc",
                 "${workspaceFolder}/USB_DEVICE/App",
                 "${workspaceFolder}/Sys/Driver",
-                "${workspaceFolder}/Sys/Config"
+                "${workspaceFolder}/Sys/Config",
+                "${workspaceFolder}/Sys/Type",
+                "${workspaceFolder}/Sys/Math"
             ],
             "defines": [
                 "_DEBUG",

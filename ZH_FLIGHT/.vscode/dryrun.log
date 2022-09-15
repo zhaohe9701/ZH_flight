@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 make.exe --dry-run --always-make --keep-going --print-directory
-=======
-make.exe --dry-run --keep-going --print-directory
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
 'make.exe' �����ڲ����ⲿ���Ҳ���ǿ����еĳ���
 ���������ļ���
 

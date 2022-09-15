@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccgh8zzT.s 			page 1
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccvuFkRi.s 			page 1
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc6Ig9Gm.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -62,11 +58,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccvuFkRi.s 			page 1
   28:Core/Src/i2c.c **** 
   29:Core/Src/i2c.c **** /* I2C1 init function */
   30:Core/Src/i2c.c **** void MX_I2C1_Init(void)
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccgh8zzT.s 			page 2
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccvuFkRi.s 			page 2
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc6Ig9Gm.s 			page 2
 
 
   31:Core/Src/i2c.c **** {
@@ -126,11 +118,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccvuFkRi.s 			page 1
   66 001c C361     		str	r3, [r0, #28]
   48:Core/Src/i2c.c ****   hi2c1.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
   67              		.loc 1 48 3 is_stmt 1 view .LVU17
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccgh8zzT.s 			page 3
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccvuFkRi.s 			page 3
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc6Ig9Gm.s 			page 3
 
 
   68              		.loc 1 48 28 is_stmt 0 view .LVU18
@@ -190,11 +178,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccvuFkRi.s 			page 1
  111              		.cfi_def_cfa_offset 12
  112              		.cfi_offset 4, -12
  113              		.cfi_offset 5, -8
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccgh8zzT.s 			page 4
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccvuFkRi.s 			page 4
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc6Ig9Gm.s 			page 4
 
 
  114              		.cfi_offset 14, -4
@@ -254,11 +238,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccvuFkRi.s 			page 1
  141 001a 30BD     		pop	{r4, r5, pc}
  142              	.LVL4:
  143              	.L10:
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccgh8zzT.s 			page 5
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccvuFkRi.s 			page 5
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc6Ig9Gm.s 			page 5
 
 
  144              	.LCFI4:
@@ -318,11 +298,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccvuFkRi.s 			page 1
  182 0046 03A9     		add	r1, sp, #12
  183 0048 0848     		ldr	r0, .L11+8
  184              	.LVL5:
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccgh8zzT.s 			page 6
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccvuFkRi.s 			page 6
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc6Ig9Gm.s 			page 6
 
 
   79:Core/Src/i2c.c **** 
@@ -382,11 +358,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccvuFkRi.s 			page 1
  229              		.loc 1 92 3 view .LVU58
  230              		.loc 1 92 15 is_stmt 0 view .LVU59
  231 0000 0268     		ldr	r2, [r0]
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccgh8zzT.s 			page 7
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccvuFkRi.s 			page 7
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc6Ig9Gm.s 			page 7
 
 
  232              		.loc 1 92 5 view .LVU60
@@ -446,11 +418,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccvuFkRi.s 			page 1
  265 002e 00BF     		.align	2
  266              	.L20:
  267 0030 00540040 		.word	1073763328
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccgh8zzT.s 			page 8
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccvuFkRi.s 			page 8
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc6Ig9Gm.s 			page 8
 
 
  268 0034 00380240 		.word	1073887232
@@ -478,40 +446,22 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccvuFkRi.s 			page 1
  289              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h"
  290              		.file 9 "Core/Inc/main.h"
  291              		.file 10 "Core/Inc/i2c.h"
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccgh8zzT.s 			page 9
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccvuFkRi.s 			page 9
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cc6Ig9Gm.s 			page 9
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 i2c.c
-<<<<<<< HEAD
-C:\Users\zhaohe\AppData\Local\Temp\ccgh8zzT.s:20     .text.MX_I2C1_Init:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccgh8zzT.s:26     .text.MX_I2C1_Init:00000000 MX_I2C1_Init
-C:\Users\zhaohe\AppData\Local\Temp\ccgh8zzT.s:88     .text.MX_I2C1_Init:00000030 $d
-C:\Users\zhaohe\AppData\Local\Temp\ccgh8zzT.s:95     .text.HAL_I2C_MspInit:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccgh8zzT.s:101    .text.HAL_I2C_MspInit:00000000 HAL_I2C_MspInit
-C:\Users\zhaohe\AppData\Local\Temp\ccgh8zzT.s:209    .text.HAL_I2C_MspInit:00000064 $d
-C:\Users\zhaohe\AppData\Local\Temp\ccgh8zzT.s:216    .text.HAL_I2C_MspDeInit:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccgh8zzT.s:222    .text.HAL_I2C_MspDeInit:00000000 HAL_I2C_MspDeInit
-C:\Users\zhaohe\AppData\Local\Temp\ccgh8zzT.s:267    .text.HAL_I2C_MspDeInit:00000030 $d
-C:\Users\zhaohe\AppData\Local\Temp\ccgh8zzT.s:279    .bss.hi2c1:00000000 hi2c1
-C:\Users\zhaohe\AppData\Local\Temp\ccgh8zzT.s:275    .bss.hi2c1:00000000 $d
-=======
-C:\Users\zhaohe\AppData\Local\Temp\ccvuFkRi.s:20     .text.MX_I2C1_Init:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccvuFkRi.s:26     .text.MX_I2C1_Init:00000000 MX_I2C1_Init
-C:\Users\zhaohe\AppData\Local\Temp\ccvuFkRi.s:88     .text.MX_I2C1_Init:00000030 $d
-C:\Users\zhaohe\AppData\Local\Temp\ccvuFkRi.s:95     .text.HAL_I2C_MspInit:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccvuFkRi.s:101    .text.HAL_I2C_MspInit:00000000 HAL_I2C_MspInit
-C:\Users\zhaohe\AppData\Local\Temp\ccvuFkRi.s:209    .text.HAL_I2C_MspInit:00000064 $d
-C:\Users\zhaohe\AppData\Local\Temp\ccvuFkRi.s:216    .text.HAL_I2C_MspDeInit:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccvuFkRi.s:222    .text.HAL_I2C_MspDeInit:00000000 HAL_I2C_MspDeInit
-C:\Users\zhaohe\AppData\Local\Temp\ccvuFkRi.s:267    .text.HAL_I2C_MspDeInit:00000030 $d
-C:\Users\zhaohe\AppData\Local\Temp\ccvuFkRi.s:279    .bss.hi2c1:00000000 hi2c1
-C:\Users\zhaohe\AppData\Local\Temp\ccvuFkRi.s:275    .bss.hi2c1:00000000 $d
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+C:\Users\zhaohe\AppData\Local\Temp\cc6Ig9Gm.s:20     .text.MX_I2C1_Init:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\cc6Ig9Gm.s:26     .text.MX_I2C1_Init:00000000 MX_I2C1_Init
+C:\Users\zhaohe\AppData\Local\Temp\cc6Ig9Gm.s:88     .text.MX_I2C1_Init:00000030 $d
+C:\Users\zhaohe\AppData\Local\Temp\cc6Ig9Gm.s:95     .text.HAL_I2C_MspInit:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\cc6Ig9Gm.s:101    .text.HAL_I2C_MspInit:00000000 HAL_I2C_MspInit
+C:\Users\zhaohe\AppData\Local\Temp\cc6Ig9Gm.s:209    .text.HAL_I2C_MspInit:00000064 $d
+C:\Users\zhaohe\AppData\Local\Temp\cc6Ig9Gm.s:216    .text.HAL_I2C_MspDeInit:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\cc6Ig9Gm.s:222    .text.HAL_I2C_MspDeInit:00000000 HAL_I2C_MspDeInit
+C:\Users\zhaohe\AppData\Local\Temp\cc6Ig9Gm.s:267    .text.HAL_I2C_MspDeInit:00000030 $d
+C:\Users\zhaohe\AppData\Local\Temp\cc6Ig9Gm.s:279    .bss.hi2c1:00000000 hi2c1
+C:\Users\zhaohe\AppData\Local\Temp\cc6Ig9Gm.s:275    .bss.hi2c1:00000000 $d
 
 UNDEFINED SYMBOLS
 HAL_I2C_Init

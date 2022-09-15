@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccTNJtjD.s 			page 1
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cczbVr3T.s 			page 1
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccGsNdWG.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -62,11 +58,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cczbVr3T.s 			page 1
   28:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** 
   29:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** /** @defgroup PWREx PWREx
   30:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @brief PWR HAL module driver
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccTNJtjD.s 			page 2
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cczbVr3T.s 			page 2
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccGsNdWG.s 			page 2
 
 
   31:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @{
@@ -126,11 +118,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cczbVr3T.s 			page 1
   85:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****           level 0 is requested. 
   86:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****       -@- Refer to the description of Read protection (RDP) in the Flash 
   87:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****           programming manual.
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccTNJtjD.s 			page 3
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cczbVr3T.s 			page 3
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccGsNdWG.s 			page 3
 
 
   88:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** 
@@ -190,11 +178,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cczbVr3T.s 			page 1
  142:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** {
   29              		.loc 1 142 1 view -0
   30              		.cfi_startproc
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccTNJtjD.s 			page 4
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cczbVr3T.s 			page 4
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccGsNdWG.s 			page 4
 
 
   31              		@ args = 0, pretend = 0, frame = 0
@@ -254,11 +238,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cczbVr3T.s 			page 1
   72              	.L7:
  156:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     } 
  157:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   }
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccTNJtjD.s 			page 5
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cczbVr3T.s 			page 5
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccGsNdWG.s 			page 5
 
 
  158:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   return HAL_OK;
@@ -318,11 +298,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cczbVr3T.s 			page 1
  114              		.loc 1 172 15 is_stmt 0 view .LVU23
  115 000a FFF7FEFF 		bl	HAL_GetTick
  116              	.LVL6:
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccTNJtjD.s 			page 6
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cczbVr3T.s 			page 6
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccGsNdWG.s 			page 6
 
 
  117 000e 0446     		mov	r4, r0
@@ -382,11 +358,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cczbVr3T.s 			page 1
  161              		.thumb_func
  163              	HAL_PWREx_EnableFlashPowerDown:
  164              	.LFB132:
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccTNJtjD.s 			page 7
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cczbVr3T.s 			page 7
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccGsNdWG.s 			page 7
 
 
  184:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** 
@@ -446,11 +418,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cczbVr3T.s 			page 1
  203              		.loc 1 201 1 view .LVU43
  204 0006 7047     		bx	lr
  205              	.L24:
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccTNJtjD.s 			page 8
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cczbVr3T.s 			page 8
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccGsNdWG.s 			page 8
 
 
  206              		.align	2
@@ -510,11 +478,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cczbVr3T.s 			page 1
  216:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** #if defined(STM32F405xx) || defined(STM32F415xx) || defined(STM32F407xx) || defined(STM32F417xx)
  217:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c **** /**
  218:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @brief Configures the main internal regulator output voltage.
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccTNJtjD.s 			page 9
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cczbVr3T.s 			page 9
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccGsNdWG.s 			page 9
 
 
  219:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   * @param  VoltageScaling specifies the regulator output voltage to achieve
@@ -574,11 +538,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cczbVr3T.s 			page 1
  283              		.loc 1 239 3 view .LVU57
  240:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   
  241:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   /* Set Range */
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccTNJtjD.s 			page 10
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cczbVr3T.s 			page 10
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccGsNdWG.s 			page 10
 
 
  242:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   __HAL_PWR_VOLTAGESCALING_CONFIG(VoltageScaling);
@@ -638,11 +598,7 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cczbVr3T.s 			page 1
  329 0052 00E0     		b	.L30
  330              	.L34:
  251:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****     } 
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccTNJtjD.s 			page 11
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cczbVr3T.s 			page 11
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccGsNdWG.s 			page 11
 
 
  252:Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c ****   }
@@ -675,54 +631,29 @@ ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cczbVr3T.s 			page 1
  355              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
  356              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
  357              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
-<<<<<<< HEAD
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccTNJtjD.s 			page 12
-=======
-ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\cczbVr3T.s 			page 12
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccGsNdWG.s 			page 12
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f4xx_hal_pwr_ex.c
-<<<<<<< HEAD
-C:\Users\zhaohe\AppData\Local\Temp\ccTNJtjD.s:20     .text.HAL_PWREx_EnableBkUpReg:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccTNJtjD.s:26     .text.HAL_PWREx_EnableBkUpReg:00000000 HAL_PWREx_EnableBkUpReg
-C:\Users\zhaohe\AppData\Local\Temp\ccTNJtjD.s:83     .text.HAL_PWREx_EnableBkUpReg:00000030 $d
-C:\Users\zhaohe\AppData\Local\Temp\ccTNJtjD.s:89     .text.HAL_PWREx_DisableBkUpReg:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccTNJtjD.s:95     .text.HAL_PWREx_DisableBkUpReg:00000000 HAL_PWREx_DisableBkUpReg
-C:\Users\zhaohe\AppData\Local\Temp\ccTNJtjD.s:151    .text.HAL_PWREx_DisableBkUpReg:00000030 $d
-C:\Users\zhaohe\AppData\Local\Temp\ccTNJtjD.s:157    .text.HAL_PWREx_EnableFlashPowerDown:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccTNJtjD.s:163    .text.HAL_PWREx_EnableFlashPowerDown:00000000 HAL_PWREx_EnableFlashPowerDown
-C:\Users\zhaohe\AppData\Local\Temp\ccTNJtjD.s:180    .text.HAL_PWREx_EnableFlashPowerDown:00000008 $d
-C:\Users\zhaohe\AppData\Local\Temp\ccTNJtjD.s:185    .text.HAL_PWREx_DisableFlashPowerDown:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccTNJtjD.s:191    .text.HAL_PWREx_DisableFlashPowerDown:00000000 HAL_PWREx_DisableFlashPowerDown
-C:\Users\zhaohe\AppData\Local\Temp\ccTNJtjD.s:208    .text.HAL_PWREx_DisableFlashPowerDown:00000008 $d
-C:\Users\zhaohe\AppData\Local\Temp\ccTNJtjD.s:213    .text.HAL_PWREx_GetVoltageRange:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccTNJtjD.s:219    .text.HAL_PWREx_GetVoltageRange:00000000 HAL_PWREx_GetVoltageRange
-C:\Users\zhaohe\AppData\Local\Temp\ccTNJtjD.s:236    .text.HAL_PWREx_GetVoltageRange:0000000c $d
-C:\Users\zhaohe\AppData\Local\Temp\ccTNJtjD.s:241    .text.HAL_PWREx_ControlVoltageScaling:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\ccTNJtjD.s:247    .text.HAL_PWREx_ControlVoltageScaling:00000000 HAL_PWREx_ControlVoltageScaling
-C:\Users\zhaohe\AppData\Local\Temp\ccTNJtjD.s:345    .text.HAL_PWREx_ControlVoltageScaling:0000005c $d
-=======
-C:\Users\zhaohe\AppData\Local\Temp\cczbVr3T.s:20     .text.HAL_PWREx_EnableBkUpReg:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\cczbVr3T.s:26     .text.HAL_PWREx_EnableBkUpReg:00000000 HAL_PWREx_EnableBkUpReg
-C:\Users\zhaohe\AppData\Local\Temp\cczbVr3T.s:83     .text.HAL_PWREx_EnableBkUpReg:00000030 $d
-C:\Users\zhaohe\AppData\Local\Temp\cczbVr3T.s:89     .text.HAL_PWREx_DisableBkUpReg:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\cczbVr3T.s:95     .text.HAL_PWREx_DisableBkUpReg:00000000 HAL_PWREx_DisableBkUpReg
-C:\Users\zhaohe\AppData\Local\Temp\cczbVr3T.s:151    .text.HAL_PWREx_DisableBkUpReg:00000030 $d
-C:\Users\zhaohe\AppData\Local\Temp\cczbVr3T.s:157    .text.HAL_PWREx_EnableFlashPowerDown:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\cczbVr3T.s:163    .text.HAL_PWREx_EnableFlashPowerDown:00000000 HAL_PWREx_EnableFlashPowerDown
-C:\Users\zhaohe\AppData\Local\Temp\cczbVr3T.s:180    .text.HAL_PWREx_EnableFlashPowerDown:00000008 $d
-C:\Users\zhaohe\AppData\Local\Temp\cczbVr3T.s:185    .text.HAL_PWREx_DisableFlashPowerDown:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\cczbVr3T.s:191    .text.HAL_PWREx_DisableFlashPowerDown:00000000 HAL_PWREx_DisableFlashPowerDown
-C:\Users\zhaohe\AppData\Local\Temp\cczbVr3T.s:208    .text.HAL_PWREx_DisableFlashPowerDown:00000008 $d
-C:\Users\zhaohe\AppData\Local\Temp\cczbVr3T.s:213    .text.HAL_PWREx_GetVoltageRange:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\cczbVr3T.s:219    .text.HAL_PWREx_GetVoltageRange:00000000 HAL_PWREx_GetVoltageRange
-C:\Users\zhaohe\AppData\Local\Temp\cczbVr3T.s:236    .text.HAL_PWREx_GetVoltageRange:0000000c $d
-C:\Users\zhaohe\AppData\Local\Temp\cczbVr3T.s:241    .text.HAL_PWREx_ControlVoltageScaling:00000000 $t
-C:\Users\zhaohe\AppData\Local\Temp\cczbVr3T.s:247    .text.HAL_PWREx_ControlVoltageScaling:00000000 HAL_PWREx_ControlVoltageScaling
-C:\Users\zhaohe\AppData\Local\Temp\cczbVr3T.s:345    .text.HAL_PWREx_ControlVoltageScaling:0000005c $d
->>>>>>> e88c2fe2aa1a1702a5e0c57e3a5af4ecd662cd7e
+C:\Users\zhaohe\AppData\Local\Temp\ccGsNdWG.s:20     .text.HAL_PWREx_EnableBkUpReg:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccGsNdWG.s:26     .text.HAL_PWREx_EnableBkUpReg:00000000 HAL_PWREx_EnableBkUpReg
+C:\Users\zhaohe\AppData\Local\Temp\ccGsNdWG.s:83     .text.HAL_PWREx_EnableBkUpReg:00000030 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccGsNdWG.s:89     .text.HAL_PWREx_DisableBkUpReg:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccGsNdWG.s:95     .text.HAL_PWREx_DisableBkUpReg:00000000 HAL_PWREx_DisableBkUpReg
+C:\Users\zhaohe\AppData\Local\Temp\ccGsNdWG.s:151    .text.HAL_PWREx_DisableBkUpReg:00000030 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccGsNdWG.s:157    .text.HAL_PWREx_EnableFlashPowerDown:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccGsNdWG.s:163    .text.HAL_PWREx_EnableFlashPowerDown:00000000 HAL_PWREx_EnableFlashPowerDown
+C:\Users\zhaohe\AppData\Local\Temp\ccGsNdWG.s:180    .text.HAL_PWREx_EnableFlashPowerDown:00000008 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccGsNdWG.s:185    .text.HAL_PWREx_DisableFlashPowerDown:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccGsNdWG.s:191    .text.HAL_PWREx_DisableFlashPowerDown:00000000 HAL_PWREx_DisableFlashPowerDown
+C:\Users\zhaohe\AppData\Local\Temp\ccGsNdWG.s:208    .text.HAL_PWREx_DisableFlashPowerDown:00000008 $d
+C:\Users\zhaohe\AppData\Local\Temp\ccGsNdWG.s:213    .text.HAL_PWREx_GetVoltageRange:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccGsNdWG.s:219    .text.HAL_PWREx_GetVoltageRange:00000000 HAL_PWREx_GetVoltageRange
+C:\Users\zhaohe\AppData\Local\Temp\ccGsNdWG.s:236    .text.HAL_PWREx_GetVoltageRange:0000000c $d
+C:\Users\zhaohe\AppData\Local\Temp\ccGsNdWG.s:241    .text.HAL_PWREx_ControlVoltageScaling:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccGsNdWG.s:247    .text.HAL_PWREx_ControlVoltageScaling:00000000 HAL_PWREx_ControlVoltageScaling
+C:\Users\zhaohe\AppData\Local\Temp\ccGsNdWG.s:345    .text.HAL_PWREx_ControlVoltageScaling:0000005c $d
 
 UNDEFINED SYMBOLS
 HAL_GetTick

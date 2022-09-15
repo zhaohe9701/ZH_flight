@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-08-07 22:03:11
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-08-07 22:17:06
+ * @LastEditTime: 2022-08-20 14:36:57
  * @FilePath: \ZH_FLIGHT\Sys\Type\type.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -19,6 +19,18 @@ public:
     T y = 0;
     T z = 0;
     void Set(T xi, T yi, T zi);
+    void Clear();
+};
+
+template <typename T>
+class Vec4
+{
+public:
+    T x = 0;
+    T y = 0;
+    T z = 0;
+    T w = 0;
+    void Set(T xi, T yi, T zi, T wi);
     void Clear();
 };
 

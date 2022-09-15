@@ -1,0 +1,77 @@
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHEDO51.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"controller.cpp"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text._ZN13ControlOutput8AllocateEv,"ax",%progbits
+  20              		.align	1
+  21              		.global	_ZN13ControlOutput8AllocateEv
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	_ZN13ControlOutput8AllocateEv:
+  27              		.fnstart
+  28              	.LVL0:
+  29              	.LFB0:
+  30              		.file 1 "Sys/Flight/controller.cpp"
+   1:Sys/Flight/controller.cpp **** /*
+   2:Sys/Flight/controller.cpp ****  * @Description: 
+   3:Sys/Flight/controller.cpp ****  * @Version: 1.0
+   4:Sys/Flight/controller.cpp ****  * @Author: zhaohe
+   5:Sys/Flight/controller.cpp ****  * @Date: 2022-08-20 14:40:35
+   6:Sys/Flight/controller.cpp ****  * @LastEditors: zhaohe
+   7:Sys/Flight/controller.cpp ****  * @LastEditTime: 2022-09-15 22:37:50
+   8:Sys/Flight/controller.cpp ****  * @FilePath: \ZH_FLIGHT\Sys\Flight\controller.cpp
+   9:Sys/Flight/controller.cpp ****  * Copyright (C) 2022 zhaohe. All rights reserved.
+  10:Sys/Flight/controller.cpp ****  */
+  11:Sys/Flight/controller.cpp **** #include "controller.h"
+  12:Sys/Flight/controller.cpp **** 
+  13:Sys/Flight/controller.cpp **** 
+  14:Sys/Flight/controller.cpp **** void ControlOutput::Allocate()
+  15:Sys/Flight/controller.cpp **** {
+  31              		.loc 1 15 1 view -0
+  32              		.cfi_startproc
+  33              		@ args = 0, pretend = 0, frame = 0
+  34              		@ frame_needed = 0, uses_anonymous_args = 0
+  35              		@ link register save eliminated.
+  16:Sys/Flight/controller.cpp ****     
+  17:Sys/Flight/controller.cpp **** }...
+  36              		.loc 1 17 1 is_stmt 0 view .LVU1
+  37 0000 7047     		bx	lr
+  38              		.cfi_endproc
+  39              	.LFE0:
+  40              		.cantunwind
+  41              		.fnend
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHEDO51.s 			page 2
+
+
+  43              		.text
+  44              	.Letext0:
+  45              		.file 2 "Sys/Type/type.h"
+  46              		.file 3 "Sys/Flight/controller.h"
+ARM GAS  C:\Users\zhaohe\AppData\Local\Temp\ccHEDO51.s 			page 3
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 controller.cpp
+C:\Users\zhaohe\AppData\Local\Temp\ccHEDO51.s:20     .text._ZN13ControlOutput8AllocateEv:00000000 $t
+C:\Users\zhaohe\AppData\Local\Temp\ccHEDO51.s:26     .text._ZN13ControlOutput8AllocateEv:00000000 _ZN13ControlOutput8AllocateEv
+.ARM.exidx.text._ZN13ControlOutput8AllocateEv:00000000 $d
+
+NO UNDEFINED SYMBOLS
