@@ -94,8 +94,9 @@ Sys/Driver/interface.cpp \
 Sys/Sensor/mpu6000.cpp \
 Sys/Type/type.cpp \
 Sys/Flight/controller.cpp \
+Sys/Flight/pid_controller.cpp \
 Sys/Flight/filter.cpp \
-Sys/Flight/pid.cpp \
+Sys/Flight/pid_core.cpp \
 # ASM sources
 ASM_SOURCES =  \
 startup_stm32f405xx.s
@@ -245,7 +246,7 @@ $(BUILD_DIR):
 # clean up
 #######################################
 clean:
-	-rm -fR $(BUILD_DIR)
+	del $(BUILD_DIR)
   
 #######################################
 # dependencies

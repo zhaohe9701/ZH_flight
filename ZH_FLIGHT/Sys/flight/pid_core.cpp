@@ -4,11 +4,11 @@
  * @Author: zhaohe
  * @Date: 2022-08-20 14:56:25
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-09-15 23:27:02
- * @FilePath: \ZH_FLIGHT\Sys\Flight\pid.cpp
+ * @LastEditTime: 2022-09-18 23:38:00
+ * @FilePath: \ZH_FLIGHT\Sys\Flight\pid_core.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
-#include "pid.h"
+#include "pid_core.h"
 void PidCore::Init(float kp, float ki, float kd, float out_limit, float int_limit, float dt)
 {
     _kp = kp;
