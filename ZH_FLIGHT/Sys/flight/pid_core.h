@@ -4,19 +4,21 @@
  * @Author: zhaohe
  * @Date: 2022-08-20 14:48:48
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-09-15 23:25:56
- * @FilePath: \ZH_FLIGHT\Sys\Flight\pid.h
+ * @LastEditTime: 2022-09-19 23:20:44
+ * @FilePath: \ZH_FLIGHT\Sys\Flight\pid_core.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 
-#ifndef __PID_H__
-#define __PID_H__
+#ifndef __PID_CORE_H__
+#define __PID_CORE_H__
 
 #include "filter.h"
 #include <stdint.h>
 
 #define OFF 0
 #define ON 1
+
+
 
 class PidCore
 {

@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-07-08 01:10:13
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-08-07 22:29:39
+ * @LastEditTime: 2022-09-19 00:55:51
  * @FilePath: \ZH_FLIGHT\Sys\Sensor\mpu6000.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -96,7 +96,7 @@
 
 #define CALIBRATE_TIME 1000
 
-class Mpu6000 : public Imu
+class Mpu6000 : virtual public Imu
 {
 public:
     Mpu6000(Interface *interface);
