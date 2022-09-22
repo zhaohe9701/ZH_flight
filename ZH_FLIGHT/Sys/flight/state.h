@@ -4,18 +4,22 @@
  * @Author: zhaohe
  * @Date: 2022-08-07 22:30:11
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-09-19 23:41:40
+ * @LastEditTime: 2022-09-22 23:06:37
  * @FilePath: \ZH_FLIGHT\Sys\Flight\state.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 #ifndef __STATE_H__
 #define __STATE_H__
+#include "type.h"
 
 #define PITCH x
 #define ROLL y
 #define YAW z
 
-#include "type.h"
+#define MOTOR1 x
+#define MOTOR2 y
+#define MOTOR3 z
+#define MOTOR4 w
 
 class State
 {
@@ -39,7 +43,8 @@ private:
 
 class ExpectState : public State
 {
-
+public:
+    float throttle = 0.0f;
 };
 
 

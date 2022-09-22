@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-08-20 14:23:56
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-09-20 00:01:13
+ * @LastEditTime: 2022-09-22 23:25:34
  * @FilePath: \ZH_FLIGHT\Sys\Flight\controller.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -21,7 +21,11 @@ class ControlOutput
 public:
     Vec3<float> attitude_out;
     Vec4<float> motor_out;
+    float throttle = 0.0f;
     void Allocate();
+    void SetThrottle(float value);
+private:
+    float _Limit(float value);
 };
 
 class ControllerParam 

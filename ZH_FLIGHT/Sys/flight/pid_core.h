@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-08-20 14:48:48
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-09-19 23:20:44
+ * @LastEditTime: 2022-09-22 21:21:55
  * @FilePath: \ZH_FLIGHT\Sys\Flight\pid_core.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -48,7 +48,7 @@ private:
     uint8_t _diff_filter_fw;
     uint8_t _diff_ahead_fw;
 
-    LowPassFilter _diff_filter;
+    FirstOrderLPF _diff_filter;
     
     float _Limit(float value, float limit);
 };

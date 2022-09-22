@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-09-12 15:40:28
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-09-12 16:14:12
+ * @LastEditTime: 2022-09-22 21:21:28
  * @FilePath: \ZH_FLIGHT\Sys\Flight\filter.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -12,12 +12,12 @@
 #include "math_param.h"
 #include <math.h>
 
-void LowPassFilter::Init(float sample_freq, float cutoff_freq)
+void FirstOrderLPF::Init(float sample_freq, float cutoff_freq)
 {
-    SetCutoffFreq(sample_freq, cutoff_freq);
+    _SetCutoffFreq(sample_freq, cutoff_freq);
 }
 
-void LowPassFilter::SetCutoffFreq(float sample_freq, float cutoff_freq)
+void FirstOrderLPF::_SetCutoffFreq(float sample_freq, float cutoff_freq)
 {
     float fr = sample_freq / cutoff_freq;
     float ohm = tanf(PI / fr);
@@ -31,7 +31,7 @@ void LowPassFilter::SetCutoffFreq(float sample_freq, float cutoff_freq)
     _delay_element_2 = 0.0f;
 }
 
-float LowPassFilter::Apply(float sample)
+float FirstOrderLPF::Apply(float sample)
 {
     float delay_element_0 = sample - _delay_element_1 * _a1 - _delay_element_2 * _a2;
 	if (!isfinite(delay_element_0)) 
@@ -47,10 +47,35 @@ float LowPassFilter::Apply(float sample)
 	return output;
 }
 
-float LowPassFilter::Reset(float sample)
+float FirstOrderLPF::Reset(float sample)
 {
     float dval = sample / (_b0 + _b1 + _b2);
 	_delay_element_1 = dval;
 	_delay_element_2 = dval;
 	return Apply(sample);
+}
+
+
+
+void SecondOrderLPF::Init(float sample_freq, float cutoff_freq)
+{
+    _SetCutoffFreq(sample_freq, cutoff_freq);
+}
+
+void SecondOrderLPF::_SetCutoffFreq(float sample_freq, float cutoff_freq)
+{
+    _alpha = (2.0f * PI * cutoff_freq) / (2.0f * PI * cutoff_freq + sample_freq);
+}
+
+float SecondOrderLPF::Apply(float sample)
+{
+    float output = _pre_output + _alpha * (sample - _pre_output);
+    _pre_output = output;
+	return output;
+}
+
+float SecondOrderLPF::Reset(float sample)
+{
+    _pre_output = 0.0f;
+    return Apply(sample);
 }
