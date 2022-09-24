@@ -97,6 +97,8 @@ Sys/Flight/controller.cpp \
 Sys/Flight/pid_controller.cpp \
 Sys/Flight/filter.cpp \
 Sys/Flight/pid_core.cpp \
+Sys/Flight/attitude.cpp \
+Sys/Flight/mahony.cpp \
 # ASM sources
 ASM_SOURCES =  \
 startup_stm32f405xx.s

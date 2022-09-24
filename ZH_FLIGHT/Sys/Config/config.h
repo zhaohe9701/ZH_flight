@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-07-08 01:24:46
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-09-22 23:22:10
+ * @LastEditTime: 2022-09-24 23:08:28
  * @FilePath: \ZH_FLIGHT\Sys\Config\config.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -14,10 +14,13 @@
 
 /*------------------------配置区------------------------*/
 #define MPU6000
+#define MAGNETOMETER
 #define D_SHOT
 
 #define MOTOR_OUTPUT_MAX 100.0f
 #define MOTOR_OUTPUT_MIN 0.0f
+
+#define MAIN_CYCLE_FREQ 500.0f
 /*------------------------------------------------------*/
 
 

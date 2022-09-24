@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-07-07 23:41:27
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-08-07 22:29:41
+ * @LastEditTime: 2022-09-24 17:50:53
  * @FilePath: \ZH_FLIGHT\Sys\Sensor\mpu6000.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -72,7 +72,7 @@ float Mpu6000::GetTemperature()
  * @param {float} *gz
  * @return {*}
  */
-void Mpu6000::GetGyroData(SensorData &sensor_data)
+void Mpu6000::GetGyroData(ImuData &sensor_data)
 {
     uint8_t buf[6];
     _interface->ReadBytes(MPU_GYRO_XOUTH_REG, 6, buf);
@@ -93,7 +93,7 @@ void Mpu6000::GetGyroData(SensorData &sensor_data)
  * @param {float} *az
  * @return {*}
  */
-void Mpu6000::GetAccData(SensorData &sensor_data)
+void Mpu6000::GetAccData(ImuData &sensor_data)
 {
     uint8_t buf[6];
     _interface->ReadBytes(MPU_ACCEL_XOUTH_REG, 6, buf);

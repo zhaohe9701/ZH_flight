@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-08-07 22:30:11
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-09-22 23:06:37
+ * @LastEditTime: 2022-09-24 22:41:37
  * @FilePath: \ZH_FLIGHT\Sys\Flight\state.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -29,16 +29,14 @@ public:
     Vec3<float> velocity;
     Vec3<float> gps_coor;
     Vec3<float> relative_pos;
+    Vec3<float> acceleration;
+    Vec4<float> quarter;
+    void Init();
 };
 
 class AircraftState : public State
 {
 public:
-    void AttitudeUpdate();
-    void GpsPositionUpdate();
-    void RelativePositionUpdate();
-private:
-    
 };
 
 class ExpectState : public State

@@ -15,7 +15,8 @@
                 "${workspaceFolder}/Sys/Driver",
                 "${workspaceFolder}/Sys/Config",
                 "${workspaceFolder}/Sys/Type",
-                "${workspaceFolder}/Sys/Math"
+                "${workspaceFolder}/Sys/Math",
+                "${workspaceFolder}/Sys/Sensor"
             ],
             "defines": [
                 "_DEBUG",
