@@ -91,6 +91,7 @@ Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.c
 
 CXX_SOURCES =  \
 Sys/Driver/interface.cpp \
+Sys/Driver/pwm.cpp \
 Sys/Sensor/mpu6000.cpp \
 Sys/Type/type.cpp \
 Sys/Flight/controller.cpp \
