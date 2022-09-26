@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-09-24 17:52:30
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-09-24 23:36:22
+ * @LastEditTime: 2022-09-26 23:04:10
  * @FilePath: \ZH_FLIGHT\Sys\Flight\mahony.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -14,7 +14,7 @@
 #include "attitude.h"
 
 
-class Mahony : public AttitudeAlgorithm
+class Mahony : virtual public AttitudeAlgorithm
 {
 public:
     void Update(AircraftState &actual_state, ImuData &imu_data) override;

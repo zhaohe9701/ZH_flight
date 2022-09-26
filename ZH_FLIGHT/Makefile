@@ -90,15 +90,16 @@ Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c \
 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.c
 
 CXX_SOURCES =  \
-Sys/Driver/interface.cpp \
+Sys/Driver/sensor_interface.cpp \
 Sys/Driver/pwm.cpp \
 Sys/Sensor/mpu6000.cpp \
+Sys/Motor/motor.cpp \
+Sys/Motor/dshot.cpp \
 Sys/Type/type.cpp \
 Sys/Flight/controller.cpp \
 Sys/Flight/pid_controller.cpp \
 Sys/Flight/filter.cpp \
 Sys/Flight/pid_core.cpp \
-Sys/Flight/attitude.cpp \
 Sys/Flight/mahony.cpp \
 # ASM sources
 ASM_SOURCES =  \

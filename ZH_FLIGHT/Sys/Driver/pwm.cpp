@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-09-25 22:53:22
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-09-25 23:50:42
+ * @LastEditTime: 2022-09-27 00:05:32
  * @FilePath: \ZH_FLIGHT\Sys\Driver\pwm.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -41,7 +41,7 @@ void PwmCallbackHandle(TIM_HandleTypeDef *htim)
     {
         if (Pwm::controllers[i] != nullptr)
         {
-            if (Pwm::controllers[i]->IsMe(htim))
+            if (Pwm::controllers[i]->_IsMe(htim))
             {
                 Pwm::controllers[i]->Stop();
                 break;
@@ -58,7 +58,7 @@ void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim)
 }
 }
 
-Pwm::Pwm(TIM_HandleTypeDef *htim, uint16_t channel)
+void Pwm::Init(TIM_HandleTypeDef *htim, uint16_t channel)
 {
     _htim = htim;
     _channel = channel;
@@ -75,7 +75,7 @@ void Pwm::Stop()
     HAL_TIM_PWM_Stop_DMA(_htim, _channel);
 }
 
-bool Pwm::IsMe(TIM_HandleTypeDef *htim)
+bool Pwm::_IsMe(TIM_HandleTypeDef *htim)
 {
     if (htim == _htim && htim->Channel == _PwmChannelToMark(_channel))
     {

@@ -4,11 +4,11 @@
  * @Author: zhaohe
  * @Date: 2022-07-07 23:44:16
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-07-09 02:58:45
- * @FilePath: \ZH_FLIGHT\Sys\Driver\interface.cpp
+ * @LastEditTime: 2022-09-26 22:44:58
+ * @FilePath: \ZH_FLIGHT\Sys\Driver\sensor_interface.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
-#include "interface.h"
+#include "sensor_interface.h"
 
 Spi::Spi(SPI_HandleTypeDef *hspi, GPIO_TypeDef *cs_port, uint16_t cs_pin)
 {

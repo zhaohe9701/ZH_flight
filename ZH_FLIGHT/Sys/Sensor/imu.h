@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-07-07 23:41:39
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-09-24 17:48:28
+ * @LastEditTime: 2022-09-26 22:45:10
  * @FilePath: \ZH_FLIGHT\Sys\Sensor\imu.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -12,7 +12,7 @@
 #ifndef __IMU_H__
 #define __IMU_H__
 
-#include "interface.h"
+#include "sensor_interface.h"
 #include "type.h"
 class ImuData
 {

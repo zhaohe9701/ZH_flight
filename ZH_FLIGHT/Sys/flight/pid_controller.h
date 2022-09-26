@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-09-18 23:38:29
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-09-19 23:43:34
+ * @LastEditTime: 2022-09-26 23:04:21
  * @FilePath: \ZH_FLIGHT\Sys\Flight\pid_controller.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -20,7 +20,7 @@
 #define PITCH_CONTROLLER 1
 #define ROLL_CONTROLLER 2
 #define YAW_CONTROLLER 3
-class PidController : public Controller
+class PidController : virtual public Controller
 {
 private:
     PidCore _iner_pid;

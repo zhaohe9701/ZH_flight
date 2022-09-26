@@ -4,14 +4,14 @@
  * @Author: zhaohe
  * @Date: 2022-07-07 23:41:27
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-09-24 17:50:53
+ * @LastEditTime: 2022-09-27 00:07:29
  * @FilePath: \ZH_FLIGHT\Sys\Sensor\mpu6000.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 #include "imu.h"
 #include "mpu6000.h"
 
-Mpu6000::Mpu6000(Interface *interface)
+Mpu6000::Mpu6000(SensorInterface *interface)
 {
     _interface = interface;
 }

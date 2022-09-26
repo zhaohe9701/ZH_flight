@@ -99,7 +99,7 @@
 class Mpu6000 : virtual public Imu
 {
 public:
-    Mpu6000(Interface *interface);
+    Mpu6000(SensorInterface *interface);
     void Init() override;
     uint8_t GetId() override;
     float GetTemperature() override;
@@ -107,7 +107,7 @@ public:
     void GetAccData(ImuData &sensor_data) override;
 
 private:
-    Interface *_interface = nullptr;
+    SensorInterface *_interface = nullptr;
 
     uint8_t _GetLpfValue(const uint8_t frq);
     float _GetAccLsb(uint8_t afs);
