@@ -16,7 +16,9 @@
                 "${workspaceFolder}/Sys/Config",
                 "${workspaceFolder}/Sys/Type",
                 "${workspaceFolder}/Sys/Math",
-                "${workspaceFolder}/Sys/Sensor"
+                "${workspaceFolder}/Sys/Sensor",
+                "${workspaceFolder}/Sys/Protocol",
+                "${workspaceFolder}/Sys/Remote"
             ],
             "defines": [
                 "_DEBUG",

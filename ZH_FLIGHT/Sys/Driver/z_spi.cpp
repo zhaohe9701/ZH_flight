@@ -2,13 +2,13 @@
  * @Description: 
  * @Version: 1.0
  * @Author: zhaohe
- * @Date: 2022-07-07 23:44:16
+ * @Date: 2022-09-27 22:21:16
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-09-26 22:44:58
- * @FilePath: \ZH_FLIGHT\Sys\Driver\sensor_interface.cpp
+ * @LastEditTime: 2022-09-27 22:23:33
+ * @FilePath: \ZH_FLIGHT\Sys\Driver\z_spi.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
-#include "sensor_interface.h"
+#include "z_spi.h"
 
 Spi::Spi(SPI_HandleTypeDef *hspi, GPIO_TypeDef *cs_port, uint16_t cs_pin)
 {
@@ -44,22 +44,4 @@ void Spi::_Enable()
 void Spi::_Disable()
 {
     HAL_GPIO_WritePin(_cs_port, _cs_pin, GPIO_PIN_SET);
-}
-
-
-
-Iic::Iic(I2C_HandleTypeDef *hi2c, uint16_t device_address)
-{
-    _hi2c = hi2c;
-    _device_address = _device_address;
-}
-
-void Iic::ReadBytes(uint8_t address, uint8_t len, uint8_t *dataBuf)
-{
-    HAL_I2C_Mem_Read(_hi2c, _device_address, address, I2C_MEMADD_SIZE_8BIT, dataBuf, len, 0x01f4);
-}
-
-void Iic::WriteReg(uint8_t address, uint8_t value)
-{
-    HAL_I2C_Mem_Write(_hi2c, _device_address, address, I2C_MEMADD_SIZE_8BIT, &value, 1, 0x01f4);
 }

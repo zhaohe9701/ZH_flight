@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-09-26 22:53:58
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-09-26 23:42:07
+ * @LastEditTime: 2022-09-27 22:49:54
  * @FilePath: \ZH_FLIGHT\Sys\Motor\motor.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -12,13 +12,16 @@
 #define __MOTOR_H__
 
 #include <stdint.h>
-
+#include "config.h"
+#include "motor_interface.h"
 class Motor
 {
 public:
-    virtual void Init() = 0;
-    virtual void EnableMotor() = 0;
-    virtual void SetMotor(uint16_t *value) = 0;
+    Motor(MotorInterface *interface);
+    void EnableMotor();
+    void SetSpeed(uint16_t *value);
+private:
+    MotorInterface *_interface;
 };
 
 #endif

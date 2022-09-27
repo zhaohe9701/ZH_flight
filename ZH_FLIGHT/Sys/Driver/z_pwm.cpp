@@ -4,11 +4,11 @@
  * @Author: zhaohe
  * @Date: 2022-09-25 22:53:22
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-09-27 00:05:32
- * @FilePath: \ZH_FLIGHT\Sys\Driver\pwm.cpp
+ * @LastEditTime: 2022-09-27 22:54:46
+ * @FilePath: \ZH_FLIGHT\Sys\Driver\z_pwm.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
-#include "pwm.h"
+#include "z_pwm.h"
 
 uint16_t Pwm::_PwmChannelToMark(uint16_t channel)
 {

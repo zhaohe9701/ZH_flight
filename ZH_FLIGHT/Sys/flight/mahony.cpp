@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-09-24 17:52:11
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-09-24 23:45:09
+ * @LastEditTime: 2022-09-27 22:18:48
  * @FilePath: \ZH_FLIGHT\Sys\Flight\mahony.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -67,12 +67,19 @@ void Mahony::Update(AircraftState &actual_state, ImuData &imu_data)
         TransformBodyToEarth(hx, hy, hz);
 
         bx = sqrt(hx * hx + hy * hy);
-        bz = mx * _r_mat[2][0] + my * _r_mat[2][1] + mz * _r_mat[2][2];
+        bz = hz;
+        // bz = mx * _r_mat[2][0] + my * _r_mat[2][1] + mz * _r_mat[2][2];
 
-        wx = bx * _r_mat[0][0] + bz * _r_mat[2][0];
-        wy = bx * _r_mat[0][1] + bz * _r_mat[2][1];
-        wz = bz * _r_mat[0][2] + bz * _r_mat[2][2];
+        // wx = bx * _r_mat[0][0] + bz * _r_mat[2][0];
+        // wy = bx * _r_mat[0][1] + bz * _r_mat[2][1];
+        // wz = bz * _r_mat[0][2] + bz * _r_mat[2][2];
 
+        wx = bx;
+        wy = 0.0f;
+        wz = bz;
+
+        TransformEarthToBody(wx, wy, wz);
+    
         ex = (ay * _r_mat[2][2] - az * _r_mat[2][1]) + (my * wz - mz * wy);
         ey = (az * _r_mat[2][0] - ax * _r_mat[2][2]) + (mz * wx - mx + wz);
         ez = (ax * _r_mat[2][1] - ay * _r_mat[2][0]) + (mx * wy - my * wx);

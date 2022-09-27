@@ -4,8 +4,8 @@
  * @Author: zhaohe
  * @Date: 2022-09-26 22:48:16
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-09-27 00:18:15
- * @FilePath: \ZH_FLIGHT\Sys\Motor\dshot.cpp
+ * @LastEditTime: 2022-09-27 22:46:04
+ * @FilePath: \ZH_FLIGHT\Sys\Protocol\dshot.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 #include "dshot.h"
@@ -21,11 +21,7 @@ void Dshot::Init()
     _pwmcontroller[3].Init(&MOTOR_4_TIM, MOTOR_4_CHANNEL);
 }
 
-void Dshot::EnableMotor()
-{
-	uint16_t value[MOTOR_NUM] = {0};
-    SetMotor(value);
-}
+
 
 
 void Dshot::SetMotor(uint16_t *value)

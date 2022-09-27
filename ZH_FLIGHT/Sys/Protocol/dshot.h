@@ -4,25 +4,24 @@
  * @Author: zhaohe
  * @Date: 2022-09-26 22:48:24
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-09-27 00:02:57
- * @FilePath: \ZH_FLIGHT\Sys\Motor\dshot.h
+ * @LastEditTime: 2022-09-27 22:45:42
+ * @FilePath: \ZH_FLIGHT\Sys\Protocol\dshot.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 #ifndef __DSHOT_H__
 #define __DSHOT_H__
-#include "pwm.h"
-#include "motor.h"
+#include "z_pwm.h"
+#include "motor_interface.h"
 #include "config.h"
 
 #define ESC_BIT_0 3
 #define ESC_BIT_1 7
 #define ESC_CMD_BUF_LEN 18
 
-class Dshot : virtual public Motor
+class Dshot : virtual public MotorInterface
 {
 public:
     void Init() override;
-    void EnableMotor() override;
     void SetMotor(uint16_t *value) override;
 private:
     uint16_t _PreparePacket(const uint16_t value, bool request_telemetry);

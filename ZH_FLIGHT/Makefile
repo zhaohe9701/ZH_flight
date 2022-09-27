@@ -90,11 +90,13 @@ Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c \
 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.c
 
 CXX_SOURCES =  \
-Sys/Driver/sensor_interface.cpp \
-Sys/Driver/pwm.cpp \
+Sys/Protocol/dshot.cpp \
+Sys/Protocol/ibus.cpp \
+Sys/Driver/z_spi.cpp \
+Sys/Driver/z_iic.cpp \
+Sys/Driver/z_pwm.cpp \
 Sys/Sensor/mpu6000.cpp \
 Sys/Motor/motor.cpp \
-Sys/Motor/dshot.cpp \
 Sys/Type/type.cpp \
 Sys/Flight/controller.cpp \
 Sys/Flight/pid_controller.cpp \
@@ -166,6 +168,9 @@ C_INCLUDES =  \
 -ISys/Driver \
 -ISys/Type \
 -ISys/Flight \
+-ISys/Motor \
+-ISys/Remote \
+-ISys/Protocol \
 -IUSB_DEVICE/App \
 -IUSB_DEVICE/Target \
 -IDrivers/STM32F4xx_HAL_Driver/Inc \
