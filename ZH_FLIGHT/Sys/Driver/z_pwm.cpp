@@ -4,11 +4,60 @@
  * @Author: zhaohe
  * @Date: 2022-09-25 22:53:22
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-09-27 22:54:46
+ * @LastEditTime: 2022-09-29 00:00:56
  * @FilePath: \ZH_FLIGHT\Sys\Driver\z_pwm.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 #include "z_pwm.h"
+
+extern "C"
+{
+void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim)
+{
+    PwmCallbackHandle(htim);
+}
+}
+
+static uint16_t HalAchiveMarkToChannel(uint16_t mark)
+{
+    uint16_t channel = 0x00U;
+    switch (mark)
+    {
+    case 0x01U:
+        channel = 0x00U;
+        break;
+    case 0x02U:
+        channel = 0x04U;
+        break;
+    case 0x04U:
+        channel = 0x08U;
+        break;
+    case 0x08U:
+        channel = 0x0CU;
+        break;
+    default:
+        break;
+    }
+    return channel;
+}
+
+void PwmCallbackHandle(TIM_HandleTypeDef *htim)
+{
+    // for (int i = 0; i < PWM_NUM; ++i)
+    // {
+    //     if (Pwm::controllers[i] != nullptr)
+    //     {
+    //         if (Pwm::controllers[i]->_IsMe(htim))
+    //         {
+    //             Pwm::controllers[i]->Stop();
+    //             break;
+    //         }
+    //     }
+    // }
+    HAL_TIM_PWM_Stop_DMA(htim, HalAchiveMarkToChannel(htim->Channel));
+}
+
+
 
 uint16_t Pwm::_PwmChannelToMark(uint16_t channel)
 {
@@ -35,28 +84,9 @@ uint16_t Pwm::_PwmChannelToMark(uint16_t channel)
 
 Pwm* Pwm::controllers[PWM_NUM] = {nullptr};
 
-void PwmCallbackHandle(TIM_HandleTypeDef *htim)
-{
-    for (int i = 0; i < PWM_NUM; ++i)
-    {
-        if (Pwm::controllers[i] != nullptr)
-        {
-            if (Pwm::controllers[i]->_IsMe(htim))
-            {
-                Pwm::controllers[i]->Stop();
-                break;
-            }
-        }
-    }
-}
 
-extern "C"
-{
-void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim)
-{
-    PwmCallbackHandle(htim);
-}
-}
+
+
 
 void Pwm::Init(TIM_HandleTypeDef *htim, uint16_t channel)
 {

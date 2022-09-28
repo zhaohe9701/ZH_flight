@@ -4,8 +4,8 @@
  * @Author: zhaohe
  * @Date: 2022-09-25 02:04:02
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-09-27 00:05:18
- * @FilePath: \ZH_FLIGHT\Sys\Driver\pwm.h
+ * @LastEditTime: 2022-09-29 00:02:01
+ * @FilePath: \ZH_FLIGHT\Sys\Driver\z_pwm.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 #ifndef __PWM_H__
@@ -24,7 +24,7 @@ void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim);
 
 
 
-
+void PwmCallbackHandle(TIM_HandleTypeDef *htim);
 
 
 class Pwm
