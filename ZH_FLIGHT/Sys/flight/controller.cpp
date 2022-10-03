@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-08-20 14:40:35
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-09-22 23:25:26
+ * @LastEditTime: 2022-10-04 01:47:13
  * @FilePath: \ZH_FLIGHT\Sys\Flight\controller.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -58,10 +58,46 @@ ControllerParam::~ControllerParam()
     if (param != nullptr)
     {
         delete param;
+        param = nullptr;
     }
 }
 void ControllerParam::_AllocParamMem(uint8_t n)
 {
     param = new float[n];
     size = n;
+}
+
+
+AttitudeControllerParam::AttitudeControllerParam(uint8_t type)
+{
+    switch (type)
+    {
+    case PID:
+        pitch = new ControllerParam(PID);
+        roll = new ControllerParam(PID);
+        yaw = new ControllerParam(PID);
+        break;
+    
+    default:
+        break;
+    }
+}
+
+AttitudeControllerParam::~AttitudeControllerParam()
+{
+    if (pitch != nullptr)
+    {
+        delete pitch;
+        pitch = nullptr;
+    }
+    if (roll != nullptr)
+    {
+        delete roll;
+        roll = nullptr;
+    }
+    if (yaw != nullptr)
+    {
+        delete yaw;
+        yaw = nullptr;
+    }
 }

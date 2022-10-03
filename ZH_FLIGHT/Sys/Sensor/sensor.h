@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-08-07 21:59:47
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-09-24 17:50:12
+ * @LastEditTime: 2022-10-04 02:14:47
  * @FilePath: \ZH_FLIGHT\Sys\Sensor\sensor.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -18,6 +18,14 @@ public:
     ImuData imu;
 };
 
+class Sensor
+{
+public:
+    void Init();
 
+    void AddImu(Imu *imu_init);
+
+    Imu *imu = nullptr;
+};
 
 #endif

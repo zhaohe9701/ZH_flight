@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-08-20 14:23:56
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-09-22 23:25:34
+ * @LastEditTime: 2022-10-04 01:52:53
  * @FilePath: \ZH_FLIGHT\Sys\Flight\controller.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -39,11 +39,21 @@ private:
     void _AllocParamMem(uint8_t n);
 };
 
-class Controller
+class AttitudeControllerParam
 {
 public:
-    virtual void Init(ControllerParam *control_param) = 0;
-    virtual void Update(AircraftState &actual_state, AircraftState &expect_state, ControlOutput &control_output) = 0;
+    AttitudeControllerParam(uint8_t type);
+    ControllerParam *pitch = nullptr;
+    ControllerParam *roll = nullptr;
+    ControllerParam *yaw = nullptr;
+    ~AttitudeControllerParam();
+};
+
+class AttitudeController
+{
+public:
+    virtual void Init(AttitudeControllerParam *param) = 0;
+    virtual void Update(AircraftState &actual_state, ExpectState &expect_state, ControlOutput &control_output) = 0;
 };
 
 #endif
