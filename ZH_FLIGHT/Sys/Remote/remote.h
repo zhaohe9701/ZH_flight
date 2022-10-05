@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-10-02 16:55:53
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-10-04 02:41:20
+ * @LastEditTime: 2022-10-06 03:20:25
  * @FilePath: \ZH_FLIGHT\Sys\Remote\remote.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -14,15 +14,24 @@
 #include "type.h"
 #include "remote_interface.h"
 #include "config.h"
+
+#define CHANNEL_NUM 5
 class RemoteParam
 {
-    uint8_t pitch_channel = PITCH_CHANNEL;
-    uint8_t roll_channel = ROLL_CHANNEL;
-    uint8_t yaw_channel = YAW_CHANNEL;
+public:
+    uint8_t x_channel = X_CHANNEL;
+    uint8_t y_channel = Y_CHANNEL;
+    uint8_t z_channel = Z_CHANNEL;
+    uint8_t h_channel = H_CHANNEL;
     uint8_t patterm_channel = PATTERN_CHANNEL;
+    float attitude_scope = REMOTE_ATTITUDE_SCOPE;
+    float position_scope = REMOTE_POSITION_SCOPE;
+    float throttle_scope = REMOTE_THROTTLE_SCOPE;
+    float palstance_scope = REMOTE_PALSTANCE_SCOPE;
 };
 class Command
 {
+public:
     Vec3<float> attitude;
     float throttle;
     uint8_t patterm;
@@ -36,9 +45,14 @@ public:
     void GetCommand(Command &command);
 private:
     RemoteInterface *_interface = nullptr;
-    uint8_t _pitch_channel = PITCH_CHANNEL;
-    uint8_t _roll_channel = ROLL_CHANNEL;
-    uint8_t _yaw_channel = YAW_CHANNEL;
+    uint8_t _x_channel = X_CHANNEL;
+    uint8_t _y_channel = Y_CHANNEL;
+    uint8_t _z_channel = Z_CHANNEL;
+    uint8_t _h_channel = H_CHANNEL;
     uint8_t _patterm_channel = PATTERN_CHANNEL;
+    float _attitude_scope = REMOTE_ATTITUDE_SCOPE;
+    float _position_scope = REMOTE_POSITION_SCOPE;
+    float _throttle_scope = REMOTE_THROTTLE_SCOPE;
+    float _palstance_scope = REMOTE_PALSTANCE_SCOPE;
 };
 #endif

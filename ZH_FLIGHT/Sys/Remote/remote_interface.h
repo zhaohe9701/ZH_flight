@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-09-27 23:20:08
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-10-03 02:27:33
+ * @LastEditTime: 2022-10-06 03:17:35
  * @FilePath: \ZH_FLIGHT\Sys\Remote\remote_interface.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -20,7 +20,9 @@
 class RemoteInterface
 {
 public:
-    virtual uint8_t Parse(uint16_t *channel_data) = 0;
+    virtual float GetChannelFloatData(uint8_t channel) = 0;
+    virtual uint16_t GetChannelUintData(uint8_t channel) = 0;
+    virtual int8_t GetChannelSwitchData(uint8_t channel) = 0;
     virtual void Receive(uint8_t *raw_data) = 0;
     virtual void GetCommand() = 0;
 };

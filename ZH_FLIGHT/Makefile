@@ -95,6 +95,7 @@ Sys/Protocol/ibus.cpp \
 Sys/Driver/z_spi.cpp \
 Sys/Driver/z_iic.cpp \
 Sys/Driver/z_pwm.cpp \
+Sys/Remote/remote.cpp \
 Sys/Sensor/sensor.cpp \
 Sys/Sensor/mpu6000.cpp \
 Sys/Motor/motor.cpp \
