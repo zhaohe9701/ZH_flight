@@ -4,14 +4,14 @@
  * @Author: zhaohe
  * @Date: 2022-09-24 17:52:30
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-09-26 23:04:10
- * @FilePath: \ZH_FLIGHT\Sys\Flight\mahony.h
+ * @LastEditTime: 2022-10-09 23:00:44
+ * @FilePath: \ZH_FLIGHT\Sys\AHRS\mahony.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 #ifndef __MAHONY_H__
 #define __MAHONY_H__
 
-#include "attitude.h"
+#include "ahrs.h"
 
 
 class Mahony : virtual public AttitudeAlgorithm
