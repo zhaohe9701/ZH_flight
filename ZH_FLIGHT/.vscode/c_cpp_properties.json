@@ -19,7 +19,8 @@
                 "${workspaceFolder}/Sys/Sensor",
                 "${workspaceFolder}/Sys/Protocol",
                 "${workspaceFolder}/Sys/Remote",
-                "${workspaceFolder}/Sys/AircraftState"
+                "${workspaceFolder}/Sys/AircraftState",
+                "${workspaceFolder}/Sys/Driver"
             ],
             "defines": [
                 "_DEBUG",

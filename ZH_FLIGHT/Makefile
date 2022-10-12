@@ -93,6 +93,7 @@ CXX_SOURCES =  \
 Sys/StateMachine/state_machine.cpp \
 Sys/Protocol/dshot.cpp \
 Sys/Protocol/ibus.cpp \
+Sys/Protocol/cjson.cpp \
 Sys/Control/controller.cpp \
 Sys/Control/pid_controller.cpp \
 Sys/Control/pid_core.cpp \
