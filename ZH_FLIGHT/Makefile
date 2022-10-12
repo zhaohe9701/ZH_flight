@@ -90,10 +90,12 @@ Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c \
 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.c
 
 CXX_SOURCES =  \
+Sys/StateMachine/state_machine.cpp \
 Sys/Protocol/dshot.cpp \
 Sys/Protocol/ibus.cpp \
 Sys/Control/controller.cpp \
 Sys/Control/pid_controller.cpp \
+Sys/Control/pid_core.cpp \
 Sys/Filter/filter.cpp \
 Sys/AHRS/mahony.cpp \
 Sys/Driver/z_spi.cpp \
@@ -104,7 +106,7 @@ Sys/Sensor/sensor.cpp \
 Sys/Sensor/mpu6000.cpp \
 Sys/Motor/motor.cpp \
 Sys/Type/type.cpp \
-Sys/Flight/pid_core.cpp \
+Sys/AircraftState/state.cpp \
 # ASM sources
 ASM_SOURCES =  \
 startup_stm32f405xx.s
@@ -172,10 +174,11 @@ C_INCLUDES =  \
 -ISys/Control \
 -ISys/Filter \
 -ISys/AHRS \
--ISys/Flight \
+-ISys/AircraftState \
 -ISys/Motor \
 -ISys/Remote \
 -ISys/Protocol \
+-ISys/StateMachine \
 -IUSB_DEVICE/App \
 -IUSB_DEVICE/Target \
 -IDrivers/STM32F4xx_HAL_Driver/Inc \

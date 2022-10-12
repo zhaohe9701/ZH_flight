@@ -18,7 +18,8 @@
                 "${workspaceFolder}/Sys/Math",
                 "${workspaceFolder}/Sys/Sensor",
                 "${workspaceFolder}/Sys/Protocol",
-                "${workspaceFolder}/Sys/Remote"
+                "${workspaceFolder}/Sys/Remote",
+                "${workspaceFolder}/Sys/AircraftState"
             ],
             "defines": [
                 "_DEBUG",
