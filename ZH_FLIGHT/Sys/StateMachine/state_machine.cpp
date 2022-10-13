@@ -4,54 +4,35 @@
  * @Author: zhaohe
  * @Date: 2022-10-11 15:04:22
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-10-12 23:33:22
+ * @LastEditTime: 2022-10-13 22:54:47
  * @FilePath: \ZH_FLIGHT\Sys\StateMachine\state_machine.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 #include "state_machine.h"
 #include <string.h>
 
-template <typename T>
-RunningState<T>::RunningState(uint8_t my_state)
+
+RunningState::RunningState(uint8_t my_state)
 {
     _my_state = my_state;
 }
 
-template <typename T>
-void RunningState<T>::SetObject(T *object)
-{
-    _object = object;
-}
 
-template <typename T>
-void RunningState<T>::SetEventStateMap(uint8_t state, uint8_t *event)
+void RunningState::AddEventStateMap(uint8_t state, uint8_t *event)
 {
     memcpy(_map[_reachable_state_num].event, event, EVENT_NUM);
     _map[_reachable_state_num].state = state;
     _reachable_state_num++;
 }
 
-template <typename T>
-void RunningState<T>::SetActionNum(uint8_t num)
+void RunningState::AddAction(void (*func)())
 {
-    _action_num = num;
-    _action_set = new void *[num];
+    _action = func;
 }
 
-template <typename T>
-void RunningState<T>::AddAction(void (T::*func)(), uint8_t order)
+uint8_t RunningState::GetNextState(uint8_t *event)
 {
-    if (order >= _action_num)
-    {
-        return;
-    }
-    _action_set[order] = func;
-}
-
-template <typename T>
-uint8_t RunningState<T>::GetNextState(uint8_t *event)
-{
-    for (int i = 0; i < STATE_NUM; ++i)
+    for (int i = 0; i < _reachable_state_num; ++i)
     {
         if (_MatchEvent(_map[i].event, event))
         {
@@ -61,32 +42,19 @@ uint8_t RunningState<T>::GetNextState(uint8_t *event)
     return _my_state;
 }
 
-template <typename T>
-void RunningState<T>::ExecuteAction()
+void RunningState::ExecuteAction()
 {
-    for (int i = 0; i < _action_num; ++i)
-    {
-        (_object->*_action_set[i])();
-    }
+    _action();
 }
 
-template <typename T>
-uint8_t RunningState<T>::GetMyState()
+uint8_t RunningState::GetMyState()
 {
     return _my_state;
 }
 
-template <typename T>
-RunningState<T>::~RunningState()
-{
-    if (_action_set != nullptr)
-    {
-        delete[] _action_set;
-    }
-}
 
-template <typename T>
-bool RunningState<T>::_MatchEvent(uint8_t *source, uint8_t *event)
+
+bool RunningState::_MatchEvent(uint8_t *source, uint8_t *event)
 {
     for (int i = 0; i < EVENT_NUM; ++i)
     {
@@ -101,8 +69,8 @@ bool RunningState<T>::_MatchEvent(uint8_t *source, uint8_t *event)
     return true;
 }
 
-template <typename T>
-void StateMachine<T>::AddState(RunningState<T> *state)
+
+void StateMachine::AddState(RunningState *state)
 {
     if (_state_index >= STATE_NUM)
     {
@@ -112,21 +80,18 @@ void StateMachine<T>::AddState(RunningState<T> *state)
     _state_index++;
 }
 
-template <typename T>
-void StateMachine<T>::SetInitialState(RunningState<T> *state)
+void StateMachine::SetInitialState(RunningState *state)
 {
     _current_state = state;
 }
 
-template <typename T>
-void StateMachine<T>::TransferState(uint8_t *event)
+void StateMachine::TransferState(uint8_t *event)
 {  
     uint8_t next_state = _current_state->GetNextState(event);
     _current_state = _state_set[next_state];
 }
 
-template <typename T>
-void StateMachine<T>::Run()
+void StateMachine::Run()
 {
     _current_state->ExecuteAction();
 }

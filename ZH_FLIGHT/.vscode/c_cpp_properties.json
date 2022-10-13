@@ -20,7 +20,8 @@
                 "${workspaceFolder}/Sys/Protocol",
                 "${workspaceFolder}/Sys/Remote",
                 "${workspaceFolder}/Sys/AircraftState",
-                "${workspaceFolder}/Sys/Driver"
+                "${workspaceFolder}/Sys/Driver",
+                "${workspaceFolder}/Sys/ExternalLib"
             ],
             "defines": [
                 "_DEBUG",

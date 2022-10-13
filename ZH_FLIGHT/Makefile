@@ -93,7 +93,8 @@ CXX_SOURCES =  \
 Sys/StateMachine/state_machine.cpp \
 Sys/Protocol/dshot.cpp \
 Sys/Protocol/ibus.cpp \
-Sys/Protocol/cjson.cpp \
+Sys/Protocol/json.cpp \
+Sys/ExternalLib/cjson.cpp \
 Sys/Control/controller.cpp \
 Sys/Control/pid_controller.cpp \
 Sys/Control/pid_core.cpp \
@@ -168,8 +169,10 @@ AS_INCLUDES =  \
 C_INCLUDES =  \
 -ICore/Inc \
 -ISys/Sensor \
+-ISys/Action \
 -ISys/Config \
 -ISys/Math \
+-ISys/ExternalLib \
 -ISys/Driver \
 -ISys/Type \
 -ISys/Control \

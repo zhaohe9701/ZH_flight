@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-10-09 23:18:03
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-10-12 23:21:46
+ * @LastEditTime: 2022-10-13 23:07:17
  * @FilePath: \ZH_FLIGHT\Sys\StateMachine\state_machine.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -14,11 +14,33 @@
 #include <stdint.h>
 
 #define EVENT_NUM       6
-#define STATE_NUM       5
+#define STATE_NUM       7
 #define EVENT_ON        1
 #define EVENT_OFF       0
 #define EVENT_IGNORE    2
 
+/*状态集合定义*/
+enum StateList
+{
+    S_INITIALIZE,
+    S_STANDBY,
+    S_WITE,
+    S_PARAM_SERVICE,
+    S_CALIBRATION,
+    S_MANUAL,
+    S_AUTO
+};
+
+/*时间集合定义*/
+enum EventList
+{
+    E_UNLOCK,
+    E_PARAM_SERVICE,
+    E_CALIBRATION,
+    E_MANUAL,
+    E_AUTO,
+    E_ZERO_THROTTLE
+};
 
 class EventStateMap
 {
@@ -27,54 +49,47 @@ public:
     uint8_t state;
 };
 
-template<typename T>
+
 class RunningState
 {
 public:
     RunningState(uint8_t my_atate);
-    void SetEventStateMap(uint8_t state, uint8_t *event);
 
-    void AddAction(void (T::*func)(), uint8_t order);
+    void AddEventStateMap(uint8_t state, uint8_t *event);
 
-    void SetActionNum(uint8_t num);
+    void AddAction(void (*func)());
 
     uint8_t GetNextState(uint8_t *event);
-
-    void SetObject(T *object);
 
     void ExecuteAction();
 
     uint8_t GetMyState();
     
-    ~RunningState();
 private:
     uint8_t _my_state;
 
     uint8_t _reachable_state_num = 0;
+
     EventStateMap _map[STATE_NUM];
     
-    uint8_t _action_num = 0;
-    void * * _action_set = nullptr;
-    
-    T *_object = nullptr;
+    void (*_action)() = nullptr;
 
     uint8_t *_transfer_event;
 
     bool _MatchEvent(uint8_t *source, uint8_t *event);
 };
 
-template<typename T>
 class StateMachine
 {
 public:
-    void AddState(RunningState<T> *state);
-    void SetInitialState(RunningState<T> *state);
+    void AddState(RunningState *state);
+    void SetInitialState(RunningState *state);
     void TransferState(uint8_t *event);
     void Run();
 private:
     uint8_t _state_index = 0;
-    RunningState<T> *_state_set[STATE_NUM];
-    RunningState<T> *_current_state;
+    RunningState *_state_set[STATE_NUM];
+    RunningState *_current_state;
 };
 
 
