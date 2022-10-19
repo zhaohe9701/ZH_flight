@@ -4,7 +4,7 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "D:/App/gcc/arm/10 2021.10/arm-none-eabi/include",
+                "E:/gcc/2021.10/arm-none-eabi/include",
                 "${workspaceFolder}/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc",
                 "${workspaceFolder}/Drivers/STM32F4xx_HAL_Driver/Inc",
                 "${workspaceFolder}/Core/Inc",
@@ -30,7 +30,7 @@
                 "USE_HAL_DRIVER",
                 "STM32F405xx"
             ],
-            "compilerPath": "D:/App/mingw/mingw64/bin/gcc.exe",
+            "compilerPath": "E:/gcc/mingw64/bin/gcc.exe",
             "cStandard": "c11",
             "cppStandard": "c++17",
             "intelliSenseMode": "windows-gcc-x64",
