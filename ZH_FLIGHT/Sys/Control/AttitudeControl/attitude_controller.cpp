@@ -4,11 +4,11 @@
  * @Author: zhaohe
  * @Date: 2022-08-20 14:40:35
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-10-04 01:47:13
- * @FilePath: \ZH_FLIGHT\Sys\Flight\controller.cpp
+ * @LastEditTime: 2022-10-19 22:38:04
+ * @FilePath: \ZH_FLIGHT\Sys\Control\AttitudeControl\controller.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
-#include "controller.h"
+#include "attitude_controller.h"
 #include "config.h"
 
 void ControlOutput::SetThrottle(float value)
@@ -101,3 +101,9 @@ AttitudeControllerParam::~AttitudeControllerParam()
         yaw = nullptr;
     }
 }
+
+void AttitudeControllerInterface::Init()
+{
+    return;
+}
+
