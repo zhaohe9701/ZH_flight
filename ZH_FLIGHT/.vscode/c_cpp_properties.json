@@ -12,6 +12,7 @@
                 "${workspaceFolder}/Drivers/CMSIS/Core/Include",
                 "${workspaceFolder}/Core/Inc",
                 "${workspaceFolder}/USB_DEVICE/App",
+                "${workspaceFolder}/Sys/*",
                 "${workspaceFolder}/Sys/Driver",
                 "${workspaceFolder}/Sys/Config",
                 "${workspaceFolder}/Sys/Type",
@@ -21,7 +22,12 @@
                 "${workspaceFolder}/Sys/Remote",
                 "${workspaceFolder}/Sys/AircraftState",
                 "${workspaceFolder}/Sys/Driver",
-                "${workspaceFolder}/Sys/ExternalLib"
+                "${workspaceFolder}/Sys/ExternalLib",
+                "${workspaceFolder}/Sys/Control/AttitudeControl",
+                "${workspaceFolder}/Sys/Config",
+                "${workspaceFolder}/Sys/AircraftState",
+                "${workspaceFolder}/Sys/Type",
+                "${workspaceFolder}/Sys/Config"
             ],
             "defines": [
                 "_DEBUG",

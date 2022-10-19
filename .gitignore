@@ -51,3 +51,4 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+ZH_FLIGHT/.vscode/c_cpp_properties.json
