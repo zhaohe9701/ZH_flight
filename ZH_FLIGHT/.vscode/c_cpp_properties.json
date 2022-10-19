@@ -27,7 +27,8 @@
                 "${workspaceFolder}/Sys/Config",
                 "${workspaceFolder}/Sys/AircraftState",
                 "${workspaceFolder}/Sys/Type",
-                "${workspaceFolder}/Sys/Config"
+                "${workspaceFolder}/Sys/Config",
+                "${workspaceFolder}/Sys/Control/AttitudeControl"
             ],
             "defines": [
                 "_DEBUG",

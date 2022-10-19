@@ -95,9 +95,10 @@ Sys/Protocol/dshot.cpp \
 Sys/Protocol/ibus.cpp \
 Sys/Protocol/json.cpp \
 Sys/ExternalLib/cjson.cpp \
-Sys/Control/controller.cpp \
-Sys/Control/pid_controller.cpp \
+Sys/Control/control_param.cpp \
 Sys/Control/pid_core.cpp \
+Sys/Control/AttitudeControl/attitude_controller.cpp \
+Sys/Control/AttitudeControl/pid_attitude_controller.cpp \
 Sys/Filter/filter.cpp \
 Sys/AHRS/mahony.cpp \
 Sys/Driver/z_spi.cpp \
@@ -176,6 +177,7 @@ C_INCLUDES =  \
 -ISys/Driver \
 -ISys/Type \
 -ISys/Control \
+-ISys/Control/AttitudeControl \
 -ISys/Filter \
 -ISys/AHRS \
 -ISys/AircraftState \
