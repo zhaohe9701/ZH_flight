@@ -97,7 +97,8 @@ Sys/Protocol/json.cpp \
 Sys/ExternalLib/cjson.cpp \
 Sys/Control/control_param.cpp \
 Sys/Control/pid_core.cpp \
-Sys/Control/AttitudeControl/attitude_controller.cpp \
+Sys/Control/AttitudeControl/attitude_control.cpp \
+Sys/Control/AttitudeControl/attitude_controller_interface.cpp \
 Sys/Control/AttitudeControl/pid_attitude_controller.cpp \
 Sys/Filter/filter.cpp \
 Sys/AHRS/mahony.cpp \
@@ -109,7 +110,7 @@ Sys/Sensor/sensor.cpp \
 Sys/Sensor/mpu6000.cpp \
 Sys/Motor/motor.cpp \
 Sys/Type/type.cpp \
-Sys/AircraftState/state.cpp \
+Sys/AircraftState/aircraft_state.cpp \
 # ASM sources
 ASM_SOURCES =  \
 startup_stm32f405xx.s

@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-09-26 22:48:16
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-09-27 22:46:04
+ * @LastEditTime: 2022-10-21 00:06:28
  * @FilePath: \ZH_FLIGHT\Sys\Protocol\dshot.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -19,17 +19,26 @@ void Dshot::Init()
     _pwmcontroller[1].Init(&MOTOR_2_TIM, MOTOR_2_CHANNEL);
     _pwmcontroller[2].Init(&MOTOR_3_TIM, MOTOR_3_CHANNEL);
     _pwmcontroller[3].Init(&MOTOR_4_TIM, MOTOR_4_CHANNEL);
+
+	/*大于4个电机时这里需要手动添加*/
+
+
+	/*--------------------------*/
 }
 
 
 
 
-void Dshot::SetMotor(uint16_t *value)
+void Dshot::SetMotor(float *value)
 {
+	uint16_t int_value[MOTOR_NUM] = {0};
+
 	for (int i = 0; i < MOTOR_NUM; ++i)
 	{
-		_WriteDigital(_motor_cmd[i], value[i]);
+		int_value[i] = THROTTLE_MAP(value[i]);
+		_WriteDigital(_motor_cmd[i], int_value[i]);
 	}
+	/*两个for循环是为了保证多个执行器执行间隔尽可能短*/
 	for (int i = 0; i < MOTOR_NUM; ++i)
 	{
 		_pwmcontroller[i].Output(_motor_cmd[i], ESC_CMD_BUF_LEN);

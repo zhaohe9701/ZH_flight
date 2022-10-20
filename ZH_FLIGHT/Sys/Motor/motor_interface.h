@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-09-27 22:31:04
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-09-27 22:50:23
+ * @LastEditTime: 2022-10-21 00:09:16
  * @FilePath: \ZH_FLIGHT\Sys\Motor\motor_interface.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -17,7 +17,7 @@ class MotorInterface
 {
 public:
     virtual void Init() = 0;
-    virtual void SetMotor(uint16_t *value) = 0;
+    virtual void SetMotor(float *value) = 0;
 };
 
 

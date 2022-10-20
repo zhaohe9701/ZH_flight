@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-09-26 22:53:58
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-09-27 22:49:54
+ * @LastEditTime: 2022-10-20 23:59:56
  * @FilePath: \ZH_FLIGHT\Sys\Motor\motor.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -19,7 +19,7 @@ class Motor
 public:
     Motor(MotorInterface *interface);
     void EnableMotor();
-    void SetSpeed(uint16_t *value);
+    void SetSpeed(float *value);
 private:
     MotorInterface *_interface;
 };

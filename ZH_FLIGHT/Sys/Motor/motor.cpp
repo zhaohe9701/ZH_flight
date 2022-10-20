@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-09-26 22:54:15
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-09-27 22:49:46
+ * @LastEditTime: 2022-10-21 00:03:09
  * @FilePath: \ZH_FLIGHT\Sys\Motor\motor.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -19,11 +19,11 @@ Motor::Motor(MotorInterface *interface)
 
 void Motor::EnableMotor()
 {
-	uint16_t value[MOTOR_NUM] = {0};
+	float value[MOTOR_NUM] = {0.0f};
     _interface->SetMotor(value);
 }
 
-void Motor::SetSpeed(uint16_t *value)
+void Motor::SetSpeed(float *value)
 {
     _interface->SetMotor(value);
 }

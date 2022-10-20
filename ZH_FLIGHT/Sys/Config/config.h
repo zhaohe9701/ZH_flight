@@ -56,8 +56,8 @@
 /*------------------------------------------------------*/
 
 
-#ifdef D_SHOT
-    #define THROTTLE_MAP(value) ((uint16_t)((value) * 20.47f))
-#endif
+
+
+
 
 #endif

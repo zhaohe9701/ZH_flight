@@ -4,14 +4,14 @@
  * @Author: zhaohe
  * @Date: 2022-08-07 22:30:11
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-09-24 22:41:37
- * @FilePath: \ZH_FLIGHT\Sys\Flight\state.h
+ * @LastEditTime: 2022-10-20 23:50:35
+ * @FilePath: \ZH_FLIGHT\Sys\AircraftState\aircraft_state.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
-#ifndef __STATE_H__
-#define __STATE_H__
+#ifndef __AIRCRAFT_STATE_H__
+#define __AIRCRAFT_STATE_H__
 #include "type.h"
-
+#include "config.h"
 #define PITCH x
 #define ROLL y
 #define YAW z
@@ -43,6 +43,7 @@ class ExpectState : public State
 {
 public:
     float throttle = 0.0f;
+    float motor[MOTOR_NUM] = {0.0f};
 };
 
 

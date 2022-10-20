@@ -28,7 +28,9 @@
                 "${workspaceFolder}/Sys/AircraftState",
                 "${workspaceFolder}/Sys/Type",
                 "${workspaceFolder}/Sys/Config",
-                "${workspaceFolder}/Sys/Control/AttitudeControl"
+                "${workspaceFolder}/Sys/Control/AttitudeControl",
+                "${workspaceFolder}/Sys/Control",
+                "${workspaceFolder}/Sys/AircraftState"
             ],
             "defines": [
                 "_DEBUG",
@@ -37,7 +39,7 @@
                 "USE_HAL_DRIVER",
                 "STM32F405xx"
             ],
-            "compilerPath": "E:/gcc/mingw64/bin/gcc.exe",
+            "compilerPath": "D:/App/mingw/mingw64/bin/gcc.exe",
             "cStandard": "c11",
             "cppStandard": "c++17",
             "intelliSenseMode": "windows-gcc-x64",
