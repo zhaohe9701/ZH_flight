@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-07-08 01:24:46
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-10-06 02:46:47
+ * @LastEditTime: 2022-10-23 00:28:28
  * @FilePath: \ZH_FLIGHT\Sys\Config\config.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -45,14 +45,17 @@
 #define H_CHANNEL       1
 #define PATTERN_CHANNEL 4
 
-#define REMOTE_ATTITUDE_SCOPE  30.0f
-#define REMOTE_POSITION_SCOPE  30.0f
-#define REMOTE_THROTTLE_SCOPE  100.0f
-#define REMOTE_PALSTANCE_SCOPE 60.0f
+#define REMOTE_ATTITUDE_SCOPE   30.0f
+#define REMOTE_POSITION_SCOPE   30.0f
+#define REMOTE_THROTTLE_SCOPE   100.0f
+#define REMOTE_PALSTANCE_SCOPE  60.0f
 /*控制*/
-#define MAIN_CYCLE_FREQ 500.0f
+#define MAIN_CYCLE_FREQ         500.0f
 
+/*通信*/
 
+#define UART_NUM        2
+#define MESSAGE_QUEUE_MAX_LENGTH 10
 /*------------------------------------------------------*/
 
 

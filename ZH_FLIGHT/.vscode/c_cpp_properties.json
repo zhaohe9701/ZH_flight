@@ -30,7 +30,10 @@
                 "${workspaceFolder}/Sys/Config",
                 "${workspaceFolder}/Sys/Control/AttitudeControl",
                 "${workspaceFolder}/Sys/Control",
-                "${workspaceFolder}/Sys/AircraftState"
+                "${workspaceFolder}/Sys/AircraftState",
+                "${workspaceFolder}/Middlewares/Third_Party/FreeRTOS/Source/include",
+                "${workspaceFolder}/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F",
+                "${workspaceFolder}/Sys/MessageServer"
             ],
             "defines": [
                 "_DEBUG",
@@ -39,7 +42,7 @@
                 "USE_HAL_DRIVER",
                 "STM32F405xx"
             ],
-            "compilerPath": "D:/App/mingw/mingw64/bin/gcc.exe",
+            "compilerPath": "E:/gcc/mingw64/bin/gcc.exe",
             "cStandard": "c11",
             "cppStandard": "c++17",
             "intelliSenseMode": "windows-gcc-x64",

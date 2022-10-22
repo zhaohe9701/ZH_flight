@@ -1,17 +1,44 @@
+/*
+ * @Description: 
+ * @Version: 1.0
+ * @Author: zhaohe
+ * @Date: 2022-10-21 23:23:46
+ * @LastEditors: zhaohe
+ * @LastEditTime: 2022-10-21 23:55:12
+ * @FilePath: \ZH_FLIGHT\Sys\Control\AttitudeControl\attitude_control.cpp
+ * Copyright (C) 2022 zhaohe. All rights reserved.
+ */
+
+
 #include "attitude_control.h"
 
-
+/**
+ * @description: 
+ * @param {AttitudeControllerInterface} *interface
+ * @return {*}
+ */
 AttitudeControl::AttitudeControl(AttitudeControllerInterface *interface)
 {
     _interface = interface;
 }
 
+/**
+ * @description: 
+ * @param {ControlParam} *param
+ * @return {*}
+ */
 void AttitudeControl::Init(ControlParam *param)
 {
     _interface->Init();
     _interface->Init(param);
 }
 
+/**
+ * @description: 
+ * @param {AircraftState} &actual_state
+ * @param {ExpectState} &expect_state
+ * @return {*}
+ */
 void AttitudeControl::Update(const AircraftState &actual_state, ExpectState &expect_state)
 {
     AttitudeControlInput input;
@@ -39,6 +66,11 @@ void AttitudeControl::Update(const AircraftState &actual_state, ExpectState &exp
 
 }
 
+/**
+ * @description: 
+ * @param {float} value
+ * @return {*}
+ */
 float AttitudeControl::_Limit(float value)
 {
     if (value > MOTOR_OUTPUT_MAX)

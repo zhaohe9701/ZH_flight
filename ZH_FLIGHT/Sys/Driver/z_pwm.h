@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-09-25 02:04:02
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-09-29 00:02:01
+ * @LastEditTime: 2022-10-22 01:21:11
  * @FilePath: \ZH_FLIGHT\Sys\Driver\z_pwm.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -29,12 +29,10 @@ void PwmCallbackHandle(TIM_HandleTypeDef *htim);
 
 class Pwm
 {
-    friend void PwmCallbackHandle(TIM_HandleTypeDef *htim);
 public:
     void Init(TIM_HandleTypeDef *htim, uint16_t channel);
     void Output(uint16_t *data, uint16_t length);
     void Stop();
-    static Pwm *controllers[PWM_NUM];
 private:
     bool _IsMe(TIM_HandleTypeDef *htim);
     TIM_HandleTypeDef *_htim;

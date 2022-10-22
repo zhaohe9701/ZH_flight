@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-09-25 22:53:22
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-09-29 00:00:56
+ * @LastEditTime: 2022-10-22 01:20:57
  * @FilePath: \ZH_FLIGHT\Sys\Driver\z_pwm.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -43,17 +43,6 @@ static uint16_t HalAchiveMarkToChannel(uint16_t mark)
 
 void PwmCallbackHandle(TIM_HandleTypeDef *htim)
 {
-    // for (int i = 0; i < PWM_NUM; ++i)
-    // {
-    //     if (Pwm::controllers[i] != nullptr)
-    //     {
-    //         if (Pwm::controllers[i]->_IsMe(htim))
-    //         {
-    //             Pwm::controllers[i]->Stop();
-    //             break;
-    //         }
-    //     }
-    // }
     HAL_TIM_PWM_Stop_DMA(htim, HalAchiveMarkToChannel(htim->Channel));
 }
 
@@ -82,7 +71,7 @@ uint16_t Pwm::_PwmChannelToMark(uint16_t channel)
     return mark;
 }
 
-Pwm* Pwm::controllers[PWM_NUM] = {nullptr};
+
 
 
 
