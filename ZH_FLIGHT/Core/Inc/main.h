@@ -1,3 +1,13 @@
+/*
+ * @Description: 
+ * @Version: 1.0
+ * @Author: zhaohe
+ * @Date: 2022-08-07 23:41:08
+ * @LastEditors: zhaohe
+ * @LastEditTime: 2022-10-24 00:02:57
+ * @FilePath: \ZH_FLIGHT\Core\Inc\main.h
+ * Copyright (C) 2022 zhaohe. All rights reserved.
+ */
 /* USER CODE BEGIN Header */
 /**
   ******************************************************************************
@@ -53,7 +63,10 @@ extern "C" {
 void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
-
+void UsbPrintf(const char *format, ...);
+uint8_t UsbReceive(uint8_t *buf);
+void UartIRQHandler(UART_HandleTypeDef *huart);
+void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/

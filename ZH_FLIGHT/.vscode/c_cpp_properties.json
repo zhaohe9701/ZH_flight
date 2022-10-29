@@ -33,7 +33,8 @@
                 "${workspaceFolder}/Sys/AircraftState",
                 "${workspaceFolder}/Middlewares/Third_Party/FreeRTOS/Source/include",
                 "${workspaceFolder}/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F",
-                "${workspaceFolder}/Sys/MessageServer"
+                "${workspaceFolder}/Sys/MessageServer",
+                "${workspaceFolder}/Sys/OS"
             ],
             "defines": [
                 "_DEBUG",

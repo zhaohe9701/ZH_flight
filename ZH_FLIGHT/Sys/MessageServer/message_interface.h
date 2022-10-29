@@ -4,8 +4,8 @@
  * @Author: zhaohe
  * @Date: 2022-10-22 00:50:12
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-10-23 02:51:04
- * @FilePath: \ZH_FLIGHT\Sys\MessageServer\message_interface.h
+ * @LastEditTime: 2022-10-30 04:03:12
+ * @FilePath: \H7B0d:\Git\ZH_flight\ZH_FLIGHT\Sys\MessageServer\message_interface.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 #ifndef __MESSAGE_INTERFACE_H__
@@ -24,7 +24,7 @@ class MessageInterface
 public:
     virtual void Init(uint16_t receive_length_in) = 0;
     virtual void Receive() = 0;
-    virtual void Send(uint8_t *data, uint16_t length) = 0;
+    virtual uint8_t Send(uint8_t *data, uint16_t length) = 0;
 };
 
 #endif

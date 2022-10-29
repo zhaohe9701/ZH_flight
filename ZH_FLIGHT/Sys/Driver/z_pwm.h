@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-09-25 02:04:02
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-10-22 01:21:11
+ * @LastEditTime: 2022-10-24 00:03:14
  * @FilePath: \ZH_FLIGHT\Sys\Driver\z_pwm.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -17,10 +17,10 @@
 #include "main.h"
 
 
-extern "C"
-{
-void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim);
-}
+// extern "C"
+// {
+// void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim);
+// }
 
 
 

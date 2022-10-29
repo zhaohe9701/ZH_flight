@@ -22,7 +22,8 @@
 #include "usbd_cdc_if.h"
 
 /* USER CODE BEGIN INCLUDE */
-
+#include <stdarg.h>
+#include "global_var.h"
 /* USER CODE END INCLUDE */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -109,7 +110,10 @@ uint8_t UserTxBufferFS[APP_TX_DATA_SIZE];
 extern USBD_HandleTypeDef hUsbDeviceFS;
 
 /* USER CODE BEGIN EXPORTED_VARIABLES */
-
+//extern struct GlobalVar g_global_var;
+uint8_t receive_buf[64] = {"\0"};
+uint8_t receive_flag = 0;
+extern GlobalVar g_global_var;
 /* USER CODE END EXPORTED_VARIABLES */
 
 /**
@@ -128,7 +132,7 @@ static int8_t CDC_Receive_FS(uint8_t* pbuf, uint32_t *Len);
 static int8_t CDC_TransmitCplt_FS(uint8_t *pbuf, uint32_t *Len, uint8_t epnum);
 
 /* USER CODE BEGIN PRIVATE_FUNCTIONS_DECLARATION */
-
+void usb_printf(const char *format, ...);
 /* USER CODE END PRIVATE_FUNCTIONS_DECLARATION */
 
 /**
@@ -261,6 +265,8 @@ static int8_t CDC_Control_FS(uint8_t cmd, uint8_t* pbuf, uint16_t length)
 static int8_t CDC_Receive_FS(uint8_t* Buf, uint32_t *Len)
 {
   /* USER CODE BEGIN 6 */
+
+  memcpy(receive_buf, Buf, 64);
   USBD_CDC_SetRxBuffer(&hUsbDeviceFS, &Buf[0]);
   USBD_CDC_ReceivePacket(&hUsbDeviceFS);
   return (USBD_OK);
@@ -282,12 +288,23 @@ uint8_t CDC_Transmit_FS(uint8_t* Buf, uint16_t Len)
 {
   uint8_t result = USBD_OK;
   /* USER CODE BEGIN 7 */
+  uint32_t TimeStart = HAL_GetTick();
   USBD_CDC_HandleTypeDef *hcdc = (USBD_CDC_HandleTypeDef*)hUsbDeviceFS.pClassData;
-  if (hcdc->TxState != 0){
-    return USBD_BUSY;
+  while(hcdc->TxState)
+  {
+    if(HAL_GetTick()-TimeStart > 10)
+	    return USBD_BUSY;
+    else
+	    break;
   }
   USBD_CDC_SetTxBuffer(&hUsbDeviceFS, Buf, Len);
   result = USBD_CDC_TransmitPacket(&hUsbDeviceFS);
+  TimeStart = HAL_GetTick();
+  while(hcdc->TxState)
+  {
+    if(HAL_GetTick()-TimeStart > 10)
+      return USBD_BUSY;
+  }
   /* USER CODE END 7 */
   return result;
 }
@@ -316,6 +333,17 @@ static int8_t CDC_TransmitCplt_FS(uint8_t *Buf, uint32_t *Len, uint8_t epnum)
 }
 
 /* USER CODE BEGIN PRIVATE_FUNCTIONS_IMPLEMENTATION */
+void UsbPrintf(const char *format, ...)
+{
+  va_list args;
+  uint32_t length;
+
+  va_start(args, format);
+  length = vsnprintf((char *)UserTxBufferFS, APP_TX_DATA_SIZE, (char *)format, args);
+  va_end(args);
+  CDC_Transmit_FS(UserTxBufferFS, length);
+}
+
 
 /* USER CODE END PRIVATE_FUNCTIONS_IMPLEMENTATION */
 

@@ -107,6 +107,7 @@ Sys/Driver/z_spi.cpp \
 Sys/Driver/z_iic.cpp \
 Sys/Driver/z_pwm.cpp \
 Sys/Driver/z_uart.cpp \
+Sys/Driver/z_usb.cpp \
 Sys/Remote/remote.cpp \
 Sys/Sensor/sensor.cpp \
 Sys/Sensor/mpu6000.cpp \
@@ -173,6 +174,7 @@ AS_INCLUDES =  \
 # C includes
 C_INCLUDES =  \
 -ICore/Inc \
+-ISys \
 -ISys/Sensor \
 -ISys/OS \
 -ISys/Action \

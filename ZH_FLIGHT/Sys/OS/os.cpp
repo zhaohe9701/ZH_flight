@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-10-23 00:05:13
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-10-23 03:06:18
+ * @LastEditTime: 2022-10-23 23:51:06
  * @FilePath: \ZH_FLIGHT\Sys\OS\os.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -17,6 +17,6 @@ GlobalVar g_glob_var;
 void Os::Init()
 {
     g_glob_var.queue.message_queue = xQueueCreate(MESSAGE_QUEUE_MAX_LENGTH, sizeof(Message));
-    g_glob_var.semaphore.message_semaphore = xSemaphoreCreateBinary();
+    g_glob_var.semaphore.usb_semaphore = xSemaphoreCreateBinary();
 }
 
