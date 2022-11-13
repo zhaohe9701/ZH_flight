@@ -4,50 +4,21 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "E:/gcc/2021.10/arm-none-eabi/include",
-                "${workspaceFolder}/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc",
-                "${workspaceFolder}/Drivers/STM32F4xx_HAL_Driver/Inc",
                 "${workspaceFolder}/Core/Inc",
-                "${workspaceFolder}/Drivers/CMSIS/Device/ST/STM32F4xx/Include",
-                "${workspaceFolder}/Drivers/CMSIS/Core/Include",
-                "${workspaceFolder}/Core/Inc",
-                "${workspaceFolder}/USB_DEVICE/App",
-                "${workspaceFolder}/Sys/*",
-                "${workspaceFolder}/Sys/Driver",
-                "${workspaceFolder}/Sys/Config",
-                "${workspaceFolder}/Sys/Type",
-                "${workspaceFolder}/Sys/Math",
-                "${workspaceFolder}/Sys/Sensor",
-                "${workspaceFolder}/Sys/Protocol",
-                "${workspaceFolder}/Sys/Remote",
-                "${workspaceFolder}/Sys/AircraftState",
-                "${workspaceFolder}/Sys/Driver",
-                "${workspaceFolder}/Sys/ExternalLib",
-                "${workspaceFolder}/Sys/Control/AttitudeControl",
-                "${workspaceFolder}/Sys/Config",
-                "${workspaceFolder}/Sys/AircraftState",
-                "${workspaceFolder}/Sys/Type",
-                "${workspaceFolder}/Sys/Config",
-                "${workspaceFolder}/Sys/Control/AttitudeControl",
-                "${workspaceFolder}/Sys/Control",
-                "${workspaceFolder}/Sys/AircraftState",
-                "${workspaceFolder}/Middlewares/Third_Party/FreeRTOS/Source/include",
-                "${workspaceFolder}/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F",
-                "${workspaceFolder}/Sys/MessageServer",
-                "${workspaceFolder}/Sys/OS"
+                "${workspaceFolder}/Sys/Test"
             ],
             "defines": [
                 "_DEBUG",
                 "UNICODE",
                 "_UNICODE",
                 "USE_HAL_DRIVER",
-                "STM32F405xx"
+                "STM32H7B0xx"
             ],
+            "windowsSdkVersion": "10.0.14393.0",
             "compilerPath": "E:/gcc/mingw64/bin/gcc.exe",
             "cStandard": "c11",
             "cppStandard": "c++17",
-            "intelliSenseMode": "windows-gcc-x64",
-            "configurationProvider": "ms-vscode.makefile-tools"
+            "intelliSenseMode": "windows-gcc-x64"
         }
     ],
     "version": 4
