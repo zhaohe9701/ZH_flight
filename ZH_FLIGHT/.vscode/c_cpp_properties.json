@@ -5,7 +5,8 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/Core/Inc",
-                "${workspaceFolder}/Sys/Test"
+                "${workspaceFolder}/Sys/Test",
+                "${workspaceFolder}/Sys/Sensor/Baro"
             ],
             "defines": [
                 "_DEBUG",

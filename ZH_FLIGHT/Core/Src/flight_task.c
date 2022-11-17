@@ -4,8 +4,8 @@
  * @Author: zhaohe
  * @Date: 2022-11-06 13:40:39
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-11-13 19:26:22
- * @FilePath: \H7B0\Core\Src\flight_task.c
+ * @LastEditTime: 2022-11-16 23:36:46
+ * @FilePath: \ZH_FLIGHT\Core\Src\flight_task.c
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 #include "flight_task.h"
@@ -18,7 +18,7 @@ osThreadId sensorTaskHandle;
 
 void InitializeFight();
 void ReadImu();
-
+void ReadBaro();
 void LedTask(void const *argument);
 void ImuTask(void const *argument);
 void BaroAndMagTask(void const *argument);
@@ -30,8 +30,8 @@ void StartDefaultTask(void const *argument)
     osThreadDef(ledTask, LedTask, osPriorityBelowNormal, 0, 128);
     ledTaskHandle = osThreadCreate(osThread(ledTask), NULL);
 
-    osThreadDef(imuTask, ImuTask, osPriorityNormal, 0, 128);
-    sensorTaskHandle = osThreadCreate(osThread(imuTask), NULL);
+    // osThreadDef(imuTask, ImuTask, osPriorityNormal, 0, 128);
+    // sensorTaskHandle = osThreadCreate(osThread(imuTask), NULL);
 
     osThreadDef(baroAndMagTask, BaroAndMagTask, osPriorityBelowNormal, 0, 128);
     sensorTaskHandle = osThreadCreate(osThread(baroAndMagTask), NULL);
@@ -62,5 +62,5 @@ void ImuTask(void const *argument)
 
 void BaroAndMagTask(void const *argument)
 {
-    
+    ReadBaro();
 }

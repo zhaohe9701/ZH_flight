@@ -4,8 +4,8 @@
  * @Author: zhaohe
  * @Date: 2022-11-13 19:37:38
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-11-14 00:03:27
- * @FilePath: \H7B0\Sys\Sensor\Baro\ms5611.cpp
+ * @LastEditTime: 2022-11-18 00:08:27
+ * @FilePath: \ZH_FLIGHT\Sys\Sensor\Baro\ms5611.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 #include "ms5611.h"
@@ -34,93 +34,114 @@ Ms5611::Ms5611(SensorInterface *interface)
 }
 void Ms5611::Init()
 {
-    _BaroWriteRag(MS5611_ADDR, 0, nullptr);
+    _BaroWriteRag(RESET, 0, nullptr);
     HAL_Delay(100);
     for (int i = 0; i < 8; ++i)
     {
         uint8_t buf[2] = {0};
         _BaroReadRag(PROM_READ + i * 2, 2, buf);
-        _calculation[i] = (uint16_t)buf[0] << 8 | (uint16_t)buf[1];
+        _calculation[i] = buf[0] << 8 | buf[1];
+    }
+    if (_CheckCRC() == false)
+    {
+        UsbPrintf("MS5611 Init Fail\r\n");
     }
 }
 float Ms5611::GetTemperature()
 {
     uint8_t buf[3] = {0};
     uint32_t temperature_raw = 0;
-    uint32_t ca = 0;
+    uint64_t ca = 0;
 
     _BaroWriteRag(OSR_4096_D2, 0, nullptr);
     osDelay(10);
     _BaroReadRag(ADC_READ, 3, buf);
-    temperature_raw = (uint32_t)buf[0] << 16 | (uint32_t)buf[1] << 8 | (uint32_t)buf[2];
-    ca = ((uint32_t)_calculation[5]) << 8;
-    if (temperature_raw > ca)
-    {
-        _d_t = (double)(temperature_raw - ca);
-    }
-    else
-    {
-        _d_t = -(double)(ca - temperature_raw);
-    }
-    _temperature = 2000.0f + _d_t * (float)((uint32_t)_calculation[6]) / 8388608.0f;
-    return _temperature;
+    temperature_raw = buf[0] << 16 | buf[1] << 8 | buf[2];
+
+    _dt = (int64_t)temperature_raw - ((uint64_t)_calculation[5] * 256);
+    _temperature = 2000 + ((_dt * (int64_t)_calculation[6]) >> 23);
+
+    return (float)_temperature / 100.0f;
 }
 
 float Ms5611::GetPressure()
 {
     uint8_t buf[3] = {0};
     uint32_t pressure_raw = 0;
-    double T2 = 0.0f;
-    double Aux = 0.0f;
-    double OFF2 = 0.0;
-    double SENS2 = 0.0;
-    double OFF = (uint32_t)(_calculation[2] << 16) + ((uint32_t)_calculation[4] * _d_t) / 128;
-    double SENS = (uint32_t)(_calculation[1] << 15) + ((uint32_t)_calculation[3] * _d_t) / 256;
+    int64_t delt = 0;
+    int64_t off = ((int64_t)_calculation[2] << 16) + (((int64_t)_calculation[4] * _dt) >> 7);
+    int64_t sens = ((int64_t)_calculation[1] << 15) + (((int64_t)_calculation[3] * _dt) >> 8);
 
     _BaroWriteRag(OSR_4096_D1, 0, nullptr);
     osDelay(10);
     _BaroReadRag(ADC_READ, 3, buf);
-    pressure_raw = (uint32_t)buf[0] << 16 | (uint32_t)buf[1] << 8 | (uint32_t)buf[2];
+    pressure_raw = buf[0] << 16 | buf[1] << 8 | buf[2];
 
-    if (_temperature < 2000.0)
+    if (_temperature < 2000)
     {
-        T2 = (_d_t * _d_t) / 2147483648.0;
-        Aux = (_temperature - 2000.0) * (_temperature - 2000.0);
-        OFF2 = 2.5 * Aux;
-        SENS2 = 1.25 * Aux;
+        delt = _temperature - 2000;
+        delt = 5 * delt * delt;
+        off -= delt >> 1;
+        sens -= delt >> 2;
         if (_temperature < -1500)
         {
-            Aux = (_temperature + 1500.0) * (_temperature + 1500.0);
-            OFF2 = OFF2 + 7 * Aux;
-            SENS2 = SENS + (float)(5.5) * Aux;
+            delt = _temperature + 1500;
+            delt = delt * delt;
+            off -= 7 * delt;
+            sens -= (11 * delt) >> 1;
         }
-    }
-    else //(Temperature > 2000)
-    {
-        T2 = 0.0;
-        OFF2 = 0.0;
-        SENS2 = 0.0;
+        _temperature -= ((_dt * _dt) >> 31);
     }
 
-    _temperature -= T2;
-    OFF = OFF - OFF2;
-    SENS = SENS - SENS2;
-    _pressure = ((double)pressure_raw * SENS / 2097152.0 - OFF) / 32768.0;
-    _pressure = _pressure / 1000000.0;
+    _pressure = ((((int64_t)pressure_raw * sens) >> 21) - off) >> 15;
 
-    return _pressure;
+    return (float)_pressure;
 }
 
 float Ms5611::GetAltitude()
 {
     GetTemperature();
     GetPressure();
-
-    float altitude = 4433000.0f * (1 - powf((((float)_pressure) / 1013.25f), 0.190295f));
-
+    float altitude = (1.0f - powf(_pressure / 101325.0f, 0.190295f)) * 4433000.0f;
     return altitude;
 }
 
+bool Ms5611::_CheckCRC()
+{
+    int32_t i, j;
+    uint32_t res = 0;
+    uint8_t crc = _calculation[7] & 0xF;
+    _calculation[7] &= 0xFF00;
+
+    bool blankEeprom = true;
+
+    for (i = 0; i < 16; i++)
+    {
+        if (_calculation[i >> 1])
+        {
+            blankEeprom = false;
+        }
+        if (i & 1)
+            res ^= ((_calculation[i >> 1]) & 0x00FF);
+        else
+            res ^= (_calculation[i >> 1] >> 8);
+        for (j = 8; j > 0; j--)
+        {
+            if (res & 0x8000)
+                res ^= 0x1800;
+            res <<= 1;
+        }
+    }
+    _calculation[7] |= crc;
+    if (!blankEeprom && crc == ((res >> 12) & 0xF))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
 void Ms5611::_BaroWriteRag(uint8_t address, uint8_t length, uint8_t *value)
 {
     _interface->WriteRegs(address, length, value);
