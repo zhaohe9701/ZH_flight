@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-11-06 13:40:39
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-11-16 23:36:46
+ * @LastEditTime: 2022-11-20 23:14:41
  * @FilePath: \ZH_FLIGHT\Core\Src\flight_task.c
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -15,13 +15,16 @@
 
 osThreadId ledTaskHandle;
 osThreadId sensorTaskHandle;
+osThreadId flightControlTaskHandle;
 
 void InitializeFight();
 void ReadImu();
 void ReadBaro();
+void FlightControl();
 void LedTask(void const *argument);
 void ImuTask(void const *argument);
 void BaroAndMagTask(void const *argument);
+void FlightControlTask(void const *argument);
 
 void StartDefaultTask(void const *argument)
 {
@@ -33,8 +36,10 @@ void StartDefaultTask(void const *argument)
     // osThreadDef(imuTask, ImuTask, osPriorityNormal, 0, 128);
     // sensorTaskHandle = osThreadCreate(osThread(imuTask), NULL);
 
-    osThreadDef(baroAndMagTask, BaroAndMagTask, osPriorityBelowNormal, 0, 128);
-    sensorTaskHandle = osThreadCreate(osThread(baroAndMagTask), NULL);
+    // osThreadDef(baroAndMagTask, BaroAndMagTask, osPriorityBelowNormal, 0, 128);
+    // sensorTaskHandle = osThreadCreate(osThread(baroAndMagTask), NULL);
+    osThreadDef(flightControlTask, FlightControlTask, osPriorityBelowNormal, 0, 128);
+    flightControlTaskHandle = osThreadCreate(osThread(flightControlTask), NULL);
 
     for (;;)
     {
@@ -63,4 +68,9 @@ void ImuTask(void const *argument)
 void BaroAndMagTask(void const *argument)
 {
     ReadBaro();
+}
+
+void FlightControlTask(void const *argument)
+{
+    FlightControl();
 }

@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-07-08 01:24:46
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-10-23 00:28:28
+ * @LastEditTime: 2022-11-22 00:15:33
  * @FilePath: \ZH_FLIGHT\Sys\Config\config.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -26,17 +26,17 @@
 #define MOTOR_OUTPUT_MIN    0.0f
 #define MOTOR_NUM           4
 
-#define MOTOR_1_TIM                 htim3
-#define MOTOR_1_CHANNEL         TIM_CHANNEL_3
+#define MOTOR_1_TIM                 htim8
+#define MOTOR_1_CHANNEL         TIM_CHANNEL_1
 
-#define MOTOR_2_TIM                 htim3
-#define MOTOR_2_CHANNEL         TIM_CHANNEL_4
+#define MOTOR_2_TIM                 htim8
+#define MOTOR_2_CHANNEL         TIM_CHANNEL_2
 
 #define MOTOR_3_TIM                 htim8
-#define MOTOR_3_CHANNEL         TIM_CHANNEL_4
+#define MOTOR_3_CHANNEL         TIM_CHANNEL_3
 
 #define MOTOR_4_TIM                 htim8
-#define MOTOR_4_CHANNEL         TIM_CHANNEL_3
+#define MOTOR_4_CHANNEL         TIM_CHANNEL_4
 
 /*遥控*/
 #define X_CHANNEL       0

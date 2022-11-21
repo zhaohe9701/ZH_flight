@@ -4,27 +4,39 @@
  * @Author: zhaohe
  * @Date: 2022-11-05 02:20:44
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-11-17 23:12:18
+ * @LastEditTime: 2022-11-21 23:45:37
  * @FilePath: \ZH_FLIGHT\Sys\Test\test.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 #include "test.h"
+#include "cmsis_os.h"
+#include "main.h"
+
 #include "sensor_interface.h"
 #include "z_spi.h"
-#include "main.h"
 #include "imu.h"
+
 #include "icm20602.h"
 #include "baro.h"
 #include "z_iic.h"
 #include "ms5611.h"
-#include "cmsis_os.h"
+
+#include "motor_interface.h"
+#include "motor.h"
+#include "dshot.h"
 
 extern SPI_HandleTypeDef hspi1;
 extern SPI_HandleTypeDef hspi2;
 extern osSemaphoreId SensorSemaphoreHandle;
 extern I2C_HandleTypeDef hi2c1;
+
+extern TIM_HandleTypeDef MOTOR_1_TIM;
+extern TIM_HandleTypeDef MOTOR_3_TIM;
+
 Imu *imu;
 Baro *baro;
+Motor *motor;
+
 extern "C"
 {
 
@@ -51,7 +63,10 @@ void InitializeFight()
     imu->Init();
     SensorInterface* baro_interface = new Iic(&hi2c1, 0xEE);
     baro = new Ms5611(baro_interface);
-    baro->Init();
+    //baro->Init();
+    MotorInterface *motor_interface = new Dshot();
+    motor = new Motor(motor_interface);
+    //motor->EnableMotor();
 }
 
 }
@@ -91,6 +106,26 @@ void ReadBaro()
         float altitude = 0.0f;
         altitude = baro->GetAltitude();
         UsbPrintf("%d\r\n", (int)altitude);
+    }
+    
+}
+
+}
+
+
+extern "C"
+{
+
+void FlightControl()
+{
+    for(;;)
+    {
+        float value[4] = {10.0f, 20.0f, 30.0f, 40.0f};
+
+        motor->SetSpeed(value);
+        
+
+        osDelay(10);
     }
     
 }

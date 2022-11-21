@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-11-13 19:37:38
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-11-18 00:08:27
+ * @LastEditTime: 2022-11-19 13:48:14
  * @FilePath: \ZH_FLIGHT\Sys\Sensor\Baro\ms5611.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -51,7 +51,6 @@ float Ms5611::GetTemperature()
 {
     uint8_t buf[3] = {0};
     uint32_t temperature_raw = 0;
-    uint64_t ca = 0;
 
     _BaroWriteRag(OSR_4096_D2, 0, nullptr);
     osDelay(10);

@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-09-27 22:23:50
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-11-16 23:18:27
+ * @LastEditTime: 2022-11-20 02:00:52
  * @FilePath: \ZH_FLIGHT\Sys\Driver\z_iic.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -26,7 +26,7 @@ public:
     static osSemaphoreId iic_semaphore;
 private:
     I2C_HandleTypeDef *_hi2c;
-    
+    uint8_t _mem_address = 0;
     uint16_t _device_address;
     
 };

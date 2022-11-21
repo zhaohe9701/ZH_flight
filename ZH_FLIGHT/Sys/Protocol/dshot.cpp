@@ -4,14 +4,13 @@
  * @Author: zhaohe
  * @Date: 2022-09-26 22:48:16
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-10-21 00:06:28
+ * @LastEditTime: 2022-11-22 00:15:59
  * @FilePath: \ZH_FLIGHT\Sys\Protocol\dshot.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 #include "dshot.h"
 
 extern TIM_HandleTypeDef MOTOR_1_TIM;
-extern TIM_HandleTypeDef MOTOR_3_TIM;
 
 void Dshot::Init()
 {

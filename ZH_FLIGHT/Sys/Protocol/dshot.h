@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-09-26 22:48:24
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-10-21 00:03:01
+ * @LastEditTime: 2022-11-20 22:29:09
  * @FilePath: \ZH_FLIGHT\Sys\Protocol\dshot.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -14,8 +14,8 @@
 #include "motor_interface.h"
 #include "config.h"
 
-#define ESC_BIT_0 3
-#define ESC_BIT_1 7
+#define ESC_BIT_0 8
+#define ESC_BIT_1 15
 #define ESC_CMD_BUF_LEN 18
 
 #define THROTTLE_MAP(value) ((uint16_t)((value) * 20.47f))
