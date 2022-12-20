@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-10-09 23:18:03
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-10-13 23:07:17
+ * @LastEditTime: 2022-12-19 23:35:38
  * @FilePath: \ZH_FLIGHT\Sys\StateMachine\state_machine.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -31,7 +31,7 @@ enum StateList
     S_AUTO
 };
 
-/*时间集合定义*/
+/*事件集合定义*/
 enum EventList
 {
     E_UNLOCK,
@@ -53,7 +53,7 @@ public:
 class RunningState
 {
 public:
-    RunningState(uint8_t my_atate);
+    RunningState(uint8_t my_state);
 
     void AddEventStateMap(uint8_t state, uint8_t *event);
 

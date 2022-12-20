@@ -4,8 +4,8 @@
  * @Author: zhaohe
  * @Date: 2022-07-07 23:41:39
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-09-26 22:45:10
- * @FilePath: \ZH_FLIGHT\Sys\Sensor\imu.h
+ * @LastEditTime: 2022-11-22 22:57:07
+ * @FilePath: \ZH_FLIGHT\Sys\Sensor\Imu\imu.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 
@@ -17,9 +17,9 @@
 class ImuData
 {
 public:
-    Vec3<float> acc;
-    Vec3<float> mag;
-    Vec3<float> gyr;
+    Vec3 acc;
+    Vec3 mag;
+    Vec3 gyr;
 };
 class Imu
 {

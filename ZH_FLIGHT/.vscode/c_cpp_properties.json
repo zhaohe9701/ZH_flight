@@ -6,7 +6,8 @@
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/Core/Inc",
                 "${workspaceFolder}/Sys/Test",
-                "${workspaceFolder}/Sys/Sensor/Baro"
+                "${workspaceFolder}/Sys/Sensor/Baro",
+                "${workspaceFolder}/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS"
             ],
             "defines": [
                 "_DEBUG",

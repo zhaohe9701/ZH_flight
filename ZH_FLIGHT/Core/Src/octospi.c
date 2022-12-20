@@ -96,11 +96,11 @@ void HAL_OSPI_MspInit(OSPI_HandleTypeDef* ospiHandle)
     __HAL_RCC_OCTOSPIM_CLK_ENABLE();
     __HAL_RCC_OSPI1_CLK_ENABLE();
 
-    __HAL_RCC_GPIOE_CLK_ENABLE();
+    __HAL_RCC_GPIOC_CLK_ENABLE();
     __HAL_RCC_GPIOB_CLK_ENABLE();
     __HAL_RCC_GPIOD_CLK_ENABLE();
     /**OCTOSPI1 GPIO Configuration
-    PE2     ------> OCTOSPIM_P1_IO2
+    PC2_C     ------> OCTOSPIM_P1_IO2
     PB2     ------> OCTOSPIM_P1_CLK
     PD11     ------> OCTOSPIM_P1_IO0
     PD12     ------> OCTOSPIM_P1_IO1
@@ -112,7 +112,7 @@ void HAL_OSPI_MspInit(OSPI_HandleTypeDef* ospiHandle)
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
     GPIO_InitStruct.Alternate = GPIO_AF9_OCTOSPIM_P1;
-    HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
+    HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
     GPIO_InitStruct.Pin = GPIO_PIN_2;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
@@ -154,14 +154,14 @@ void HAL_OSPI_MspDeInit(OSPI_HandleTypeDef* ospiHandle)
     __HAL_RCC_OSPI1_CLK_DISABLE();
 
     /**OCTOSPI1 GPIO Configuration
-    PE2     ------> OCTOSPIM_P1_IO2
+    PC2_C     ------> OCTOSPIM_P1_IO2
     PB2     ------> OCTOSPIM_P1_CLK
     PD11     ------> OCTOSPIM_P1_IO0
     PD12     ------> OCTOSPIM_P1_IO1
     PD13     ------> OCTOSPIM_P1_IO3
     PB6     ------> OCTOSPIM_P1_NCS
     */
-    HAL_GPIO_DeInit(GPIOE, GPIO_PIN_2);
+    HAL_GPIO_DeInit(GPIOC, GPIO_PIN_2);
 
     HAL_GPIO_DeInit(GPIOB, GPIO_PIN_2|GPIO_PIN_6);
 

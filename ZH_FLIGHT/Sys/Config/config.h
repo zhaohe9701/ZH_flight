@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-07-08 01:24:46
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-11-22 00:15:33
+ * @LastEditTime: 2022-12-20 00:11:20
  * @FilePath: \ZH_FLIGHT\Sys\Config\config.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -49,13 +49,21 @@
 #define REMOTE_POSITION_SCOPE   30.0f
 #define REMOTE_THROTTLE_SCOPE   100.0f
 #define REMOTE_PALSTANCE_SCOPE  60.0f
+
 /*控制*/
-#define MAIN_CYCLE_FREQ         500.0f
+
 
 /*通信*/
+#define UART_NUM                    2
+#define MESSAGE_QUEUE_MAX_LENGTH    10
 
-#define UART_NUM        2
-#define MESSAGE_QUEUE_MAX_LENGTH 10
+/*循环频率*/
+#define ATTITUDE_SLOVE_CYCLE_FREQ   1000
+#define ATTITUDE_CONTROL_CYCLE_FREQ 500
+#define POSITION_CONTROL_CYCLE_FREQ 50
+#define LIGHT_CONTROL_CYCLE_FREQ    50
+#define DATA_LINK_CYCLE_FREQ        50
+ 
 /*------------------------------------------------------*/
 
 

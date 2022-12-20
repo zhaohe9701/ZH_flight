@@ -66,11 +66,11 @@ void test();
 #define GYRO_CLK_GPIO_Port GPIOA
 #define GYRO_MISO_Pin GPIO_PIN_6
 #define GYRO_MISO_GPIO_Port GPIOA
+#define GYRO_MOSI_Pin GPIO_PIN_7
+#define GYRO_MOSI_GPIO_Port GPIOA
 #define GYRO_EXIT_Pin GPIO_PIN_4
 #define GYRO_EXIT_GPIO_Port GPIOC
 #define GYRO_EXIT_EXTI_IRQn EXTI4_IRQn
-#define GYRO_MOSI_Pin GPIO_PIN_7
-#define GYRO_MOSI_GPIO_Port GPIOD
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

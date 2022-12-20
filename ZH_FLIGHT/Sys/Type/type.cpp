@@ -4,30 +4,29 @@
  * @Author: zhaohe
  * @Date: 2022-08-07 22:08:18
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-08-20 14:37:39
+ * @LastEditTime: 2022-11-22 22:55:52
  * @FilePath: \ZH_FLIGHT\Sys\Type\type.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 #include "type.h"
 
-template <typename T>
-void Vec3<T>::Set(T xi, T yi, T zi)
+void Vec3::Set(float xi, float yi, float zi)
 {
     x = xi;
     y = yi;
     z = zi;
 }
 
-template <typename T>
-void Vec3<T>::Clear()
+
+void Vec3::Clear()
 {
     x = 0;
     y = 0;
     z = 0;
 }
 
-template <typename T>
-void Vec4<T>::Set(T xi, T yi, T zi, T wi)
+
+void Vec4::Set(float xi, float yi, float zi, float wi)
 {
     x = xi;
     y = yi;
@@ -35,8 +34,8 @@ void Vec4<T>::Set(T xi, T yi, T zi, T wi)
     w = wi;
 }
 
-template <typename T>
-void Vec4<T>::Clear()
+
+void Vec4::Clear()
 {
     x = 0;
     y = 0;

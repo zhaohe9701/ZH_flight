@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-10-02 16:55:53
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-10-06 03:20:25
+ * @LastEditTime: 2022-11-22 22:56:55
  * @FilePath: \ZH_FLIGHT\Sys\Remote\remote.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -32,7 +32,7 @@ public:
 class Command
 {
 public:
-    Vec3<float> attitude;
+    Vec3 attitude;
     float throttle;
     uint8_t patterm;
 };

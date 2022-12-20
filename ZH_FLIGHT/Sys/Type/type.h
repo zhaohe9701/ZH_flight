@@ -4,33 +4,31 @@
  * @Author: zhaohe
  * @Date: 2022-08-07 22:03:11
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-08-20 14:36:57
+ * @LastEditTime: 2022-11-22 22:55:14
  * @FilePath: \ZH_FLIGHT\Sys\Type\type.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 #ifndef __TYPE_H__
 #define __TYPE_H__
 
-template <typename T>
 class Vec3
 {
 public:
-    T x = 0;
-    T y = 0;
-    T z = 0;
-    void Set(T xi, T yi, T zi);
+    float x = 0.0f;
+    float y = 0.0f;
+    float z = 0.0f;
+    void Set(float xi, float yi, float zi);
     void Clear();
 };
 
-template <typename T>
 class Vec4
 {
 public:
-    T x = 0;
-    T y = 0;
-    T z = 0;
-    T w = 0;
-    void Set(T xi, T yi, T zi, T wi);
+    float x = 0;
+    float y = 0;
+    float z = 0;
+    float w = 0;
+    void Set(float xi, float yi, float zi, float wi);
     void Clear();
 };
 

@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-08-07 22:30:11
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-10-20 23:50:35
+ * @LastEditTime: 2022-11-22 22:56:48
  * @FilePath: \ZH_FLIGHT\Sys\AircraftState\aircraft_state.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -24,13 +24,13 @@
 class State
 {
 public:
-    Vec3<float> euler;
-    Vec3<float> palstance;
-    Vec3<float> velocity;
-    Vec3<float> gps_coor;
-    Vec3<float> relative_pos;
-    Vec3<float> acceleration;
-    Vec4<float> quarter;
+    Vec3 euler;
+    Vec3 palstance;
+    Vec3 velocity;
+    Vec3 gps_coor;
+    Vec3 relative_pos;
+    Vec3 acceleration;
+    Vec4 quarter;
     void Init();
 };
 
