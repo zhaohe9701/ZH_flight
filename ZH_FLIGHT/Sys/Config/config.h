@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-07-08 01:24:46
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-12-20 00:11:20
+ * @LastEditTime: 2022-12-24 23:19:34
  * @FilePath: \ZH_FLIGHT\Sys\Config\config.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -15,13 +15,15 @@
 /*------------------------配置区------------------------*/
 
 /*传感器*/
-#define MPU6000
+#define IMU1                Icm20602
+#define IMU1_INTERFACE_OBJ  hspi1
+#define IMU1_INTERFACE      Spi
+#define IMU1_CS_PORT        SPI1_CS_GPIO_Port
+#define IMU1_CS_PIN         SPI1_CS_Pin
 #define MAGNETOMETER
 
 
 /*电机*/
-#define D_SHOT
-#define PWM_NUM             4
 #define MOTOR_OUTPUT_MAX    100.0f
 #define MOTOR_OUTPUT_MIN    0.0f
 #define MOTOR_NUM           4

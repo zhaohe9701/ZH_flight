@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-11-06 13:40:39
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-12-19 23:36:26
+ * @LastEditTime: 2022-12-24 23:15:26
  * @FilePath: \ZH_FLIGHT\Core\Src\flight_task.c
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -17,10 +17,7 @@ osThreadId ledTaskHandle;
 osThreadId sensorTaskHandle;
 osThreadId flightControlTaskHandle;
 
-void InitializeFight();
-void ReadImu();
-void ReadBaro();
-void FlightControl();
+
 void LedTask(void const *argument);
 void ImuTask(void const *argument);
 void BaroAndMagTask(void const *argument);
@@ -29,7 +26,6 @@ void FlightControlTask(void const *argument);
 void StartDefaultTask(void const *argument)
 {
     //MX_USB_DEVICE_Init();
-    InitializeFight();
     osThreadDef(ledTask, LedTask, osPriorityBelowNormal, 0, 128);
     ledTaskHandle = osThreadCreate(osThread(ledTask), NULL);
 
@@ -62,15 +58,15 @@ void LedTask(void const *argument)
 void ImuTask(void const *argument)
 {
     //HAL_NVIC_EnableIRQ(EXTI4_IRQn);
-    ReadImu();
+
 }
 
 void BaroAndMagTask(void const *argument)
 {
-    ReadBaro();
+
 }
 
 void FlightControlTask(void const *argument)
 {
-    FlightControl();
+
 }

@@ -7,7 +7,10 @@
                 "${workspaceFolder}/Core/Inc",
                 "${workspaceFolder}/Sys/Test",
                 "${workspaceFolder}/Sys/Sensor/Baro",
-                "${workspaceFolder}/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS"
+                "${workspaceFolder}/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS",
+                "${workspaceFolder}/Sys/Type",
+                "${workspaceFolder}/Sys/Sensor",
+                "${workspaceFolder}/Sys/Driver"
             ],
             "defines": [
                 "_DEBUG",
@@ -20,7 +23,8 @@
             "compilerPath": "E:/gcc/mingw64/bin/gcc.exe",
             "cStandard": "c11",
             "cppStandard": "c++17",
-            "intelliSenseMode": "windows-gcc-x64"
+            "intelliSenseMode": "windows-gcc-x64",
+            "configurationProvider": "ms-vscode.makefile-tools"
         }
     ],
     "version": 4

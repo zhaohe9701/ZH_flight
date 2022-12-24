@@ -1,0 +1,110 @@
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: E:/gcc/2021.10/bin/arm-none-eabi-gcc.exe 
+Build flags: 
+Id flags:  
+
+The output was:
+1
+e:/gcc/2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/bin/ld.exe: e:/gcc/2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib\libc.a(lib_a-exit.o): in function `exit':
+exit.c:(.text.exit+0x2c): undefined reference to `_exit'
+collect2.exe: error: ld returned 1 exit status
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: E:/gcc/2021.10/bin/arm-none-eabi-g++.exe 
+Build flags: 
+Id flags:  
+
+The output was:
+1
+e:/gcc/2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/bin/ld.exe: e:/gcc/2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib\libc.a(lib_a-exit.o): in function `exit':
+exit.c:(.text.exit+0x2c): undefined reference to `_exit'
+collect2.exe: error: ld returned 1 exit status
+
+
+Detecting C compiler ABI info failed to compile with the following output:
+Change Dir: D:/Git/ZH_flight/ZH_FLIGHT/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):E:/gcc/mingw64/bin/mingw32-make.exe -f Makefile cmTC_a548a/fast && E:/gcc/mingw64/bin/mingw32-make.exe  -f CMakeFiles\cmTC_a548a.dir\build.make CMakeFiles/cmTC_a548a.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/Git/ZH_flight/ZH_FLIGHT/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a548a.dir/CMakeCCompilerABI.c.obj
+E:\gcc\2021.10\bin\arm-none-eabi-gcc.exe   -v -o CMakeFiles\cmTC_a548a.dir\CMakeCCompilerABI.c.obj -c E:\cmake\share\cmake-3.22\Modules\CMakeCCompilerABI.c
+Using built-in specs.
+COLLECT_GCC=E:\gcc\2021.10\bin\arm-none-eabi-gcc.exe
+Target: arm-none-eabi
+Configured with: /mnt/workspace/workspace/GCC-10-pipeline/jenkins-GCC-10-pipeline-338_20211018_1634516203/src/gcc/configure --build=x86_64-linux-gnu --host=i686-w64-mingw32 --target=arm-none-eabi --prefix=/mnt/workspace/workspace/GCC-10-pipeline/jenkins-GCC-10-pipeline-338_20211018_1634516203/install-mingw --libexecdir=/mnt/workspace/workspace/GCC-10-pipeline/jenkins-GCC-10-pipeline-338_20211018_1634516203/install-mingw/lib --infodir=/mnt/workspace/workspace/GCC-10-pipeline/jenkins-GCC-10-pipeline-338_20211018_1634516203/install-mingw/share/doc/gcc-arm-none-eabi/info --mandir=/mnt/workspace/workspace/GCC-10-pipeline/jenkins-GCC-10-pipeline-338_20211018_1634516203/install-mingw/share/doc/gcc-arm-none-eabi/man --htmldir=/mnt/workspace/workspace/GCC-10-pipeline/jenkins-GCC-10-pipeline-338_20211018_1634516203/install-mingw/share/doc/gcc-arm-none-eabi/html --pdfdir=/mnt/workspace/workspace/GCC-10-pipeline/jenkins-GCC-10-pipeline-338_20211018_1634516203/install-mingw/share/doc/gcc-arm-none-eabi/pdf --enable-languages=c,c++ --enable-mingw-wildcard --disable-decimal-float --disable-libffi --disable-libgomp --disable-libmudflap --disable-libquadmath --disable-libssp --disable-libstdcxx-pch --disable-nls --disable-shared --disable-threads --disable-tls --with-gnu-as --with-gnu-ld --with-headers=yes --with-newlib --with-python-dir=share/gcc-arm-none-eabi --with-sysroot=/mnt/workspace/workspace/GCC-10-pipeline/jenkins-GCC-10-pipeline-338_20211018_1634516203/install-mingw/arm-none-eabi --with-libiconv-prefix=/mnt/workspace/workspace/GCC-10-pipeline/jenkins-GCC-10-pipeline-338_20211018_1634516203/build-mingw/host-libs/usr --with-gmp=/mnt/workspace/workspace/GCC-10-pipeline/jenkins-GCC-10-pipeline-338_20211018_1634516203/build-mingw/host-libs/usr --with-mpfr=/mnt/workspace/workspace/GCC-10-pipeline/jenkins-GCC-10-pipeline-338_20211018_1634516203/build-mingw/host-libs/usr --with-mpc=/mnt/workspace/workspace/GCC-10-pipeline/jenkins-GCC-10-pipeline-338_20211018_1634516203/build-mingw/host-libs/usr --with-isl=/mnt/workspace/workspace/GCC-10-pipeline/jenkins-GCC-10-pipeline-338_20211018_1634516203/build-mingw/host-libs/usr --with-libelf=/mnt/workspace/workspace/GCC-10-pipeline/jenkins-GCC-10-pipeline-338_20211018_1634516203/build-mingw/host-libs/usr --with-host-libstdcxx='-static-libgcc -Wl,-Bstatic,-lstdc++,-Bdynamic -lm' --with-pkgversion='GNU Arm Embedded Toolchain 10.3-2021.10' --with-multilib-list=rmprofile,aprofile
+Thread model: single
+Supported LTO compression algorithms: zlib
+gcc version 10.3.1 20210824 (release) (GNU Arm Embedded Toolchain 10.3-2021.10) 
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_a548a.dir\CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t'
+ e:/gcc/2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/cc1.exe -quiet -v -iprefix e:\gcc\2021.10\bin\../lib/gcc/arm-none-eabi/10.3.1/ -isysroot e:\gcc\2021.10\bin\../arm-none-eabi -D__USES_INITFINI__ E:\cmake\share\cmake-3.22\Modules\CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mcpu=arm7tdmi -mfloat-abi=soft -marm -mlibarch=armv4t -march=armv4t -auxbase-strip CMakeFiles\cmTC_a548a.dir\CMakeCCompilerABI.c.obj -version -o C:\Users\zhaohe\AppData\Local\Temp\ccggJoJl.s
+GNU C17 (GNU Arm Embedded Toolchain 10.3-2021.10) version 10.3.1 20210824 (release) (arm-none-eabi)
+	compiled by GNU C version 7.3-win32 20180312, GMP version 6.1.0, MPFR version 3.1.4, MPC version 1.0.3, isl version isl-0.18-GMP
+
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+ignoring duplicate directory "e:/gcc/2021.10/lib/gcc/../../lib/gcc/arm-none-eabi/10.3.1/include"
+ignoring nonexistent directory "e:\gcc\2021.10\bin\../arm-none-eabi/mnt/workspace/workspace/GCC-10-pipeline/jenkins-GCC-10-pipeline-338_20211018_1634516203/install-mingw/lib/gcc/arm-none-eabi/10.3.1/../../../../include"
+ignoring duplicate directory "e:/gcc/2021.10/lib/gcc/../../lib/gcc/arm-none-eabi/10.3.1/include-fixed"
+ignoring duplicate directory "e:/gcc/2021.10/lib/gcc/../../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include"
+ignoring nonexistent directory "e:\gcc\2021.10\bin\../arm-none-eabi/usr/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ e:\gcc\2021.10\bin\../lib/gcc/arm-none-eabi/10.3.1/include
+ e:\gcc\2021.10\bin\../lib/gcc/arm-none-eabi/10.3.1/include-fixed
+ e:\gcc\2021.10\bin\../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/include
+End of search list.
+GNU C17 (GNU Arm Embedded Toolchain 10.3-2021.10) version 10.3.1 20210824 (release) (arm-none-eabi)
+	compiled by GNU C version 7.3-win32 20180312, GMP version 6.1.0, MPFR version 3.1.4, MPC version 1.0.3, isl version isl-0.18-GMP
+
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+Compiler executable checksum: f3937ce18b4177bfd408ca565336596a
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_a548a.dir\CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t'
+ e:/gcc/2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/bin/as.exe -v -march=armv4t -mfloat-abi=soft -meabi=5 -o CMakeFiles\cmTC_a548a.dir\CMakeCCompilerABI.c.obj C:\Users\zhaohe\AppData\Local\Temp\ccggJoJl.s
+GNU assembler version 2.36.1 (arm-none-eabi) using BFD version (GNU Arm Embedded Toolchain 10.3-2021.10) 2.36.1.20210621
+COMPILER_PATH=e:/gcc/2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/;e:/gcc/2021.10/bin/../lib/gcc/;e:/gcc/2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/bin/
+LIBRARY_PATH=e:/gcc/2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/;e:/gcc/2021.10/bin/../lib/gcc/;e:/gcc/2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/;e:/gcc/2021.10/bin/../arm-none-eabi/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_a548a.dir\CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t'
+Linking C executable cmTC_a548a
+E:\cmake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_a548a.dir\link.txt --verbose=1
+E:\gcc\2021.10\bin\arm-none-eabi-gcc.exe  -v CMakeFiles/cmTC_a548a.dir/CMakeCCompilerABI.c.obj -o cmTC_a548a 
+Using built-in specs.
+COLLECT_GCC=E:\gcc\2021.10\bin\arm-none-eabi-gcc.exe
+COLLECT_LTO_WRAPPER=e:/gcc/2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/lto-wrapper.exe
+Target: arm-none-eabi
+Configured with: /mnt/workspace/workspace/GCC-10-pipeline/jenkins-GCC-10-pipeline-338_20211018_1634516203/src/gcc/configure --build=x86_64-linux-gnu --host=i686-w64-mingw32 --target=arm-none-eabi --prefix=/mnt/workspace/workspace/GCC-10-pipeline/jenkins-GCC-10-pipeline-338_20211018_1634516203/install-mingw --libexecdir=/mnt/workspace/workspace/GCC-10-pipeline/jenkins-GCC-10-pipeline-338_20211018_1634516203/install-mingw/lib --infodir=/mnt/workspace/workspace/GCC-10-pipeline/jenkins-GCC-10-pipeline-338_20211018_1634516203/install-mingw/share/doc/gcc-arm-none-eabi/info --mandir=/mnt/workspace/workspace/GCC-10-pipeline/jenkins-GCC-10-pipeline-338_20211018_1634516203/install-mingw/share/doc/gcc-arm-none-eabi/man --htmldir=/mnt/workspace/workspace/GCC-10-pipeline/jenkins-GCC-10-pipeline-338_20211018_1634516203/install-mingw/share/doc/gcc-arm-none-eabi/html --pdfdir=/mnt/workspace/workspace/GCC-10-pipeline/jenkins-GCC-10-pipeline-338_20211018_1634516203/install-mingw/share/doc/gcc-arm-none-eabi/pdf --enable-languages=c,c++ --enable-mingw-wildcard --disable-decimal-float --disable-libffi --disable-libgomp --disable-libmudflap --disable-libquadmath --disable-libssp --disable-libstdcxx-pch --disable-nls --disable-shared --disable-threads --disable-tls --with-gnu-as --with-gnu-ld --with-headers=yes --with-newlib --with-python-dir=share/gcc-arm-none-eabi --with-sysroot=/mnt/workspace/workspace/GCC-10-pipeline/jenkins-GCC-10-pipeline-338_20211018_1634516203/install-mingw/arm-none-eabi --with-libiconv-prefix=/mnt/workspace/workspace/GCC-10-pipeline/jenkins-GCC-10-pipeline-338_20211018_1634516203/build-mingw/host-libs/usr --with-gmp=/mnt/workspace/workspace/GCC-10-pipeline/jenkins-GCC-10-pipeline-338_20211018_1634516203/build-mingw/host-libs/usr --with-mpfr=/mnt/workspace/workspace/GCC-10-pipeline/jenkins-GCC-10-pipeline-338_20211018_1634516203/build-mingw/host-libs/usr --with-mpc=/mnt/workspace/workspace/GCC-10-pipeline/jenkins-GCC-10-pipeline-338_20211018_1634516203/build-mingw/host-libs/usr --with-isl=/mnt/workspace/workspace/GCC-10-pipeline/jenkins-GCC-10-pipeline-338_20211018_1634516203/build-mingw/host-libs/usr --with-libelf=/mnt/workspace/workspace/GCC-10-pipeline/jenkins-GCC-10-pipeline-338_20211018_1634516203/build-mingw/host-libs/usr --with-host-libstdcxx='-static-libgcc -Wl,-Bstatic,-lstdc++,-Bdynamic -lm' --with-pkgversion='GNU Arm Embedded Toolchain 10.3-2021.10' --with-multilib-list=rmprofile,aprofile
+Thread model: single
+Supported LTO compression algorithms: zlib
+gcc version 10.3.1 20210824 (release) (GNU Arm Embedded Toolchain 10.3-2021.10) 
+COMPILER_PATH=e:/gcc/2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/;e:/gcc/2021.10/bin/../lib/gcc/;e:/gcc/2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/bin/
+LIBRARY_PATH=e:/gcc/2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/;e:/gcc/2021.10/bin/../lib/gcc/;e:/gcc/2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/;e:/gcc/2021.10/bin/../arm-none-eabi/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_a548a' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t'
+ e:/gcc/2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/collect2.exe -plugin e:/gcc/2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/liblto_plugin-0.dll -plugin-opt=e:/gcc/2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/lto-wrapper.exe -plugin-opt=-fresolution=C:\Users\zhaohe\AppData\Local\Temp\ccMwNKbG.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc --sysroot=e:\gcc\2021.10\bin\../arm-none-eabi -X -o cmTC_a548a e:/gcc/2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/crti.o e:/gcc/2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/crtbegin.o e:/gcc/2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/crt0.o -Le:/gcc/2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1 -Le:/gcc/2021.10/bin/../lib/gcc -Le:/gcc/2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib -Le:/gcc/2021.10/bin/../arm-none-eabi/lib CMakeFiles/cmTC_a548a.dir/CMakeCCompilerABI.c.obj --start-group -lgcc -lc --end-group e:/gcc/2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/crtend.o e:/gcc/2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/crtn.o
+e:/gcc/2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/bin/ld.exe: e:/gcc/2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib\libc.a(lib_a-exit.o): in function `exit':
+exit.c:(.text.exit+0x2c): undefined reference to `_exit'
+collect2.exe: error: ld returned 1 exit status
+mingw32-make.exe[1]: *** [CMakeFiles\cmTC_a548a.dir\build.make:98: cmTC_a548a] Error 1
+mingw32-make.exe[1]: Leaving directory 'D:/Git/ZH_flight/ZH_FLIGHT/build/CMakeFiles/CMakeTmp'
+mingw32-make.exe: *** [Makefile:126: cmTC_a548a/fast] Error 2
+
+
+
+
+Determining if the C compiler works failed with the following output:
+Change Dir: D:/Git/ZH_flight/ZH_FLIGHT/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):E:/gcc/mingw64/bin/mingw32-make.exe -f Makefile cmTC_ac39a/fast && E:/gcc/mingw64/bin/mingw32-make.exe  -f CMakeFiles\cmTC_ac39a.dir\build.make CMakeFiles/cmTC_ac39a.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/Git/ZH_flight/ZH_FLIGHT/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ac39a.dir/testCCompiler.c.obj
+E:\gcc\2021.10\bin\arm-none-eabi-gcc.exe    -o CMakeFiles\cmTC_ac39a.dir\testCCompiler.c.obj -c D:\Git\ZH_flight\ZH_FLIGHT\build\CMakeFiles\CMakeTmp\testCCompiler.c
+Linking C executable cmTC_ac39a
+E:\cmake\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_ac39a.dir\link.txt --verbose=1
+E:\gcc\2021.10\bin\arm-none-eabi-gcc.exe CMakeFiles/cmTC_ac39a.dir/testCCompiler.c.obj -o cmTC_ac39a 
+e:/gcc/2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/bin/ld.exe: e:/gcc/2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib\libc.a(lib_a-exit.o): in function `exit':
+exit.c:(.text.exit+0x2c): undefined reference to `_exit'
+collect2.exe: error: ld returned 1 exit status
+mingw32-make.exe[1]: *** [CMakeFiles\cmTC_ac39a.dir\build.make:98: cmTC_ac39a] Error 1
+mingw32-make.exe[1]: Leaving directory 'D:/Git/ZH_flight/ZH_FLIGHT/build/CMakeFiles/CMakeTmp'
+mingw32-make.exe: *** [Makefile:126: cmTC_ac39a/fast] Error 2
+
+
+

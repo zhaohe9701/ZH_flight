@@ -4,12 +4,18 @@
  * @Author: zhaohe
  * @Date: 2022-08-07 22:03:11
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-11-22 22:55:14
+ * @LastEditTime: 2022-12-24 19:54:30
  * @FilePath: \ZH_FLIGHT\Sys\Type\type.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 #ifndef __TYPE_H__
 #define __TYPE_H__
+
+enum AC_RET
+{
+    AC_OK = 0,
+    AC_ERROR = 1
+};
 
 class Vec3
 {

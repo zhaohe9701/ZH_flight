@@ -84,7 +84,8 @@ USB_DEVICE/Target/usbd_conf.c
 )
 
 set(SYS_SRC
-Sys/Test/test.cpp
+# Sys/Test/test.cpp
+Sys/Aircraft/aircraft.cpp
 Sys/Sensor/sensor.cpp
 Sys/Sensor/Imu/icm20602.cpp
 Sys/Sensor/Baro/ms5611.cpp
@@ -113,7 +114,8 @@ ${START_UP_ASM}
 include_directories(
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Core/Inc>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys>
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Test>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Aircraft>
+    # $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Test>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Task>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Sensor>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Sensor/Imu>

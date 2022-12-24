@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-09-25 02:04:02
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-10-24 00:03:14
+ * @LastEditTime: 2022-12-25 01:00:07
  * @FilePath: \ZH_FLIGHT\Sys\Driver\z_pwm.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -15,7 +15,7 @@
 
 
 #include "main.h"
-
+#include "motor_interface.h"
 
 // extern "C"
 // {
@@ -27,12 +27,12 @@
 void PwmCallbackHandle(TIM_HandleTypeDef *htim);
 
 
-class Pwm
+class Pwm : virtual public MotorInterface
 {
 public:
-    void Init(TIM_HandleTypeDef *htim, uint16_t channel);
-    void Output(uint16_t *data, uint16_t length);
-    void Stop();
+    Pwm(TIM_HandleTypeDef *htim, uint16_t channel);
+    void Output(uint16_t *data, uint16_t length) override;
+    void Stop() override;
 private:
     bool _IsMe(TIM_HandleTypeDef *htim);
     TIM_HandleTypeDef *_htim;
