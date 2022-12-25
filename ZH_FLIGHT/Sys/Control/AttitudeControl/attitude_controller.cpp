@@ -4,20 +4,20 @@
  * @Author: zhaohe
  * @Date: 2022-10-21 23:23:46
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-10-21 23:55:12
- * @FilePath: \ZH_FLIGHT\Sys\Control\AttitudeControl\attitude_control.cpp
+ * @LastEditTime: 2022-12-25 02:09:57
+ * @FilePath: \ZH_FLIGHT\Sys\Control\AttitudeControl\attitude_controller.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 
 
-#include "attitude_control.h"
+#include "attitude_controller.h"
 
 /**
  * @description: 
  * @param {AttitudeControllerInterface} *interface
  * @return {*}
  */
-AttitudeControl::AttitudeControl(AttitudeControllerInterface *interface)
+void AttitudeController::SetMethod(AttitudeControllerInterface *interface)
 {
     _interface = interface;
 }
@@ -27,7 +27,7 @@ AttitudeControl::AttitudeControl(AttitudeControllerInterface *interface)
  * @param {ControlParam} *param
  * @return {*}
  */
-void AttitudeControl::Init(ControlParam *param)
+void AttitudeController::Init(ControlParam *param)
 {
     _interface->Init();
     _interface->Init(param);
@@ -39,7 +39,7 @@ void AttitudeControl::Init(ControlParam *param)
  * @param {ExpectState} &expect_state
  * @return {*}
  */
-void AttitudeControl::Update(const AircraftState &actual_state, ExpectState &expect_state)
+void AttitudeController::Update(const ActualState &actual_state, ExpectState &expect_state)
 {
     AttitudeControlInput input;
     AttitudeControlOutput output;
@@ -71,7 +71,7 @@ void AttitudeControl::Update(const AircraftState &actual_state, ExpectState &exp
  * @param {float} value
  * @return {*}
  */
-float AttitudeControl::_Limit(float value)
+float AttitudeController::_Limit(float value)
 {
     if (value > MOTOR_OUTPUT_MAX)
     {

@@ -12,16 +12,16 @@
 
 void Sensor::AddImu(Imu *imu)
 {
-    _imu = imu;
+    this->imu = imu;
 }
 
 void Sensor::AddBaro(Baro *baro)
 {
-    _baro = baro;
+    this->baro = baro;
 }
 
 void Sensor::Init()
 {
-    _imu->Init();
-    _baro->Init();
+    imu->Init();
+    baro->Init();
 }

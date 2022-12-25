@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-08-07 22:30:11
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-11-22 22:56:48
+ * @LastEditTime: 2022-12-25 01:33:15
  * @FilePath: \ZH_FLIGHT\Sys\AircraftState\aircraft_state.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -21,7 +21,7 @@
 #define MOTOR3 z
 #define MOTOR4 w
 
-class State
+class AircraftState
 {
 public:
     Vec3 euler;
@@ -34,12 +34,12 @@ public:
     void Init();
 };
 
-class AircraftState : public State
+class ActualState : public AircraftState
 {
 public:
 };
 
-class ExpectState : public State
+class ExpectState : public AircraftState
 {
 public:
     float throttle = 0.0f;

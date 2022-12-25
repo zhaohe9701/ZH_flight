@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-07-08 01:24:46
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-12-24 23:19:34
+ * @LastEditTime: 2022-12-26 00:33:57
  * @FilePath: \ZH_FLIGHT\Sys\Config\config.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -14,12 +14,17 @@
 #include "main.h"
 /*------------------------配置区------------------------*/
 
+/*系统*/
+#define SEMAPHORE_NUM       5
+#define QUEUE_NUM           1
 /*传感器*/
 #define IMU1                Icm20602
 #define IMU1_INTERFACE_OBJ  hspi1
 #define IMU1_INTERFACE      Spi
 #define IMU1_CS_PORT        SPI1_CS_GPIO_Port
 #define IMU1_CS_PIN         SPI1_CS_Pin
+#define IMU1_EXIT_PIN       SPI1_EXIT_Pin
+#define IMU1_SEMAPHORE      semaphore[0]
 #define MAGNETOMETER
 
 
@@ -53,7 +58,7 @@
 #define REMOTE_PALSTANCE_SCOPE  60.0f
 
 /*控制*/
-
+#define ATTITUDE_CONTROLLER_PARAM_NUM   36
 
 /*通信*/
 #define UART_NUM                    2

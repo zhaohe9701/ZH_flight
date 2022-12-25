@@ -4,14 +4,14 @@
  * @Author: zhaohe
  * @Date: 2022-09-24 17:52:11
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-09-27 22:18:48
- * @FilePath: \ZH_FLIGHT\Sys\Flight\mahony.cpp
+ * @LastEditTime: 2022-12-25 01:59:46
+ * @FilePath: \ZH_FLIGHT\Sys\AHRS\mahony.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 #include "mahony.h"
 #include "math_param.h"
 
-void Mahony::Update(AircraftState &actual_state, ImuData &imu_data)
+void Mahony::Update(ActualState &actual_state, ImuData &imu_data)
 {
     float normalise;
     float ex = 0.0f;

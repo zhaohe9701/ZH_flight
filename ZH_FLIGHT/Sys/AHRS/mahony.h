@@ -14,10 +14,10 @@
 #include "ahrs.h"
 
 
-class Mahony : virtual public AttitudeAlgorithm
+class Mahony : virtual public AttitudeSolver
 {
 public:
-    void Update(AircraftState &actual_state, ImuData &imu_data) override;
+    void Update(ActualState &actual_state, ImuData &imu_data) override;
     void TransformBodyToEarth(float &x, float &y, float &z) override;
     void TransformEarthToBody(float &x, float &y, float &z) override;
 private:

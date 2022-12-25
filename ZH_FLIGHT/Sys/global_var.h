@@ -4,30 +4,17 @@
  * @Author: zhaohe
  * @Date: 2022-10-23 23:47:39
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-10-23 23:57:04
+ * @LastEditTime: 2022-12-26 00:08:20
  * @FilePath: \ZH_FLIGHT\Sys\global_var.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 #include "FreeRTOS.h"
 #include "queue.h"
 #include "semphr.h"
-
-#define RETURN_IMMEDIATELY 0
-
-typedef struct _Queue
-{
-    QueueHandle_t message_queue;
-} Queue;
-
-typedef struct _Semaphore
-{
-    SemaphoreHandle_t usb_semaphore;
-} Semaphore;
-
-
+#include "config.h"
 
 typedef struct _GlobalVar
 {
-    Queue queue;
-    Semaphore semaphore;
+    QueueHandle_t queue[QUEUE_NUM];
+    SemaphoreHandle_t semaphore[SEMAPHORE_NUM];
 } GlobalVar;

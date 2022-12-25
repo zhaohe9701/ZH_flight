@@ -4,14 +4,14 @@
  * @Author: zhaohe
  * @Date: 2022-09-24 22:36:59
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-10-20 23:25:28
+ * @LastEditTime: 2022-12-25 01:48:40
  * @FilePath: \ZH_FLIGHT\Sys\AircraftState\aircraft_state.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 #include "aircraft_state.h"
 
 
-void State::Init()
+void AircraftState::Init()
 {
     euler.Set(0.0f, 0.0f, 0.0f);
     palstance.Set(0.0f, 0.0f, 0.0f);

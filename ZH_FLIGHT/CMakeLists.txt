@@ -86,6 +86,12 @@ USB_DEVICE/Target/usbd_conf.c
 set(SYS_SRC
 # Sys/Test/test.cpp
 Sys/Aircraft/aircraft.cpp
+Sys/AircraftState/aircraft_state.cpp
+Sys/Control/AttitudeControl/attitude_controller.cpp
+Sys/Control/AttitudeControl/attitude_controller_interface.cpp
+Sys/Control/AttitudeControl/pid_attitude_controller.cpp
+Sys/Control/control_param.cpp
+Sys/Control/pid_core.cpp
 Sys/Sensor/sensor.cpp
 Sys/Sensor/Imu/icm20602.cpp
 Sys/Sensor/Baro/ms5611.cpp
@@ -94,6 +100,7 @@ Sys/Driver/z_iic.cpp
 Sys/Protocol/dshot.cpp
 Sys/Driver/z_pwm.cpp
 Sys/Motor/motor.cpp
+Sys/AHRS/mahony.cpp
 Sys/Task/aircraft_task.cpp
 )
 
@@ -115,8 +122,12 @@ include_directories(
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Core/Inc>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Aircraft>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/AircraftState>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Control>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Control/AttitudeControl>
     # $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Test>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Task>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/AHRS>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Sensor>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Sensor/Imu>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Sensor/Baro>
