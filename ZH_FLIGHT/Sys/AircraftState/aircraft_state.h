@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-08-07 22:30:11
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-12-25 01:33:15
+ * @LastEditTime: 2022-12-27 23:20:20
  * @FilePath: \ZH_FLIGHT\Sys\AircraftState\aircraft_state.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -12,6 +12,7 @@
 #define __AIRCRAFT_STATE_H__
 #include "type.h"
 #include "config.h"
+#include "cmsis_os.h"
 #define PITCH x
 #define ROLL y
 #define YAW z

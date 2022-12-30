@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-12-22 23:42:17
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-12-26 00:16:37
+ * @LastEditTime: 2022-12-28 22:52:10
  * @FilePath: \ZH_FLIGHT\Sys\Aircraft\aircraft.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -26,18 +26,25 @@ private:
     Sensor *_sensor = nullptr;
     Motor *_motors = nullptr;
 
-    ActualState *_actual_state = nullptr;
-    ExpectState *_expect_state = nullptr;
-
+    ActualState *_actual_state_for_attitude_solve = nullptr;
+    ActualState *_actual_state_for_attitude_control = nullptr;
+    ExpectState *_expect_state_for_control = nullptr;
+    ExpectState *_expect_state_for_remote = nullptr;
     AttitudeController *_attitude_controller = nullptr;
     ControlParam *_attitude_control_param = nullptr;
     AttitudeSolver *_attitude_solver = nullptr;
-
+    Mutex *_actual_state_mutex = nullptr;
+    Mutex *_expect_state_mutex = nullptr;
     ImuData _imu_data;
 public:
     Aircraft();
     AC_RET Init();
     AC_RET UpdateAttitude();
+    AC_RET GetStateForControl();
+    AC_RET ControlAttitude();
+    AC_RET ControlAltitudeByDirect();
+    AC_RET ControlAltitudeBySensor();
+    AC_RET ControlMotor();
     ~Aircraft();
 
 };

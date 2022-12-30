@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-07-08 01:24:46
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-12-26 00:33:57
+ * @LastEditTime: 2022-12-29 22:42:21
  * @FilePath: \ZH_FLIGHT\Sys\Config\config.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -12,11 +12,13 @@
 #define __CONFIG_H__
 #include <stdint.h>
 #include "main.h"
+#include "cmsis_os.h"
 /*------------------------配置区------------------------*/
 
 /*系统*/
 #define SEMAPHORE_NUM       5
 #define QUEUE_NUM           1
+#define MUTEX_NUM           2
 /*传感器*/
 #define IMU1                Icm20602
 #define IMU1_INTERFACE_OBJ  hspi1
@@ -59,7 +61,9 @@
 
 /*控制*/
 #define ATTITUDE_CONTROLLER_PARAM_NUM   36
-
+#define ACTUAL_STATE_MUTEX              mutex[0]
+#define EXPECT_STATE_MUTEX              mutex[1]
+#define ACTUAL_STATE_SEMAPHORE          semaphore[1]
 /*通信*/
 #define UART_NUM                    2
 #define MESSAGE_QUEUE_MAX_LENGTH    10
@@ -72,10 +76,13 @@
 #define DATA_LINK_CYCLE_FREQ        50
  
 /*------------------------------------------------------*/
-
-
-
-
+typedef osMutexId Mutex;
+typedef osSemaphoreId Semaphore;
+typedef uint16_t Flag;
+#define AcLock(x) osMutexWait(x, osWaitForever)
+#define AcUnLock(x) osMutexRelease(x)
+#define AcWaitSemaphore(x) osSemaphoreWait(x, osWaitForever)
+#define AcReleaseSemaphore(x) osSemaphoreRelease(x)
 
 
 #endif

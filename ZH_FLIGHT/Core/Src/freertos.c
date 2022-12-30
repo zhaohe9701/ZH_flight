@@ -94,7 +94,6 @@ void MX_FREERTOS_Init(void) {
   /* definition and creation of SensorSemaphore */
   osSemaphoreDef(SensorSemaphore);
   SensorSemaphoreHandle = osSemaphoreCreate(osSemaphore(SensorSemaphore), 1);
-
   /* USER CODE BEGIN RTOS_SEMAPHORES */
   /* add semaphores, ... */
   /* USER CODE END RTOS_SEMAPHORES */

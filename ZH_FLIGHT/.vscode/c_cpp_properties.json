@@ -6,11 +6,12 @@
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/Core/Inc/**",
                 "${workspaceFolder}/Sys/**",
-                "${workspaceFolder}/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/**",
+                "${workspaceFolder}/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS",
                 "${workspaceFolder}/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F",
                 "${workspaceFolder}/Sys/Control/AttitudeControl",
                 "${workspaceFolder}/Sys",
-                "${workspaceFolder}/Sys/Type"
+                "${workspaceFolder}/Sys/Type",
+                "${workspaceFolder}/Middlewares/Third_Party/FreeRTOS/Source/include"
             ],
             "defines": [
                 "_DEBUG",
