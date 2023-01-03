@@ -4,12 +4,14 @@
  * @Author: zhaohe
  * @Date: 2022-08-07 22:03:11
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-12-26 00:32:24
+ * @LastEditTime: 2022-12-31 11:44:01
  * @FilePath: \ZH_FLIGHT\Sys\Type\type.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 #ifndef __TYPE_H__
 #define __TYPE_H__
+
+#include <stdint.h>
 
 enum AC_RET
 {
@@ -38,4 +40,5 @@ public:
     void Clear();
 };
 
+typedef uint32_t Condition;
 #endif

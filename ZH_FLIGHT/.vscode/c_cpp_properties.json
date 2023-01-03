@@ -10,8 +10,8 @@
                 "${workspaceFolder}/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F",
                 "${workspaceFolder}/Sys/Control/AttitudeControl",
                 "${workspaceFolder}/Sys",
-                "${workspaceFolder}/Sys/Type",
-                "${workspaceFolder}/Middlewares/Third_Party/FreeRTOS/Source/include"
+                "${workspaceFolder}/Middlewares/Third_Party/FreeRTOS/Source/include",
+                "${workspaceFolder}/Sys/Type"
             ],
             "defines": [
                 "_DEBUG",
@@ -21,7 +21,7 @@
                 "STM32H7B0xx"
             ],
             "windowsSdkVersion": "10.0.14393.0",
-            "compilerPath": "E:/gcc/mingw64/bin/gcc.exe",
+            "compilerPath": "D:/App/mingw/mingw64/bin/gcc.exe",
             "cStandard": "c11",
             "cppStandard": "c++17",
             "intelliSenseMode": "windows-gcc-x64",

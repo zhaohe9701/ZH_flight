@@ -8,7 +8,7 @@ project(ZH_Flight_H7 C CXX ASM)
 
 set(target "${PROJECT_NAME}")
 set(COMPILE_TOOLS GCC)
-
+# set(CMAKE_MAKE_PROGRAM D:/App/mingw/mingw64/bin/make.exe)
 set(CROSS_COMPILE_PREFIX arm-none-eabi)
 include(target-def.cmake)
 
@@ -95,6 +95,7 @@ Sys/Control/pid_core.cpp
 Sys/Sensor/sensor.cpp
 Sys/Sensor/Imu/icm20602.cpp
 Sys/Sensor/Baro/ms5611.cpp
+Sys/StateMachine/state_machine.cpp
 Sys/Driver/z_spi.cpp
 Sys/Driver/z_iic.cpp
 Sys/Protocol/dshot.cpp
