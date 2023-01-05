@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-12-22 23:58:07
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-12-28 23:23:52
+ * @LastEditTime: 2023-01-05 23:52:03
  * @FilePath: \ZH_FLIGHT\Sys\Aircraft\aircraft.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -51,8 +51,10 @@ Aircraft::Aircraft()
     /*创建组件*/
     _sensor = new Sensor();
     _motors = new Motor[MOTOR_NUM]();
+    _actual_state = new ActualState();
     _actual_state_for_attitude_control = new ActualState();
     _actual_state_for_attitude_solve = new ActualState();
+    _expect_state = new ExpectState();
     _expect_state_for_control = new ExpectState();
     _expect_state_for_remote = new ExpectState();
     _attitude_controller = new AttitudeController();
@@ -102,9 +104,9 @@ AC_RET Aircraft::Init()
     motor_protocol_interface = new Dshot(motor_interface);
     _motors[3].SetProtocol(motor_protocol_interface);
 
-    /*实际姿态和期望姿态初始化*/
-    _actual_state_mutex = &system_var.ACTUAL_STATE_MUTEX;
-
+    /*实际姿态和期望姿态锁初始化*/
+    _expect_state->mutex = &system_var.EXPECT_STATE_MUTEX;
+    _actual_state->mutex = &system_var.ACTUAL_STATE_MUTEX;
     /*姿态控制器*/   
     AttitudeControllerInterface *attitude_controller_interface = new PidAttitudeController();
     _attitude_controller->SetMethod(attitude_controller_interface);
@@ -119,21 +121,15 @@ AC_RET Aircraft::UpdateAttitude()
 {
     _sensor->imu->GetAccData(_imu_data);
     _sensor->imu->GetGyroData(_imu_data);
-    AcLock(*_actual_state_mutex);
     _attitude_solver->Update(*_actual_state_for_attitude_solve, _imu_data);
-    AcUnLock(*_actual_state_mutex);
+    _actual_state->SafeDeepCopyFrom(_actual_state_for_attitude_solve);
     return AC_OK;
 }
 
 AC_RET Aircraft::GetStateForControl()
 {
-    AcLock(*_actual_state_mutex);
-    memcpy(_actual_state_for_attitude_control, _actual_state_for_attitude_solve, sizeof(ActualState));
-    AcUnLock(*_actual_state_mutex);
-
-    AcLock(*_expect_state_mutex);
-    memcpy(_expect_state_for_control, _expect_state_for_remote, sizeof(ExpectState));
-    AcUnLock(*_expect_state_mutex);
+    _actual_state->SafeDeepCopyTo(_actual_state_for_attitude_control);
+    _expect_state->SafeDeepCopyTo(_expect_state_for_control);
     return AC_OK;
 }
 
