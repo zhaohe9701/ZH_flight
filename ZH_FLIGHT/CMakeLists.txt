@@ -90,8 +90,8 @@ Sys/AircraftState/aircraft_state.cpp
 Sys/Control/AttitudeControl/attitude_controller.cpp
 Sys/Control/AttitudeControl/attitude_controller_interface.cpp
 Sys/Control/AttitudeControl/pid_attitude_controller.cpp
-Sys/Control/control_param.cpp
 Sys/Control/pid_core.cpp
+Sys/EventServer/event_server.cpp
 Sys/Sensor/sensor.cpp
 Sys/Sensor/Imu/icm20602.cpp
 Sys/Sensor/Baro/ms5611.cpp
@@ -124,6 +124,7 @@ include_directories(
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Aircraft>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/AircraftState>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/EventServer>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Control>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Control/AttitudeControl>
     # $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Test>

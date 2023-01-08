@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-07-08 01:24:46
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-12-29 22:42:21
+ * @LastEditTime: 2023-01-08 23:24:08
  * @FilePath: \ZH_FLIGHT\Sys\Config\config.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -78,11 +78,12 @@
 /*------------------------------------------------------*/
 typedef osMutexId Mutex;
 typedef osSemaphoreId Semaphore;
-typedef uint16_t Flag;
-#define AcLock(x) osMutexWait(x, osWaitForever)
-#define AcUnLock(x) osMutexRelease(x)
-#define AcWaitSemaphore(x) osSemaphoreWait(x, osWaitForever)
-#define AcReleaseSemaphore(x) osSemaphoreRelease(x)
-
+typedef osThreadId Thread;
+#define AcLock(id) osMutexWait(id, osWaitForever)
+#define AcUnLock(id) osMutexRelease(id)
+#define AcWaitSemaphore(id) osSemaphoreWait(id, osWaitForever)
+#define AcReleaseSemaphore(id) osSemaphoreRelease(id)
+#define SignalSet(signal, value) osSignalSet(signal, value);
+#define SignalWait(value) osSignalWait(value, osWaitForever);
 
 #endif

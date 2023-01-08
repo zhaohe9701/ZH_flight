@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-12-22 23:42:17
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-05 00:25:47
+ * @LastEditTime: 2023-01-08 23:56:44
  * @FilePath: \ZH_FLIGHT\Sys\Aircraft\aircraft.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -19,7 +19,7 @@
 #include "attitude_controller.h"
 #include "control_param.h"
 #include "ahrs.h"
-
+#include "state_machine.h"
 class Aircraft
 {
 private:
@@ -43,6 +43,8 @@ private:
     AttitudeSolver *_attitude_solver = nullptr;
     /*IMU数据*/
     ImuData _imu_data;
+    /*当前动作*/
+    ActionList _current_action = AS_INITIALIZE;
 public:
     Aircraft();
     AC_RET Init();

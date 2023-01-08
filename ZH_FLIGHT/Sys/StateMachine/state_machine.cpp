@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-10-11 15:04:22
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-03 23:55:58
+ * @LastEditTime: 2023-01-08 23:51:42
  * @FilePath: \ZH_FLIGHT\Sys\StateMachine\state_machine.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -14,7 +14,7 @@
 AC_RET StateMachine::TransToNextState(Condition condition)
 {
     _current_state = state[_current_state].GetNextState(condition);
-    if (_current_state == ERROR_STATE)
+    if (_current_state == AS_ERROR)
     {
         return AC_ERROR;
     }
@@ -94,7 +94,7 @@ StateList State::GetNextState(Condition condition)
         }
         state = state->next;
     }
-    return ERROR_STATE;
+    return AS_ERROR;
 }
 
 State::~State()
