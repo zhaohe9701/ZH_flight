@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-07-08 01:24:46
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-08 23:24:08
+ * @LastEditTime: 2023-01-09 00:35:59
  * @FilePath: \ZH_FLIGHT\Sys\Config\config.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -19,6 +19,9 @@
 #define SEMAPHORE_NUM       5
 #define QUEUE_NUM           1
 #define MUTEX_NUM           2
+
+/*状态机*/
+#define STATE_MACHINE_SIGNAL    0x01
 /*传感器*/
 #define IMU1                Icm20602
 #define IMU1_INTERFACE_OBJ  hspi1

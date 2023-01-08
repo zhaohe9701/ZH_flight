@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-12-19 23:45:38
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-08 23:29:13
+ * @LastEditTime: 2023-01-09 00:45:14
  * @FilePath: \ZH_FLIGHT\Sys\Task\aircraft_task.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -52,6 +52,26 @@ void StaticTask::ControlTask(void)
     }
 }
 
+void StaticTask::StateMachineTask(void)
+{
+    Condition condition;
+    ActionList action;
+
+    for (;;)
+    {
+        /*等待事件触发*/
+        SignalWait(STATE_MACHINE_SIGNAL);
+        /*获取当前事件组合*/
+        condition = event_server->GetCurrentCondition();
+        /*状态转移*/
+        state_machine->TransToNextState(condition);
+        /*获得当前状态要采取的动作*/
+        action = state_machine->GetAction();
+        /*动作交给飞行器执行*/
+        aircraft->SetAction(action);
+    }
+}
+
 void StaticTask::LightTask(void)
 {
     uint32_t previous_wake_time = 0;
@@ -87,7 +107,7 @@ void DynamicTask::StartTask(void)
     system_var.EXPECT_STATE_MUTEX = osMutexCreate(osMutex(ExpectStateMutex));
     /*创建事件服务器*/
     event_server = new EventServer();
-    event_server->SetInformThread(stateMachineTaskHandle, 0x01);
+    event_server->SetInformThread(stateMachineTaskHandle, STATE_MACHINE_SIGNAL);
     /*创建状态机*/
     state_machine = new StateMachine();
     state_machine->state[AS_INITIALIZE].AddNeighborState(AS_STANDBY, INIT_OVER_EVENT, NULL_EVENT);
@@ -110,6 +130,7 @@ void DynamicTask::StartTask(void)
     state_machine->state[AS_CALIBRATION].AddNeighborState(AS_STANDBY, NULL_EVENT, CALIBRATION_EVENT | UNLOCK_EVENT);
     /*创建飞行器对象*/
     aircraft = new Aircraft();
+    /*初始化飞行器*/
     aircraft->Init();
     /*置位初始化完成事件*/
     event_server->SetEvent(INIT_OVER_EVENT);

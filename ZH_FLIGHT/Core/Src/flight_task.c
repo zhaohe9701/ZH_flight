@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-11-06 13:40:39
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-12-24 23:15:26
+ * @LastEditTime: 2023-01-09 00:01:26
  * @FilePath: \ZH_FLIGHT\Core\Src\flight_task.c
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -16,7 +16,7 @@
 osThreadId ledTaskHandle;
 osThreadId sensorTaskHandle;
 osThreadId flightControlTaskHandle;
-
+osThreadId stateMachineTaskHandle;
 
 void LedTask(void const *argument);
 void ImuTask(void const *argument);

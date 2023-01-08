@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-10-09 23:18:03
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-08 23:50:16
+ * @LastEditTime: 2023-01-09 00:46:14
  * @FilePath: \ZH_FLIGHT\Sys\StateMachine\state_machine.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -15,10 +15,7 @@
 #include "type.h"
 
 #define EVENT_NUM 6
-#define STATE_NUM 8
-#define EVENT_ON 1
-#define EVENT_OFF 0
-#define EVENT_IGNORE 2
+#define STATE_NUM 7
 
 /*状态集合定义*/
 enum StateList

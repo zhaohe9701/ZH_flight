@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-12-22 23:58:07
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-05 23:52:03
+ * @LastEditTime: 2023-01-09 00:39:28
  * @FilePath: \ZH_FLIGHT\Sys\Aircraft\aircraft.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -117,6 +117,12 @@ AC_RET Aircraft::Init()
     return AC_OK;
 }
 
+AC_RET Aircraft::SetAction(ActionList action)
+{
+    _current_action = action;
+    return AC_OK;
+}
+
 AC_RET Aircraft::UpdateAttitude()
 {
     _sensor->imu->GetAccData(_imu_data);
@@ -135,12 +141,25 @@ AC_RET Aircraft::GetStateForControl()
 
 AC_RET Aircraft::ControlAttitude()
 {
+    if (_current_action != AS_AUTO      && 
+        _current_action != AS_MANUAL    && 
+        _current_action != AS_ALTITUDE)
+    {
+        return AC_OK;
+    }
+
     _attitude_controller->Update(*_actual_state_for_attitude_control, *_expect_state_for_control);
     return AC_OK;
 }
 
 AC_RET Aircraft::ControlAltitudeByDirect()
 {
+    if (_current_action != AS_AUTO      && 
+        _current_action != AS_MANUAL)
+    {
+        return AC_OK;
+    }
+
     for (int i = 0; i < MOTOR_NUM; ++i)
     {
         _expect_state_for_control->motor[i] += _expect_state_for_control->throttle;
@@ -151,11 +170,23 @@ AC_RET Aircraft::ControlAltitudeByDirect()
 
 AC_RET Aircraft::ControlAltitudeBySensor()
 {
+    if (_current_action != AS_ALTITUDE)
+    {
+        return AC_OK;
+    }
+
     return AC_OK;
 }
 
 AC_RET Aircraft::ControlMotor()
 {
+    if (_current_action != AS_AUTO      &&
+        _current_action != AS_MANUAL    && 
+        _current_action != AS_ALTITUDE  &&
+        _current_action != AS_INITIALIZE)
+    {
+        return AC_OK;
+    }
     for (int i = 0; i < MOTOR_NUM; ++i)
     {
         _motors[i].SetSpeed(_expect_state_for_control->motor[i]);

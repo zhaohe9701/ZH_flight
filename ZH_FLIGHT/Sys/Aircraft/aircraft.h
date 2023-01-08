@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-12-22 23:42:17
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-08 23:56:44
+ * @LastEditTime: 2023-01-09 00:39:03
  * @FilePath: \ZH_FLIGHT\Sys\Aircraft\aircraft.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -48,6 +48,7 @@ private:
 public:
     Aircraft();
     AC_RET Init();
+    AC_RET SetAction(ActionList action);
     AC_RET UpdateAttitude();
     AC_RET GetStateForControl();
     AC_RET ControlAttitude();
