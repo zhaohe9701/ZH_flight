@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-10-09 23:18:03
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-03 23:51:20
+ * @LastEditTime: 2023-01-08 23:50:16
  * @FilePath: \ZH_FLIGHT\Sys\StateMachine\state_machine.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -23,15 +23,14 @@
 /*状态集合定义*/
 enum StateList
 {
-    ERROR_STATE = -1,
-    INITIALIZE_STATE,
-    STANDBY_STATE,
-    WAIT_STATE,
-    PARAM_SERVICE_STATE,
-    CALIBRATION_STATE,
-    MANUAL_STATE,
-    ALTITUDE_STATE,
-    AUTO_STATE,
+    AS_ERROR = -1,
+    AS_INITIALIZE,
+    AS_STANDBY,
+    AS_SETTING,
+    AS_CALIBRATION,
+    AS_MANUAL,
+    AS_ALTITUDE,
+    AS_AUTO,
 };
 
 /*动作集合定义*/
@@ -40,13 +39,15 @@ typedef StateList ActionList;
 /*事件集合定义*/
 enum EventList
 {
-    UNLOCK_EVENT = 0b00000001,
-    SET_EVENT = 0b00000010,
-    CALIBRATION_EVENT = 0b00000100,
-    MANUAL_EVENT = 0b00001000,
-    ALTITUDE_EVENT = 0b00010000,
-    AUTO_EVENT = 0b00100000,
-    ZERO_THROTTLE_EVENT = 0b01000000,
+    NULL_EVENT          = 0b00000000,
+    INIT_OVER_EVENT     = 0b00000001,
+    UNLOCK_EVENT        = 0b00000010,
+    SETTING_EVENT       = 0b00000100,
+    CALIBRATION_EVENT   = 0b00001000,
+    MANUAL_EVENT        = 0b00010000,
+    ALTITUDE_EVENT      = 0b00100000,
+    AUTO_EVENT          = 0b01000000,
+    ZERO_THROTTLE_EVENT = 0b10000000,
 };
 
 class StateMap
