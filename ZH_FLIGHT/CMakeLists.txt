@@ -101,6 +101,7 @@ Sys/Driver/z_iic.cpp
 Sys/Protocol/dshot.cpp
 Sys/Driver/z_pwm.cpp
 Sys/Motor/motor.cpp
+Sys/MessageServer/message_server.cpp
 Sys/AHRS/mahony.cpp
 Sys/Task/aircraft_task.cpp
 )

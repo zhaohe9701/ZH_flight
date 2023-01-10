@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-08-07 22:03:11
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-12-31 11:44:01
+ * @LastEditTime: 2023-01-10 23:32:47
  * @FilePath: \ZH_FLIGHT\Sys\Type\type.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -41,4 +41,6 @@ public:
 };
 
 typedef uint32_t Condition;
+typedef uint8_t MessageHead;
+typedef uint8_t Byte;
 #endif

@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-12-22 23:42:17
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-09 00:39:03
+ * @LastEditTime: 2023-01-10 23:00:55
  * @FilePath: \ZH_FLIGHT\Sys\Aircraft\aircraft.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -44,7 +44,7 @@ private:
     /*IMU数据*/
     ImuData _imu_data;
     /*当前动作*/
-    ActionList _current_action = AS_INITIALIZE;
+    volatile ActionList _current_action = AS_INITIALIZE;
 public:
     Aircraft();
     AC_RET Init();

@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-12-22 23:58:07
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-09 00:39:28
+ * @LastEditTime: 2023-01-10 23:08:13
  * @FilePath: \ZH_FLIGHT\Sys\Aircraft\aircraft.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -141,9 +141,10 @@ AC_RET Aircraft::GetStateForControl()
 
 AC_RET Aircraft::ControlAttitude()
 {
-    if (_current_action != AS_AUTO      && 
-        _current_action != AS_MANUAL    && 
-        _current_action != AS_ALTITUDE)
+    ActionList current_action = _current_action;
+    if (current_action != AS_AUTO     && 
+        current_action != AS_MANUAL   && 
+        current_action != AS_ALTITUDE)
     {
         return AC_OK;
     }
@@ -154,8 +155,9 @@ AC_RET Aircraft::ControlAttitude()
 
 AC_RET Aircraft::ControlAltitudeByDirect()
 {
-    if (_current_action != AS_AUTO      && 
-        _current_action != AS_MANUAL)
+    ActionList current_action = _current_action;
+    if (current_action != AS_AUTO     && 
+        current_action != AS_MANUAL)
     {
         return AC_OK;
     }
@@ -170,7 +172,8 @@ AC_RET Aircraft::ControlAltitudeByDirect()
 
 AC_RET Aircraft::ControlAltitudeBySensor()
 {
-    if (_current_action != AS_ALTITUDE)
+    ActionList current_action = _current_action;
+    if (current_action != AS_ALTITUDE)
     {
         return AC_OK;
     }
@@ -180,10 +183,11 @@ AC_RET Aircraft::ControlAltitudeBySensor()
 
 AC_RET Aircraft::ControlMotor()
 {
-    if (_current_action != AS_AUTO      &&
-        _current_action != AS_MANUAL    && 
-        _current_action != AS_ALTITUDE  &&
-        _current_action != AS_INITIALIZE)
+    ActionList current_action = _current_action;
+    if (current_action != AS_AUTO       &&
+        current_action != AS_MANUAL     && 
+        current_action != AS_ALTITUDE   &&
+        current_action != AS_INITIALIZE)
     {
         return AC_OK;
     }

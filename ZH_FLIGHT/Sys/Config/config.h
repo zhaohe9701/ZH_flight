@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-07-08 01:24:46
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-09 00:35:59
+ * @LastEditTime: 2023-01-11 00:06:18
  * @FilePath: \ZH_FLIGHT\Sys\Config\config.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -68,6 +68,7 @@
 #define EXPECT_STATE_MUTEX              mutex[1]
 #define ACTUAL_STATE_SEMAPHORE          semaphore[1]
 /*通信*/
+#define MESSAGE_TYPE_NUM            5
 #define UART_NUM                    2
 #define MESSAGE_QUEUE_MAX_LENGTH    10
 
