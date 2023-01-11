@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2023-01-10 23:11:06
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-11 00:03:30
+ * @LastEditTime: 2023-01-12 00:12:25
  * @FilePath: \ZH_FLIGHT\Sys\MessageServer\message_parse_interface.h
  * Copyright (C) 2023 zhaohe. All rights reserved.
  */
@@ -16,9 +16,9 @@
 class MessageParseInterface
 {
 public:
-virtual void ParseMessage(Byte *message, uint32_t length) = 0;
-virtual void SetCarrier(void *carrier) = 0;
-virtual void HandOut() = 0;
+    virtual AC_RET ParseMessage(Byte *message, uint32_t length) = 0;
+    virtual void SetDownStream(void *carrier) = 0;
+    virtual void HandOut() = 0;
 };
 
 #endif

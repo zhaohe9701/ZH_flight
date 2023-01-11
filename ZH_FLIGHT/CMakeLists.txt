@@ -99,6 +99,7 @@ Sys/StateMachine/state_machine.cpp
 Sys/Driver/z_spi.cpp
 Sys/Driver/z_iic.cpp
 Sys/Protocol/dshot.cpp
+Sys/Protocol/ibus.cpp
 Sys/Driver/z_pwm.cpp
 Sys/Motor/motor.cpp
 Sys/MessageServer/message_server.cpp

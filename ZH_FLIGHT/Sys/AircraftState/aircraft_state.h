@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-08-07 22:30:11
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-05 23:49:22
+ * @LastEditTime: 2023-01-11 23:31:26
  * @FilePath: \ZH_FLIGHT\Sys\AircraftState\aircraft_state.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -22,6 +22,18 @@
 #define MOTOR3 z
 #define MOTOR4 w
 
+enum Pattern
+{
+    MANUAL_PATTERN,
+    ALTITUDE_PATTERN,
+    AUTO_PATTERN,
+};
+
+enum FlyLock
+{
+    FLY_LOCK,
+    FLY_UNLOCK,
+};
 class ActualState
 {
 public:
@@ -48,6 +60,9 @@ public:
     Vec3 relative_pos;
     Vec3 acceleration;
     Vec4 quarter;
+
+    Pattern pattern = MANUAL_PATTERN;
+    FlyLock locker = FLY_LOCK;
     float throttle = 0.0f;
     float motor[MOTOR_NUM] = {0.0f};
     AC_RET SafeDeepCopyFrom(ExpectState *src);

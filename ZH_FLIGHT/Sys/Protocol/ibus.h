@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-09-27 23:06:21
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-11-19 02:07:21
+ * @LastEditTime: 2023-01-12 00:14:29
  * @FilePath: \ZH_FLIGHT\Sys\Protocol\ibus.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -20,19 +20,18 @@
 
 #define IBUS_TRANS_CHANNEL_FROM_INT_TO_FLOAT(x) ((float)((x) - 1500) / 1500.0f)
 #include "remote_interface.h"
+#include "message_parse_interface.h"
+#include "aircraft_state.h"
 
-class Ibus : virtual public RemoteInterface
+class IbusParser : virtual public MessageParseInterface
 {
 public:
-    float GetChannelFloatData(uint8_t channel) override;
-    uint16_t GetChannelUintData(uint8_t channel) override;
-    int8_t GetChannelSwitchData(uint8_t channel) override;
-    void Receive(uint8_t *raw_data) override;
+    AC_RET ParseMessage(Byte *message, uint32_t length) override;
+    void SetDownStream(void *carrier) override;
+    void HandOut() override;
 private:
-    uint8_t _raw_data[IBUS_LENGTH] = {0};
     uint16_t _channel_data[IBUS_CHANNEL_NUM] = {0};
-    uint8_t _Parse();
+    ExpectState *_tmp_expect_state = nullptr;
+    ExpectState *_expect_state = nullptr;
 };
-
-
 #endif

@@ -13,7 +13,8 @@
                 "${workspaceFolder}/Middlewares/Third_Party/FreeRTOS/Source/include",
                 "${workspaceFolder}/Sys/Type",
                 "${workspaceFolder}/Sys/StateMachine",
-                "${workspaceFolder}/Sys/Config"
+                "${workspaceFolder}/Sys/Config",
+                "${workspaceFolder}/Sys/MessageServer"
             ],
             "defines": [
                 "_DEBUG",
