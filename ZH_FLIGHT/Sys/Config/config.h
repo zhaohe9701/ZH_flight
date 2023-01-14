@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-07-08 01:24:46
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-12 00:16:44
+ * @LastEditTime: 2023-01-15 02:47:39
  * @FilePath: \ZH_FLIGHT\Sys\Config\config.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -23,7 +23,7 @@
 /*状态机*/
 #define STATE_MACHINE_SIGNAL    0x01
 /*传感器*/
-#define IMU1                Icm20602
+#define IMU1                Icm20689
 #define IMU1_INTERFACE_OBJ  hspi1
 #define IMU1_INTERFACE      Spi
 #define IMU1_CS_PORT        SPI1_CS_GPIO_Port
@@ -56,6 +56,7 @@
 #define EXPECT_STATE_MUTEX              mutex[1]
 #define ACTUAL_STATE_SEMAPHORE          semaphore[1]
 /*通信*/
+#define MESSAGE_QUEUE               queue[0]
 #define MESSAGE_TYPE_NUM            5
 #define UART_NUM                    2
 #define MESSAGE_QUEUE_MAX_LENGTH    10
@@ -77,6 +78,9 @@
 #define REMOTE_POSITION_SCOPE   30.0f
 #define REMOTE_THROTTLE_SCOPE   100.0f
 #define REMOTE_PALSTANCE_SCOPE  60.0f
+
+/*消息*/
+
 
 /*循环频率*/
 #define ATTITUDE_SLOVE_CYCLE_FREQ   1000

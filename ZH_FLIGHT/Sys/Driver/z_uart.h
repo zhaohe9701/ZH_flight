@@ -4,8 +4,8 @@
  * @Author: zhaohe
  * @Date: 2022-10-21 23:59:58
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-10-30 04:03:26
- * @FilePath: \H7B0d:\Git\ZH_flight\ZH_FLIGHT\Sys\Driver\z_uart.h
+ * @LastEditTime: 2023-01-12 23:56:45
+ * @FilePath: \ZH_FLIGHT\Sys\Driver\z_uart.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 #ifndef __Z_UART_H__
@@ -15,10 +15,6 @@
 #include "message_interface.h"
 #include "config.h"
 
-// extern "C"
-// {
-// void UartIRQHandler(UART_HandleTypeDef *huart);
-// }
 class Uart : virtual public MessageInterface
 {
 public:

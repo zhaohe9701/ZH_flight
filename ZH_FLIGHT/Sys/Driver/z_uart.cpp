@@ -4,20 +4,21 @@
  * @Author: zhaohe
  * @Date: 2022-10-22 00:00:49
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-10-30 04:07:10
- * @FilePath: \H7B0d:\Git\ZH_flight\ZH_FLIGHT\Sys\Driver\z_uart.cpp
+ * @LastEditTime: 2023-01-12 23:54:33
+ * @FilePath: \ZH_FLIGHT\Sys\Driver\z_uart.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 #include "z_uart.h"
-#include "os.h"
+#include "cmsis_os.h"
 #include <string.h>
+#include "global_var.h"
 
-extern GlobalVar g_glob_var;
-
+extern GlobalVar system_var;
 
 extern "C"
 {
-
+void UartIRQHandler(UART_HandleTypeDef *huart);
+}
 /**
  * @brief 系统串口中断处理函数重写
  * @param {UART_HandleTypeDef} *huart
@@ -35,7 +36,7 @@ void UartIRQHandler(UART_HandleTypeDef *huart)
     }
 }
 
-}
+
 
 /**
  * @brief 串口空闲中断数据处理
@@ -56,8 +57,7 @@ void Uart::UartHandle(UART_HandleTypeDef *huart)
             /*重新打开串口中断接收*/
             HAL_UART_Receive_DMA(huart, Uart::uart_table[i]->receive_buf, Uart::uart_table[i]->receive_length);
             /*消息队列发送数据引用*/
-            xQueueSendFromISR(g_glob_var.queue.message_queue, &(Uart::uart_table[i]->message), RETURN_IMMEDIATELY);
-            
+            osMessagePut(system_var.MESSAGE_QUEUE, (uint32_t)(&(Uart::uart_table[i]->message)), 0);
         }
     }
 }

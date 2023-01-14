@@ -4,19 +4,18 @@
  * @Author: zhaohe
  * @Date: 2022-10-22 00:50:12
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-10-30 04:03:12
- * @FilePath: \H7B0d:\Git\ZH_flight\ZH_FLIGHT\Sys\MessageServer\message_interface.h
+ * @LastEditTime: 2023-01-13 00:00:05
+ * @FilePath: \ZH_FLIGHT\Sys\MessageServer\message_interface.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 #ifndef __MESSAGE_INTERFACE_H__
 #define __MESSAGE_INTERFACE_H__
 
-#include <stdint.h>
-
+#include "type.h"
 struct Message
 {
-    uint8_t *data = nullptr;
-    uint16_t length = 0;
+    Byte *data = nullptr;
+    uint32_t length = 0;
 };
 
 class MessageInterface

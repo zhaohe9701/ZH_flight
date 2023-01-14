@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-09-27 23:06:21
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-12 00:14:29
+ * @LastEditTime: 2023-01-14 23:13:32
  * @FilePath: \ZH_FLIGHT\Sys\Protocol\ibus.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -20,10 +20,10 @@
 
 #define IBUS_TRANS_CHANNEL_FROM_INT_TO_FLOAT(x) ((float)((x) - 1500) / 1500.0f)
 #include "remote_interface.h"
-#include "message_parse_interface.h"
+#include "message_parser.h"
 #include "aircraft_state.h"
 
-class IbusParser : virtual public MessageParseInterface
+class IbusParser : virtual public MessageParser
 {
 public:
     AC_RET ParseMessage(Byte *message, uint32_t length) override;

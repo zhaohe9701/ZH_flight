@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-12-19 23:45:38
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-09 00:45:14
+ * @LastEditTime: 2023-01-14 23:13:53
  * @FilePath: \ZH_FLIGHT\Sys\Task\aircraft_task.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -15,11 +15,12 @@
 #include "global_var.h"
 #include "state_machine.h"
 #include "event_server.h"
-
-
+#include "message_server.h"
+#include "ibus.h"
 Aircraft *aircraft = nullptr;
 StateMachine *state_machine = nullptr;
 EventServer *event_server = nullptr;
+MessageServer *message_server = nullptr;
 
 extern GlobalVar system_var;
 extern Thread stateMachineTaskHandle;
@@ -34,7 +35,9 @@ void StaticTask::AttitudeSolveTask(void)
 {
     for (;;)
     {
+        /*等待IMU中断*/
         osSemaphoreWait(system_var.IMU1_SEMAPHORE, osWaitForever);
+        /*姿态更新*/
         aircraft->UpdateAttitude();
         osSemaphoreRelease(system_var.ACTUAL_STATE_SEMAPHORE);
     }
@@ -45,9 +48,12 @@ void StaticTask::ControlTask(void)
     for (;;)
     {
         osSemaphoreWait(system_var.ACTUAL_STATE_SEMAPHORE, osWaitForever);
+        /*获得当前期望状态与实际状态*/
         aircraft->GetStateForControl();
+        /*高度（油门）控制*/
         aircraft->ControlAltitudeByDirect();
         aircraft->ControlAltitudeBySensor();
+        /*姿态控制*/
         aircraft->ControlAttitude();
     }
 }
@@ -83,14 +89,18 @@ void StaticTask::LightTask(void)
     }
 }
 
-void StaticTask::DataLinkTask(void)
+void StaticTask::ReceiceDataTask(void)
 {
-    uint32_t previous_wake_time = 0;
-
+    Message *receive_message = nullptr;
+    osEvent event;
     for (;;)
     {
-        previous_wake_time = osKernelSysTick();
-        osDelayUntil(&previous_wake_time, DATA_LINK_DELAY_TIME);
+        event = osMessageGet(system_var.MESSAGE_QUEUE, osWaitForever);
+        if (osEventMessage == event.status)
+        {
+            receive_message = (Message *)event.value.p;
+            message_server->GetMessage(receive_message);
+        }
     }
 }
 
@@ -105,9 +115,15 @@ void DynamicTask::StartTask(void)
     system_var.ACTUAL_STATE_MUTEX = osMutexCreate(osMutex(ActualStateMutex));
     osMutexDef(ExpectStateMutex);
     system_var.EXPECT_STATE_MUTEX = osMutexCreate(osMutex(ExpectStateMutex));
+    osMessageQDef(MessageQueue, MESSAGE_QUEUE_MAX_LENGTH, void*);
+    system_var.MESSAGE_QUEUE = osMessageCreate(osMessageQ(MessageQueue), NULL);
     /*创建事件服务器*/
     event_server = new EventServer();
     event_server->SetInformThread(stateMachineTaskHandle, STATE_MACHINE_SIGNAL);
+    /*创建消息服务器*/
+    message_server = new MessageServer();
+    MessageParser *ibus_parser = new IbusParser();
+    message_server->SetParser(ibus_parser, 0);
     /*创建状态机*/
     state_machine = new StateMachine();
     state_machine->state[AS_INITIALIZE].AddNeighborState(AS_STANDBY, INIT_OVER_EVENT, NULL_EVENT);

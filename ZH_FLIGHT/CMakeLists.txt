@@ -94,10 +94,12 @@ Sys/Control/pid_core.cpp
 Sys/EventServer/event_server.cpp
 Sys/Sensor/sensor.cpp
 Sys/Sensor/Imu/icm20602.cpp
+Sys/Sensor/Imu/icm20689.cpp
 Sys/Sensor/Baro/ms5611.cpp
 Sys/StateMachine/state_machine.cpp
 Sys/Driver/z_spi.cpp
 Sys/Driver/z_iic.cpp
+Sys/Driver/z_uart.cpp
 Sys/Protocol/dshot.cpp
 Sys/Protocol/ibus.cpp
 Sys/Driver/z_pwm.cpp

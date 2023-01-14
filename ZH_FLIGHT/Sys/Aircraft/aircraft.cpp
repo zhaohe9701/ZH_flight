@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-12-22 23:58:07
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-10 23:08:13
+ * @LastEditTime: 2023-01-15 02:47:53
  * @FilePath: \ZH_FLIGHT\Sys\Aircraft\aircraft.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -18,6 +18,7 @@
 #include "imu.h"
 
 #include "icm20602.h"
+#include "icm20689.h"
 #include "baro.h"
 #include "z_iic.h"
 #include "ms5611.h"
