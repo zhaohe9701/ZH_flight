@@ -1,4 +1,5 @@
 set(CMAKE_SYSTEM_NAME Generic)
+set(CMAKE_EXPORT_COMPILE_COMMANDS True)
 set(CMAKE_SYSTEM_PROCESSOR cortex-m7)
 
 cmake_minimum_required(VERSION 3.1.0)
@@ -25,7 +26,7 @@ Core/Src/stm32h7xx_hal_timebase_tim.c
 Core/Src/spi.c
 Core/Src/i2c.c
 Core/Src/dma.c
-Core/Src/octospi.c
+# Core/Src/octospi.c
 Core/Src/tim.c
 Core/Src/usart.c
 )

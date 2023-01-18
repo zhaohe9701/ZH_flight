@@ -4,12 +4,10 @@
  * @Author: zhaohe
  * @Date: 2022-12-22 23:58:07
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-15 02:47:53
+ * @LastEditTime: 2023-01-17 22:26:55
  * @FilePath: \ZH_FLIGHT\Sys\Aircraft\aircraft.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
-
-#include <string.h>
 
 #include "main.h"
 

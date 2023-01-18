@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-07-08 01:24:46
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-15 02:47:39
+ * @LastEditTime: 2023-01-17 23:15:40
  * @FilePath: \ZH_FLIGHT\Sys\Config\config.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -86,7 +86,7 @@
 #define ATTITUDE_SLOVE_CYCLE_FREQ   1000
 #define ATTITUDE_CONTROL_CYCLE_FREQ 500
 #define POSITION_CONTROL_CYCLE_FREQ 50
-#define LIGHT_CONTROL_CYCLE_FREQ    50
+#define LIGHT_CONTROL_CYCLE_FREQ    1
 #define DATA_LINK_CYCLE_FREQ        50
  
 /*------------------------------------------------------*/

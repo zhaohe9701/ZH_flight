@@ -4,19 +4,68 @@
  * @Author: zhaohe
  * @Date: 2022-12-19 23:45:38
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-14 23:13:53
+ * @LastEditTime: 2023-01-18 22:46:09
  * @FilePath: \ZH_FLIGHT\Sys\Task\aircraft_task.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
+
+#include "icm20689.h"
+#include "imu.h"
+#include "main.h"
 #include "aircraft_task.h"
 #include "config.h"
 #include "cmsis_os.h"
 #include "aircraft.h"
 #include "global_var.h"
+#include "sensor_interface.h"
 #include "state_machine.h"
 #include "event_server.h"
 #include "message_server.h"
 #include "ibus.h"
+#include "stm32h7xx_hal.h"
+#include "stm32h7xx_hal_gpio.h"
+
+#include "z_spi.h"
+
+/****************对外暴露任务接口****************/
+extern "C" void AttitudeSolveTaskInterface(void const *argument);
+extern "C" void ControlTaskInterface(void const *argument);
+extern "C" void StateMachineTaskInterface(void const *argument);
+extern "C" void LightTaskInterface(void const *argument);
+extern "C" void ReceiceDataTaskInterface(void const *argument);
+extern "C" void SendDataInterfaceTask(void const *argument);
+extern "C" void TestTaskInterface(void const *argument); 
+/*********************************************/
+
+void AttitudeSolveTaskInterface(void const *argument)
+{
+    StaticTask::AttitudeSolveTask();
+}
+void ControlTaskInterface(void const *argument)
+{
+    StaticTask::ControlTask();
+}
+void StateMachineTaskInterface(void const *argument)
+{
+    StaticTask::StateMachineTask();
+}
+void LightTaskInterface(void const *argument)
+{
+    StaticTask::LightTask();
+}
+void ReceiceDataTaskInterface(void const *argument)
+{
+    StaticTask::ReceiceDataTask();
+}
+void SendDataInterfaceTask(void const *argument)
+{
+    StaticTask::SendDataTask();
+}
+void TestTaskInterface(void const *argument)
+{
+    StaticTask::TestTask();
+}
+
 Aircraft *aircraft = nullptr;
 StateMachine *state_machine = nullptr;
 EventServer *event_server = nullptr;
@@ -85,6 +134,7 @@ void StaticTask::LightTask(void)
     for (;;)
     {
         previous_wake_time = osKernelSysTick();
+        HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
         osDelayUntil(&previous_wake_time, LIGHT_CONTROL_DELAY_TIME);
     }
 }
@@ -101,6 +151,33 @@ void StaticTask::ReceiceDataTask(void)
             receive_message = (Message *)event.value.p;
             message_server->GetMessage(receive_message);
         }
+    }
+}
+
+void StaticTask::SendDataTask(void)
+{
+}
+
+void StaticTask::TestTask(void)
+{
+    uint32_t previous_wake_time = 0;
+
+    SensorInterface *interface = new Spi(&IMU1_INTERFACE_OBJ, IMU1_CS_PORT, IMU1_CS_PIN);
+    Imu *imu = new Icm20689(interface);
+    imu->Init();
+    ImuData imu_data;
+    for(;;)
+    {
+        previous_wake_time = osKernelSysTick();
+        // uint8_t id = 0;
+        // float temp = 0.0f;
+        imu->GetGyroData(imu_data);
+        // id = imu->GetId();
+        // temp = imu->GetTemperature();
+        // UsbPrintf("%x", id);
+        // UsbPrintf("%d\r\n", (int)imu_data.gyr.x);
+        // UsbPrintf("%d", (int)temp);
+        osDelayUntil(&previous_wake_time, 50);
     }
 }
 

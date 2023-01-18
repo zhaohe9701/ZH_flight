@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-07-07 23:44:27
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-12-26 00:36:58
+ * @LastEditTime: 2023-01-18 00:34:24
  * @FilePath: \ZH_FLIGHT\Sys\Sensor\sensor_interface.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -19,7 +19,7 @@ public:
     virtual void ReadBytes(uint8_t address, uint8_t len, uint8_t *dataBuf) = 0;
     virtual void WriteReg(uint8_t address, uint8_t value) = 0;
     virtual void WriteRegs(uint8_t address, uint8_t len, uint8_t *value) = 0;
-    virtual ~SensorInterface() = 0; 
+    //virtual ~SensorInterface() = 0; 
 };
 
 #endif

@@ -4,11 +4,12 @@
  * @Author: zhaohe
  * @Date: 2023-01-14 23:14:39
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-15 02:45:00
+ * @LastEditTime: 2023-01-18 22:36:57
  * @FilePath: \ZH_FLIGHT\Sys\Sensor\Imu\icm20689.cpp
  * Copyright (C) 2023 zhaohe. All rights reserved.
  */
 #include "icm20689.h"
+#include "main.h"
 
 #define READ 0x80
 #define WRITE 0x7f
@@ -98,7 +99,13 @@ Icm20689::Icm20689(SensorInterface *interface)
 void Icm20689::Init()
 {
     /*复位芯片*/
-    _ImuWriteRag(PWR_MGMT_1, 0x81);
+    _ImuWriteRag(PWR_MGMT_1, 0x80);
+    HAL_Delay(200);
+    /*选择时钟源*/
+    _ImuWriteRag(PWR_MGMT_1, 0x01);
+    HAL_Delay(100);
+    /*禁用iic*/
+    _ImuWriteRag(USER_CTRL, 0x10);
     HAL_Delay(100);
     /*配置陀螺仪*/
     _ImuWriteRag(GYRO_CONFIG, 0x03 << 3);
@@ -155,7 +162,6 @@ void Icm20689::GetGyroData(ImuData &sensor_data)
     gx_raw = ((uint16_t)buf[0] << 8) | buf[1];
     gy_raw = ((uint16_t)buf[2] << 8) | buf[3];
     gz_raw = ((uint16_t)buf[4] << 8) | buf[5];
-
     sensor_data.gyr.x = (float)((int16_t)(gx_raw)-_bias_gyro_x) * _gyro_sensitivity;
     sensor_data.gyr.y = (float)((int16_t)(gy_raw)-_bias_gyro_y) * _gyro_sensitivity;
     sensor_data.gyr.z = (float)((int16_t)(gz_raw)-_bias_gyro_z) * _gyro_sensitivity;

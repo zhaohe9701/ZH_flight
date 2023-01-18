@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-12-19 23:31:11
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-13 00:46:11
+ * @LastEditTime: 2023-01-15 17:32:49
  * @FilePath: \ZH_FLIGHT\Sys\Task\aircraft_task.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -19,7 +19,8 @@ public:
     static void StateMachineTask(void);
     static void LightTask(void);
     static void ReceiceDataTask(void);
-    static void SendDataTask(void);    
+    static void SendDataTask(void);
+    static void TestTask(void); 
 };
 
 
