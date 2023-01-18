@@ -1,0 +1,8 @@
+{
+    "username": "Attent2021",
+    "customer_code": "1499142A",
+    "email": "2511229079@qq.com",
+    "phone": "15651022059",
+    "company": "",
+    "license": "dXNlcm5hbWV8Y3VzdG9tZXJfY29kZXxlbWFpbHxwaG9uZXxjb21wYW55,y5YlIbE+ki0ar5PHoMM7y2ve2W7oSjjG\/3bMByMNE90IZQWUjAW3cKRJJvD07SIwvDK8PREyqxHx4536Uf+FnybjDB6IMk7PWbpnMOAYFPW3dPb4Uzgh8ylchIlDMD55bVSceS6F446vpURvHesMbpSKYtgXen3Zv+gcZbkh0Sg="
+}
