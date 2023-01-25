@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-11-13 19:36:40
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-11-17 23:56:37
+ * @LastEditTime: 2023-01-23 00:36:04
  * @FilePath: \ZH_FLIGHT\Sys\Sensor\Baro\ms5611.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -14,6 +14,7 @@
 #include "sensor_interface.h"
 #include "baro.h"
 
+#define MS5611_ADDR 0xEE // MS5611的地址
 class Ms5611 : virtual public Baro
 {
 public:

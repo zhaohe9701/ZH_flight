@@ -101,9 +101,11 @@ Sys/StateMachine/state_machine.cpp
 Sys/Driver/z_spi.cpp
 Sys/Driver/z_iic.cpp
 Sys/Driver/z_uart.cpp
+Sys/Driver/z_usb.cpp
 Sys/Protocol/dshot.cpp
 Sys/Protocol/ibus.cpp
 Sys/Driver/z_pwm.cpp
+Sys/Link/print.cpp
 Sys/Motor/motor.cpp
 Sys/MessageServer/message_server.cpp
 Sys/AHRS/mahony.cpp
@@ -138,6 +140,7 @@ include_directories(
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Sensor>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Sensor/Imu>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Sensor/Baro>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Link>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/OS>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Action>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Config>

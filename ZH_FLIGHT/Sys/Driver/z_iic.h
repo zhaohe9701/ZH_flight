@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-09-27 22:23:50
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-11-20 02:00:52
+ * @LastEditTime: 2023-01-23 00:33:47
  * @FilePath: \ZH_FLIGHT\Sys\Driver\z_iic.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -13,6 +13,7 @@
 
 #include "sensor_interface.h"
 #include "cmsis_os.h"
+#include "i2c.h"
 // #include "i2c.h"
 
 class Iic : public SensorInterface

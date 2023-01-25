@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2023-01-17 22:31:44
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-17 22:36:51
+ * @LastEditTime: 2023-01-25 02:43:42
  * @FilePath: \ZH_FLIGHT\Sys\Task\aircraft_task_interface.h
  * Copyright (C) 2023 zhaohe. All rights reserved.
  */
@@ -15,8 +15,8 @@ void AttitudeSolveTaskInterface(void const *argument);
 void ControlTaskInterface(void const *argument);
 void StateMachineTaskInterface(void const *argument);
 void LightTaskInterface(void const *argument);
-void ReceiceDataTaskInterface(void const *argument);
-void SendDataInterfaceTask(void const *argument);
+void ReceiveDataTaskInterface(void const *argument);
+void TransmitDataTaskInterface(void const *argument);
 void TestTaskInterface(void const *argument); 
 
 #endif

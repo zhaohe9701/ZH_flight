@@ -4,14 +4,13 @@
  * @Author: zhaohe
  * @Date: 2022-11-13 19:37:38
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-11-19 13:48:14
+ * @LastEditTime: 2023-01-23 00:58:19
  * @FilePath: \ZH_FLIGHT\Sys\Sensor\Baro\ms5611.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 #include "ms5611.h"
 #include "cmsis_os.h"
 
-#define MS5611_ADDR 0xEE // MS5611的地址
 #define RESET 0x1E       // cmd 复位
 
 #define ADC_READ 0x00

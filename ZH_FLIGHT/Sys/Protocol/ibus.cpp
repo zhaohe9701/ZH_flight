@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-10-02 16:55:53
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-12 00:15:09
+ * @LastEditTime: 2023-01-23 16:22:30
  * @FilePath: \ZH_FLIGHT\Sys\Protocol\ibus.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -71,7 +71,7 @@ AC_RET IbusParser::ParseMessage(Byte *message, uint32_t length)
     return AC_OK;
 }
 
-void IbusParser::SetDownStream(void *carrier)
+void IbusParser::SetDes(void *carrier)
 {
     _expect_state = (ExpectState*)carrier;
 }

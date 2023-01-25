@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-10-21 23:59:58
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-12 23:56:45
+ * @LastEditTime: 2023-01-24 03:13:37
  * @FilePath: \ZH_FLIGHT\Sys\Driver\z_uart.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -14,14 +14,17 @@
 #include "main.h"
 #include "message_interface.h"
 #include "config.h"
+#include <stdint.h>
 
 class Uart : virtual public MessageInterface
 {
 public:
-    Uart(UART_HandleTypeDef *huart, uint8_t mark);
-    void Init(uint16_t receive_length_in) override;
+    Uart(UART_HandleTypeDef *huart, uint8_t ind);
+    void Init(uint16_t receive_length_in, uint8_t mark) override;
     void Receive() override;
-    uint8_t Send(uint8_t *data, uint16_t length) override;
+    AC_RET Transmit(uint8_t *data, uint16_t length) override;
+    bool MatchMark(uint8_t mark) override;
+
     bool IsMe(UART_HandleTypeDef *huart);
 
     static void UartHandle(UART_HandleTypeDef *huart);
@@ -34,6 +37,7 @@ public:
 private:
     UART_HandleTypeDef *_huart = nullptr;
     uint8_t _mark = 0;
+    uint8_t _ind = 0;
 };
 
 

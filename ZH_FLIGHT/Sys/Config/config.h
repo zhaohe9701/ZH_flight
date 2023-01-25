@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-07-08 01:24:46
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-17 23:15:40
+ * @LastEditTime: 2023-01-24 02:56:29
  * @FilePath: \ZH_FLIGHT\Sys\Config\config.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -17,7 +17,7 @@
 
 /*系统*/
 #define SEMAPHORE_NUM       5
-#define QUEUE_NUM           1
+#define QUEUE_NUM           2
 #define MUTEX_NUM           2
 
 /*状态机*/
@@ -32,6 +32,10 @@
 #define IMU1_SEMAPHORE      semaphore[0]
 #define MAGNETOMETER
 
+#define BARO                Ms5611
+#define BARO_INTERFACE_OBJ  hi2c1
+#define BARO_INTERFACE      Iic
+#define BARO_ADDRESS        MS5611_ADDR
 
 /*电机*/
 #define MOTOR_OUTPUT_MAX    100.0f
@@ -56,7 +60,9 @@
 #define EXPECT_STATE_MUTEX              mutex[1]
 #define ACTUAL_STATE_SEMAPHORE          semaphore[1]
 /*通信*/
-#define MESSAGE_QUEUE               queue[0]
+#define RECEIVE_MESSAGE_QUEUE           queue[0]
+#define TRANSMIT_MESSAGE_QUEUE          queue[1]
+#define MESSAGE_TTANSMIT_NUM        1
 #define MESSAGE_TYPE_NUM            5
 #define UART_NUM                    2
 #define MESSAGE_QUEUE_MAX_LENGTH    10

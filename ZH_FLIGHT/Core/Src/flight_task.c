@@ -4,23 +4,20 @@
  * @Author: zhaohe
  * @Date: 2022-11-06 13:40:39
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-18 00:43:51
+ * @LastEditTime: 2023-01-25 02:45:33
  * @FilePath: \ZH_FLIGHT\Core\Src\flight_task.c
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 #include "flight_task.h"
 #include "main.h"
 #include "cmsis_os.h"
-#include "usb_device.h"
 
 #include "aircraft_task_interface.h"
 
 osThreadId ledTaskHandle;
-osThreadId sensorTaskHandle;
-osThreadId flightControlTaskHandle;
+osThreadId testTaskHandle;
+osThreadId messageTransmitTaskHandle;
 osThreadId stateMachineTaskHandle;
-
-
 
 void StartDefaultTask(void const *argument)
 {
@@ -28,9 +25,13 @@ void StartDefaultTask(void const *argument)
     osThreadDef(ledTask, LightTaskInterface, osPriorityNormal, 0, 128);
     ledTaskHandle = osThreadCreate(osThread(ledTask), NULL);
 
-    osThreadDef(testTask, TestTaskInterface, osPriorityNormal, 0, 128);
-    sensorTaskHandle = osThreadCreate(osThread(testTask), NULL);
+    osThreadDef(messageTransmitTask, TransmitDataTaskInterface, osPriorityNormal, 0, 512);
+    messageTransmitTaskHandle = osThreadCreate(osThread(messageTransmitTask), NULL);
 
+    osThreadDef(testTask, TestTaskInterface, osPriorityNormal, 0, 512);
+    testTaskHandle = osThreadCreate(osThread(testTask), NULL);
+
+    
     // osThreadDef(baroAndMagTask, BaroAndMagTask, osPriorityBelowNormal, 0, 128);
     // sensorTaskHandle = osThreadCreate(osThread(baroAndMagTask), NULL);
     // osThreadDef(flightControlTask, FlightControlTask, osPriorityBelowNormal, 0, 128);
