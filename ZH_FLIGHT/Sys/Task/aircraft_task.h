@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-12-19 23:31:11
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-25 02:26:17
+ * @LastEditTime: 2023-01-29 01:37:25
  * @FilePath: \ZH_FLIGHT\Sys\Task\aircraft_task.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -27,6 +27,7 @@ public:
 
 class DynamicTask
 {
+public:
     static void StartTask(void);
     static void ResetTask(void);
     static void ParamTask(void);

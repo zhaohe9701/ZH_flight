@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-07-08 01:24:46
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-24 02:56:29
+ * @LastEditTime: 2023-01-29 00:55:07
  * @FilePath: \ZH_FLIGHT\Sys\Config\config.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -12,7 +12,7 @@
 #define __CONFIG_H__
 #include <stdint.h>
 #include "main.h"
-#include "cmsis_os.h"
+#include "cmsis_os2.h"
 /*------------------------配置区------------------------*/
 
 /*系统*/
@@ -66,6 +66,7 @@
 #define MESSAGE_TYPE_NUM            5
 #define UART_NUM                    2
 #define MESSAGE_QUEUE_MAX_LENGTH    10
+#define MAX_MESSAGE_LENGTH          128
 /*遥控*/
 #define PITCH_CHANNEL               0
 #define ROLL_CHANNEL                1
@@ -96,14 +97,14 @@
 #define DATA_LINK_CYCLE_FREQ        50
  
 /*------------------------------------------------------*/
-typedef osMutexId Mutex;
-typedef osSemaphoreId Semaphore;
-typedef osThreadId Thread;
-#define AcLock(id) osMutexWait(id, osWaitForever)
+typedef osMutexId_t Mutex;
+typedef osSemaphoreId_t Semaphore;
+typedef osThreadId_t Thread;
+#define AcLock(id) osMutexAcquire(id, osWaitForever)
 #define AcUnLock(id) osMutexRelease(id)
-#define AcWaitSemaphore(id) osSemaphoreWait(id, osWaitForever)
+#define AcWaitSemaphore(id) osSemaphoreAcquire(id, osWaitForever)
 #define AcReleaseSemaphore(id) osSemaphoreRelease(id)
-#define SignalSet(signal, value) osSignalSet(signal, value);
-#define SignalWait(value) osSignalWait(value, osWaitForever);
+#define AcSignalSet(dec, value) osThreadFlagsSet(dec, value);
+#define AcSignalWait(value) osThreadFlagsWait(value, osFlagsWaitAll, osWaitForever);
 
 #endif

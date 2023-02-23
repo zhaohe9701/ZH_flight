@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2023-01-23 16:31:55
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-25 02:00:28
+ * @LastEditTime: 2023-01-28 01:29:18
  * @FilePath: \ZH_FLIGHT\Sys\Link\print.h
  * Copyright (C) 2023 zhaohe. All rights reserved.
  */
@@ -20,12 +20,9 @@
 class Printer
 {
 public:
-    Printer();
     void SetInterfaceMark(uint8_t mark);
     void Print(const char *format, ...);
-    ~Printer();
 private:
-    Message _message;
     uint8_t _mark;
 };
 

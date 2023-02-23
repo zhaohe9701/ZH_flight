@@ -44,11 +44,11 @@ private:
     /*IMU数据*/
     ImuData _imu_data;
     /*当前动作*/
-    volatile ActionList _current_action = AS_INITIALIZE;
+    volatile ActionGroup _current_action = AS_INITIALIZE;
 public:
     Aircraft();
     AC_RET Init();
-    AC_RET SetAction(ActionList action);
+    AC_RET SetAction(ActionGroup action);
     AC_RET UpdateAttitude();
     AC_RET GetStateForControl();
     AC_RET ControlAttitude();

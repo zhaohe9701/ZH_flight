@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-10-09 23:18:03
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-09 00:46:14
+ * @LastEditTime: 2023-02-24 00:16:26
  * @FilePath: \ZH_FLIGHT\Sys\StateMachine\state_machine.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -13,12 +13,13 @@
 
 #include <stdint.h>
 #include "type.h"
+#include "ac_list.h"
 
 #define EVENT_NUM 6
 #define STATE_NUM 7
 
 /*状态集合定义*/
-enum StateList
+enum StateGroup
 {
     AS_ERROR = -1,
     AS_INITIALIZE,
@@ -31,7 +32,7 @@ enum StateList
 };
 
 /*动作集合定义*/
-typedef StateList ActionList;
+typedef StateGroup ActionGroup;
 
 /*事件集合定义*/
 enum EventList
@@ -53,12 +54,12 @@ public:
     bool IsMatch(Condition trans_condition);
     void AddPositiveCondition(Condition condition);
     void AddNegativeCondition(Condition condition);
-    StateList GetMatchState();
+    StateGroup GetMatchState();
     StateMap *next = nullptr;
     StateMap *prev = nullptr;
 
 private:
-    StateList _state;
+    StateGroup _state;
     Condition _positive_condition;
     Condition _negative_condition;
 };
@@ -66,24 +67,24 @@ private:
 class State
 {
 public:
-    State();
-    void AddNeighborState(StateList neighbor_state, Condition positive, Condition negative);
-    StateList GetNextState(Condition _condition);
+    State(){};
+    void AddNeighborState(StateGroup neighbor_state, Condition positive, Condition negative);
+    StateGroup GetNextState(Condition _condition);
     ~State();
 
 private:
-    StateMap _neighbor_head;
+    AcList<StateMap> _neighbor;
 };
 
 class StateMachine
 {
 public:
     AC_RET TransToNextState(Condition condition);
-    StateList GetCurrentState();
-    ActionList GetAction();
+    StateGroup GetCurrentState();
+    ActionGroup GetAction();
     State state[STATE_NUM];
 private:
-    StateList _current_state;
+    StateGroup _current_state;
 };
 
 #endif

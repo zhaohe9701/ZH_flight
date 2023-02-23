@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-09-27 22:23:50
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-23 00:33:47
+ * @LastEditTime: 2023-01-26 00:53:22
  * @FilePath: \ZH_FLIGHT\Sys\Driver\z_iic.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -12,7 +12,7 @@
 #define __Z_IIC_H__
 
 #include "sensor_interface.h"
-#include "cmsis_os.h"
+#include "cmsis_os2.h"
 #include "i2c.h"
 // #include "i2c.h"
 
@@ -24,7 +24,7 @@ public:
     void WriteReg(uint8_t address, uint8_t value) override;
     void WriteRegs(uint8_t address, uint8_t len, uint8_t *value) override;
     static I2C_HandleTypeDef *active_hi2c;
-    static osSemaphoreId iic_semaphore;
+    static osSemaphoreId_t iic_semaphore;
 private:
     I2C_HandleTypeDef *_hi2c;
     uint8_t _mem_address = 0;

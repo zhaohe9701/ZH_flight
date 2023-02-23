@@ -4,11 +4,12 @@
  * @Author: zhaohe
  * @Date: 2022-10-11 15:04:22
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-08 23:51:42
+ * @LastEditTime: 2023-02-24 00:16:04
  * @FilePath: \ZH_FLIGHT\Sys\StateMachine\state_machine.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 #include "state_machine.h"
+#include "ac_list.h"
 #include <string.h>
 
 AC_RET StateMachine::TransToNextState(Condition condition)
@@ -21,14 +22,14 @@ AC_RET StateMachine::TransToNextState(Condition condition)
     return AC_OK;
 }
 
-StateList StateMachine::GetCurrentState()
+StateGroup StateMachine::GetCurrentState()
 {
     return _current_state;
 }
 
-ActionList StateMachine::GetAction()
+ActionGroup StateMachine::GetAction()
 {
-    return (ActionList)_current_state;
+    return (ActionGroup)_current_state;
 }
 
 bool StateMap::IsMatch(Condition trans_condition)
@@ -59,52 +60,35 @@ void StateMap::AddNegativeCondition(Condition condition)
     _negative_condition = condition;
 }
 
-StateList StateMap::GetMatchState()
+StateGroup StateMap::GetMatchState()
 {
     return _state;
 }
 
-State::State()
-{
-    _neighbor_head.next = &_neighbor_head;
-    _neighbor_head.prev = &_neighbor_head;
-}
-
-void State::AddNeighborState(StateList neighbor_state, Condition positive, Condition negative)
+void State::AddNeighborState(StateGroup neighbor_state, Condition positive, Condition negative)
 {
     StateMap *state = new StateMap();
     state->AddPositiveCondition(positive);
     state->AddNegativeCondition(negative);
-    state->next = _neighbor_head.next;
-    _neighbor_head.next->prev = state;
-    _neighbor_head.next = state;
-    state->prev = &_neighbor_head;
+    _neighbor.PushBack(state);
 }
 
-StateList State::GetNextState(Condition condition)
+StateGroup State::GetNextState(Condition condition)
 {
-    StateMap *state = nullptr;
-
-    state = _neighbor_head.next;
-    while (state != &_neighbor_head)
+    for(AcListNode<StateMap> *node = _neighbor.Begin(); node != _neighbor.End(); node = node->Next()) 
     {
-        if (state->IsMatch(condition))
+        if (node->data->IsMatch(condition))
         {
-            return state->GetMatchState();
+            return node->data->GetMatchState();
         }
-        state = state->next;
     }
     return AS_ERROR;
 }
 
 State::~State()
 {
-    StateMap *state = nullptr;
-    state = _neighbor_head.next;
-    while (state != &_neighbor_head)
+    for(AcListNode<StateMap> *node = _neighbor.Begin(); node != _neighbor.End(); node = node->Next()) 
     {
-        StateMap *tmp = state;
-        state = state->next;
-        delete tmp;
+        delete node->data;
     }
 }

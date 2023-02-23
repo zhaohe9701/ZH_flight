@@ -4,13 +4,13 @@
  * @Author: zhaohe
  * @Date: 2022-11-06 23:43:52
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-12-26 00:35:19
+ * @LastEditTime: 2023-01-26 01:01:49
  * @FilePath: \ZH_FLIGHT\Core\Src\sys_callback.c
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 #include "sys_callback.h"
 #include "main.h"
-#include "cmsis_os.h"
+#include "cmsis_os2.h"
 #include "global_var.h"
 #include "config.h"
 

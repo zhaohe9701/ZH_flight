@@ -74,7 +74,7 @@ Middlewares/Third_Party/FreeRTOS/Source/tasks.c
 Middlewares/Third_Party/FreeRTOS/Source/timers.c
 Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c
 Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c
-Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.c
+Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c
 )
 
 set(USB_DEVICE_SRC
@@ -92,6 +92,7 @@ Sys/Control/AttitudeControl/attitude_controller.cpp
 Sys/Control/AttitudeControl/attitude_controller_interface.cpp
 Sys/Control/AttitudeControl/pid_attitude_controller.cpp
 Sys/Control/pid_core.cpp
+Sys/Common/ac_list.cpp
 Sys/EventServer/event_server.cpp
 Sys/Sensor/sensor.cpp
 Sys/Sensor/Imu/icm20602.cpp
@@ -134,7 +135,7 @@ include_directories(
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/EventServer>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Control>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Control/AttitudeControl>
-    # $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Test>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Common>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Task>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/AHRS>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Sensor>
@@ -168,7 +169,7 @@ include_directories(
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Middlewares/Third_Party/FreeRTOS/Source/include>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F>
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2>
 )
 
 add_executable(${target}.elf ${SRC})

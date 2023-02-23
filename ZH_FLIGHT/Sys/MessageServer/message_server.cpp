@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-10-21 23:47:30
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-24 03:44:04
+ * @LastEditTime: 2023-01-28 03:43:51
  * @FilePath: \ZH_FLIGHT\Sys\MessageServer\message_server.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -13,6 +13,7 @@
 #include <string.h>
 #include "config.h"
 #include "global_var.h"
+#include "main.h"
 #include "type.h"
 
 extern GlobalVar system_var;
@@ -27,16 +28,7 @@ void MessageReceiveServer::SetParser(MessageReceiveParser *interface, uint8_t in
 AC_RET MessageReceiveServer::RunReceiveService()
 {
     Message *message = nullptr;
-    osEvent event = osMessageGet(system_var.RECEIVE_MESSAGE_QUEUE, osWaitForever);
-    if (osEventMessage == event.status)
-    {
-        message = (Message *)event.value.p;
-    }
-    else
-    {
-        return AC_ERROR;
-    }
-
+    osMessageQueueGet(system_var.RECEIVE_MESSAGE_QUEUE, message, NULL, osWaitForever);
     _buf = new Byte[message->length];
     if (_buf == nullptr || length == 0)
     {
@@ -76,25 +68,17 @@ void MessageTransmitServer::AddTransmitter(MessageInterface *interface)
 
 void MessageTransmitServer::RunTransmitService()
 {
-    Message *message = nullptr;
-    osEvent event = osMessageGet(system_var.TRANSMIT_MESSAGE_QUEUE, osWaitForever);
-    if (osEventMessage == event.status)
-    {
-        message = (Message *)event.value.p;
-    }
-    else
-    {
-        return;
-    }
-    uint8_t mark = message->data[0];
+    Message message;
+    osMessageQueueGet(system_var.TRANSMIT_MESSAGE_QUEUE, &message, NULL, osWaitForever);
+    uint8_t mark = message.data[0];
     for(int i = 0; i < _interface_ind; ++i)
     {
         if (true == _interface[i]->MatchMark(mark))
         {
-            AC_RET ret = _interface[i]->Transmit(message->data + 1, message->length);
+            AC_RET ret = _interface[i]->Transmit(message.data + 1, message.length);
             if (AC_OK != ret)
             {
-                osMessagePut(system_var.TRANSMIT_MESSAGE_QUEUE, (uint32_t)message, 0);
+                osMessageQueuePut(system_var.TRANSMIT_MESSAGE_QUEUE, &message, 0U, 0);
             }
             return;
         }

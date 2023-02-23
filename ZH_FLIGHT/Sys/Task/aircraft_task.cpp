@@ -4,11 +4,12 @@
  * @Author: zhaohe
  * @Date: 2022-12-19 23:45:38
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-25 03:36:37
+ * @LastEditTime: 2023-01-29 01:55:56
  * @FilePath: \ZH_FLIGHT\Sys\Task\aircraft_task.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
-
+#include <stdio.h>
+#include "aircraft_state.h"
 #include "baro.h"
 #include "icm20689.h"
 #include "message_interface.h"
@@ -17,7 +18,7 @@
 #include "main.h"
 #include "aircraft_task.h"
 #include "config.h"
-#include "cmsis_os.h"
+#include "cmsis_os2.h"
 #include "aircraft.h"
 #include "global_var.h"
 #include "print.h"
@@ -28,49 +29,57 @@
 #include "ibus.h"
 #include "stm32h7xx_hal.h"
 #include "stm32h7xx_hal_gpio.h"
-
+#include "message_interface.h"
 #include "z_iic.h"
 #include "z_spi.h"
 #include "z_usb.h"
 
 /****************对外暴露任务接口****************/
-extern "C" void AttitudeSolveTaskInterface(void const *argument);
-extern "C" void ControlTaskInterface(void const *argument);
-extern "C" void StateMachineTaskInterface(void const *argument);
-extern "C" void LightTaskInterface(void const *argument);
-extern "C" void ReceiveDataTaskInterface(void const *argument);
-extern "C" void TransmitDataTaskInterface(void const *argument);
-extern "C" void TestTaskInterface(void const *argument); 
+extern "C" void StartTaskInterface(void *argument);
+extern "C" void AttitudeSolveTaskInterface(void *argument);
+extern "C" void ControlTaskInterface(void *argument);
+extern "C" void StateMachineTaskInterface(void *argument);
+extern "C" void LightTaskInterface(void *argument);
+extern "C" void ReceiveDataTaskInterface(void *argument);
+extern "C" void TransmitDataTaskInterface(void *argument);
+extern "C" void TestTaskInterface(void *argument); 
 /*********************************************/
-
-void AttitudeSolveTaskInterface(void const *argument)
+void StartTaskInterface(void *argument)
+{
+    DynamicTask::StartTask();
+}
+void AttitudeSolveTaskInterface(void *argument)
 {
     StaticTask::AttitudeSolveTask();
 }
-void ControlTaskInterface(void const *argument)
+void ControlTaskInterface(void *argument)
 {
     StaticTask::ControlTask();
 }
-void StateMachineTaskInterface(void const *argument)
+void StateMachineTaskInterface(void *argument)
 {
     StaticTask::StateMachineTask();
 }
-void LightTaskInterface(void const *argument)
+void LightTaskInterface(void *argument)
 {
     StaticTask::LightTask();
 }
-void ReceiveDataTaskInterface(void const *argument)
+void ReceiveDataTaskInterface(void *argument)
 {
     StaticTask::ReceiceDataTask();
 }
-void TransmitDataTaskInterface(void const *argument)
+void TransmitDataTaskInterface(void *argument)
 {
     StaticTask::TransmitDataTask();
 }
-void TestTaskInterface(void const *argument)
+void TestTaskInterface(void *argument)
 {
     StaticTask::TestTask();
 }
+
+osThreadId_t ledTaskHandle;
+osThreadId_t testTaskHandle;
+osThreadId_t transmitDataTaskHandle;
 
 Aircraft *aircraft = nullptr;
 StateMachine *state_machine = nullptr;
@@ -91,10 +100,10 @@ void StaticTask::AttitudeSolveTask(void)
     for (;;)
     {
         /*等待IMU中断*/
-        osSemaphoreWait(system_var.IMU1_SEMAPHORE, osWaitForever);
+        AcWaitSemaphore(system_var.IMU1_SEMAPHORE);
         /*姿态更新*/
         aircraft->UpdateAttitude();
-        osSemaphoreRelease(system_var.ACTUAL_STATE_SEMAPHORE);
+        AcReleaseSemaphore(system_var.ACTUAL_STATE_SEMAPHORE);
     }
 }
 
@@ -102,7 +111,7 @@ void StaticTask::ControlTask(void)
 {
     for (;;)
     {
-        osSemaphoreWait(system_var.ACTUAL_STATE_SEMAPHORE, osWaitForever);
+        AcWaitSemaphore(system_var.ACTUAL_STATE_SEMAPHORE);
         /*获得当前期望状态与实际状态*/
         aircraft->GetStateForControl();
         /*高度（油门）控制*/
@@ -116,12 +125,12 @@ void StaticTask::ControlTask(void)
 void StaticTask::StateMachineTask(void)
 {
     Condition condition;
-    ActionList action;
+    ActionGroup action;
 
     for (;;)
     {
         /*等待事件触发*/
-        SignalWait(STATE_MACHINE_SIGNAL);
+        AcSignalWait(STATE_MACHINE_SIGNAL);
         /*获取当前事件组合*/
         condition = event_server->GetCurrentCondition();
         /*状态转移*/
@@ -139,9 +148,9 @@ void StaticTask::LightTask(void)
 
     for (;;)
     {
-        previous_wake_time = osKernelSysTick();
+        previous_wake_time = osKernelGetTickCount();
         HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
-        osDelayUntil(&previous_wake_time, LIGHT_CONTROL_DELAY_TIME);
+        osDelayUntil(previous_wake_time + LIGHT_CONTROL_DELAY_TIME);
     }
 }
 
@@ -153,31 +162,26 @@ void StaticTask::ReceiceDataTask(void)
     }
 }
 
+// static const osMessageQueueAttr_t transmitDataQueue_attributes = {
+//   .name = "transmitDataQueue"
+// };
 void StaticTask::TransmitDataTask(void)
 {
-    // osMessageQDef(TransmitMessageQueue, MESSAGE_QUEUE_MAX_LENGTH, uint32_t);
-    // system_var.TRANSMIT_MESSAGE_QUEUE = osMessageCreate(osMessageQ(TransmitMessageQueue), NULL);
-    message_transmit_server = new MessageTransmitServer();
-    MessageInterface *interface = new Usb();
-    interface->Init(128, 0x01);
-    message_transmit_server->AddTransmitter(interface);
     for (;;)
     {
-        UsbPrintf("OK1\r\n");
         message_transmit_server->RunTransmitService();
+        //osDelay(1000);
     }
 }
 
 void StaticTask::TestTask(void)
 {
-    // osSemaphoreDef(Imu1Semaphore);
-    // system_var.IMU1_SEMAPHORE = osSemaphoreCreate(osSemaphore(Imu1Semaphore), 1);
+    // system_var.IMU1_SEMAPHORE = osSemaphoreNew(1, 1, NULL);
 
     // SensorInterface *interface = new Spi(&IMU1_INTERFACE_OBJ, IMU1_CS_PORT, IMU1_CS_PIN);
     // Imu *imu = new Icm20689(interface);
     Printer printer;
     printer.SetInterfaceMark(0x01);
-    HAL_Delay(10);
     SensorInterface *interface1 = new Iic(&BARO_INTERFACE_OBJ, BARO_ADDRESS);
     Baro *baro = new Ms5611(interface1);
 
@@ -186,62 +190,91 @@ void StaticTask::TestTask(void)
     // ImuData imu_data;
     for(;;)
     {
-        // osSemaphoreWait(system_var.IMU1_SEMAPHORE, osWaitForever);
+        // osSemaphoreAcquire(system_var.IMU1_SEMAPHORE, osWaitForever);
         // imu->GetGyroData(imu_data);
         // imu->GetAccData(imu_data);
-        // UsbPrintf("%d %d %d\r\n", (int)imu_data.acc.x, (int)imu_data.acc.y, (int)imu_data.acc.z);
+        // printer.Print("%d %d %d\r\n", (int)imu_data.acc.x, (int)imu_data.acc.y, (int)imu_data.acc.z);
         float height = 0.0f;
         height = baro->GetAltitude();
-        //printer.Print("%d\r\n", (int)height);
+        // UsbPrintf("%d\r\n", (int)height);
+        printer.Print("%d\r\n", (int)height);
+        // printer.Print("OK\r\n");
+        // osDelay(10);
     }
 }
 
 void DynamicTask::StartTask(void)
 {
 
-    osSemaphoreDef(Imu1Semaphore);
-    system_var.IMU1_SEMAPHORE = osSemaphoreCreate(osSemaphore(Imu1Semaphore), 1);
-    osSemaphoreDef(ActualStateSemaphore);
-    system_var.ACTUAL_STATE_SEMAPHORE = osSemaphoreCreate(osSemaphore(ActualStateSemaphore), 1);
-    osMutexDef(ActualStateMutex);
-    system_var.ACTUAL_STATE_MUTEX = osMutexCreate(osMutex(ActualStateMutex));
-    osMutexDef(ExpectStateMutex);
-    system_var.EXPECT_STATE_MUTEX = osMutexCreate(osMutex(ExpectStateMutex));
-    osMessageQDef(ReceiveMessageQueue, MESSAGE_QUEUE_MAX_LENGTH, void*);
-    system_var.RECEIVE_MESSAGE_QUEUE = osMessageCreate(osMessageQ(ReceiveMessageQueue), NULL);
-    osMessageQDef(TransmitMessageQueue, MESSAGE_QUEUE_MAX_LENGTH, void*);
-    system_var.TRANSMIT_MESSAGE_QUEUE = osMessageCreate(osMessageQ(TransmitMessageQueue), NULL);
+
+    system_var.IMU1_SEMAPHORE = osSemaphoreNew(1, 1, NULL);
+    system_var.ACTUAL_STATE_SEMAPHORE = osSemaphoreNew(1, 1, NULL);
+    system_var.ACTUAL_STATE_MUTEX = osMutexNew(NULL);
+    system_var.EXPECT_STATE_MUTEX = osMutexNew(NULL);
+    system_var.TRANSMIT_MESSAGE_QUEUE = osMessageQueueNew(3, sizeof(Message), NULL);
+    system_var.RECEIVE_MESSAGE_QUEUE = osMessageQueueNew(3, sizeof(Message), NULL);
     /*创建事件服务器*/
-    event_server = new EventServer();
-    event_server->SetInformThread(stateMachineTaskHandle, STATE_MACHINE_SIGNAL);
-    /*创建消息服务器*/
-    message_receive_server = new MessageReceiveServer();
-    MessageReceiveParser *ibus_parser = new IbusParser();
-    message_receive_server->SetParser(ibus_parser, 0);
+    // event_server = new EventServer();
+    // event_server->SetInformThread(stateMachineTaskHandle, STATE_MACHINE_SIGNAL);
+    /*创建消息接收服务器*/
+    // message_receive_server = new MessageReceiveServer();
+    // MessageReceiveParser *ibus_parser = new IbusParser();
+    // message_receive_server->SetParser(ibus_parser, 0);
+    /*创建消息发送服务器*/
+    message_transmit_server = new MessageTransmitServer();
+    MessageInterface *interface = new Usb(0x01);
+    message_transmit_server->AddTransmitter(interface);
     /*创建状态机*/
-    state_machine = new StateMachine();
-    state_machine->state[AS_INITIALIZE].AddNeighborState(AS_STANDBY, INIT_OVER_EVENT, NULL_EVENT);
+    // state_machine = new StateMachine();
+    // state_machine->state[AS_INITIALIZE].AddNeighborState(AS_STANDBY, INIT_OVER_EVENT, NULL_EVENT);
     /*添加状态转换关系*/
-    state_machine->state[AS_STANDBY].AddNeighborState(AS_SETTING, SETTING_EVENT, UNLOCK_EVENT | CALIBRATION_EVENT);
-    state_machine->state[AS_STANDBY].AddNeighborState(AS_CALIBRATION, CALIBRATION_EVENT, UNLOCK_EVENT | SETTING_EVENT);
-    state_machine->state[AS_STANDBY].AddNeighborState(AS_MANUAL, MANUAL_EVENT | UNLOCK_EVENT | ZERO_THROTTLE_EVENT, SETTING_EVENT | CALIBRATION_EVENT | AS_ALTITUDE | AS_AUTO);
+    // state_machine->state[AS_STANDBY].AddNeighborState(AS_SETTING, SETTING_EVENT, UNLOCK_EVENT | CALIBRATION_EVENT);
+    // state_machine->state[AS_STANDBY].AddNeighborState(AS_CALIBRATION, CALIBRATION_EVENT, UNLOCK_EVENT | SETTING_EVENT);
+    // state_machine->state[AS_STANDBY].AddNeighborState(AS_MANUAL, MANUAL_EVENT | UNLOCK_EVENT | ZERO_THROTTLE_EVENT, SETTING_EVENT | CALIBRATION_EVENT | AS_ALTITUDE | AS_AUTO);
 
-    state_machine->state[AS_MANUAL].AddNeighborState(AS_STANDBY, NULL_EVENT, UNLOCK_EVENT);
-    state_machine->state[AS_MANUAL].AddNeighborState(AS_ALTITUDE, ALTITUDE_EVENT | UNLOCK_EVENT, NULL_EVENT);
-    state_machine->state[AS_MANUAL].AddNeighborState(AS_AUTO, AUTO_EVENT | UNLOCK_EVENT, NULL_EVENT);
+    // state_machine->state[AS_MANUAL].AddNeighborState(AS_STANDBY, NULL_EVENT, UNLOCK_EVENT);
+    // state_machine->state[AS_MANUAL].AddNeighborState(AS_ALTITUDE, ALTITUDE_EVENT | UNLOCK_EVENT, NULL_EVENT);
+    // state_machine->state[AS_MANUAL].AddNeighborState(AS_AUTO, AUTO_EVENT | UNLOCK_EVENT, NULL_EVENT);
 
-    state_machine->state[AS_ALTITUDE].AddNeighborState(AS_STANDBY, NULL_EVENT, UNLOCK_EVENT);
-    state_machine->state[AS_ALTITUDE].AddNeighborState(AS_MANUAL, MANUAL_EVENT | UNLOCK_EVENT, NULL_EVENT);
+    // state_machine->state[AS_ALTITUDE].AddNeighborState(AS_STANDBY, NULL_EVENT, UNLOCK_EVENT);
+    // state_machine->state[AS_ALTITUDE].AddNeighborState(AS_MANUAL, MANUAL_EVENT | UNLOCK_EVENT, NULL_EVENT);
 
-    state_machine->state[AS_AUTO].AddNeighborState(AS_STANDBY, NULL_EVENT, UNLOCK_EVENT);
-    state_machine->state[AS_MANUAL].AddNeighborState(AS_MANUAL, MANUAL_EVENT | UNLOCK_EVENT, NULL_EVENT);
+    // state_machine->state[AS_AUTO].AddNeighborState(AS_STANDBY, NULL_EVENT, UNLOCK_EVENT);
+    // state_machine->state[AS_MANUAL].AddNeighborState(AS_MANUAL, MANUAL_EVENT | UNLOCK_EVENT, NULL_EVENT);
 
-    state_machine->state[AS_SETTING].AddNeighborState(AS_STANDBY, NULL_EVENT, SETTING_EVENT | UNLOCK_EVENT);
-    state_machine->state[AS_CALIBRATION].AddNeighborState(AS_STANDBY, NULL_EVENT, CALIBRATION_EVENT | UNLOCK_EVENT);
+    // state_machine->state[AS_SETTING].AddNeighborState(AS_STANDBY, NULL_EVENT, SETTING_EVENT | UNLOCK_EVENT);
+    // state_machine->state[AS_CALIBRATION].AddNeighborState(AS_STANDBY, NULL_EVENT, CALIBRATION_EVENT | UNLOCK_EVENT);
     /*创建飞行器对象*/
-    aircraft = new Aircraft();
+    // aircraft = new Aircraft();
     /*初始化飞行器*/
-    aircraft->Init();
+    // aircraft->Init();
     /*置位初始化完成事件*/
-    event_server->SetEvent(INIT_OVER_EVENT);
+    // event_server->SetEvent(INIT_OVER_EVENT);
+
+    const osThreadAttr_t testTask_attributes = {
+    .name = "testTask",
+    .stack_size = 512 * 4,
+    .priority = (osPriority_t) osPriorityNormal ,
+    };
+
+    const osThreadAttr_t ledTask_attributes = {
+    .name = "ledTask",
+    .stack_size = 64 * 4,
+    .priority = (osPriority_t) osPriorityNormal ,
+    };
+
+    const osThreadAttr_t transmitDataTask_attributes = {
+    .name = "transmitDataTask",
+    .stack_size = 256 * 4,
+    .priority = (osPriority_t) osPriorityNormal ,
+    };
+    
+    testTaskHandle = osThreadNew(TestTaskInterface, NULL, &testTask_attributes);
+    ledTaskHandle = osThreadNew(LightTaskInterface, NULL, &ledTask_attributes);
+    transmitDataTaskHandle = osThreadNew(TransmitDataTaskInterface, NULL, &transmitDataTask_attributes);
+    // for (;;)
+    // {
+    //     osDelay(10);
+    // }
+    osThreadExit();
 }

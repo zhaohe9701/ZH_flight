@@ -4,11 +4,12 @@
  * @Author: zhaohe
  * @Date: 2022-09-27 22:23:58
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-11-20 02:00:34
+ * @LastEditTime: 2023-01-26 01:00:42
  * @FilePath: \ZH_FLIGHT\Sys\Driver\z_iic.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 #include "z_iic.h"
+#include "cmsis_os2.h"
 #include "string.h"
 
 extern "C"
@@ -21,14 +22,18 @@ extern "C"
     }
 }
 
+
+static const osSemaphoreAttr_t IicSemaphore_attributes = {
+  .name = "IicSemaphore"
+};
+
 Iic::Iic(I2C_HandleTypeDef *hi2c, uint16_t device_address)
 {
     _hi2c = hi2c;
     _device_address = device_address;
     if (Iic::iic_semaphore == nullptr)
     {
-        osSemaphoreDef(IicSemaphore);
-        Iic::iic_semaphore = osSemaphoreCreate(osSemaphore(IicSemaphore), 1);
+        Iic::iic_semaphore = osSemaphoreNew(1, 1, &IicSemaphore_attributes);
     }
 }
 
@@ -40,7 +45,7 @@ void Iic::ReadBytes(uint8_t address, uint8_t len, uint8_t *dataBuf)
     HAL_I2C_Mem_Read_IT(_hi2c, _device_address, address, I2C_MEMADD_SIZE_8BIT, dataBuf, len);
     for(;;)
     {
-        osSemaphoreWait(Iic::iic_semaphore, osWaitForever);
+        osSemaphoreAcquire(Iic::iic_semaphore, osWaitForever);
         if (_hi2c == active_hi2c)
         {
             break;
@@ -77,4 +82,4 @@ void Iic::WriteRegs(uint8_t address, uint8_t len, uint8_t *value)
     HAL_I2C_Master_Transmit_IT(_hi2c, _device_address, value, len);
 }
 I2C_HandleTypeDef *Iic::active_hi2c = nullptr;
-osSemaphoreId Iic::iic_semaphore = nullptr;
+osSemaphoreId_t Iic::iic_semaphore = nullptr;

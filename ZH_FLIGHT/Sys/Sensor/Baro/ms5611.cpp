@@ -4,12 +4,12 @@
  * @Author: zhaohe
  * @Date: 2022-11-13 19:37:38
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-23 00:58:19
+ * @LastEditTime: 2023-01-26 01:27:35
  * @FilePath: \ZH_FLIGHT\Sys\Sensor\Baro\ms5611.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 #include "ms5611.h"
-#include "cmsis_os.h"
+#include "cmsis_os2.h"
 
 #define RESET 0x1E       // cmd 复位
 

@@ -4,15 +4,18 @@
  * @Author: zhaohe
  * @Date: 2022-10-22 00:00:49
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-24 03:13:09
+ * @LastEditTime: 2023-01-28 03:21:08
  * @FilePath: \ZH_FLIGHT\Sys\Driver\z_uart.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 #include "z_uart.h"
-#include "cmsis_os.h"
+#include "cmsis_os2.h"
 #include <stdint.h>
 #include <string.h>
+#include "config.h"
 #include "global_var.h"
+#include "message_interface.h"
+#include "rtwtypes.h"
 #include "type.h"
 
 extern GlobalVar system_var;
@@ -38,7 +41,7 @@ void UartIRQHandler(UART_HandleTypeDef *huart)
     }
 }
 
-
+uint8_t Uart::ind = 0;
 
 /**
  * @brief 串口空闲中断数据处理
@@ -47,19 +50,17 @@ void UartIRQHandler(UART_HandleTypeDef *huart)
  */
 void Uart::UartHandle(UART_HandleTypeDef *huart)
 {
-
-    for (int i = 0; i < UART_NUM; ++i)
+    for (int i = 0; i < ind; ++i)
     {
-        if (Uart::uart_table[i]->IsMe(huart))
+        if (uart_table[i]->IsMe(huart))
         {
-            /*从接收缓存取出数据*/
-            Uart::uart_table[i]->Receive();
+            /*消息队列发送数据*/
+            osMessageQueuePut(system_var.RECEIVE_MESSAGE_QUEUE, &(uart_table[i]->receive_message), 0U, 0);
             /*清空接收缓存*/
-            memset(Uart::uart_table[i]->receive_buf, 0, Uart::uart_table[i]->receive_length);
+            memset(uart_table[i]->receive_message.data, 0, uart_table[i]->receive_message.length);
             /*重新打开串口中断接收*/
-            HAL_UART_Receive_DMA(huart, Uart::uart_table[i]->receive_buf, Uart::uart_table[i]->receive_length);
-            /*消息队列发送数据引用*/
-            osMessagePut(system_var.RECEIVE_MESSAGE_QUEUE, (uint32_t)(&(Uart::uart_table[i]->message)), 0);
+            HAL_UART_Receive_DMA(huart, uart_table[i]->receive_message.data, uart_table[i]->receive_message.length);
+            
         }
     }
 }
@@ -70,35 +71,13 @@ void Uart::UartHandle(UART_HandleTypeDef *huart)
  * @param {uint8_t} mark
  * @return {*}
  */
-Uart::Uart(UART_HandleTypeDef *huart, uint8_t ind)
-{
-    _huart = huart;
-    _ind = ind;
-    uart_table[ind] = this;
-}
-
-/**
- * @brief 串口初始化
- * @param {uint16_t} receive_length
- * @return {*}
- */
-void Uart::Init(uint16_t receive_length_in, uint8_t mark)
+Uart::Uart(UART_HandleTypeDef *huart, uint8_t mark)
 {
     _mark = mark;
-    receive_length = receive_length_in;
-    message.length = receive_length_in;
-    receive_buf = new uint8_t[receive_length];
-    message.data = new uint8_t[receive_length];
-    HAL_UART_Receive_DMA(_huart, receive_buf, receive_length);
-}
-
-/**
- * @brief 
- * @return {*}
- */
-void Uart::Receive()
-{
-    memcpy(message.data, receive_buf, receive_length);
+    _huart = huart;
+    uart_table[ind] = this;
+    receive_message.length = MAX_MESSAGE_LENGTH;
+    ind++;
 }
 
 /**
@@ -127,22 +106,6 @@ bool Uart::MatchMark(uint8_t mark)
     else 
     {
         return false;
-    }
-}
-
-/**
- * @brief 
- * @return {*}
- */
-Uart::~Uart()
-{
-    if (nullptr != receive_buf)
-    {
-        delete[] receive_buf;
-    }
-    if (nullptr != message.data)
-    {
-        delete[] message.data;
     }
 }
 

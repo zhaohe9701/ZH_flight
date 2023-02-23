@@ -116,7 +116,7 @@ AC_RET Aircraft::Init()
     return AC_OK;
 }
 
-AC_RET Aircraft::SetAction(ActionList action)
+AC_RET Aircraft::SetAction(ActionGroup action)
 {
     _current_action = action;
     return AC_OK;
@@ -140,7 +140,7 @@ AC_RET Aircraft::GetStateForControl()
 
 AC_RET Aircraft::ControlAttitude()
 {
-    ActionList current_action = _current_action;
+    ActionGroup current_action = _current_action;
     if (current_action != AS_AUTO     && 
         current_action != AS_MANUAL   && 
         current_action != AS_ALTITUDE)
@@ -154,7 +154,7 @@ AC_RET Aircraft::ControlAttitude()
 
 AC_RET Aircraft::ControlAltitudeByDirect()
 {
-    ActionList current_action = _current_action;
+    ActionGroup current_action = _current_action;
     if (current_action != AS_AUTO     && 
         current_action != AS_MANUAL)
     {
@@ -171,7 +171,7 @@ AC_RET Aircraft::ControlAltitudeByDirect()
 
 AC_RET Aircraft::ControlAltitudeBySensor()
 {
-    ActionList current_action = _current_action;
+    ActionGroup current_action = _current_action;
     if (current_action != AS_ALTITUDE)
     {
         return AC_OK;
@@ -182,7 +182,7 @@ AC_RET Aircraft::ControlAltitudeBySensor()
 
 AC_RET Aircraft::ControlMotor()
 {
-    ActionList current_action = _current_action;
+    ActionGroup current_action = _current_action;
     if (current_action != AS_AUTO       &&
         current_action != AS_MANUAL     && 
         current_action != AS_ALTITUDE   &&

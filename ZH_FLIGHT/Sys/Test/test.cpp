@@ -4,12 +4,12 @@
  * @Author: zhaohe
  * @Date: 2022-11-05 02:20:44
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-11-21 23:45:37
+ * @LastEditTime: 2023-01-26 01:27:31
  * @FilePath: \ZH_FLIGHT\Sys\Test\test.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 #include "test.h"
-#include "cmsis_os.h"
+#include "cmsis_os2.h"
 #include "main.h"
 
 #include "sensor_interface.h"
