@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-07-08 01:24:46
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-29 00:55:07
+ * @LastEditTime: 2023-02-27 23:04:21
  * @FilePath: \ZH_FLIGHT\Sys\Config\config.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -97,14 +97,6 @@
 #define DATA_LINK_CYCLE_FREQ        50
  
 /*------------------------------------------------------*/
-typedef osMutexId_t Mutex;
-typedef osSemaphoreId_t Semaphore;
-typedef osThreadId_t Thread;
-#define AcLock(id) osMutexAcquire(id, osWaitForever)
-#define AcUnLock(id) osMutexRelease(id)
-#define AcWaitSemaphore(id) osSemaphoreAcquire(id, osWaitForever)
-#define AcReleaseSemaphore(id) osSemaphoreRelease(id)
-#define AcSignalSet(dec, value) osThreadFlagsSet(dec, value);
-#define AcSignalWait(value) osThreadFlagsWait(value, osFlagsWaitAll, osWaitForever);
+
 
 #endif

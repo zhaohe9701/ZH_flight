@@ -4,12 +4,12 @@
  * @Author: zhaohe
  * @Date: 2023-01-23 16:34:50
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-28 01:29:40
- * @FilePath: \ZH_FLIGHT\Sys\Link\print.cpp
+ * @LastEditTime: 2023-02-27 23:15:04
+ * @FilePath: \ZH_FLIGHT\Sys\Debug\print.cpp
  * Copyright (C) 2023 zhaohe. All rights reserved.
  */
 #include "print.h"
-#include "message_interface.h"
+#include "message.h"
 #include "type.h"
 #include <stdarg.h>
 #include <stdio.h>

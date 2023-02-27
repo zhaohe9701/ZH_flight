@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-10-21 23:59:58
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-28 02:15:57
+ * @LastEditTime: 2023-02-27 23:14:22
  * @FilePath: \ZH_FLIGHT\Sys\Driver\z_uart.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -12,11 +12,12 @@
 #define __Z_UART_H__
 
 #include "main.h"
-#include "message_interface.h"
+#include "communicate_interface.h"
 #include "config.h"
 #include "type.h"
+#include "message.h"
 
-class Uart : virtual public MessageInterface
+class Uart : virtual public CommunicateInterface
 {
 public:
     Uart(UART_HandleTypeDef *huart, uint8_t mark);

@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-10-23 22:51:45
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-29 00:43:16
+ * @LastEditTime: 2023-02-27 23:01:44
  * @FilePath: \ZH_FLIGHT\Sys\Driver\z_usb.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -15,7 +15,6 @@
 #include <string.h>
 #include "config.h"
 #include "main.h"
-#include "message_interface.h"
 #include "type.h"
 #include "usbd_cdc_if.h"
 #include "global_var.h"

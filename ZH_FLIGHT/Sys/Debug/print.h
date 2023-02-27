@@ -4,14 +4,14 @@
  * @Author: zhaohe
  * @Date: 2023-01-23 16:31:55
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-28 01:29:18
- * @FilePath: \ZH_FLIGHT\Sys\Link\print.h
+ * @LastEditTime: 2023-02-27 23:14:33
+ * @FilePath: \ZH_FLIGHT\Sys\Debug\print.h
  * Copyright (C) 2023 zhaohe. All rights reserved.
  */
 #ifndef __PRINT_H__
 #define __PRINT_H__
 
-#include "message_interface.h"
+#include "message.h"
 #include "type.h"
 #include <stdint.h>
 

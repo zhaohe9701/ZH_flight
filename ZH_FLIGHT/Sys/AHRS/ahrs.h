@@ -21,7 +21,7 @@ public:
     virtual void Update(ActualState &actual_state, ImuData &imu_data) = 0;
     virtual void TransformBodyToEarth(float &x, float &y, float &z) = 0;
     virtual void TransformEarthToBody(float &x, float &y, float &z) = 0;
-    virtual ~AttitudeSolver() = 0;
+    virtual ~AttitudeSolver(){};
 };
 
 #endif

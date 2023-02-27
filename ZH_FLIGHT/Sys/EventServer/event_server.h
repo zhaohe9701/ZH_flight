@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2023-01-08 22:48:51
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-08 23:19:20
+ * @LastEditTime: 2023-02-27 23:07:17
  * @FilePath: \ZH_FLIGHT\Sys\EventServer\event_server.h
  * Copyright (C) 2023 zhaohe. All rights reserved.
  */
@@ -12,7 +12,7 @@
 #define __EVENT_SERVER_H__
 
 #include "state_machine.h"
-#include "config.h"
+#include "os.h"
 
 class EventServer
 {

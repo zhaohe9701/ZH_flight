@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-10-21 23:28:46
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-24 02:59:51
+ * @LastEditTime: 2023-02-27 23:16:38
  * @FilePath: \ZH_FLIGHT\Sys\MessageServer\message_server.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -14,7 +14,7 @@
 
 #include "config.h"
 #include "type.h"
-#include "message_interface.h"
+#include "communicate_interface.h"
 #include "message_parser.h"
 class MessageReceiveServer
 {
@@ -33,10 +33,10 @@ private:
 class MessageTransmitServer
 {
 public:
-    void AddTransmitter(MessageInterface *interface);
+    void AddTransmitter(CommunicateInterface *interface);
     void RunTransmitService();
 private:
-    MessageInterface *_interface[MESSAGE_TTANSMIT_NUM] = {nullptr};
+    CommunicateInterface *_interface[MESSAGE_TTANSMIT_NUM] = {nullptr};
     static uint8_t _interface_ind; 
 };
 

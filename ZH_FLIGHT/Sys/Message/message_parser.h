@@ -4,14 +4,14 @@
  * @Author: zhaohe
  * @Date: 2023-01-10 23:11:06
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-23 17:16:15
+ * @LastEditTime: 2023-02-27 23:12:07
  * @FilePath: \ZH_FLIGHT\Sys\MessageServer\message_parser.h
  * Copyright (C) 2023 zhaohe. All rights reserved.
  */
 #ifndef __MESSAGE_PARSER_H__
 #define __MESSAGE_PARSER_H__
 
-#include "message_interface.h"
+#include "communicate_interface.h"
 #include "type.h"
 #include <stdint.h>
 

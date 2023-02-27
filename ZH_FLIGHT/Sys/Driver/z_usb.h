@@ -5,7 +5,7 @@
  * @Author: zhaohe
  * @Date: 2022-10-23 22:50:24
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-29 00:42:56
+ * @LastEditTime: 2023-02-27 22:59:56
  * @FilePath: \ZH_FLIGHT\Sys\Driver\z_usb.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -13,12 +13,12 @@
 #define __Z_USB_H__
 
 #include "main.h"
-#include "message_interface.h"
+#include "communicate_interface.h"
 #include "config.h"
 #include "type.h"
 #include <stdint.h>
 
-class Usb : virtual public MessageInterface
+class Usb : virtual public CommunicateInterface
 {
 public:
     Usb(uint8_t mark);

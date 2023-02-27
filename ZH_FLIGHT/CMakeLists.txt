@@ -106,9 +106,9 @@ Sys/Driver/z_usb.cpp
 Sys/Protocol/dshot.cpp
 Sys/Protocol/ibus.cpp
 Sys/Driver/z_pwm.cpp
-Sys/Link/print.cpp
+Sys/Debug/print.cpp
 Sys/Motor/motor.cpp
-Sys/MessageServer/message_server.cpp
+Sys/Message/message_server.cpp
 Sys/AHRS/mahony.cpp
 Sys/Task/aircraft_task.cpp
 )
@@ -141,7 +141,7 @@ include_directories(
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Sensor>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Sensor/Imu>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Sensor/Baro>
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Link>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Debug>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/OS>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Action>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Config>
@@ -151,11 +151,12 @@ include_directories(
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Type>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Control>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Control/AttitudeControl>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Communicate>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Filter>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/AHRS>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/AircraftState>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Motor>
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/MessageServer>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Message>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Remote>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Protocol>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/StateMachine>

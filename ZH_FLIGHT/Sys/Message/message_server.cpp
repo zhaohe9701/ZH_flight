@@ -4,17 +4,18 @@
  * @Author: zhaohe
  * @Date: 2022-10-21 23:47:30
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-28 03:43:51
+ * @LastEditTime: 2023-02-27 23:18:22
  * @FilePath: \ZH_FLIGHT\Sys\MessageServer\message_server.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
-#include "message_server.h"
+#include "message.h"
 #include <stdint.h>
 #include <string.h>
 #include "config.h"
 #include "global_var.h"
 #include "main.h"
 #include "type.h"
+#include "message_server.h"
 
 extern GlobalVar system_var;
 
@@ -56,7 +57,7 @@ void MessageReceiveServer::PraseMessage()
 }
 
 
-void MessageTransmitServer::AddTransmitter(MessageInterface *interface)
+void MessageTransmitServer::AddTransmitter(CommunicateInterface *interface)
 {
     if (_interface_ind > MESSAGE_TTANSMIT_NUM)
     {

@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-12-19 23:45:38
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-29 01:55:56
+ * @LastEditTime: 2023-02-27 23:17:22
  * @FilePath: \ZH_FLIGHT\Sys\Task\aircraft_task.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -12,7 +12,7 @@
 #include "aircraft_state.h"
 #include "baro.h"
 #include "icm20689.h"
-#include "message_interface.h"
+#include "communicate_interface.h"
 #include "ms5611.h"
 #include "imu.h"
 #include "main.h"
@@ -29,7 +29,7 @@
 #include "ibus.h"
 #include "stm32h7xx_hal.h"
 #include "stm32h7xx_hal_gpio.h"
-#include "message_interface.h"
+#include "communicate_interface.h"
 #include "z_iic.h"
 #include "z_spi.h"
 #include "z_usb.h"
@@ -222,7 +222,7 @@ void DynamicTask::StartTask(void)
     // message_receive_server->SetParser(ibus_parser, 0);
     /*创建消息发送服务器*/
     message_transmit_server = new MessageTransmitServer();
-    MessageInterface *interface = new Usb(0x01);
+    CommunicateInterface *interface = new Usb(0x01);
     message_transmit_server->AddTransmitter(interface);
     /*创建状态机*/
     // state_machine = new StateMachine();

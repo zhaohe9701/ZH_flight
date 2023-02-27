@@ -14,7 +14,6 @@
 #include <string.h>
 #include "config.h"
 #include "global_var.h"
-#include "message_interface.h"
 #include "rtwtypes.h"
 #include "type.h"
 
