@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-10-23 00:05:07
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-02-27 23:31:23
+ * @LastEditTime: 2023-03-02 00:01:37
  * @FilePath: \ZH_FLIGHT\Sys\OS\os.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -27,5 +27,9 @@ typedef osMessageQueueId_t Queue;
 #define AcReleaseSemaphore(id) osSemaphoreRelease(id)
 #define AcSignalSet(dec, value) osThreadFlagsSet(dec, value);
 #define AcSignalWait(value) osThreadFlagsWait(value, osFlagsWaitAll, osWaitForever);
+
+
+osStatus_t osMessageQueuePeek (osMessageQueueId_t mq_id, void *msg_ptr, uint8_t *msg_prio, uint32_t timeout);
+osStatus_t osMessageQueueOverwrite (osMessageQueueId_t mq_id, const void *msg_ptr);
 
 #endif

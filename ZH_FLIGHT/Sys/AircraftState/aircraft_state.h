@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-08-07 22:30:11
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-02-27 23:43:02
+ * @LastEditTime: 2023-03-02 00:23:50
  * @FilePath: \ZH_FLIGHT\Sys\AircraftState\aircraft_state.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -45,10 +45,6 @@ public:
     Vec3 relative_pos;
     Vec3 acceleration;
     Vec4 quarter;
-    AC_RET SafeDeepCopyFrom(ActualState *src);
-    AC_RET SafeDeepCopyTo(ActualState *des);
-
-    Mutex *mutex = nullptr;
 };
 
 class ExpectState
@@ -65,10 +61,6 @@ public:
     Pattern pattern = MANUAL_PATTERN;
     FlyLock locker = FLY_LOCK;
     float throttle = 0.0f;
-    float motor[MOTOR_NUM] = {0.0f};
-    AC_RET SafeDeepCopyFrom(ExpectState *src);
-    AC_RET SafeDeepCopyTo(ExpectState *des);
-    Mutex *mutex = nullptr;
 };
 
 

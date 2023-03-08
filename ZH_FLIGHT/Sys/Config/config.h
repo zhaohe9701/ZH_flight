@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-07-08 01:24:46
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-02-27 23:04:21
+ * @LastEditTime: 2023-02-28 23:44:23
  * @FilePath: \ZH_FLIGHT\Sys\Config\config.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -41,7 +41,8 @@
 #define MOTOR_OUTPUT_MAX    100.0f
 #define MOTOR_OUTPUT_MIN    0.0f
 #define MOTOR_NUM           4
-
+/*舵机*/
+#define SERVO_NUM           0
 #define MOTOR_1_TIM                 htim8
 #define MOTOR_1_CHANNEL         TIM_CHANNEL_1
 

@@ -4,14 +4,17 @@
  * @Author: zhaohe
  * @Date: 2022-12-22 23:58:07
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-02-24 00:24:21
+ * @LastEditTime: 2023-03-02 00:38:39
  * @FilePath: \ZH_FLIGHT\Sys\Aircraft\aircraft.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 
+#include "actuator_data.h"
+#include "aircraft_state.h"
 #include "main.h"
 
 #include "sensor_interface.h"
+#include "type.h"
 #include "z_spi.h"
 #include "imu.h"
 
@@ -50,12 +53,6 @@ Aircraft::Aircraft()
     /*创建组件*/
     _sensor = new Sensor();
     _motors = new Motor[MOTOR_NUM]();
-    _actual_state = new ActualState();
-    _actual_state_for_attitude_control = new ActualState();
-    _actual_state_for_attitude_solve = new ActualState();
-    _expect_state = new ExpectState();
-    _expect_state_for_control = new ExpectState();
-    _expect_state_for_remote = new ExpectState();
     _attitude_controller = new AttitudeController();
     _attitude_solver = new Mahony();
     _attitude_control_param = new ControlParam();
@@ -102,17 +99,12 @@ AC_RET Aircraft::Init()
     motor_interface = new Pwm(&MOTOR_4_TIM, MOTOR_4_CHANNEL);
     motor_protocol_interface = new Dshot(motor_interface);
     _motors[3].SetProtocol(motor_protocol_interface);
-
-    /*实际姿态和期望姿态锁初始化*/
-    _expect_state->mutex = &system_var.EXPECT_STATE_MUTEX;
-    _actual_state->mutex = &system_var.ACTUAL_STATE_MUTEX;
     /*姿态控制器*/   
     AttitudeControllerInterface *attitude_controller_interface = new PidAttitudeController();
     _attitude_controller->SetMethod(attitude_controller_interface);
     _attitude_control_param->Init(ATTITUDE_CONTROLLER_PARAM_NUM);
     // _attitude_control_param->GetParam(attitude_pid_param);
     _attitude_controller->Init(_attitude_control_param);
-
     return AC_OK;
 }
 
@@ -122,25 +114,38 @@ AC_RET Aircraft::SetAction(ActionGroup action)
     return AC_OK;
 }
 
-AC_RET Aircraft::UpdateAttitude()
+AC_RET Aircraft::GetAccAndGyro()
 {
-    _sensor->imu->GetAccData(_imu_data);
-    _sensor->imu->GetGyroData(_imu_data);
-    _attitude_solver->Update(*_actual_state_for_attitude_solve, _imu_data);
-    _actual_state->SafeDeepCopyFrom(_actual_state_for_attitude_solve);
+    ImuData imu_data;
+    _sensor->imu->GetAccData(imu_data);
+    _sensor->imu->GetGyroData(imu_data);
+    _imu_data_manager.Update(&imu_data);
     return AC_OK;
 }
 
-AC_RET Aircraft::GetStateForControl()
+AC_RET Aircraft::UpdateAttitude()
 {
-    _actual_state->SafeDeepCopyTo(_actual_state_for_attitude_control);
-    _expect_state->SafeDeepCopyTo(_expect_state_for_control);
+    ActualState actual_state;
+    ImuData imu_data;
+
+    _imu_data_manager.Copy(&imu_data);
+    _actual_state_manager.Copy(&actual_state);
+
+    _attitude_solver->Update(actual_state, imu_data);
+
+    _actual_state_manager.Update(&actual_state);
     return AC_OK;
 }
+
+
 
 AC_RET Aircraft::ControlAttitude()
 {
     ActionGroup current_action = _current_action;
+    ActualState actual_state;
+    ExpectState expect_state;
+    ActuatorData expect_actuator;
+
     if (current_action != AS_AUTO     && 
         current_action != AS_MANUAL   && 
         current_action != AS_ALTITUDE)
@@ -148,28 +153,16 @@ AC_RET Aircraft::ControlAttitude()
         return AC_OK;
     }
 
-    _attitude_controller->Update(*_actual_state_for_attitude_control, *_expect_state_for_control);
+    _actual_state_manager.Copy(&actual_state);
+    _expect_state_manager.Copy(&expect_state);
+    _attitude_controller->Update(actual_state, expect_state, expect_actuator);
+    _expect_actuator_manager.Update(&expect_actuator);
     return AC_OK;
 }
 
-AC_RET Aircraft::ControlAltitudeByDirect()
-{
-    ActionGroup current_action = _current_action;
-    if (current_action != AS_AUTO     && 
-        current_action != AS_MANUAL)
-    {
-        return AC_OK;
-    }
 
-    for (int i = 0; i < MOTOR_NUM; ++i)
-    {
-        _expect_state_for_control->motor[i] += _expect_state_for_control->throttle;
-    }
-    
-    return AC_OK;
-}
 
-AC_RET Aircraft::ControlAltitudeBySensor()
+AC_RET Aircraft::ControlAltitude()
 {
     ActionGroup current_action = _current_action;
     if (current_action != AS_ALTITUDE)
@@ -183,6 +176,8 @@ AC_RET Aircraft::ControlAltitudeBySensor()
 AC_RET Aircraft::ControlMotor()
 {
     ActionGroup current_action = _current_action;
+    ActuatorData expect_actuator;
+
     if (current_action != AS_AUTO       &&
         current_action != AS_MANUAL     && 
         current_action != AS_ALTITUDE   &&
@@ -190,9 +185,11 @@ AC_RET Aircraft::ControlMotor()
     {
         return AC_OK;
     }
+
+    _expect_actuator_manager.Copy(&expect_actuator);
     for (int i = 0; i < MOTOR_NUM; ++i)
     {
-        _motors[i].SetSpeed(_expect_state_for_control->motor[i]);
+        _motors[i].SetSpeed(expect_actuator.motor[i]);
     }
     return AC_OK;
 }
@@ -201,10 +198,6 @@ Aircraft::~Aircraft()
 {
     delete _sensor;
     delete[] _motors;
-    delete _actual_state_for_attitude_control;
-    delete _actual_state_for_attitude_solve;
-    delete _expect_state_for_control;
-    delete _expect_state_for_remote;
     delete _attitude_controller;
     delete _attitude_control_param;
     delete _attitude_solver;

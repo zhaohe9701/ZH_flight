@@ -8,9 +8,10 @@ class DataManager
 {
 public:
     DataManager();
-    void Put(T *data);
-    void Get(T *data);
-    void GetWithoutDelete(T *data);
+    void Push(T *data);
+    void Pop(T *data);
+    void Update(T *data);
+    void Copy(T *data);
     ~DataManager();
 private:
     Queue _handler;

@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-10-21 23:23:46
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-03 23:01:07
+ * @LastEditTime: 2023-03-01 00:01:47
  * @FilePath: \ZH_FLIGHT\Sys\Control\AttitudeControl\attitude_controller.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -39,7 +39,7 @@ void AttitudeController::Init(ControlParam *param)
  * @param {ExpectState} &expect_state
  * @return {*}
  */
-void AttitudeController::Update(const ActualState &actual_state, ExpectState &expect_state)
+void AttitudeController::Update(const ActualState &actual_state, ExpectState &expect_state, ActuatorData &actuator_value)
 {
     AttitudeControlInput input;
     AttitudeControlOutput output;
@@ -58,12 +58,10 @@ void AttitudeController::Update(const ActualState &actual_state, ExpectState &ex
 
     _interface->Update(input, output);
 
-    expect_state.motor[0] = output.motor1;
-    expect_state.motor[1] = output.motor2;
-    expect_state.motor[2] = output.motor3;
-    expect_state.motor[3] = output.motor4;
-
-
+    actuator_value.motor[0] = _Limit(actuator_value.motor[0] + output.motor1);
+    actuator_value.motor[1] = _Limit(actuator_value.motor[1] + output.motor2);
+    actuator_value.motor[2] = _Limit(actuator_value.motor[2] + output.motor3);
+    actuator_value.motor[3] = _Limit(actuator_value.motor[3] + output.motor4);
 }
 
 /**

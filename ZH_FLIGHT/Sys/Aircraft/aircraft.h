@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-12-22 23:42:17
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-10 23:00:55
+ * @LastEditTime: 2023-03-02 00:33:51
  * @FilePath: \ZH_FLIGHT\Sys\Aircraft\aircraft.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -20,6 +20,8 @@
 #include "control_param.h"
 #include "ahrs.h"
 #include "state_machine.h"
+#include "data_manager.h"
+#include "actuator_data.h"
 class Aircraft
 {
 private:
@@ -27,33 +29,27 @@ private:
     Sensor *_sensor = nullptr;
     /*电机*/
     Motor *_motors = nullptr;
-    /*全局实际状态*/
-    ActualState *_actual_state = nullptr;
-    ActualState *_actual_state_for_attitude_solve = nullptr;
-    ActualState *_actual_state_for_attitude_control = nullptr;
-    /*全局期望状态*/
-    ExpectState *_expect_state = nullptr;
-    ExpectState *_expect_state_for_control = nullptr;
-    ExpectState *_expect_state_for_remote = nullptr;
+    DataManager<ImuData> _imu_data_manager;
+    DataManager<ActualState> _actual_state_manager;
+    DataManager<ExpectState> _expect_state_manager;
+    DataManager<ActuatorData> _expect_actuator_manager;
     /*姿态控制器*/
     AttitudeController *_attitude_controller = nullptr;
     /*控制参数*/
     ControlParam *_attitude_control_param = nullptr;
     /*姿态解算器*/
     AttitudeSolver *_attitude_solver = nullptr;
-    /*IMU数据*/
-    ImuData _imu_data;
     /*当前动作*/
     volatile ActionGroup _current_action = AS_INITIALIZE;
 public:
+
     Aircraft();
     AC_RET Init();
     AC_RET SetAction(ActionGroup action);
+    AC_RET GetAccAndGyro();
     AC_RET UpdateAttitude();
-    AC_RET GetStateForControl();
     AC_RET ControlAttitude();
-    AC_RET ControlAltitudeByDirect();
-    AC_RET ControlAltitudeBySensor();
+    AC_RET ControlAltitude();
     AC_RET ControlMotor();
     ~Aircraft();
 

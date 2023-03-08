@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-08-07 22:03:11
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-10 23:32:47
+ * @LastEditTime: 2023-03-09 00:03:32
  * @FilePath: \ZH_FLIGHT\Sys\Type\type.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -19,6 +19,15 @@ enum AC_RET
     AC_ERROR = 1
 };
 
+enum AC_DATA_TYPE
+{
+    AC_INT     =   1,
+    AC_FLOAT   =   2,
+    AC_DOUBLE  =   3,
+    AC_STRING  =   4,
+};
+
+#define PARAM_NAME_LEN  16
 class Vec3
 {
 public:

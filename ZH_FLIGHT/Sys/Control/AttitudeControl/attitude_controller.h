@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-10-20 23:12:29
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-12-25 02:09:43
+ * @LastEditTime: 2023-02-28 23:55:05
  * @FilePath: \ZH_FLIGHT\Sys\Control\AttitudeControl\attitude_controller.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -13,12 +13,13 @@
 
 #include "attitude_controller_interface.h"
 #include "aircraft_state.h"
+#include "actuator_data.h"
 class AttitudeController
 {
 public:
     void SetMethod(AttitudeControllerInterface *interface);
     void Init(ControlParam *param);
-    void Update(const ActualState &actual_state, ExpectState &ExpectState);
+    void Update(const ActualState &actual_state, ExpectState &ExpectState, ActuatorData &actuator_value);
 private:
     AttitudeControllerInterface *_interface = nullptr;
     float _Limit(float value);

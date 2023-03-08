@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-10-02 16:55:53
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-23 16:22:30
+ * @LastEditTime: 2023-03-08 22:44:08
  * @FilePath: \ZH_FLIGHT\Sys\Protocol\ibus.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -78,5 +78,5 @@ void IbusParser::SetDes(void *carrier)
 
 void IbusParser::HandOut()
 {
-    _expect_state->SafeDeepCopyFrom(_tmp_expect_state);
+   
 }

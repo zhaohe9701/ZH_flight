@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-12-19 23:45:38
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-02-27 23:17:22
+ * @LastEditTime: 2023-03-08 22:41:12
  * @FilePath: \ZH_FLIGHT\Sys\Task\aircraft_task.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -113,10 +113,10 @@ void StaticTask::ControlTask(void)
     {
         AcWaitSemaphore(system_var.ACTUAL_STATE_SEMAPHORE);
         /*获得当前期望状态与实际状态*/
-        aircraft->GetStateForControl();
+        //aircraft->GetStateForControl();
         /*高度（油门）控制*/
-        aircraft->ControlAltitudeByDirect();
-        aircraft->ControlAltitudeBySensor();
+        //aircraft->ControlAltitudeByDirect();
+        //aircraft->ControlAltitudeBySensor();
         /*姿态控制*/
         aircraft->ControlAttitude();
     }
