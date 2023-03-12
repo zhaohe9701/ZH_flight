@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2023-03-08 23:04:24
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-03-09 00:44:06
+ * @LastEditTime: 2023-03-12 19:50:25
  * @FilePath: \ZH_FLIGHT\Sys\Common\ac_tree.h
  * Copyright (C) 2023 zhaohe. All rights reserved.
  */
@@ -24,6 +24,7 @@ public:
     AcTreeNode *GetNeighbor();
     char name[PARAM_NAME_LEN] = {0};
     AC_DATA_TYPE type;
+    uint16_t len;
     void *data;
 };
 

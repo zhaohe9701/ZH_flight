@@ -4,13 +4,15 @@
  * @Author: zhaohe
  * @Date: 2022-10-02 16:55:53
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-03-08 22:44:08
+ * @LastEditTime: 2023-03-12 21:24:01
  * @FilePath: \ZH_FLIGHT\Sys\Protocol\ibus.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 #include "ibus.h"
+#include "config.h"
+#include "data_manager.h"
+#include "remote_data.h"
 #include <string.h>
-
 
 
 AC_RET IbusParser::ParseMessage(Byte *message, uint32_t length)
@@ -40,43 +42,18 @@ AC_RET IbusParser::ParseMessage(Byte *message, uint32_t length)
     _channel_data[16] = ((uint16_t)(message[15] & 0xF0) >> 4) | (uint16_t)(message[17] & 0xF0) | ((uint16_t)(message[19] & 0xF0) << 4);
     _channel_data[17] = ((uint16_t)(message[21] & 0xF0) >> 4) | (uint16_t)(message[23] & 0xF0) | ((uint16_t)(message[25] & 0xF0) << 4);
 
-    _expect_state->euler.PITCH = IBUS_TRANS_CHANNEL_FROM_INT_TO_FLOAT(_channel_data[PITCH_CHANNEL]);
-    _expect_state->euler.ROLL = IBUS_TRANS_CHANNEL_FROM_INT_TO_FLOAT(_channel_data[ROLL_CHANNEL]);
-    _expect_state->euler.YAW = IBUS_TRANS_CHANNEL_FROM_INT_TO_FLOAT(_channel_data[YAW_CHANNEL]);
-    switch (_channel_data[PATTERN_CHANNEL])
-    {
-    case MANUAL_SWITCH:
-        _tmp_expect_state->pattern = MANUAL_PATTERN;
-        break;
-    case AUTO_SWITCH:
-        _tmp_expect_state->pattern = AUTO_PATTERN;
-        break;
-    case ALTITUDE_SWITCH:
-        _tmp_expect_state->pattern = ALTITUDE_PATTERN;
-        break;
-    default:
-        break;
-    }
-    switch (_channel_data[LOCK_CHANNEL])
-    {
-    case LOCK_SWITCH:
-        _tmp_expect_state->locker = FLY_LOCK;
-        break;
-    case UNLOCK_SWITCH:
-        _tmp_expect_state->locker = FLY_UNLOCK;
-        break;
-    default:
-        break;
-    }
+    
     return AC_OK;
 }
 
-void IbusParser::SetDes(void *carrier)
+void IbusParser::SetDataManager(void *manager)
 {
-    _expect_state = (ExpectState*)carrier;
+    _manager = (DataManager<RemoteData>*)manager;
 }
 
-void IbusParser::HandOut()
+void IbusParser::Publish()
 {
-   
+    RemoteData data;
+    memcpy(data.channel, _channel_data, sizeof(uint16_t) * TOTAL_CHANNEL_NUM);
+    _manager->Update(&data);
 }

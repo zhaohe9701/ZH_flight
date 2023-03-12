@@ -2,6 +2,16 @@
  * @Description: 
  * @Version: 1.0
  * @Author: zhaohe
+ * @Date: 2023-01-08 23:41:40
+ * @LastEditors: zhaohe
+ * @LastEditTime: 2023-03-12 19:36:20
+ * @FilePath: \ZH_FLIGHT\Sys\Config\config.h
+ * Copyright (C) 2023 zhaohe. All rights reserved.
+ */
+/*
+ * @Description: 
+ * @Version: 1.0
+ * @Author: zhaohe
  * @Date: 2022-07-08 01:24:46
  * @LastEditors: zhaohe
  * @LastEditTime: 2023-02-28 23:44:23
@@ -69,9 +79,10 @@
 #define MESSAGE_QUEUE_MAX_LENGTH    10
 #define MAX_MESSAGE_LENGTH          128
 /*遥控*/
-#define PITCH_CHANNEL               0
-#define ROLL_CHANNEL                1
-#define YAW_CHANNEL                 2
+#define TOTAL_CHANNEL_NUM           5
+#define X_CHANNEL                   0
+#define Y_CHANNEL                   1
+#define Z_CHANNEL                   2
 #define PATTERN_CHANNEL             3
 #define LOCK_CHANNEL                4
 

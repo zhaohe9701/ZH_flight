@@ -105,8 +105,10 @@ Sys/Driver/z_uart.cpp
 Sys/Driver/z_usb.cpp
 Sys/Protocol/dshot.cpp
 Sys/Protocol/ibus.cpp
+Sys/Protocol/crsf.cpp
 Sys/Driver/z_pwm.cpp
 Sys/Debug/print.cpp
+Sys/Remote/remote_channel.cpp
 Sys/Actuator/Motor/motor.cpp
 Sys/Message/message_server.cpp
 Sys/AHRS/mahony.cpp

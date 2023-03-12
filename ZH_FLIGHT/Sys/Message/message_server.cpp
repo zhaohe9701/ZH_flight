@@ -4,8 +4,8 @@
  * @Author: zhaohe
  * @Date: 2022-10-21 23:47:30
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-02-27 23:18:22
- * @FilePath: \ZH_FLIGHT\Sys\MessageServer\message_server.cpp
+ * @LastEditTime: 2023-03-12 21:05:53
+ * @FilePath: \ZH_FLIGHT\Sys\Message\message_server.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 #include "message.h"
@@ -49,7 +49,7 @@ void MessageReceiveServer::PraseMessage()
         if (head == _head_list[i])
         {
             _parser[i]->ParseMessage(_buf, length);
-            _parser[i]->HandOut();
+            _parser[i]->Publish();
             delete [] _buf;
             return;
         }

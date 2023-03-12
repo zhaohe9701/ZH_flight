@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-12-22 23:42:17
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-03-02 00:33:51
+ * @LastEditTime: 2023-03-12 21:17:17
  * @FilePath: \ZH_FLIGHT\Sys\Aircraft\aircraft.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -22,6 +22,7 @@
 #include "state_machine.h"
 #include "data_manager.h"
 #include "actuator_data.h"
+#include "remote_data.h"
 class Aircraft
 {
 private:
@@ -30,6 +31,7 @@ private:
     /*电机*/
     Motor *_motors = nullptr;
     DataManager<ImuData> _imu_data_manager;
+    DataManager<RemoteData> _remote_data_manager;
     DataManager<ActualState> _actual_state_manager;
     DataManager<ExpectState> _expect_state_manager;
     DataManager<ActuatorData> _expect_actuator_manager;
