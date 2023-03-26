@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-11-13 19:37:38
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-26 01:27:35
+ * @LastEditTime: 2023-03-15 23:26:12
  * @FilePath: \ZH_FLIGHT\Sys\Sensor\Baro\ms5611.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -33,6 +33,7 @@ Ms5611::Ms5611(SensorInterface *interface)
 }
 void Ms5611::Init()
 {
+    UsbPrintf("MS5611 Init\r\n");
     _BaroWriteRag(RESET, 0, nullptr);
     HAL_Delay(100);
     for (int i = 0; i < 8; ++i)

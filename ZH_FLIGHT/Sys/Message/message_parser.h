@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2023-01-10 23:11:06
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-03-12 21:05:23
+ * @LastEditTime: 2023-03-26 21:07:43
  * @FilePath: \ZH_FLIGHT\Sys\Message\message_parser.h
  * Copyright (C) 2023 zhaohe. All rights reserved.
  */
@@ -21,6 +21,7 @@ public:
     virtual AC_RET ParseMessage(Byte *message, uint32_t length) = 0;
     virtual void SetDataManager(void *manager) = 0;
     virtual void Publish() = 0;
+    virtual ~MessageReceiveParser(){}
 };
 
 class MessageTransmitParser

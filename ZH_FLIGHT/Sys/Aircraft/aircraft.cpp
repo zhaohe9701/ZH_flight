@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-12-22 23:58:07
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-03-02 00:38:39
+ * @LastEditTime: 2023-03-26 21:35:58
  * @FilePath: \ZH_FLIGHT\Sys\Aircraft\aircraft.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -12,7 +12,9 @@
 #include "actuator_data.h"
 #include "aircraft_state.h"
 #include "main.h"
+#include "sys.h"
 
+#include "print.h"
 #include "sensor_interface.h"
 #include "type.h"
 #include "z_spi.h"
@@ -37,6 +39,8 @@
 
 #include "global_var.h"
 
+#include "data_manager.h"
+
 extern "C"
 {
 GlobalVar system_var;
@@ -52,10 +56,11 @@ Aircraft::Aircraft()
 {
     /*创建组件*/
     _sensor = new Sensor();
-    _motors = new Motor[MOTOR_NUM]();
+    // _motors = new Motor[MOTOR_NUM]();
     _attitude_controller = new AttitudeController();
     _attitude_solver = new Mahony();
     _attitude_control_param = new ControlParam();
+    _printer = new Printer(message_transmit_server->GetQueueHandle());
 }
 
 AC_RET Aircraft::Init()
@@ -65,6 +70,7 @@ AC_RET Aircraft::Init()
     SensorInterface *imu_interface1 = new IMU1_INTERFACE(&IMU1_INTERFACE_OBJ, IMU1_CS_PORT, IMU1_CS_PIN);
     Imu *imu1 = new IMU1(imu_interface1);
     _sensor->AddImu(imu1);
+    _sensor->Init();
 #endif /*#ifdef IMU1*/
 
 #ifdef IMU2
@@ -73,38 +79,38 @@ AC_RET Aircraft::Init()
     _sensor->AddImu(imu2);
 #endif /*#ifdef IMU2*/
 
-    /*加载气压计*/
-    SensorInterface* baro_interface = new Iic(&hi2c1, 0xEE);
-    Baro *baro = new Ms5611(baro_interface);
-    _sensor->AddBaro(baro);
-    /*传感器初始化*/
-    _sensor->Init();
-
-    /*电机控制接口*/
-    Pwm *motor_interface = nullptr;
-    MotorProtocolInterface *motor_protocol_interface = nullptr;
-    /*1号电机*/
-    motor_interface = new Pwm(&MOTOR_1_TIM, MOTOR_1_CHANNEL);
-    motor_protocol_interface = new Dshot(motor_interface);
-    _motors[0].SetProtocol(motor_protocol_interface);
-    /*2号电机*/
-    motor_interface = new Pwm(&MOTOR_2_TIM, MOTOR_2_CHANNEL);
-    motor_protocol_interface = new Dshot(motor_interface);
-    _motors[1].SetProtocol(motor_protocol_interface);
-    /*3号电机*/
-    motor_interface = new Pwm(&MOTOR_3_TIM, MOTOR_3_CHANNEL);
-    motor_protocol_interface = new Dshot(motor_interface);
-    _motors[2].SetProtocol(motor_protocol_interface);
-    /*4号电机*/
-    motor_interface = new Pwm(&MOTOR_4_TIM, MOTOR_4_CHANNEL);
-    motor_protocol_interface = new Dshot(motor_interface);
-    _motors[3].SetProtocol(motor_protocol_interface);
-    /*姿态控制器*/   
-    AttitudeControllerInterface *attitude_controller_interface = new PidAttitudeController();
-    _attitude_controller->SetMethod(attitude_controller_interface);
-    _attitude_control_param->Init(ATTITUDE_CONTROLLER_PARAM_NUM);
-    // _attitude_control_param->GetParam(attitude_pid_param);
-    _attitude_controller->Init(_attitude_control_param);
+    // /*加载气压计*/
+    // SensorInterface* baro_interface = new Iic(&hi2c1, 0xEE);
+    // Baro *baro = new Ms5611(baro_interface);
+    // _sensor->AddBaro(baro);
+    // /*传感器初始化*/
+    // _sensor->Init();
+    _printer->SetInterfaceMark(0x01);
+    // /*电机控制接口*/
+    // Pwm *motor_interface = nullptr;
+    // MotorProtocolInterface *motor_protocol_interface = nullptr;
+    // /*1号电机*/
+    // motor_interface = new Pwm(&MOTOR_1_TIM, MOTOR_1_CHANNEL);
+    // motor_protocol_interface = new Dshot(motor_interface);
+    // _motors[0].SetProtocol(motor_protocol_interface);
+    // /*2号电机*/
+    // motor_interface = new Pwm(&MOTOR_2_TIM, MOTOR_2_CHANNEL);
+    // motor_protocol_interface = new Dshot(motor_interface);
+    // _motors[1].SetProtocol(motor_protocol_interface);
+    // /*3号电机*/
+    // motor_interface = new Pwm(&MOTOR_3_TIM, MOTOR_3_CHANNEL);
+    // motor_protocol_interface = new Dshot(motor_interface);
+    // _motors[2].SetProtocol(motor_protocol_interface);
+    // /*4号电机*/
+    // motor_interface = new Pwm(&MOTOR_4_TIM, MOTOR_4_CHANNEL);
+    // motor_protocol_interface = new Dshot(motor_interface);
+    // _motors[3].SetProtocol(motor_protocol_interface);
+    // /*姿态控制器*/   
+    // AttitudeControllerInterface *attitude_controller_interface = new PidAttitudeController();
+    // _attitude_controller->SetMethod(attitude_controller_interface);
+    // _attitude_control_param->Init(ATTITUDE_CONTROLLER_PARAM_NUM);
+    // // _attitude_control_param->GetParam(attitude_pid_param);
+    // _attitude_controller->Init(_attitude_control_param);
     return AC_OK;
 }
 
@@ -119,6 +125,7 @@ AC_RET Aircraft::GetAccAndGyro()
     ImuData imu_data;
     _sensor->imu->GetAccData(imu_data);
     _sensor->imu->GetGyroData(imu_data);
+    // UsbPrintf("%d %d %d\r\n", (int)imu_data.acc.x, (int)imu_data.acc.y, (int)imu_data.acc.z);
     _imu_data_manager.Update(&imu_data);
     return AC_OK;
 }
@@ -191,6 +198,14 @@ AC_RET Aircraft::ControlMotor()
     {
         _motors[i].SetSpeed(expect_actuator.motor[i]);
     }
+    return AC_OK;
+}
+
+AC_RET Aircraft::Test()
+{
+    ActualState state;
+    _actual_state_manager.Copy(&state);
+    _printer->Print("%d %d %d\r\n", (int)state.euler.x, (int)state.euler.y, (int)state.euler.z);
     return AC_OK;
 }
 

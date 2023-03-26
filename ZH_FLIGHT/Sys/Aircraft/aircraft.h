@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-12-22 23:42:17
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-03-12 21:17:17
+ * @LastEditTime: 2023-03-23 23:42:03
  * @FilePath: \ZH_FLIGHT\Sys\Aircraft\aircraft.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -23,6 +23,7 @@
 #include "data_manager.h"
 #include "actuator_data.h"
 #include "remote_data.h"
+#include "print.h"
 class Aircraft
 {
 private:
@@ -30,6 +31,8 @@ private:
     Sensor *_sensor = nullptr;
     /*电机*/
     Motor *_motors = nullptr;
+    /*打印机*/
+    Printer *_printer = nullptr;
     DataManager<ImuData> _imu_data_manager;
     DataManager<RemoteData> _remote_data_manager;
     DataManager<ActualState> _actual_state_manager;
@@ -53,6 +56,7 @@ public:
     AC_RET ControlAttitude();
     AC_RET ControlAltitude();
     AC_RET ControlMotor();
+    AC_RET Test();
     ~Aircraft();
 
 };

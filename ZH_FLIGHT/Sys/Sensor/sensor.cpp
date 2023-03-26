@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-10-03 02:34:04
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-12-23 00:06:26
+ * @LastEditTime: 2023-03-22 23:07:42
  * @FilePath: \ZH_FLIGHT\Sys\Sensor\sensor.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -22,6 +22,12 @@ void Sensor::AddBaro(Baro *baro)
 
 void Sensor::Init()
 {
-    imu->Init();
-    baro->Init();
+    if (nullptr != imu)
+    {
+        imu->Init();
+    }
+    if (nullptr != baro)
+    {
+        baro->Init();
+    }
 }

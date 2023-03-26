@@ -1,3 +1,13 @@
+/*
+ * @Description: 
+ * @Version: 1.0
+ * @Author: zhaohe
+ * @Date: 2023-03-09 00:10:07
+ * @LastEditors: zhaohe
+ * @LastEditTime: 2023-03-23 23:30:11
+ * @FilePath: \ZH_FLIGHT\Sys\Common\ac_tree.cpp
+ * Copyright (C) 2023 zhaohe. All rights reserved.
+ */
 #include "ac_tree.h"
 
 AcTreeNode *AcTreeNode::GetFirstChild()
@@ -28,7 +38,7 @@ static AcTreeNode *FindNodeCore(AcTreeNode *node, char *uri, int ptr)
         uri_ptr++;
         name_ptr++;
     }
-    if(uri[uri_ptr] == 0)
+    if(uri[uri_ptr] == 0 && node->name[name_ptr] == 0)
     {
         return node;
     }

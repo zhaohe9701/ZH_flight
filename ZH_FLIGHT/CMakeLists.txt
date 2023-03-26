@@ -112,7 +112,12 @@ Sys/Remote/remote_channel.cpp
 Sys/Actuator/Motor/motor.cpp
 Sys/Message/message_server.cpp
 Sys/AHRS/mahony.cpp
+Sys/AHRS/vqf.cpp
 Sys/Task/aircraft_task.cpp
+Sys/Task/imu_task.cpp
+Sys/Task/attitude_solve_task.cpp
+Sys/Task/transmit_data_task.cpp
+Sys/Type/type.cpp
 )
 
 set(START_UP_ASM

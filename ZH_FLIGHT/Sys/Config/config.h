@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2023-01-08 23:41:40
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-03-12 19:36:20
+ * @LastEditTime: 2023-03-26 20:59:38
  * @FilePath: \ZH_FLIGHT\Sys\Config\config.h
  * Copyright (C) 2023 zhaohe. All rights reserved.
  */
@@ -40,7 +40,7 @@
 #define IMU1_CS_PIN         SPI1_CS_Pin
 #define IMU1_EXIT_PIN       SPI1_EXIT_Pin
 #define IMU1_SEMAPHORE      semaphore[0]
-#define MAGNETOMETER
+// #define MAGNETOMETER
 
 #define BARO                Ms5611
 #define BARO_INTERFACE_OBJ  hi2c1
@@ -74,6 +74,7 @@
 #define RECEIVE_MESSAGE_QUEUE           queue[0]
 #define TRANSMIT_MESSAGE_QUEUE          queue[1]
 #define MESSAGE_TTANSMIT_NUM        1
+#define MESSAGE_RECEIVE_NUM         1
 #define MESSAGE_TYPE_NUM            5
 #define UART_NUM                    2
 #define MESSAGE_QUEUE_MAX_LENGTH    10
@@ -102,7 +103,7 @@
 
 
 /*循环频率*/
-#define ATTITUDE_SLOVE_CYCLE_FREQ   1000
+#define ATTITUDE_SLOVE_CYCLE_FREQ   500
 #define ATTITUDE_CONTROL_CYCLE_FREQ 500
 #define POSITION_CONTROL_CYCLE_FREQ 50
 #define LIGHT_CONTROL_CYCLE_FREQ    1

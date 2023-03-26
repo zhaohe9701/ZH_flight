@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-08-07 22:03:11
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-03-12 19:52:18
+ * @LastEditTime: 2023-03-14 00:17:21
  * @FilePath: \ZH_FLIGHT\Sys\Type\type.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -30,6 +30,7 @@ enum AC_DATA_TYPE
     AC_FLOAT    =   7,
     AC_DOUBLE   =   8,
     AC_STRING   =   9,
+    AC_NULL     =   10
 };
 
 #define PARAM_NAME_LEN  32
