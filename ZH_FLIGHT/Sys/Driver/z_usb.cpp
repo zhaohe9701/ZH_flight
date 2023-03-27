@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-10-23 22:51:45
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-02-27 23:01:44
+ * @LastEditTime: 2023-03-27 00:15:05
  * @FilePath: \ZH_FLIGHT\Sys\Driver\z_usb.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -17,8 +17,6 @@
 #include "main.h"
 #include "type.h"
 #include "usbd_cdc_if.h"
-#include "global_var.h"
-
 
 Usb::Usb(uint8_t mark)
 {

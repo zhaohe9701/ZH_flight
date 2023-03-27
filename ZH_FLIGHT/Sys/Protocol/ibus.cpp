@@ -14,10 +14,16 @@
 #include "remote_data.h"
 #include <string.h>
 
+#define IBUS_HEAD 0x20
+
+MessageHead IbusParser::GetHead()
+{
+    return IBUS_HEAD;
+}
 
 AC_RET IbusParser::ParseMessage(Byte *message, uint32_t length)
 {
-    if (message[0] != 0x20 || message[1] != 0x40 || length != IBUS_LENGTH)
+    if (message[0] != IBUS_HEAD || message[1] != 0x40 || length != IBUS_LENGTH)
     {
         return AC_ERROR;
     }

@@ -31,6 +31,7 @@
 class IbusParser : virtual public MessageReceiveParser
 {
 public:
+    MessageHead GetHead() override;
     AC_RET ParseMessage(Byte *message, uint32_t length) override;
     void SetDataManager(void *manager) override;
     void Publish() override;

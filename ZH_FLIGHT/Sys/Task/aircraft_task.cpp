@@ -4,17 +4,21 @@
  * @Author: zhaohe
  * @Date: 2023-01-08 23:40:52
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-03-26 21:22:31
+ * @LastEditTime: 2023-03-27 00:38:28
  * @FilePath: \ZH_FLIGHT\Sys\Task\aircraft_task.cpp
  * Copyright (C) 2023 zhaohe. All rights reserved.
  */
 
 #include <stdio.h>
+#include "Command/command.h"
 #include "ac_queue.h"
+#include "ac_semaphore.h"
 #include "aircraft_state.h"
 #include "baro.h"
 #include "icm20689.h"
 #include "communicate_interface.h"
+#include "message.h"
+#include "message_parser.h"
 #include "ms5611.h"
 #include "imu.h"
 #include "main.h"
@@ -77,7 +81,9 @@ void TestTaskInterface(void *argument)
 osThreadId_t ledTaskHandle;
 osThreadId_t testTaskHandle;
 osThreadId_t transmitDataTaskHandle;
+osThreadId_t receiveDataTaskHandle;
 
+AcSemaphore *imu_sem = nullptr;
 Aircraft *aircraft = nullptr;
 StateMachine *state_machine = nullptr;
 EventServer *event_server = nullptr;
@@ -152,14 +158,17 @@ void StaticTask::TestTask(void)
 
 void DynamicTask::StartTask(void)
 {
-    // system_var.RECEIVE_MESSAGE_QUEUE = osMessageQueueNew(3, sizeof(Message), NULL);
+    imu_sem = new AcSemaphore();
     /*创建事件服务器*/
     // event_server = new EventServer();
     // event_server->SetInformThread(stateMachineTaskHandle, STATE_MACHINE_SIGNAL);
     /*创建消息接收服务器*/
-    // message_receive_server = new MessageReceiveServer();
-    // MessageReceiveParser *ibus_parser = new IbusParser();
-    // message_receive_server->SetParser(ibus_parser, 0);
+    AcQueue<Message> *receive_queue = new AcQueue<Message>(3);
+    message_receive_server = new MessageReceiveServer(receive_queue);
+    MessageReceiveParser *ibus_parser = new IbusParser();
+    message_receive_server->AddParser(ibus_parser);
+    MessageReceiveParser *command_parser = new CommandParser();
+    message_receive_server->AddParser(command_parser);
     /*创建消息发送服务器*/
     AcQueue<Message> *transmit_queue = new AcQueue<Message>(3);
     message_transmit_server = new MessageTransmitServer(transmit_queue);
@@ -198,7 +207,7 @@ void DynamicTask::StartTask(void)
     .priority = (osPriority_t) osPriorityNormal ,
     };
     const osThreadAttr_t imuTask_attributes = {
-    .name = "testTask",
+    .name = "imuTask",
     .stack_size = 256 * 4,
     .priority = (osPriority_t) osPriorityNormal ,
     };
@@ -218,11 +227,17 @@ void DynamicTask::StartTask(void)
     .stack_size = 256 * 4,
     .priority = (osPriority_t) osPriorityNormal ,
     };
+    const osThreadAttr_t receiveDataTask_attributes = {
+    .name = "receiveDataTask",
+    .stack_size = 256 * 4,
+    .priority = (osPriority_t) osPriorityNormal ,
+    };
     testTaskHandle = osThreadNew(ImuTaskInterface, NULL, &imuTask_attributes);
     ledTaskHandle = osThreadNew(AttitudeSolveTaskInterface, NULL, &attitudeSolveTask_attributes);
     testTaskHandle = osThreadNew(TestTaskInterface, NULL, &testTask_attributes);
     ledTaskHandle = osThreadNew(LightTaskInterface, NULL, &ledTask_attributes);
     transmitDataTaskHandle = osThreadNew(TransmitDataTaskInterface, NULL, &transmitDataTask_attributes);
+    receiveDataTaskHandle = osThreadNew(ReceiveDataTaskInterface, NULL, &receiveDataTask_attributes);
     // for (;;)
     // {
     //     osDelay(10);

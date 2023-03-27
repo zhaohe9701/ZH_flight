@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-12-22 23:58:07
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-03-26 21:35:58
+ * @LastEditTime: 2023-03-27 00:39:51
  * @FilePath: \ZH_FLIGHT\Sys\Aircraft\aircraft.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -205,7 +205,7 @@ AC_RET Aircraft::Test()
 {
     ActualState state;
     _actual_state_manager.Copy(&state);
-    _printer->Print("%d %d %d\r\n", (int)state.euler.x, (int)state.euler.y, (int)state.euler.z);
+    //_printer->Info("%d %d %d\r\n", (int)state.euler.x, (int)state.euler.y, (int)state.euler.z);
     return AC_OK;
 }
 

@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-10-21 23:47:30
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-03-26 21:17:21
+ * @LastEditTime: 2023-03-27 01:15:07
  * @FilePath: \ZH_FLIGHT\Sys\Message\message_server.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -13,14 +13,12 @@
 #include <stdint.h>
 #include <string.h>
 #include "config.h"
-#include "global_var.h"
 #include "main.h"
 #include "message_parser.h"
 #include "type.h"
 #include "message_server.h"
 
-extern GlobalVar system_var;
-
+uint8_t MessageReceiveServer::_interface_ind = 0;
 uint8_t MessageTransmitServer::_interface_ind = 0;
 
 MessageReceiveServer::MessageReceiveServer(AcQueue<Message> *queue)
@@ -41,32 +39,21 @@ void MessageReceiveServer::AddParser(MessageReceiveParser *interface)
 
 AC_RET MessageReceiveServer::RunReceiveService()
 {
-    Message *message = nullptr;
-    osMessageQueueGet(system_var.RECEIVE_MESSAGE_QUEUE, message, NULL, osWaitForever);
-    _buf = new Byte[message->length];
-    if (_buf == nullptr || length == 0)
-    {
-        return AC_ERROR;
-    }
-    memcpy(_buf, message->data, length);
-    return AC_OK;
-}
-
-void MessageReceiveServer::PraseMessage()
-{
+    Message message = {0};
     MessageHead head = 0;
-
-    head = _buf[0];
-    for (int i = 0; i < MESSAGE_TYPE_NUM; ++i)
+    
+    _queue->Pop(&message);
+    head = message.data[0];
+    for (int i = 0; i < _interface_ind; ++i)
     {
-        if (head == _head_list[i])
+        if (head == _parser[i]->GetHead())
         {
-            _parser[i]->ParseMessage(_buf, length);
+            _parser[i]->ParseMessage(message.data, message.length);
             _parser[i]->Publish();
-            delete [] _buf;
-            return;
+            return AC_OK;
         }
     }
+    return AC_ERROR;
 }
 
 AcQueue<Message> *MessageReceiveServer::GetQueueHandle()
@@ -114,10 +101,10 @@ void MessageTransmitServer::RunTransmitService()
     {
         if (true == _interface[i]->MatchMark(mark))
         {
-            AC_RET ret = _interface[i]->Transmit(message.data + 1, message.length);
-            if (AC_OK != ret)
+            uint8_t try_times = 0;
+            while(try_times < 5 && AC_OK != _interface[i]->Transmit(message.data + 1, message.length))
             {
-                _queue->Push(&message);
+                try_times++;
             }
             return;
         }

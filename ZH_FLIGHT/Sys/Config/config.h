@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2023-01-08 23:41:40
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-03-26 20:59:38
+ * @LastEditTime: 2023-03-26 23:11:47
  * @FilePath: \ZH_FLIGHT\Sys\Config\config.h
  * Copyright (C) 2023 zhaohe. All rights reserved.
  */
@@ -78,7 +78,7 @@
 #define MESSAGE_TYPE_NUM            5
 #define UART_NUM                    2
 #define MESSAGE_QUEUE_MAX_LENGTH    10
-#define MAX_MESSAGE_LENGTH          128
+#define MAX_MESSAGE_LENGTH          256
 /*遥控*/
 #define TOTAL_CHANNEL_NUM           5
 #define X_CHANNEL                   0

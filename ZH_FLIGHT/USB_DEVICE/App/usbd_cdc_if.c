@@ -66,7 +66,7 @@
   */
 
 /* USER CODE BEGIN PRIVATE_DEFINES */
-#define MAX_USB_RECEIVE 64
+
 /* USER CODE END PRIVATE_DEFINES */
 
 /**
@@ -99,8 +99,7 @@ uint8_t UserRxBufferHS[APP_RX_DATA_SIZE];
 uint8_t UserTxBufferHS[APP_TX_DATA_SIZE];
 
 /* USER CODE BEGIN PRIVATE_VARIABLES */
-static Message receive_message;
-static uint32_t ptr = 0;
+
 /* USER CODE END PRIVATE_VARIABLES */
 
 /**
@@ -134,7 +133,7 @@ static int8_t CDC_Receive_HS(uint8_t* pbuf, uint32_t *Len);
 static int8_t CDC_TransmitCplt_HS(uint8_t *pbuf, uint32_t *Len, uint8_t epnum);
 
 /* USER CODE BEGIN PRIVATE_FUNCTIONS_DECLARATION */
-static void UsbHandle(uint8_t *buf, uint32_t len);
+void Usb_Callback(uint8_t *buf, uint32_t len);
 /* USER CODE END PRIVATE_FUNCTIONS_DECLARATION */
 
 /**
@@ -269,7 +268,7 @@ static int8_t CDC_Control_HS(uint8_t cmd, uint8_t* pbuf, uint16_t length)
 static int8_t CDC_Receive_HS(uint8_t* Buf, uint32_t *Len)
 {
   /* USER CODE BEGIN 11 */
-  UsbHandle(Buf, *Len);
+  Usb_Callback(Buf, *Len);
   USBD_CDC_SetRxBuffer(&hUsbDeviceHS, &Buf[0]);
   USBD_CDC_ReceivePacket(&hUsbDeviceHS);
   return (USBD_OK);
@@ -332,29 +331,6 @@ void UsbPrintf(const char *format, ...)
   CDC_Transmit_HS(UserTxBufferHS, length);
 }
 
-
-static void UsbHandle(uint8_t *buf, uint32_t len)
-{
-    if (ptr + len > MAX_MESSAGE_LENGTH)
-    {
-        ptr = 0;
-        memset(receive_message.data, 0, MAX_MESSAGE_LENGTH);
-        return;
-    }
-    if (len < MAX_USB_RECEIVE)
-    {
-        memcpy(receive_message.data + ptr, buf, len);
-        receive_message.length = ptr + len;
-        osMessageQueuePut(system_var.RECEIVE_MESSAGE_QUEUE, &receive_message, 0U, 0);
-        ptr = 0;
-        memset(receive_message.data, 0, MAX_MESSAGE_LENGTH);
-    }
-    else
-    {
-        memcpy(receive_message.data + ptr, buf, len);
-        ptr += len;
-    }
-}
 /* USER CODE END PRIVATE_FUNCTIONS_IMPLEMENTATION */
 
 /**

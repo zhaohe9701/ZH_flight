@@ -4,6 +4,7 @@
 #include "message_parser.h"
 #include "remote_data.h"
 #include "data_manager.h"
+#include "type.h"
 
 #define CRSF_HEAD           0xC8
 #define CRSF_PAYLOAD        0x16
@@ -16,6 +17,7 @@ private:
     uint16_t _channel_data[CRSF_CHANNEL_NUM] = {0};
     DataManager<RemoteData> *_manager = nullptr;
 public:
+    MessageHead GetHead() override;
     AC_RET ParseMessage(Byte *message, uint32_t length) override;
     void SetDataManager(void *manager) override;
     void Publish() override;

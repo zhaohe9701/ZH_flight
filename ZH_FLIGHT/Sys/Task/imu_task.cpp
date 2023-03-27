@@ -1,12 +1,19 @@
+/*
+ * @Description: 
+ * @Version: 1.0
+ * @Author: zhaohe
+ * @Date: 2023-03-21 23:33:51
+ * @LastEditors: zhaohe
+ * @LastEditTime: 2023-03-26 22:58:33
+ * @FilePath: \ZH_FLIGHT\Sys\Task\imu_task.cpp
+ * Copyright (C) 2023 zhaohe. All rights reserved.
+ */
 #include "aircraft.h"
 #include "aircraft_task.h"
-#include "global_var.h"
 #include "main.h"
+#include "sys.h"
 
 extern "C" void ImuTaskInterface(void *argument);
-
-extern Aircraft *aircraft;
-extern GlobalVar system_var;
 
 void ImuTaskInterface(void *argument)
 {
@@ -17,7 +24,7 @@ void StaticTask::ImuTask(void)
 {
     for (;;)
     {
-        osSemaphoreAcquire(system_var.IMU1_SEMAPHORE, osWaitForever);
+        imu_sem->Get();
         aircraft->GetAccAndGyro();
     }
 }

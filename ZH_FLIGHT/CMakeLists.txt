@@ -15,7 +15,6 @@ include(target-def.cmake)
 
 set(CORE_SRC
 Core/Src/main.c
-Core/Src/sys_callback.c
 Core/Src/gpio.c
 Core/Src/flight_task.c
 Core/Src/stm32h7xx_it.c
@@ -26,7 +25,6 @@ Core/Src/stm32h7xx_hal_timebase_tim.c
 Core/Src/spi.c
 Core/Src/i2c.c
 Core/Src/dma.c
-# Core/Src/octospi.c
 Core/Src/tim.c
 Core/Src/usart.c
 )
@@ -85,34 +83,37 @@ USB_DEVICE/Target/usbd_conf.c
 )
 
 set(SYS_SRC
-# Sys/Test/test.cpp
 Sys/Aircraft/aircraft.cpp
 Sys/AircraftState/aircraft_state.cpp
+Sys/Actuator/Motor/motor.cpp
+Sys/AHRS/mahony.cpp
+Sys/AHRS/vqf.cpp
 Sys/Control/AttitudeControl/attitude_controller.cpp
 Sys/Control/AttitudeControl/attitude_controller_interface.cpp
 Sys/Control/AttitudeControl/pid_attitude_controller.cpp
 Sys/Control/pid_core.cpp
+Sys/Callback/callback.cpp
 Sys/Common/ac_list.cpp
+Sys/Command/command.cpp
+Sys/Command/command_server.cpp
+Sys/Driver/z_spi.cpp
+Sys/Driver/z_iic.cpp
+Sys/Driver/z_uart.cpp
+Sys/Driver/z_usb.cpp
+Sys/Driver/z_pwm.cpp
+Sys/Debug/print.cpp
 Sys/EventServer/event_server.cpp
+Sys/Message/message_server.cpp
+Sys/OS/ac_semaphore.cpp
+Sys/Protocol/dshot.cpp
+Sys/Protocol/ibus.cpp
+Sys/Protocol/crsf.cpp
+Sys/Remote/remote_channel.cpp
 Sys/Sensor/sensor.cpp
 Sys/Sensor/Imu/icm20602.cpp
 Sys/Sensor/Imu/icm20689.cpp
 Sys/Sensor/Baro/ms5611.cpp
 Sys/StateMachine/state_machine.cpp
-Sys/Driver/z_spi.cpp
-Sys/Driver/z_iic.cpp
-Sys/Driver/z_uart.cpp
-Sys/Driver/z_usb.cpp
-Sys/Protocol/dshot.cpp
-Sys/Protocol/ibus.cpp
-Sys/Protocol/crsf.cpp
-Sys/Driver/z_pwm.cpp
-Sys/Debug/print.cpp
-Sys/Remote/remote_channel.cpp
-Sys/Actuator/Motor/motor.cpp
-Sys/Message/message_server.cpp
-Sys/AHRS/mahony.cpp
-Sys/AHRS/vqf.cpp
 Sys/Task/aircraft_task.cpp
 Sys/Task/imu_task.cpp
 Sys/Task/attitude_solve_task.cpp
@@ -153,6 +154,7 @@ include_directories(
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/OS>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Action>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Config>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Command>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Math>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/ExternalLib>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Driver>

@@ -36,6 +36,11 @@ struct _ChannelFormat
 };
 #pragma pack()
 
+MessageHead CrsfParser::GetHead()
+{
+    return CRSF_HEAD;
+}
+
 AC_RET CrsfParser::ParseMessage(Byte *message, uint32_t length)
 {
     _ChannelFormat format;

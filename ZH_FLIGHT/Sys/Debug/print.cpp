@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2023-01-23 16:34:50
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-03-26 21:30:18
+ * @LastEditTime: 2023-03-26 23:17:21
  * @FilePath: \ZH_FLIGHT\Sys\Debug\print.cpp
  * Copyright (C) 2023 zhaohe. All rights reserved.
  */
@@ -38,6 +38,7 @@ void Printer::Print(const char *format, ...)
     va_start(args, format);
     message.length = vsnprintf((char *)message.data + 1, MAX_PRINT_LENGTH, (char *)format, args);
     va_end(args);
+    message.length++;
     message.data[0] = _mark;
     _queue->Push(&message);
 }
@@ -49,6 +50,7 @@ void Printer::Error(const char *format, ...)
     va_start(args, format);
     message.length = vsnprintf((char *)message.data + 1 + ERROR_LEN, MAX_PRINT_LENGTH, (char *)format, args);
     va_end(args);
+    message.length += ERROR_LEN + 1;
     message.data[0] = _mark;
     memcpy(message.data + 1, ERROR, ERROR_LEN);
     _queue->Push(&message);
@@ -61,6 +63,7 @@ void Printer::Info(const char *format, ...)
     va_start(args, format);
     message.length = vsnprintf((char *)message.data + 1 + INFO_LEN, MAX_PRINT_LENGTH, (char *)format, args);
     va_end(args);
+    message.length += INFO_LEN + 1;
     message.data[0] = _mark;
     memcpy(message.data + 1, INFO, INFO_LEN);
     _queue->Push(&message);
