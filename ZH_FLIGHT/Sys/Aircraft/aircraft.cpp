@@ -4,14 +4,13 @@
  * @Author: zhaohe
  * @Date: 2022-12-22 23:58:07
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-03-29 23:18:07
+ * @LastEditTime: 2023-04-09 00:42:18
  * @FilePath: \ZH_FLIGHT\Sys\Aircraft\aircraft.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 
 #include "actuator_data.h"
 #include "aircraft_state.h"
-#include "main.h"
 #include "sys.h"
 
 #include "print.h"
@@ -22,6 +21,8 @@
 
 #include "icm20602.h"
 #include "icm20689.h"
+#include "icm20948.h"
+#include "icm42688.h"
 #include "baro.h"
 #include "z_iic.h"
 #include "ms5611.h"
@@ -122,13 +123,13 @@ AC_RET Aircraft::SetAction(ActionGroup action)
 
 AC_RET Aircraft::GetAccAndGyro()
 {
-    // ImuData imu_data;
-    // _sensor->imu->GetAccData(imu_data);
-    // _sensor->imu->GetGyroData(imu_data);
-    uint8_t id = _sensor->imu->GetId();
-    UsbPrintf("0x%x\r\n", id);
+    ImuData imu_data;
+    _sensor->imu->GetAccData(imu_data);
+    _sensor->imu->GetGyroData(imu_data);
+    // uint8_t id = _sensor->imu->GetId();
+    // UsbPrintf("0x%x\r\n", id);
     // UsbPrintf("%d %d %d\r\n", (int)imu_data.acc.x, (int)imu_data.acc.y, (int)imu_data.acc.z);
-    // _imu_data_manager.Update(&imu_data);
+    _imu_data_manager.Update(&imu_data);
     return AC_OK;
 }
 
@@ -207,7 +208,7 @@ AC_RET Aircraft::Test()
 {
     ActualState state;
     _actual_state_manager.Copy(&state);
-    // _printer->Info("%d %d %d\r\n", (int)state.euler.x, (int)state.euler.y, (int)state.euler.z);
+    _printer->Info("%d %d %d\r\n", (int)state.euler.x, (int)state.euler.y, (int)state.euler.z);
     return AC_OK;
 }
 

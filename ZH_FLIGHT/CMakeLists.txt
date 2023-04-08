@@ -112,6 +112,8 @@ Sys/Remote/remote_channel.cpp
 Sys/Sensor/sensor.cpp
 Sys/Sensor/Imu/icm20602.cpp
 Sys/Sensor/Imu/icm20689.cpp
+Sys/Sensor/Imu/icm20948.cpp
+Sys/Sensor/Imu/icm42688.cpp
 Sys/Sensor/Baro/ms5611.cpp
 Sys/StateMachine/state_machine.cpp
 Sys/Task/aircraft_task.cpp

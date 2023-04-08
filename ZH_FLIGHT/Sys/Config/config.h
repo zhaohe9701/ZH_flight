@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2023-01-08 23:41:40
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-03-29 23:19:22
+ * @LastEditTime: 2023-04-09 00:43:52
  * @FilePath: \ZH_FLIGHT\Sys\Config\config.h
  * Copyright (C) 2023 zhaohe. All rights reserved.
  */
@@ -33,7 +33,7 @@
 /*状态机*/
 #define STATE_MACHINE_SIGNAL    0x01
 /*传感器*/
-#define IMU1                Icm20689
+#define IMU1                Icm42688
 #define IMU1_INTERFACE_OBJ  hspi3
 #define IMU1_INTERFACE      Spi
 #define IMU1_CS_PORT        SPI3_CS2_GPIO_Port
