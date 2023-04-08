@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2023-01-08 23:41:40
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-03-26 23:11:47
+ * @LastEditTime: 2023-03-29 23:19:22
  * @FilePath: \ZH_FLIGHT\Sys\Config\config.h
  * Copyright (C) 2023 zhaohe. All rights reserved.
  */
@@ -34,12 +34,12 @@
 #define STATE_MACHINE_SIGNAL    0x01
 /*传感器*/
 #define IMU1                Icm20689
-#define IMU1_INTERFACE_OBJ  hspi1
+#define IMU1_INTERFACE_OBJ  hspi3
 #define IMU1_INTERFACE      Spi
-#define IMU1_CS_PORT        SPI1_CS_GPIO_Port
-#define IMU1_CS_PIN         SPI1_CS_Pin
-#define IMU1_EXIT_PIN       SPI1_EXIT_Pin
-#define IMU1_SEMAPHORE      semaphore[0]
+#define IMU1_CS_PORT        SPI3_CS2_GPIO_Port
+#define IMU1_CS_PIN         SPI3_CS2_Pin
+#define IMU1_EXIT_PIN       SPI3_EXIT2_Pin
+
 // #define MAGNETOMETER
 
 #define BARO                Ms5611

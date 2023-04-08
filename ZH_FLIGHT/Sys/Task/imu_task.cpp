@@ -10,6 +10,7 @@
  */
 #include "aircraft.h"
 #include "aircraft_task.h"
+#include "cmsis_os2.h"
 #include "main.h"
 #include "sys.h"
 
@@ -24,8 +25,9 @@ void StaticTask::ImuTask(void)
 {
     for (;;)
     {
-        imu_sem->Get();
+        // imu_sem->Get();
         aircraft->GetAccAndGyro();
+        osDelay(10);
     }
 }
     

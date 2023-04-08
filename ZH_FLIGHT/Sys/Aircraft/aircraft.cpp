@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-12-22 23:58:07
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-03-27 00:39:51
+ * @LastEditTime: 2023-03-29 23:18:07
  * @FilePath: \ZH_FLIGHT\Sys\Aircraft\aircraft.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -122,11 +122,13 @@ AC_RET Aircraft::SetAction(ActionGroup action)
 
 AC_RET Aircraft::GetAccAndGyro()
 {
-    ImuData imu_data;
-    _sensor->imu->GetAccData(imu_data);
-    _sensor->imu->GetGyroData(imu_data);
+    // ImuData imu_data;
+    // _sensor->imu->GetAccData(imu_data);
+    // _sensor->imu->GetGyroData(imu_data);
+    uint8_t id = _sensor->imu->GetId();
+    UsbPrintf("0x%x\r\n", id);
     // UsbPrintf("%d %d %d\r\n", (int)imu_data.acc.x, (int)imu_data.acc.y, (int)imu_data.acc.z);
-    _imu_data_manager.Update(&imu_data);
+    // _imu_data_manager.Update(&imu_data);
     return AC_OK;
 }
 
@@ -205,7 +207,7 @@ AC_RET Aircraft::Test()
 {
     ActualState state;
     _actual_state_manager.Copy(&state);
-    //_printer->Info("%d %d %d\r\n", (int)state.euler.x, (int)state.euler.y, (int)state.euler.z);
+    // _printer->Info("%d %d %d\r\n", (int)state.euler.x, (int)state.euler.y, (int)state.euler.z);
     return AC_OK;
 }
 
