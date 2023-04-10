@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2023-01-14 23:14:39
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-04-09 00:32:21
+ * @LastEditTime: 2023-04-09 23:13:18
  * @FilePath: \ZH_FLIGHT\Sys\Sensor\Imu\icm42688.cpp
  * Copyright (C) 2023 zhaohe. All rights reserved.
  */
@@ -143,11 +143,17 @@
 
 void Icm42688::_ImuWriteRag(uint8_t bank, uint8_t address, uint8_t value)
 {
-    if (bank != _last_bank)
+    if (bank != BANK0)
     {
         _interface->WriteReg(REG_BANK_SEL & WRITE, bank);
+        _interface->WriteReg(address & WRITE, value);
+        _interface->WriteReg(REG_BANK_SEL & WRITE, BANK0);
+
     }
-    _interface->WriteReg(address & WRITE, value);
+    else 
+    {
+        _interface->WriteReg(address & WRITE, value);
+    }
 }   
 
 void Icm42688::_ImuReadRag(uint8_t bank, uint8_t address, uint8_t length, uint8_t *buf)
@@ -155,8 +161,13 @@ void Icm42688::_ImuReadRag(uint8_t bank, uint8_t address, uint8_t length, uint8_
     if (bank != _last_bank)
     {
         _interface->WriteReg(REG_BANK_SEL & WRITE, bank);
+        _interface->ReadBytes(address | READ, length, buf);
+        _interface->WriteReg(REG_BANK_SEL & WRITE, BANK0);
     }
-    _interface->ReadBytes(address | READ, length, buf);
+    else 
+    {
+        _interface->ReadBytes(address | READ, length, buf);
+    }
 }
 
 Icm42688::Icm42688(SensorInterface *interface)
@@ -216,7 +227,7 @@ float Icm42688::GetTemperature()
     return temp;
 }
 
-void Icm42688::GetGyroData(ImuData &sensor_data)
+void Icm42688::GetGyroData(ImuData &data)
 {
     uint8_t buf[6];
     uint16_t gx_raw, gy_raw, gz_raw;
@@ -226,12 +237,12 @@ void Icm42688::GetGyroData(ImuData &sensor_data)
     gx_raw = ((uint16_t)buf[0] << 8) | buf[1];
     gy_raw = ((uint16_t)buf[2] << 8) | buf[3];
     gz_raw = ((uint16_t)buf[4] << 8) | buf[5];
-    sensor_data.gyr.x = (float)((int16_t)(gx_raw)-_bias_gyro_x) * _gyro_sensitivity;
-    sensor_data.gyr.y = (float)((int16_t)(gy_raw)-_bias_gyro_y) * _gyro_sensitivity;
-    sensor_data.gyr.z = (float)((int16_t)(gz_raw)-_bias_gyro_z) * _gyro_sensitivity;
+    data.gyr.x = (float)((int16_t)(gx_raw)-_bias_gyro_x) * _gyro_sensitivity;
+    data.gyr.y = (float)((int16_t)(gy_raw)-_bias_gyro_y) * _gyro_sensitivity;
+    data.gyr.z = (float)((int16_t)(gz_raw)-_bias_gyro_z) * _gyro_sensitivity;
 }
 
-void Icm42688::GetAccData(ImuData &sensor_data)
+void Icm42688::GetAccData(ImuData &data)
 {
     uint8_t buf[6];
     uint16_t ax_raw, ay_raw, az_raw;
@@ -241,7 +252,7 @@ void Icm42688::GetAccData(ImuData &sensor_data)
     ax_raw = ((uint16_t)buf[0] << 8) | buf[1];
     ay_raw = ((uint16_t)buf[2] << 8) | buf[3];
     az_raw = ((uint16_t)buf[4] << 8) | buf[5];
-    sensor_data.acc.x = (float)((int16_t)(ax_raw) - _bias_acc_x) * _acc_sensitivity;
-	sensor_data.acc.y = (float)((int16_t)(ay_raw) - _bias_acc_y) * _acc_sensitivity;
-	sensor_data.acc.z = (float)((int16_t)(az_raw) - _bias_acc_z) * _acc_sensitivity;
+    data.acc.x = (float)((int16_t)(ax_raw) - _bias_acc_x) * _acc_sensitivity;
+	data.acc.y = (float)((int16_t)(ay_raw) - _bias_acc_y) * _acc_sensitivity;
+	data.acc.z = (float)((int16_t)(az_raw) - _bias_acc_z) * _acc_sensitivity;
 }

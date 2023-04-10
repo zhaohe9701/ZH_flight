@@ -1,5 +1,10 @@
 set(CMAKE_SYSTEM_NAME Generic)
-set(CMAKE_EXPORT_COMPILE_COMMANDS True)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+if(CMAKE_EXPORT_COMPILE_COMMANDS)
+    set(CMAKE_CXX_STANDARD_INCLUDE_DIRECTORIES ${CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES})
+    set(CMAKE_C_STANDARD_INCLUDE_DIRECTORIES ${CMAKE_C_IMPLICIT_INCLUDE_DIRECTORIES})
+endif()
+
 set(CMAKE_SYSTEM_PROCESSOR cortex-m7)
 
 cmake_minimum_required(VERSION 3.1.0)
@@ -115,9 +120,11 @@ Sys/Sensor/Imu/icm20689.cpp
 Sys/Sensor/Imu/icm20948.cpp
 Sys/Sensor/Imu/icm42688.cpp
 Sys/Sensor/Baro/ms5611.cpp
+Sys/Sensor/Mag/ak09916.cpp
 Sys/StateMachine/state_machine.cpp
 Sys/Task/aircraft_task.cpp
 Sys/Task/imu_task.cpp
+Sys/Task/baro_task.cpp
 Sys/Task/attitude_solve_task.cpp
 Sys/Task/transmit_data_task.cpp
 Sys/Type/type.cpp
@@ -151,6 +158,7 @@ include_directories(
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Sensor>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Sensor/Imu>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Sensor/Baro>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Sensor/Mag>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Debug>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Data>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/OS>

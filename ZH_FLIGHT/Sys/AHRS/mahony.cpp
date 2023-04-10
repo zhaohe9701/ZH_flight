@@ -4,38 +4,38 @@
  * @Author: zhaohe
  * @Date: 2022-09-24 17:52:11
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-12-25 01:59:46
+ * @LastEditTime: 2023-04-09 23:24:10
  * @FilePath: \ZH_FLIGHT\Sys\AHRS\mahony.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 #include "mahony.h"
 #include "math_param.h"
 
-void Mahony::Update(ActualState &actual_state, ImuData &imu_data)
+void Mahony::Update(ActualState &actual_state, SensorData &sensor_data)
 {
     float normalise;
     float ex = 0.0f;
     float ey = 0.0f;
     float ez = 0.0f;
-    float gx = imu_data.gyr.x * DEG2RAD;
-    float gy = imu_data.gyr.y * DEG2RAD;
-    float gz = imu_data.gyr.z * DEG2RAD;
-    float ax = imu_data.acc.x;
-    float ay = imu_data.acc.y;
-    float az = imu_data.acc.z;
+    float gx = sensor_data.gyr.x * DEG2RAD;
+    float gy = sensor_data.gyr.y * DEG2RAD;
+    float gz = sensor_data.gyr.z * DEG2RAD;
+    float ax = sensor_data.acc.x;
+    float ay = sensor_data.acc.y;
+    float az = sensor_data.acc.z;
     float halfT = 0.5f * _dt;
     float q0_last = 0.0f;
     float q1_last = 0.0f;
     float q2_last = 0.0f;
     float q3_last = 0.0f;
 
-    actual_state.palstance.Set(imu_data.gyr.y, imu_data.gyr.x, imu_data.gyr.z);
-    actual_state.acceleration.Set(imu_data.acc.x, imu_data.acc.y, imu_data.acc.z);
+    actual_state.palstance.Set(sensor_data.gyr.y, sensor_data.gyr.x, sensor_data.gyr.z);
+    actual_state.acceleration.Set(sensor_data.acc.x, sensor_data.acc.y, sensor_data.acc.z);
 
 #ifdef MAGNETOMETER
-    float mx = imu_data.mag.x;
-    float my = imu_data.mag.y;
-    float mz = imu_data.mag.z;
+    float mx = sensor_data.mag.x;
+    float my = sensor_data.mag.y;
+    float mz = sensor_data.mag.z;
 
     float hx = 0.0f;
     float hy = 0.0f;

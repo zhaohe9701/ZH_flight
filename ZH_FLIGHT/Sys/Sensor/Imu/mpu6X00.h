@@ -4,8 +4,8 @@
  * @Author: zhaohe
  * @Date: 2022-07-08 01:10:13
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-11-07 00:17:53
- * @FilePath: \H7B0\Sys\Sensor\mpu6X00.h
+ * @LastEditTime: 2023-04-10 23:04:37
+ * @FilePath: \ZH_FLIGHT\Sys\Sensor\Imu\mpu6X00.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 #ifndef __MPU6000_H__
@@ -103,9 +103,8 @@ public:
     void Init() override;
     uint8_t GetId() override;
     float GetTemperature() override;
-    void GetGyroData(ImuData &sensor_data) override;
-    void GetAccData(ImuData &sensor_data) override;
-
+    void GetGyroData(ImuData &data) override;
+    void GetAccData(ImuData &data) override;
 private:
     SensorInterface *_interface = nullptr;
 

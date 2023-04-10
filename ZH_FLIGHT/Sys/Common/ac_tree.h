@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2023-03-08 23:04:24
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-03-12 19:50:25
+ * @LastEditTime: 2023-04-10 23:54:16
  * @FilePath: \ZH_FLIGHT\Sys\Common\ac_tree.h
  * Copyright (C) 2023 zhaohe. All rights reserved.
  */
@@ -22,6 +22,7 @@ private:
 public:
     AcTreeNode *GetFirstChild();
     AcTreeNode *GetNeighbor();
+    void AddData(void *data, AC_DATA_TYPE type, char *name, uint16_t len);
     char name[PARAM_NAME_LEN] = {0};
     AC_DATA_TYPE type;
     uint16_t len;

@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-08-07 22:08:18
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-11-22 22:55:52
+ * @LastEditTime: 2023-04-09 23:30:07
  * @FilePath: \ZH_FLIGHT\Sys\Type\type.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -25,6 +25,13 @@ void Vec3::Clear()
     z = 0;
 }
 
+Vec3& Vec3::operator=(Vec3 &src)
+{
+    x = src.x;
+    y = src.y;
+    z = src.z;
+    return *this;
+}
 
 void Vec4::Set(float xi, float yi, float zi, float wi)
 {
@@ -33,7 +40,6 @@ void Vec4::Set(float xi, float yi, float zi, float wi)
     z = zi;
     w = wi;
 }
-
 
 void Vec4::Clear()
 {

@@ -24,7 +24,7 @@
                 "STM32H7B0xx"
             ],
             "windowsSdkVersion": "10.0.14393.0",
-            "compilerPath": "D:/App/mingw/mingw64/bin/gcc.exe",
+            "compilerPath": "E:/gcc/mingw64/bin/gcc.exe",
             "cStandard": "c11",
             "cppStandard": "c++17",
             "intelliSenseMode": "windows-gcc-x64",

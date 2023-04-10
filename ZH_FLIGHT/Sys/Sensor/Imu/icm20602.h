@@ -4,8 +4,8 @@
  * @Author: zhaohe
  * @Date: 2022-11-09 22:39:24
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-11-10 00:31:06
- * @FilePath: \H7B0\Sys\Sensor\icm20602.h
+ * @LastEditTime: 2023-04-10 22:45:45
+ * @FilePath: \ZH_FLIGHT\Sys\Sensor\Imu\icm20602.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 #ifndef __ICM20602_H__
@@ -20,9 +20,8 @@ public:
     void Init() override;
     uint8_t GetId() override;
     float GetTemperature() override;
-    void GetGyroData(ImuData &sensor_data) override;
-    void GetAccData(ImuData &sensor_data) override;
-
+    void GetGyroData(ImuData &data) override;
+    void GetAccData(ImuData &data) override;
 private:
     void _ImuWriteRag(uint8_t address, uint8_t value);
     void _ImuReadRag(uint8_t address, uint8_t length, uint8_t *buf);

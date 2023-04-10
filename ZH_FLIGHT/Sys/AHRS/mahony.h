@@ -17,7 +17,7 @@
 class Mahony : virtual public AttitudeSolver
 {
 public:
-    void Update(ActualState &actual_state, ImuData &imu_data) override;
+    void Update(ActualState &actual_state, SensorData &sensor_data) override;
     void TransformBodyToEarth(float &x, float &y, float &z) override;
     void TransformEarthToBody(float &x, float &y, float &z) override;
 private:

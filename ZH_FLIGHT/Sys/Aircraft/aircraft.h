@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-12-22 23:42:17
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-03-23 23:42:03
+ * @LastEditTime: 2023-04-09 23:16:01
  * @FilePath: \ZH_FLIGHT\Sys\Aircraft\aircraft.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -34,6 +34,7 @@ private:
     /*打印机*/
     Printer *_printer = nullptr;
     DataManager<ImuData> _imu_data_manager;
+    DataManager<BaroData> _baro_data_manager;
     DataManager<RemoteData> _remote_data_manager;
     DataManager<ActualState> _actual_state_manager;
     DataManager<ExpectState> _expect_state_manager;
@@ -52,6 +53,8 @@ public:
     AC_RET Init();
     AC_RET SetAction(ActionGroup action);
     AC_RET GetAccAndGyro();
+    AC_RET GetAltitude();
+    AC_RET GetMagnetic();
     AC_RET UpdateAttitude();
     AC_RET ControlAttitude();
     AC_RET ControlAltitude();

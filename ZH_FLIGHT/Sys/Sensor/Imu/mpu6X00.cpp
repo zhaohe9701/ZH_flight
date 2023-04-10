@@ -4,8 +4,8 @@
  * @Author: zhaohe
  * @Date: 2022-07-07 23:41:27
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-11-08 22:34:04
- * @FilePath: \H7B0\Sys\Sensor\mpu6X00.cpp
+ * @LastEditTime: 2023-04-09 23:13:09
+ * @FilePath: \ZH_FLIGHT\Sys\Sensor\Imu\mpu6X00.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 #include "imu.h"
@@ -81,7 +81,7 @@ float Mpu6X00::GetTemperature()
  * @param {float} *gz
  * @return {*}
  */
-void Mpu6X00::GetGyroData(ImuData &sensor_data)
+void Mpu6X00::GetGyroData(ImuData &data)
 {
     uint8_t buf[6];
     _interface->ReadBytes(MPU_GYRO_XOUTH_REG, 6, buf);
@@ -90,10 +90,10 @@ void Mpu6X00::GetGyroData(ImuData &sensor_data)
     gy_raw = ((uint16_t)buf[2] << 8) | buf[3];
     gz_raw = ((uint16_t)buf[4] << 8) | buf[5];
     //UsbPrintf("gyro %d %d %d\n", gx_raw, gy_raw, gz_raw);
-    sensor_data.gyr.x = (float)((int16_t)(gx_raw)-_bias_gyro_x) * _gyro_sensitivity;
-    sensor_data.gyr.y = (float)((int16_t)(gy_raw)-_bias_gyro_y) * _gyro_sensitivity;
-    sensor_data.gyr.z = (float)((int16_t)(gz_raw)-_bias_gyro_z) * _gyro_sensitivity;
-    //UsbPrintf("gyro %d %d %d\n", (uint16_t)sensor_data.gyr.x, (uint16_t)sensor_data.gyr.y, (uint16_t)sensor_data.gyr.z);
+    data.gyr.x = (float)((int16_t)(gx_raw)-_bias_gyro_x) * _gyro_sensitivity;
+    data.gyr.y = (float)((int16_t)(gy_raw)-_bias_gyro_y) * _gyro_sensitivity;
+    data.gyr.z = (float)((int16_t)(gz_raw)-_bias_gyro_z) * _gyro_sensitivity;
+    //UsbPrintf("gyro %d %d %d\n", (uint16_t)data.gyr.x, (uint16_t)data.gyr.y, (uint16_t)data.gyr.z);
 }
 
 /**
@@ -103,7 +103,7 @@ void Mpu6X00::GetGyroData(ImuData &sensor_data)
  * @param {float} *az
  * @return {*}
  */
-void Mpu6X00::GetAccData(ImuData &sensor_data)
+void Mpu6X00::GetAccData(ImuData &data)
 {
     uint8_t buf[6];
     _interface->ReadBytes(MPU_ACCEL_XOUTH_REG, 6, buf);
@@ -112,9 +112,9 @@ void Mpu6X00::GetAccData(ImuData &sensor_data)
     ax_raw = ((uint16_t)buf[0] << 8) | buf[1];
     ay_raw = ((uint16_t)buf[2] << 8) | buf[3];
     az_raw = ((uint16_t)buf[4] << 8) | buf[5];
-    sensor_data.acc.x = (float)((int16_t)(ax_raw) - _bias_acc_x) * _acc_sensitivity;
-	sensor_data.acc.y = (float)((int16_t)(ay_raw) - _bias_acc_y) * _acc_sensitivity;
-	sensor_data.acc.z = (float)((int16_t)(az_raw) - _bias_acc_z) * _acc_sensitivity;
+    data.acc.x = (float)((int16_t)(ax_raw) - _bias_acc_x) * _acc_sensitivity;
+	data.acc.y = (float)((int16_t)(ay_raw) - _bias_acc_y) * _acc_sensitivity;
+	data.acc.z = (float)((int16_t)(az_raw) - _bias_acc_z) * _acc_sensitivity;
 }
 
 

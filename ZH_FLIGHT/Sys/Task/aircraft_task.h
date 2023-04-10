@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-12-19 23:31:11
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-03-23 23:17:30
+ * @LastEditTime: 2023-04-09 22:53:43
  * @FilePath: \ZH_FLIGHT\Sys\Task\aircraft_task.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -15,6 +15,7 @@ class StaticTask
 {
 public:
     static void ImuTask(void);
+    static void BaroTask(void);
     static void AttitudeSolveTask(void);
     static void ControlTask(void);
     static void StateMachineTask(void);
@@ -40,5 +41,5 @@ public:
 #define POSITION_CONTROL_DELAY_TIME (1000 / POSITION_CONTROL_CYCLE_FREQ)
 #define LIGHT_CONTROL_DELAY_TIME (1000 / LIGHT_CONTROL_CYCLE_FREQ)
 #define DATA_LINK_DELAY_TIME (1000 / DATA_LINK_CYCLE_FREQ)
-
+#define BARO_UPDATE_DELAY_TIME (1000 / BARO_UPDATE_CYCLE_FREQ)
 #endif

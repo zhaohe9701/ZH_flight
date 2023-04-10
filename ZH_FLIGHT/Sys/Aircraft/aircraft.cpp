@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-12-22 23:58:07
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-04-09 00:42:18
+ * @LastEditTime: 2023-04-09 23:35:38
  * @FilePath: \ZH_FLIGHT\Sys\Aircraft\aircraft.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -18,6 +18,7 @@
 #include "type.h"
 #include "z_spi.h"
 #include "imu.h"
+#include "mag.h"
 
 #include "icm20602.h"
 #include "icm20689.h"
@@ -80,12 +81,13 @@ AC_RET Aircraft::Init()
     _sensor->AddImu(imu2);
 #endif /*#ifdef IMU2*/
 
-    // /*加载气压计*/
-    // SensorInterface* baro_interface = new Iic(&hi2c1, 0xEE);
-    // Baro *baro = new Ms5611(baro_interface);
-    // _sensor->AddBaro(baro);
-    // /*传感器初始化*/
-    // _sensor->Init();
+    /*加载气压计*/
+    SensorInterface* baro_interface = new Iic(&hi2c1, 0xEE);
+    Baro *baro = new Ms5611(baro_interface);
+    _sensor->AddBaro(baro);
+    /*传感器初始化*/
+    _sensor->Init();
+
     _printer->SetInterfaceMark(0x01);
     // /*电机控制接口*/
     // Pwm *motor_interface = nullptr;
@@ -133,15 +135,29 @@ AC_RET Aircraft::GetAccAndGyro()
     return AC_OK;
 }
 
+AC_RET Aircraft::GetAltitude()
+{
+    BaroData baro_data;
+    _sensor->baro->GetAltitude(baro_data);
+    _baro_data_manager.Update(&baro_data);
+    return AC_OK;
+}
+
 AC_RET Aircraft::UpdateAttitude()
 {
     ActualState actual_state;
+    SensorData sensor_data;
     ImuData imu_data;
+    MagData mag_data;
 
     _imu_data_manager.Copy(&imu_data);
     _actual_state_manager.Copy(&actual_state);
 
-    _attitude_solver->Update(actual_state, imu_data);
+    sensor_data.acc = imu_data.acc;
+    sensor_data.gyr = imu_data.gyr;
+    sensor_data.mag = mag_data.mag;
+
+    _attitude_solver->Update(actual_state, sensor_data);
 
     _actual_state_manager.Update(&actual_state);
     return AC_OK;
@@ -207,8 +223,11 @@ AC_RET Aircraft::ControlMotor()
 AC_RET Aircraft::Test()
 {
     ActualState state;
+    BaroData baro_data;
+
+    _baro_data_manager.Copy(&baro_data);
     _actual_state_manager.Copy(&state);
-    _printer->Info("%d %d %d\r\n", (int)state.euler.x, (int)state.euler.y, (int)state.euler.z);
+    _printer->Info("%d %d %d %d\r\n", (int)state.euler.x, (int)state.euler.y, (int)state.euler.z, (int)baro_data.altitude);
     return AC_OK;
 }
 

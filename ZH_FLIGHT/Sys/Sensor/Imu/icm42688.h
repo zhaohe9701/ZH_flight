@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2023-01-14 23:10:20
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-04-08 18:26:09
+ * @LastEditTime: 2023-04-10 22:44:57
  * @FilePath: \ZH_FLIGHT\Sys\Sensor\Imu\icm42688.h
  * Copyright (C) 2023 zhaohe. All rights reserved.
  */
@@ -20,9 +20,8 @@ public:
     void Init() override;
     uint8_t GetId() override;
     float GetTemperature() override;
-    void GetGyroData(ImuData &sensor_data) override;
-    void GetAccData(ImuData &sensor_data) override;
-
+    void GetGyroData(ImuData &data) override;
+    void GetAccData(ImuData &data) override;
 private:
     void _ImuWriteRag(uint8_t bank, uint8_t address, uint8_t value);
     void _ImuReadRag(uint8_t bank, uint8_t address, uint8_t length, uint8_t *buf);

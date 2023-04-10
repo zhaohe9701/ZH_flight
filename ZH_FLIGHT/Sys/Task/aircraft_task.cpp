@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2023-01-08 23:40:52
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-03-27 00:38:28
+ * @LastEditTime: 2023-04-10 00:01:36
  * @FilePath: \ZH_FLIGHT\Sys\Task\aircraft_task.cpp
  * Copyright (C) 2023 zhaohe. All rights reserved.
  */
@@ -42,6 +42,7 @@
 
 /****************对外暴露任务接口****************/
 extern "C" void ImuTaskInterface(void *argument);
+extern "C" void BaroTaskInterface(void *argument);
 extern "C" void StartTaskInterface(void *argument);
 extern "C" void AttitudeSolveTaskInterface(void *argument);
 extern "C" void ControlTaskInterface(void *argument);
@@ -211,6 +212,16 @@ void DynamicTask::StartTask(void)
     .stack_size = 256 * 4,
     .priority = (osPriority_t) osPriorityNormal ,
     };
+    const osThreadAttr_t baroTask_attributes = {
+    .name = "baroTask",
+    .stack_size = 256 * 4,
+    .priority = (osPriority_t) osPriorityNormal ,
+    };
+    const osThreadAttr_t magTask_attributes = {
+    .name = "magTask",
+    .stack_size = 128 * 4,
+    .priority = (osPriority_t) osPriorityBelowNormal ,
+    };
     const osThreadAttr_t attitudeSolveTask_attributes = {
     .name = "attitudeSolveTask",
     .stack_size = 256 * 4,
@@ -233,6 +244,8 @@ void DynamicTask::StartTask(void)
     .priority = (osPriority_t) osPriorityNormal ,
     };
     testTaskHandle = osThreadNew(ImuTaskInterface, NULL, &imuTask_attributes);
+    testTaskHandle = osThreadNew(BaroTaskInterface, NULL, &baroTask_attributes);
+    // testTaskHandle = osThreadNew(ImuTaskInterface, NULL, &magTask_attributes);
     ledTaskHandle = osThreadNew(AttitudeSolveTaskInterface, NULL, &attitudeSolveTask_attributes);
     testTaskHandle = osThreadNew(TestTaskInterface, NULL, &testTask_attributes);
     ledTaskHandle = osThreadNew(LightTaskInterface, NULL, &ledTask_attributes);

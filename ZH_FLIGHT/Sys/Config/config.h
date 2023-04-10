@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2023-01-08 23:41:40
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-04-09 00:43:52
+ * @LastEditTime: 2023-04-09 23:53:42
  * @FilePath: \ZH_FLIGHT\Sys\Config\config.h
  * Copyright (C) 2023 zhaohe. All rights reserved.
  */
@@ -36,9 +36,9 @@
 #define IMU1                Icm42688
 #define IMU1_INTERFACE_OBJ  hspi3
 #define IMU1_INTERFACE      Spi
-#define IMU1_CS_PORT        SPI3_CS2_GPIO_Port
-#define IMU1_CS_PIN         SPI3_CS2_Pin
-#define IMU1_EXIT_PIN       SPI3_EXIT2_Pin
+#define IMU1_CS_PORT        SPI3_CS1_GPIO_Port
+#define IMU1_CS_PIN         SPI3_CS1_Pin
+#define IMU1_EXIT_PIN       SPI3_EXIT1_Pin
 
 // #define MAGNETOMETER
 
@@ -108,7 +108,7 @@
 #define POSITION_CONTROL_CYCLE_FREQ 50
 #define LIGHT_CONTROL_CYCLE_FREQ    1
 #define DATA_LINK_CYCLE_FREQ        50
- 
+#define BARO_UPDATE_CYCLE_FREQ      20
 /*------------------------------------------------------*/
 
 

@@ -4,8 +4,8 @@
  * @Author: zhaohe
  * @Date: 2022-11-09 22:39:09
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-11-12 02:51:45
- * @FilePath: \H7B0\Sys\Sensor\icm20602.cpp
+ * @LastEditTime: 2023-04-09 23:13:28
+ * @FilePath: \ZH_FLIGHT\Sys\Sensor\Imu\icm20602.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 #include "icm20602.h"
@@ -172,7 +172,7 @@ float Icm20602::GetTemperature()
     return temp;
 }
 
-void Icm20602::GetGyroData(ImuData &sensor_data)
+void Icm20602::GetGyroData(ImuData &data)
 {
     uint8_t buf[6];
     uint16_t gx_raw, gy_raw, gz_raw;
@@ -183,12 +183,12 @@ void Icm20602::GetGyroData(ImuData &sensor_data)
     gy_raw = ((uint16_t)buf[2] << 8) | buf[3];
     gz_raw = ((uint16_t)buf[4] << 8) | buf[5];
 
-    sensor_data.gyr.x = (float)((int16_t)(gx_raw)-_bias_gyro_x) * _gyro_sensitivity;
-    sensor_data.gyr.y = (float)((int16_t)(gy_raw)-_bias_gyro_y) * _gyro_sensitivity;
-    sensor_data.gyr.z = (float)((int16_t)(gz_raw)-_bias_gyro_z) * _gyro_sensitivity;
+    data.gyr.x = (float)((int16_t)(gx_raw)-_bias_gyro_x) * _gyro_sensitivity;
+    data.gyr.y = (float)((int16_t)(gy_raw)-_bias_gyro_y) * _gyro_sensitivity;
+    data.gyr.z = (float)((int16_t)(gz_raw)-_bias_gyro_z) * _gyro_sensitivity;
 }
 
-void Icm20602::GetAccData(ImuData &sensor_data)
+void Icm20602::GetAccData(ImuData &data)
 {
     uint8_t buf[6];
     uint16_t ax_raw, ay_raw, az_raw;
@@ -198,7 +198,7 @@ void Icm20602::GetAccData(ImuData &sensor_data)
     ax_raw = ((uint16_t)buf[0] << 8) | buf[1];
     ay_raw = ((uint16_t)buf[2] << 8) | buf[3];
     az_raw = ((uint16_t)buf[4] << 8) | buf[5];
-    sensor_data.acc.x = (float)((int16_t)(ax_raw) - _bias_acc_x) * _acc_sensitivity;
-	sensor_data.acc.y = (float)((int16_t)(ay_raw) - _bias_acc_y) * _acc_sensitivity;
-	sensor_data.acc.z = (float)((int16_t)(az_raw) - _bias_acc_z) * _acc_sensitivity;
+    data.acc.x = (float)((int16_t)(ax_raw) - _bias_acc_x) * _acc_sensitivity;
+	data.acc.y = (float)((int16_t)(ay_raw) - _bias_acc_y) * _acc_sensitivity;
+	data.acc.z = (float)((int16_t)(az_raw) - _bias_acc_z) * _acc_sensitivity;
 }

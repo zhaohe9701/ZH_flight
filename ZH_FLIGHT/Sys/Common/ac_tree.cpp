@@ -4,11 +4,12 @@
  * @Author: zhaohe
  * @Date: 2023-03-09 00:10:07
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-03-23 23:30:11
+ * @LastEditTime: 2023-04-11 00:11:59
  * @FilePath: \ZH_FLIGHT\Sys\Common\ac_tree.cpp
  * Copyright (C) 2023 zhaohe. All rights reserved.
  */
 #include "ac_tree.h"
+#include <string.h>
 
 AcTreeNode *AcTreeNode::GetFirstChild()
 {
@@ -18,6 +19,13 @@ AcTreeNode *AcTreeNode::GetFirstChild()
 AcTreeNode *AcTreeNode::GetNeighbor()
 {
     return _neighbor;
+}
+
+void AcTreeNode::AddData(void *data, AC_DATA_TYPE type, char *name, uint16_t len)
+{
+    this->data = data;
+    this->type = type;
+    strncpy(this->name, name, PARAM_NAME_LEN);
 }
 
 AcTree::AcTree()

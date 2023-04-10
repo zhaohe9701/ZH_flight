@@ -4,12 +4,13 @@
  * @Author: zhaohe
  * @Date: 2022-11-13 19:37:38
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-03-15 23:26:12
+ * @LastEditTime: 2023-04-09 23:50:47
  * @FilePath: \ZH_FLIGHT\Sys\Sensor\Baro\ms5611.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 #include "ms5611.h"
 #include "cmsis_os2.h"
+#include <math.h>
 
 #define RESET 0x1E       // cmd 复位
 
@@ -33,7 +34,6 @@ Ms5611::Ms5611(SensorInterface *interface)
 }
 void Ms5611::Init()
 {
-    UsbPrintf("MS5611 Init\r\n");
     _BaroWriteRag(RESET, 0, nullptr);
     HAL_Delay(100);
     for (int i = 0; i < 8; ++i)
@@ -46,8 +46,9 @@ void Ms5611::Init()
     {
         UsbPrintf("MS5611 Init Fail\r\n");
     }
+    HAL_Delay(1000);
 }
-float Ms5611::GetTemperature()
+void Ms5611::GetTemperature(BaroData& data)
 {
     uint8_t buf[3] = {0};
     uint32_t temperature_raw = 0;
@@ -60,10 +61,10 @@ float Ms5611::GetTemperature()
     _dt = (int64_t)temperature_raw - ((uint64_t)_calculation[5] * 256);
     _temperature = 2000 + ((_dt * (int64_t)_calculation[6]) >> 23);
 
-    return (float)_temperature / 100.0f;
+    data.temperature = (float)_temperature / 100.0f;
 }
 
-float Ms5611::GetPressure()
+void Ms5611::GetPressure(BaroData& data)
 {
     uint8_t buf[3] = {0};
     uint32_t pressure_raw = 0;
@@ -94,15 +95,15 @@ float Ms5611::GetPressure()
 
     _pressure = ((((int64_t)pressure_raw * sens) >> 21) - off) >> 15;
 
-    return (float)_pressure;
+    data.pressure = (float)_pressure;
 }
 
-float Ms5611::GetAltitude()
+void Ms5611::GetAltitude(BaroData& data)
 {
-    GetTemperature();
-    GetPressure();
+    GetTemperature(data);
+    GetPressure(data);
     float altitude = (1.0f - powf(_pressure / 101325.0f, 0.190295f)) * 4433000.0f;
-    return altitude;
+    data.altitude = altitude;
 }
 
 bool Ms5611::_CheckCRC()

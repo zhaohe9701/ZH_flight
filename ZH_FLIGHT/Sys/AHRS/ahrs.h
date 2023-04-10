@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-09-24 17:37:08
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-12-26 00:25:57
+ * @LastEditTime: 2023-04-09 23:23:43
  * @FilePath: \ZH_FLIGHT\Sys\AHRS\ahrs.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -18,7 +18,7 @@
 class AttitudeSolver
 {
 public:
-    virtual void Update(ActualState &actual_state, ImuData &imu_data) = 0;
+    virtual void Update(ActualState &actual_state, SensorData &sensor_data) = 0;
     virtual void TransformBodyToEarth(float &x, float &y, float &z) = 0;
     virtual void TransformEarthToBody(float &x, float &y, float &z) = 0;
     virtual ~AttitudeSolver(){};

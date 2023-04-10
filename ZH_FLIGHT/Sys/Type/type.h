@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-08-07 22:03:11
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-03-14 00:17:21
+ * @LastEditTime: 2023-04-10 23:41:09
  * @FilePath: \ZH_FLIGHT\Sys\Type\type.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -30,7 +30,8 @@ enum AC_DATA_TYPE
     AC_FLOAT    =   7,
     AC_DOUBLE   =   8,
     AC_STRING   =   9,
-    AC_NULL     =   10
+    AC_NULL     =   10,
+    AC_MARK     =   11
 };
 
 #define PARAM_NAME_LEN  32
@@ -42,6 +43,7 @@ public:
     float z = 0.0f;
     void Set(float xi, float yi, float zi);
     void Clear();
+    Vec3& operator=(Vec3 &src);
 };
 
 class Vec4
@@ -58,4 +60,9 @@ public:
 typedef uint32_t Condition;
 typedef uint8_t MessageHead;
 typedef uint8_t Byte;
+typedef uint8_t AcMark;
+
+#define AC_ON 1
+#define AC_OFF 0
+
 #endif

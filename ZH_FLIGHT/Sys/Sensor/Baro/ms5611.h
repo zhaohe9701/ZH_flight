@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-11-13 19:36:40
  * @LastEditors: zhaohe
- * @LastEditTime: 2023-01-23 00:36:04
+ * @LastEditTime: 2023-04-09 22:59:11
  * @FilePath: \ZH_FLIGHT\Sys\Sensor\Baro\ms5611.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -20,9 +20,9 @@ class Ms5611 : virtual public Baro
 public:
     Ms5611(SensorInterface *interface);
     void Init() override;
-    float GetTemperature() override;
-    float GetPressure() override;
-    float GetAltitude() override;
+    void GetTemperature(BaroData& data) override;
+    void GetPressure(BaroData& data) override;
+    void GetAltitude(BaroData& data) override;
     ~Ms5611();
 private:
     SensorInterface *_interface;
