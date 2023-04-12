@@ -21,11 +21,11 @@ AcTreeNode *AcTreeNode::GetNeighbor()
     return _neighbor;
 }
 
-void AcTreeNode::AddData(void *in_data, AC_DATA_TYPE in_type, char *name_in, uint16_t in_len)
+void AcTreeNode::AddData(void *in_data, AC_DATA_TYPE in_type, char *in_name, uint16_t in_len)
 {
     data = in_data;
     type = in_type;
-    strncpy(name, name_in, PARAM_NAME_LEN);
+    strncpy(name, in_name, PARAM_NAME_LEN);
     len = in_len;
 }
 
