@@ -13,7 +13,24 @@
 
 AcTreeNode *Imu::CreateIndex()
 {
+    AcTree *tree = new AcTree(nullptr, AC_STRUCT, (char *)"imu", 0);
     AcTreeNode *node = nullptr;
 
     node = new AcTreeNode();
+    node->AddData((void*)&_get_acc_mark, AC_MARK, (char*)"get_acc", 1);
+    tree->AddNode(node);
+
+    node = new AcTreeNode();
+    node->AddData((void*)&_get_gyr_mark, AC_MARK, (char*)"get_gyro", 1);
+    tree->AddNode(node);
+
+    node = new AcTreeNode();
+    node->AddData((void*)&_get_temp_mark, AC_MARK, (char*)"get_temperature", 1);
+    tree->AddNode(node);
+
+    node = new AcTreeNode();
+    node->AddData((void*)&_get_id_mark, AC_MARK, (char*)"get_id", 1);
+    tree->AddNode(node);
+
+    return tree->GetRoot();
 }
