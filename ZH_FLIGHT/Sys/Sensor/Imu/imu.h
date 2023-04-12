@@ -29,7 +29,7 @@ public:
     virtual float GetTemperature() = 0;
     virtual void GetGyroData(ImuData &data) = 0;
     virtual void GetAccData(ImuData &data) = 0;
-    virtual AcTreeNode *CreateIndex();
+    AcTreeNode *CreateIndex();
 private:
     AcMark _get_acc_mark = AC_OFF;
     AcMark _get_gyr_mark = AC_OFF;

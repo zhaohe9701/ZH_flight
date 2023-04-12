@@ -29,6 +29,8 @@ add_definitions(
     -D${MCU_HAL}
 )
 
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_C_STANDARD 99)
 # generate flags from user variables
 set(OPT "-Og")
 if(CMAKE_BUILD_TYPE MATCHES Debug)

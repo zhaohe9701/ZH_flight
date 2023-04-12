@@ -22,7 +22,7 @@ private:
 public:
     AcTreeNode *GetFirstChild();
     AcTreeNode *GetNeighbor();
-    void AddData(void *data, AC_DATA_TYPE type, char *name, uint16_t len);
+    void AddData(void *in_data, AC_DATA_TYPE in_type, char *name_in, uint16_t in_len);
     char name[PARAM_NAME_LEN] = {0};
     AC_DATA_TYPE type;
     uint16_t len;
@@ -34,7 +34,7 @@ class AcTree
 private:
     AcTreeNode *_root = nullptr;
 public:
-    AcTree();
+    AcTree(void *in_data, AC_DATA_TYPE in_type, char *in_name, uint16_t in_len);
     static AcTreeNode *FindNode(AcTree *tree, char *uri);
     AcTreeNode *GetRoot();
     void AddNode(AcTreeNode *node);

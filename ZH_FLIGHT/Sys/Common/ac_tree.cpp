@@ -21,16 +21,17 @@ AcTreeNode *AcTreeNode::GetNeighbor()
     return _neighbor;
 }
 
-void AcTreeNode::AddData(void *data, AC_DATA_TYPE type, char *name, uint16_t len)
+void AcTreeNode::AddData(void *in_data, AC_DATA_TYPE in_type, char *name_in, uint16_t in_len)
 {
-    this->data = data;
-    this->type = type;
-    strncpy(this->name, name, PARAM_NAME_LEN);
+    this->data = in_data;
+    this->type = in_type;
+    strncpy(this->name, name_in, PARAM_NAME_LEN);
 }
 
-AcTree::AcTree()
+AcTree::AcTree(void *in_data, AC_DATA_TYPE in_type, char *in_name, uint16_t in_len)
 {
     _root = new AcTreeNode();
+    _root->AddData(in_data, in_type, in_name, in_len);
 }
 
 static AcTreeNode *FindNodeCore(AcTreeNode *node, char *uri, int ptr)
@@ -46,11 +47,10 @@ static AcTreeNode *FindNodeCore(AcTreeNode *node, char *uri, int ptr)
         uri_ptr++;
         name_ptr++;
     }
-    if(uri[uri_ptr] == 0 && node->name[name_ptr] == 0)
+    if (uri[uri_ptr] == 0 && node->name[name_ptr] == 0)
     {
         return node;
-    }
-    else
+    } else
     {
         uri_ptr++;
         return FindNodeCore(node->GetFirstChild(), uri, uri_ptr);
@@ -77,4 +77,9 @@ void AcTree::AddNode(AcTreeNode *node)
         child = child->GetNeighbor();
     }
     child->_neighbor = node;
+}
+
+AcTree::~AcTree()
+{
+
 }

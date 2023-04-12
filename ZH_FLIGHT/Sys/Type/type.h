@@ -31,7 +31,9 @@ enum AC_DATA_TYPE
     AC_DOUBLE   =   8,
     AC_STRING   =   9,
     AC_NULL     =   10,
-    AC_MARK     =   11
+    AC_MARK     =   11,
+    AC_STRUCT   =   12,
+    AC_ARRAY    =   13
 };
 
 #define PARAM_NAME_LEN  32
