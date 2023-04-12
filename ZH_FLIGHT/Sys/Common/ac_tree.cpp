@@ -23,9 +23,10 @@ AcTreeNode *AcTreeNode::GetNeighbor()
 
 void AcTreeNode::AddData(void *in_data, AC_DATA_TYPE in_type, char *name_in, uint16_t in_len)
 {
-    this->data = in_data;
-    this->type = in_type;
-    strncpy(this->name, name_in, PARAM_NAME_LEN);
+    data = in_data;
+    type = in_type;
+    strncpy(name, name_in, PARAM_NAME_LEN);
+    len = in_len;
 }
 
 AcTree::AcTree(void *in_data, AC_DATA_TYPE in_type, char *in_name, uint16_t in_len)
