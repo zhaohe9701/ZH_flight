@@ -21,31 +21,36 @@ enum AC_RET
 
 enum AC_DATA_TYPE
 {
-    AC_UINT8    =   1,
-    AC_UINT16   =   2,
-    AC_UINT32   =   3,
-    AC_INT8     =   4,
-    AC_INT16    =   5,
-    AC_INT32    =   6,
-    AC_FLOAT    =   7,
-    AC_DOUBLE   =   8,
-    AC_STRING   =   9,
-    AC_NULL     =   10,
-    AC_MARK     =   11,
-    AC_STRUCT   =   12,
-    AC_ARRAY    =   13
+    AC_UINT8,
+    AC_UINT16,
+    AC_UINT32,
+    AC_INT8,
+    AC_INT16,
+    AC_INT32,
+    AC_FLOAT,
+    AC_DOUBLE,
+    AC_STRING,
+    AC_NULL,
+    AC_MARK,
+    AC_STRUCT,
+    AC_BASIC_ARRAY,
+    AC_STRUCT_ARRAY
 };
 
 #define PARAM_NAME_LEN  32
+
 class Vec3
 {
 public:
     float x = 0.0f;
     float y = 0.0f;
     float z = 0.0f;
+
     void Set(float xi, float yi, float zi);
+
     void Clear();
-    Vec3& operator=(Vec3 &src);
+
+    Vec3 &operator=(Vec3 &src);
 };
 
 class Vec4
@@ -55,7 +60,9 @@ public:
     float y = 0;
     float z = 0;
     float w = 0;
+
     void Set(float xi, float yi, float zi, float wi);
+
     void Clear();
 };
 
