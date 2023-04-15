@@ -9,28 +9,36 @@
  * Copyright (C) 2023 zhaohe. All rights reserved.
  */
 #include "imu.h"
+#include "sys.h"
 
+Imu::Imu()
+{
+    _printer = new Printer(message_transmit_server->GetQueueHandle());
+}
 
 AcTreeNode *Imu::CreateIndex()
 {
-    AcTree *tree = new AcTree(nullptr, AC_STRUCT, "imu", 0);
+    AcTree tree(nullptr, AC_STRUCT, "imu", 0);
     AcTreeNode *node = nullptr;
+
 
     node = new AcTreeNode();
     node->AddData((void*)&_get_acc_mark, AC_MARK, "get_acc", 1);
-    tree->AddNode(node);
+    tree.AddNode(node);
 
     node = new AcTreeNode();
     node->AddData((void*)&_get_gyr_mark, AC_MARK, "get_gyro", 1);
-    tree->AddNode(node);
+    tree.AddNode(node);
 
     node = new AcTreeNode();
     node->AddData((void*)&_get_temp_mark, AC_MARK, "get_temperature", 1);
-    tree->AddNode(node);
+    tree.AddNode(node);
 
     node = new AcTreeNode();
-    node->AddData((void*)&_get_id_mark, AC_MARK, "get_id", 1);
-    tree->AddNode(node);
+    node->AddData((void*)&_id, AC_UINT8, "id", 1);
+    tree.AddNode(node);
 
-    return tree->GetRoot();
+    return tree.GetRoot();
 }
+
+

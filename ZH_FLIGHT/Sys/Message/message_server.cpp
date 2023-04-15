@@ -41,7 +41,7 @@ AC_RET MessageReceiveServer::RunReceiveService()
 {
     Message message = {0};
     MessageHead head = 0;
-    
+
     _queue->Pop(&message);
     head = message.data[0];
     for (int i = 0; i < _interface_ind; ++i)
@@ -63,17 +63,12 @@ AcQueue<Message> *MessageReceiveServer::GetQueueHandle()
 
 MessageReceiveServer::~MessageReceiveServer()
 {
-    if (nullptr == _queue)
-    {
-        delete _queue;
-    }
+
+    delete _queue;
 
     for (int i = 0; i < MESSAGE_TYPE_NUM; ++i)
     {
-        if (nullptr != _parser[i])
-        {
-            delete _parser[i];
-        }
+        delete _parser[i];
     }
 }
 
@@ -97,12 +92,12 @@ void MessageTransmitServer::RunTransmitService()
     Message message;
     _queue->Pop(&message);
     uint8_t mark = message.data[0];
-    for(int i = 0; i < _interface_ind; ++i)
+    for (int i = 0; i < _interface_ind; ++i)
     {
-        if (true == _interface[i]->MatchMark(mark))
+        if (_interface[i]->MatchMark(mark))
         {
             uint8_t try_times = 0;
-            while(try_times < 5 && AC_OK != _interface[i]->Transmit(message.data + 1, message.length))
+            while (try_times < 5 && AC_OK != _interface[i]->Transmit(message.data + 1, message.length))
             {
                 try_times++;
             }
@@ -118,15 +113,10 @@ AcQueue<Message> *MessageTransmitServer::GetQueueHandle()
 
 MessageTransmitServer::~MessageTransmitServer()
 {
-    if (nullptr != _queue)
-    {
-        delete _queue;
-    }
+    delete _queue;
+
     for (int i = 0; i < MESSAGE_TTANSMIT_NUM; ++i)
     {
-        if (nullptr != _interface[i])
-        {
-            delete _interface[i];
-        }
+        delete _interface[i];
     }
 };

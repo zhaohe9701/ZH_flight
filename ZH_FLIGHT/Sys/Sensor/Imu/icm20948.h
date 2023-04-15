@@ -16,7 +16,7 @@
 class Icm20948 : virtual public Imu
 {
 public:
-    Icm20948(SensorInterface *interface);
+    explicit Icm20948(SensorInterface *interface);
     void Init() override;
     uint8_t GetId() override;
     float GetTemperature() override;

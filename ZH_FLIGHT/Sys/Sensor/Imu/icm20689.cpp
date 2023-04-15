@@ -10,6 +10,7 @@
  */
 #include "icm20689.h"
 #include "main.h"
+#include "cstring"
 
 #define READ 0x80
 #define WRITE 0x7f
@@ -95,6 +96,7 @@ void Icm20689::_ImuReadRag(uint8_t address, uint8_t length, uint8_t *buf)
 Icm20689::Icm20689(SensorInterface *interface)
 {
     _interface = interface;
+    strncpy(_name, "ICM20948", PARAM_NAME_LEN);
 }
 void Icm20689::Init()
 {
@@ -149,6 +151,10 @@ float Icm20689::GetTemperature()
     _ImuReadRag(TEMP_OUT_H, 2, buf);
     raw = ((int16_t)buf[0] << 8) | buf[1];
     temp = 25.0f + (float)raw / 326.8f;
+    if (AC_ON == _get_temp_mark)
+    {
+        _printer->Print("[TEMP] %.2f\n", temp);
+    }
     return temp;
 }
 
@@ -165,6 +171,10 @@ void Icm20689::GetGyroData(ImuData &data)
     data.gyr.x = (float)((int16_t)(gx_raw)-_bias_gyro_x) * _gyro_sensitivity;
     data.gyr.y = (float)((int16_t)(gy_raw)-_bias_gyro_y) * _gyro_sensitivity;
     data.gyr.z = (float)((int16_t)(gz_raw)-_bias_gyro_z) * _gyro_sensitivity;
+    if (AC_ON == _get_gyr_mark)
+    {
+        _printer->Print("[GYR] %.2f\t%.2f\t%.2f\n", data.gyr.x, data.gyr.y, data.gyr.z);
+    }
 }
 
 void Icm20689::GetAccData(ImuData &data)
@@ -180,4 +190,8 @@ void Icm20689::GetAccData(ImuData &data)
     data.acc.x = (float)((int16_t)(ax_raw) - _bias_acc_x) * _acc_sensitivity;
 	data.acc.y = (float)((int16_t)(ay_raw) - _bias_acc_y) * _acc_sensitivity;
 	data.acc.z = (float)((int16_t)(az_raw) - _bias_acc_z) * _acc_sensitivity;
+    if (AC_ON == _get_acc_mark)
+    {
+        _printer->Print("[ACC] %.2f\t%.2f\t%.2f\n", data.acc.x, data.acc.y, data.acc.z);
+    }
 }

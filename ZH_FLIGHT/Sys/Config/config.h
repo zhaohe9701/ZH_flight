@@ -33,12 +33,12 @@
 /*状态机*/
 #define STATE_MACHINE_SIGNAL    0x01
 /*传感器*/
-#define IMU1                Icm42688
-#define IMU1_INTERFACE_OBJ  hspi3
+#define IMU1                Icm20689
+#define IMU1_INTERFACE_OBJ  hspi1
 #define IMU1_INTERFACE      Spi
-#define IMU1_CS_PORT        SPI3_CS1_GPIO_Port
-#define IMU1_CS_PIN         SPI3_CS1_Pin
-#define IMU1_EXIT_PIN       SPI3_EXIT1_Pin
+#define IMU1_CS_PORT        SPI1_CS_GPIO_Port
+#define IMU1_CS_PIN         SPI1_CS_Pin
+#define IMU1_EXIT_PIN       SPI1_EXIT_Pin
 
 // #define MAGNETOMETER
 

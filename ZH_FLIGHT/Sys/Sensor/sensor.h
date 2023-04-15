@@ -28,7 +28,7 @@ public:
     void Init();
     void AddImu(Imu *imu);
     void AddBaro(Baro *baro);
-
+    AcTreeNode *CreateIndex();
     Imu *imu = nullptr;
     Baro *baro = nullptr;
 };

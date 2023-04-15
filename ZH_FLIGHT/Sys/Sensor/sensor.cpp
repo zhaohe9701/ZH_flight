@@ -31,3 +31,11 @@ void Sensor::Init()
         baro->Init();
     }
 }
+
+AcTreeNode *Sensor::CreateIndex()
+{
+    AcTree tree(nullptr, AC_STRUCT, "sensor", 0);
+    // AcTreeNode *node = nullptr;
+    tree.AddNode(imu->CreateIndex());
+    return tree.GetRoot();
+}

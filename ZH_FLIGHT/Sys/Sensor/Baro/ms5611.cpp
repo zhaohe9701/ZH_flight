@@ -34,8 +34,9 @@ Ms5611::Ms5611(SensorInterface *interface)
 }
 void Ms5611::Init()
 {
+    HAL_Delay(500);
     _BaroWriteRag(RESET, 0, nullptr);
-    HAL_Delay(100);
+    HAL_Delay(500);
     for (int i = 0; i < 8; ++i)
     {
         uint8_t buf[2] = {0};
@@ -46,7 +47,7 @@ void Ms5611::Init()
     {
         UsbPrintf("MS5611 Init Fail\r\n");
     }
-    HAL_Delay(1000);
+    HAL_Delay(500);
 }
 void Ms5611::GetTemperature(BaroData& data)
 {

@@ -256,9 +256,9 @@ AcTree::AcTree(void *in_data, AC_DATA_TYPE in_type, const char *in_name, uint16_
     _root->AddData(in_data, in_type, in_name, in_len);
 }
 
-AcTreeNode *AcTree::FindNode(AcTree *tree, char *uri)
+AcTreeNode *AcTree::FindNode(AcTreeNode *tree, char *uri)
 {
-    return FindNodeCore(tree->GetRoot(), uri, 0);
+    return FindNodeCore(tree, uri, 0);
 }
 
 AcTreeNode *AcTree::GetRoot()
@@ -279,10 +279,10 @@ void AcTree::AddNode(AcTreeNode *node)
 }
 
 
-AC_RET AcTree::TransToJsonStr(char *buf, uint32_t len)
+AC_RET AcTree::TransToJsonStr(AcTreeNode *tree, char *buf, uint32_t len)
 {
     uint32_t ptr = 0;
-    if (AC_OK != TransToJsonStrCore(_root, buf, ptr, len))
+    if (AC_OK != TransToJsonStrCore(tree, buf, ptr, len))
     {
         return AC_ERROR;
     }

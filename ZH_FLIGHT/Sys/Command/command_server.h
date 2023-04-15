@@ -5,11 +5,18 @@
 #include "message.h"
 #include "print.h"
 #include "type.h"
+
+#define AT_COMMAND_MAX_LEN 1024
 class CommandServer
 {
 private:
+    void _Get(const char* command);
+    static void _Set(const char* command);
+    static void _RunTempTask();
     DataManager<Message> *_command_manager = nullptr;
     Printer *_printer = nullptr;
+    char _cmd_buf[AT_COMMAND_MAX_LEN] = {0};
+    int32_t _cmd_ptr = 0;
 public:
     CommandServer();
     DataManager<Message> *GetManager();

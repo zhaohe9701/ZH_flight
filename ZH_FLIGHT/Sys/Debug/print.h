@@ -14,18 +14,19 @@
 #include "ac_queue.h"
 #include "message.h"
 #include "type.h"
-#include <stdint.h>
+#include <cstdint>
 
 #define MAX_PRINT_LENGTH 128
 
 class Printer
 {
 public:
-    Printer(AcQueue<Message> *queue);
+    explicit Printer(AcQueue<Message> *queue);
     void SetInterfaceMark(uint8_t mark);
     void Print(const char *format, ...);
     void Error(const char *format, ...);
     void Info(const char *format, ...);
+    void Transmit(const char *buf, uint32_t len);
 private:
     uint8_t _mark;
     AcQueue<Message> *_queue = nullptr;

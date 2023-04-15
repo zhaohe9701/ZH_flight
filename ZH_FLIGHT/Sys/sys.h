@@ -14,10 +14,12 @@
 #include "aircraft.h"
 #include "message_server.h"
 #include "ac_semaphore.h"
+#include "command_server.h"
 
 extern Aircraft *aircraft;
 extern MessageTransmitServer *message_transmit_server;
 extern MessageReceiveServer *message_receive_server;
+extern CommandServer *command_server;
 extern AcSemaphore *imu_sem;
 
 #endif

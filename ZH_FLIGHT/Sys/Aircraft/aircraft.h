@@ -47,10 +47,14 @@ private:
     AttitudeSolver *_attitude_solver = nullptr;
     /*当前动作*/
     volatile ActionGroup _current_action = AS_INITIALIZE;
+
+    AcTreeNode *_index = nullptr;
 public:
 
     Aircraft();
     AC_RET Init();
+    AcTreeNode *CreateIndex();
+    AcTreeNode *GetIndex();
     AC_RET SetAction(ActionGroup action);
     AC_RET GetAccAndGyro();
     AC_RET GetAltitude();

@@ -68,3 +68,25 @@ void Printer::Info(const char *format, ...)
     memcpy(message.data + 1, INFO, INFO_LEN);
     _queue->Push(&message);
 }
+
+void Printer::Transmit(const char *buf, uint32_t len)
+{
+    Message message;
+    uint32_t ptr = 0;
+    while (ptr < len)
+    {
+        if (len - ptr >= MAX_MESSAGE_LENGTH)
+        {
+            message.length = MAX_MESSAGE_LENGTH;
+            memcpy(message.data, buf + ptr, MAX_MESSAGE_LENGTH);
+            _queue->Push(&message);
+        }
+        else
+        {
+            message.length = len - ptr;
+            memcpy(message.data, buf + ptr, len - ptr);
+            _queue->Push(&message);
+        }
+        ptr += MAX_MESSAGE_LENGTH;
+    }
+}

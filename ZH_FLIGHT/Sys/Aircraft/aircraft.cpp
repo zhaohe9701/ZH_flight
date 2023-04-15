@@ -89,6 +89,8 @@ AC_RET Aircraft::Init()
     _sensor->Init();
 
     _printer->SetInterfaceMark(0x01);
+
+    // _index = CreateIndex();
     // /*电机控制接口*/
     // Pwm *motor_interface = nullptr;
     // MotorProtocolInterface *motor_protocol_interface = nullptr;
@@ -170,7 +172,7 @@ AC_RET Aircraft::ControlAttitude()
     ActionGroup current_action = _current_action;
     ActualState actual_state;
     ExpectState expect_state;
-    ActuatorData expect_actuator;
+    ActuatorData expect_actuator = {{0}};
 
     if (current_action != AS_AUTO     && 
         current_action != AS_MANUAL   && 
@@ -227,7 +229,7 @@ AC_RET Aircraft::Test()
 
     _baro_data_manager.Copy(&baro_data);
     _actual_state_manager.Copy(&state);
-    _printer->Info("%d %d %d %d\r\n", (int)state.euler.x, (int)state.euler.y, (int)state.euler.z, (int)baro_data.altitude);
+    _printer->Info("%.2f %d %d %d\r\n", state.euler.x, (int)state.euler.y, (int)state.euler.z, (int)baro_data.altitude);
     return AC_OK;
 }
 
@@ -238,4 +240,17 @@ Aircraft::~Aircraft()
     delete _attitude_controller;
     delete _attitude_control_param;
     delete _attitude_solver;
+}
+
+AcTreeNode *Aircraft::CreateIndex()
+{
+    AcTree tree(nullptr, AC_STRUCT, "aircraft", 0);
+    // AcTreeNode *node = nullptr;
+    tree.AddNode(_sensor->CreateIndex());
+    return tree.GetRoot();
+}
+
+AcTreeNode *Aircraft::GetIndex()
+{
+    return _index;
 }

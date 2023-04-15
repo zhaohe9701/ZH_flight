@@ -22,6 +22,7 @@ public:
     static void LightTask(void);
     static void ReceiceDataTask(void);
     static void TransmitDataTask(void);
+    static void CommandTask(void);
     static void TestTask(void); 
 };
 

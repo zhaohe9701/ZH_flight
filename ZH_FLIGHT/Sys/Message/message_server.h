@@ -20,7 +20,7 @@
 class MessageReceiveServer
 {
 public:
-    MessageReceiveServer(AcQueue<Message> *_queue);
+    explicit MessageReceiveServer(AcQueue<Message> *_queue);
     void AddParser(MessageReceiveParser *interface);
     AC_RET RunReceiveService();
     AcQueue<Message> *GetQueueHandle();
@@ -35,7 +35,7 @@ private:
 class MessageTransmitServer
 {
 public:
-    MessageTransmitServer(AcQueue<Message> *queue);
+    explicit MessageTransmitServer(AcQueue<Message> *queue);
     void AddTransmitter(CommunicateInterface *interface);
     void RunTransmitService();
     AcQueue<Message> *GetQueueHandle();

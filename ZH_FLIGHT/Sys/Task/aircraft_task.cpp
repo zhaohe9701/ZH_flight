@@ -9,7 +9,6 @@
  * Copyright (C) 2023 zhaohe. All rights reserved.
  */
 
-#include <stdio.h>
 #include "Command/command.h"
 #include "ac_queue.h"
 #include "ac_semaphore.h"
@@ -39,6 +38,7 @@
 #include "z_iic.h"
 #include "z_spi.h"
 #include "z_usb.h"
+#include "command_server.h"
 
 /****************对外暴露任务接口****************/
 extern "C" void ImuTaskInterface(void *argument);
@@ -50,7 +50,8 @@ extern "C" void StateMachineTaskInterface(void *argument);
 extern "C" void LightTaskInterface(void *argument);
 extern "C" void ReceiveDataTaskInterface(void *argument);
 extern "C" void TransmitDataTaskInterface(void *argument);
-extern "C" void TestTaskInterface(void *argument); 
+extern "C" void TestTaskInterface(void *argument);
+extern "C" void CommandTaskInterface(void *argument);
 /*********************************************/
 void StartTaskInterface(void *argument)
 {
@@ -83,6 +84,7 @@ osThreadId_t ledTaskHandle;
 osThreadId_t testTaskHandle;
 osThreadId_t transmitDataTaskHandle;
 osThreadId_t receiveDataTaskHandle;
+osThreadId_t commandTaskHandle;
 
 AcSemaphore *imu_sem = nullptr;
 Aircraft *aircraft = nullptr;
@@ -90,6 +92,8 @@ StateMachine *state_machine = nullptr;
 EventServer *event_server = nullptr;
 MessageReceiveServer *message_receive_server = nullptr;
 MessageTransmitServer *message_transmit_server = nullptr;
+CommandServer *command_server = nullptr;
+
 extern GlobalVar system_var;
 extern Thread stateMachineTaskHandle;
 
@@ -204,7 +208,7 @@ void DynamicTask::StartTask(void)
 
     const osThreadAttr_t testTask_attributes = {
     .name = "testTask",
-    .stack_size = 256 * 4,
+    .stack_size = 512 * 4,
     .priority = (osPriority_t) osPriorityNormal ,
     };
     const osThreadAttr_t imuTask_attributes = {
@@ -217,11 +221,11 @@ void DynamicTask::StartTask(void)
     .stack_size = 256 * 4,
     .priority = (osPriority_t) osPriorityNormal ,
     };
-    const osThreadAttr_t magTask_attributes = {
-    .name = "magTask",
-    .stack_size = 128 * 4,
-    .priority = (osPriority_t) osPriorityBelowNormal ,
-    };
+//    const osThreadAttr_t magTask_attributes = {
+//    .name = "magTask",
+//    .stack_size = 128 * 4,
+//    .priority = (osPriority_t) osPriorityBelowNormal ,
+//    };
     const osThreadAttr_t attitudeSolveTask_attributes = {
     .name = "attitudeSolveTask",
     .stack_size = 256 * 4,
@@ -232,7 +236,11 @@ void DynamicTask::StartTask(void)
     .stack_size = 64 * 4,
     .priority = (osPriority_t) osPriorityNormal ,
     };
-
+    const osThreadAttr_t commandTask_attributes = {
+            .name = "commandTask",
+            .stack_size = 512 * 4,
+            .priority = (osPriority_t) osPriorityNormal ,
+    };
     const osThreadAttr_t transmitDataTask_attributes = {
     .name = "transmitDataTask",
     .stack_size = 256 * 4,
@@ -251,6 +259,7 @@ void DynamicTask::StartTask(void)
     ledTaskHandle = osThreadNew(LightTaskInterface, NULL, &ledTask_attributes);
     transmitDataTaskHandle = osThreadNew(TransmitDataTaskInterface, NULL, &transmitDataTask_attributes);
     receiveDataTaskHandle = osThreadNew(ReceiveDataTaskInterface, NULL, &receiveDataTask_attributes);
+    // commandTaskHandle = osThreadNew(CommandTaskInterface, NULL, &commandTask_attributes);
     // for (;;)
     // {
     //     osDelay(10);
