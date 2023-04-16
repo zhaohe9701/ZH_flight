@@ -40,8 +40,10 @@ void Iic::ReadBytes(uint8_t address, uint8_t len, uint8_t *dataBuf)
 {
     while (HAL_I2C_GetState(_hi2c) != HAL_I2C_STATE_READY)
     {
-    } 
+    }
+    osKernelLock();
     HAL_I2C_Mem_Read_IT(_hi2c, _device_address, address, I2C_MEMADD_SIZE_8BIT, dataBuf, len);
+    osKernelUnlock();
     for(;;)
     {
         osSemaphoreAcquire(Iic::iic_semaphore, 0x10);
@@ -62,7 +64,9 @@ void Iic::WriteReg(uint8_t address, uint8_t value)
     while (HAL_I2C_GetState(_hi2c) != HAL_I2C_STATE_READY)
     {
     }
+    osKernelLock();
     HAL_I2C_Mem_Write_IT(_hi2c, _device_address, address, I2C_MEMADD_SIZE_8BIT, &value, 1);
+    osKernelUnlock();
 }
 
 void Iic::WriteRegs(uint8_t address, uint8_t len, uint8_t *value)
@@ -71,7 +75,9 @@ void Iic::WriteRegs(uint8_t address, uint8_t len, uint8_t *value)
     while (HAL_I2C_GetState(_hi2c) != HAL_I2C_STATE_READY)
     {
     }
+    osKernelLock();
     HAL_I2C_Master_Transmit_IT(_hi2c, _device_address, &_mem_address, 1);
+    osKernelUnlock();
     if (len == 0)
     {
         return;
@@ -79,7 +85,9 @@ void Iic::WriteRegs(uint8_t address, uint8_t len, uint8_t *value)
     while (HAL_I2C_GetState(_hi2c) != HAL_I2C_STATE_READY)
     {
     }
+    osKernelLock();
     HAL_I2C_Master_Transmit_IT(_hi2c, _device_address, value, len);
+    osKernelUnlock();
     while (HAL_I2C_GetState(_hi2c) != HAL_I2C_STATE_READY)
     {
     }

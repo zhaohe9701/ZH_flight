@@ -20,7 +20,7 @@ public:
     static void ControlTask(void);
     static void StateMachineTask(void);
     static void LightTask(void);
-    static void ReceiceDataTask(void);
+    static void ReceiveDataTask(void);
     static void TransmitDataTask(void);
     static void CommandTask(void);
     static void TestTask(void); 

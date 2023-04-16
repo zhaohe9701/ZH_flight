@@ -70,11 +70,6 @@ void LightTaskInterface(void *argument)
 {
     StaticTask::LightTask();
 }
-void ReceiveDataTaskInterface(void *argument)
-{
-    StaticTask::ReceiceDataTask();
-}
-
 void TestTaskInterface(void *argument)
 {
     StaticTask::TestTask();
@@ -93,7 +88,7 @@ EventServer *event_server = nullptr;
 MessageReceiveServer *message_receive_server = nullptr;
 MessageTransmitServer *message_transmit_server = nullptr;
 CommandServer *command_server = nullptr;
-
+Printer *debug_printer = nullptr;
 extern GlobalVar system_var;
 extern Thread stateMachineTaskHandle;
 
@@ -144,20 +139,12 @@ void StaticTask::LightTask(void)
     }
 }
 
-void StaticTask::ReceiceDataTask(void)
-{
-    for (;;)
-    {
-        message_receive_server->RunReceiveService();
-    }
-}
-
 void StaticTask::TestTask(void)
 {
     for(;;)
     {
         aircraft->Test();
-        osDelay(1);
+        osDelay(10);
     }
 }
 
@@ -167,18 +154,31 @@ void DynamicTask::StartTask(void)
     /*创建事件服务器*/
     // event_server = new EventServer();
     // event_server->SetInformThread(stateMachineTaskHandle, STATE_MACHINE_SIGNAL);
+
     /*创建消息接收服务器*/
     AcQueue<Message> *receive_queue = new AcQueue<Message>(3);
+
     message_receive_server = new MessageReceiveServer(receive_queue);
+
     MessageReceiveParser *ibus_parser = new IbusParser();
     message_receive_server->AddParser(ibus_parser);
+
     MessageReceiveParser *command_parser = new CommandParser();
+
     message_receive_server->AddParser(command_parser);
     /*创建消息发送服务器*/
-    AcQueue<Message> *transmit_queue = new AcQueue<Message>(3);
+    AcQueue<Message> *transmit_queue = new AcQueue<Message>(5);
     message_transmit_server = new MessageTransmitServer(transmit_queue);
     CommunicateInterface *interface = new Usb(0x01);
     message_transmit_server->AddTransmitter(interface);
+
+    /*创建命令服务器*/
+    command_server = new CommandServer();
+    command_parser->SetDataManager(command_server->GetManager());
+
+    debug_printer = new Printer(transmit_queue);
+    debug_printer->SetInterfaceMark(0x01);
+
     /*创建状态机*/
     // state_machine = new StateMachine();
     // state_machine->state[AS_INITIALIZE].AddNeighborState(AS_STANDBY, INIT_OVER_EVENT, NULL_EVENT);
@@ -219,7 +219,7 @@ void DynamicTask::StartTask(void)
     const osThreadAttr_t baroTask_attributes = {
     .name = "baroTask",
     .stack_size = 256 * 4,
-    .priority = (osPriority_t) osPriorityNormal ,
+    .priority = (osPriority_t) osPriorityBelowNormal ,
     };
 //    const osThreadAttr_t magTask_attributes = {
 //    .name = "magTask",
@@ -259,7 +259,7 @@ void DynamicTask::StartTask(void)
     ledTaskHandle = osThreadNew(LightTaskInterface, NULL, &ledTask_attributes);
     transmitDataTaskHandle = osThreadNew(TransmitDataTaskInterface, NULL, &transmitDataTask_attributes);
     receiveDataTaskHandle = osThreadNew(ReceiveDataTaskInterface, NULL, &receiveDataTask_attributes);
-    // commandTaskHandle = osThreadNew(CommandTaskInterface, NULL, &commandTask_attributes);
+    commandTaskHandle = osThreadNew(CommandTaskInterface, NULL, &commandTask_attributes);
     // for (;;)
     // {
     //     osDelay(10);

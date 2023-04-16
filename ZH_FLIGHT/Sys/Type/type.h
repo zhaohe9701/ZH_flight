@@ -31,7 +31,7 @@ enum AC_DATA_TYPE
     AC_DOUBLE,
     AC_STRING,
     AC_NULL,
-    AC_MARK,
+    AC_SWITCH,
     AC_STRUCT,
     AC_BASIC_ARRAY,
     AC_STRUCT_ARRAY
@@ -69,7 +69,7 @@ public:
 typedef uint32_t Condition;
 typedef uint8_t MessageHead;
 typedef uint8_t Byte;
-typedef uint8_t AcMark;
+typedef uint8_t AcSwitch;
 
 #define AC_ON 1
 #define AC_OFF 0

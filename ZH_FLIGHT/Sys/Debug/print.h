@@ -16,7 +16,7 @@
 #include "type.h"
 #include <cstdint>
 
-#define MAX_PRINT_LENGTH 128
+#define MAX_PRINT_LENGTH MAX_MESSAGE_LENGTH
 
 class Printer
 {

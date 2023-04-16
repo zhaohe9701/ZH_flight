@@ -41,14 +41,14 @@ MessageHead CrsfParser::GetHead()
     return CRSF_HEAD;
 }
 
-AC_RET CrsfParser::ParseMessage(Byte *message, uint32_t length)
+AC_RET CrsfParser::ParseMessage(Message &message)
 {
     _ChannelFormat format;
-    if (message[0] != CRSF_HEAD || message[2] != CRSF_PAYLOAD || message[3] > length - 2)
+    if (message.data[0] != CRSF_HEAD || message.data[2] != CRSF_PAYLOAD || message.data[3] > message.length - 2)
     {
         return AC_ERROR;
     }
-    memcpy(&format, message, sizeof(_ChannelFormat));
+    memcpy(&format, message.data, sizeof(_ChannelFormat));
 
     _channel_data[0]    = format.ch0;
     _channel_data[1]    = format.ch1;

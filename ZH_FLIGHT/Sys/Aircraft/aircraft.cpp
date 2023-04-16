@@ -90,7 +90,7 @@ AC_RET Aircraft::Init()
 
     _printer->SetInterfaceMark(0x01);
 
-    // _index = CreateIndex();
+    _index = CreateIndex();
     // /*电机控制接口*/
     // Pwm *motor_interface = nullptr;
     // MotorProtocolInterface *motor_protocol_interface = nullptr;
@@ -229,7 +229,7 @@ AC_RET Aircraft::Test()
 
     _baro_data_manager.Copy(&baro_data);
     _actual_state_manager.Copy(&state);
-    _printer->Info("%.2f %d %d %d\r\n", state.euler.x, (int)state.euler.y, (int)state.euler.z, (int)baro_data.altitude);
+    //_printer->Info("%.2f %.2f %.2f %.2f\r\n", state.euler.x, state.euler.y, state.euler.z, baro_data.altitude);
     return AC_OK;
 }
 
@@ -244,10 +244,15 @@ Aircraft::~Aircraft()
 
 AcTreeNode *Aircraft::CreateIndex()
 {
-    AcTree tree(nullptr, AC_STRUCT, "aircraft", 0);
-    // AcTreeNode *node = nullptr;
-    tree.AddNode(_sensor->CreateIndex());
-    return tree.GetRoot();
+    AcTreeNode *root = new AcTreeNode();
+    AcTreeNode *node = nullptr;
+
+    root->AddData(nullptr, AC_STRUCT, "aircraft", 0);
+
+    node = _sensor->CreateIndex();
+
+    AcTree::AddNode(root, node);
+    return root;
 }
 
 AcTreeNode *Aircraft::GetIndex()

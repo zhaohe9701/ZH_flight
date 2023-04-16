@@ -5,6 +5,7 @@
 #include "main.h"
 #include "type.h"
 #include "string.h"
+#include "sys.h"
 
 #define COMMAND_HEAD 0x24
 
@@ -13,23 +14,18 @@ MessageHead CommandParser::GetHead()
     return COMMAND_HEAD;
 }
 
-AC_RET CommandParser::ParseMessage(Byte *message, uint32_t length)
+AC_RET CommandParser::ParseMessage(Message &message)
 {
-    if (length < COMMAND_MAX_LEN)
-    {
-        memcpy(_command.data, message, length);
-        return AC_OK;
-    }
+    _command = &message;
     return AC_ERROR;
 }
 
 void CommandParser::SetDataManager(void *manager)
 {
-    _manager = (DataManager<CommandData> *)manager;
+    _manager = (DataManager<Message> *)manager;
 }
 
 void CommandParser::Publish()
 {
-    _manager->Push(&_command);
-    // UsbPrintf("%s", _command.data);
+    _manager->Push(_command);
 }

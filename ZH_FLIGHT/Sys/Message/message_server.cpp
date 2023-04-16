@@ -17,6 +17,7 @@
 #include "message_parser.h"
 #include "type.h"
 #include "message_server.h"
+#include "sys.h"
 
 uint8_t MessageReceiveServer::_interface_ind = 0;
 uint8_t MessageTransmitServer::_interface_ind = 0;
@@ -39,7 +40,7 @@ void MessageReceiveServer::AddParser(MessageReceiveParser *interface)
 
 AC_RET MessageReceiveServer::RunReceiveService()
 {
-    Message message = {0};
+    Message message;
     MessageHead head = 0;
 
     _queue->Pop(&message);
@@ -48,7 +49,7 @@ AC_RET MessageReceiveServer::RunReceiveService()
     {
         if (head == _parser[i]->GetHead())
         {
-            _parser[i]->ParseMessage(message.data, message.length);
+            _parser[i]->ParseMessage(message);
             _parser[i]->Publish();
             return AC_OK;
         }
@@ -97,7 +98,7 @@ void MessageTransmitServer::RunTransmitService()
         if (_interface[i]->MatchMark(mark))
         {
             uint8_t try_times = 0;
-            while (try_times < 5 && AC_OK != _interface[i]->Transmit(message.data + 1, message.length))
+            while (try_times < 100 && AC_OK != _interface[i]->Transmit(message.data + 1, message.length))
             {
                 try_times++;
             }

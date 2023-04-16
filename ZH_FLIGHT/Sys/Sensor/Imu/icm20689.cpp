@@ -96,7 +96,7 @@ void Icm20689::_ImuReadRag(uint8_t address, uint8_t length, uint8_t *buf)
 Icm20689::Icm20689(SensorInterface *interface)
 {
     _interface = interface;
-    strncpy(_name, "ICM20948", PARAM_NAME_LEN);
+    strncpy(_name, "ICM20689", PARAM_NAME_LEN);
 }
 void Icm20689::Init()
 {
@@ -130,7 +130,7 @@ void Icm20689::Init()
     /*使能陀螺仪加速度计*/
     _ImuWriteRag(PWR_MGMT_2, 0x00);
     HAL_Delay(100);
-
+    _id = GetId();
     _gyro_sensitivity = 0.061035;
     _acc_sensitivity = 0.48828;
 

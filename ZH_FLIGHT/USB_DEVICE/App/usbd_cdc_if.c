@@ -24,8 +24,6 @@
 /* USER CODE BEGIN INCLUDE */
 #include <stdarg.h>
 #include "main.h"
-#include "config.h"
-#include "message.h"
 #include "global_var.h"
 /* USER CODE END INCLUDE */
 

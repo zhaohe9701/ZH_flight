@@ -13,16 +13,17 @@
 
 #include "communicate_interface.h"
 #include "type.h"
-#include <stdint.h>
+#include "message.h"
+#include <cstdint>
 
 class MessageReceiveParser
 {
 public:
-    virtual AC_RET ParseMessage(Byte *message, uint32_t length) = 0;
+    virtual AC_RET ParseMessage(Message &message) = 0;
     virtual MessageHead GetHead() = 0;
     virtual void SetDataManager(void *manager) = 0;
     virtual void Publish() = 0;
-    virtual ~MessageReceiveParser(){}
+    virtual ~MessageReceiveParser()= default;
 };
 
 class MessageTransmitParser

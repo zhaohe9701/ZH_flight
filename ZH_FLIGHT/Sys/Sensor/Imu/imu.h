@@ -37,9 +37,9 @@ public:
 protected:
     Printer *_printer = nullptr;
     char _name[PARAM_NAME_LEN] = "imu";
-    AcMark _get_acc_mark = AC_OFF;
-    AcMark _get_gyr_mark = AC_OFF;
-    AcMark _get_temp_mark = AC_OFF;
+    AcSwitch _get_acc_mark = AC_OFF;
+    AcSwitch _get_gyr_mark = AC_OFF;
+    AcSwitch _get_temp_mark = AC_OFF;
     uint8_t _id = 0x00;
 
 };

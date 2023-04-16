@@ -14,22 +14,18 @@
 #include "data_manager.h"
 #include "message_parser.h"
 #include "type.h"
+#include "message.h"
 
-#define COMMAND_MAX_LEN 128
-typedef struct _CommandData
-{
-    char data[COMMAND_MAX_LEN];
-} CommandData;
 class CommandParser : virtual public MessageReceiveParser
 {
 public:
     MessageHead GetHead() override;
-    AC_RET ParseMessage(Byte *message, uint32_t length) override;
+    AC_RET ParseMessage(Message &message) override;
     void SetDataManager(void *manager) override;
     void Publish() override;
 private:
-    DataManager<CommandData> *_manager = nullptr;
-    CommandData _command;
+    DataManager<Message> *_manager = nullptr;
+    Message *_command;
 };
 
 #endif

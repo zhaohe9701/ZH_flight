@@ -14,11 +14,12 @@
 #include "config.h"
 #include <stdint.h>
 
-typedef struct _Message
+class Message
 {
-    uint8_t port;
-    uint8_t data[MAX_MESSAGE_LENGTH];
-    uint16_t length;
-} Message;
+public:
+    uint8_t port = 0x00;
+    uint8_t data[MAX_MESSAGE_LENGTH] = {0};
+    uint16_t length = 0;
+};
 
 #endif

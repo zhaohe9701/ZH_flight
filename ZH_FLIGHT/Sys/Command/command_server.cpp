@@ -35,7 +35,7 @@ static int32_t GetMethod(const char *cmd_buf, char *method)
 }
 CommandServer::CommandServer()
 {
-    _command_manager = new DataManager<Message>();
+    _command_manager = new DataManager<Message>(3);
     _printer = new Printer(message_transmit_server->GetQueueHandle());
     _printer->SetInterfaceMark(0x01);
 }
@@ -47,12 +47,16 @@ DataManager<Message> *CommandServer::GetManager()
 
 AC_RET CommandServer::RunCommandService()
 {
-    Message command = {0};
+    Message command;
     char method[MAX_METHOD_LEN] = {0};
     int32_t second_param_start = 0;
     do
     {
         _command_manager->Pop(&command);
+        if (0 == command.length)
+        {
+            continue;
+        }
         if ('$' != command.data[0])
         {
             _printer->Error("NOT COMMAND HEAD.\n");
@@ -69,7 +73,10 @@ AC_RET CommandServer::RunCommandService()
             goto error;
         }
     }
-    while ('\n' != command.data[command.length]);
+    while ('\n' != command.data[command.length - 1]);
+    _cmd_buf[_cmd_ptr - 1] = 0;
+    debug_printer->Info("%s\n", _cmd_buf);
+    osDelay(1);
     if (_cmd_ptr < MAX_METHOD_LEN)
     {
         _printer->Error("COMMAND ERROR.\n");
@@ -128,7 +135,7 @@ void CommandServer::_Get(const char *command)
     }
 
     GetUrl(command + ptr, url);
-
+    debug_printer->Info("url:%s\n", url);
     node = AcTree::FindNode(root, url);
     if (nullptr == node)
     {
@@ -139,7 +146,7 @@ void CommandServer::_Get(const char *command)
     {
         _printer->Error("TRANS TREE TO JSON STRING FAILED.\n");
     }
-    _printer->Transmit(json_buf, MAX_JSON_LEN);
+    _printer->Info("%s\n", json_buf);
 }
 
 void CommandServer::_Set(const char *command)

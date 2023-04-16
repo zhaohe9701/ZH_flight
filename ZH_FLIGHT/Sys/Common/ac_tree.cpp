@@ -9,6 +9,7 @@
  * Copyright (C) 2023 zhaohe. All rights reserved.
  */
 #include "ac_tree.h"
+#include "sys.h"
 #include <cstring>
 #include <cstdio>
 
@@ -21,7 +22,7 @@ if (AC_OK != AddElement(buf, (element), ptr, len))  \
     goto error;                                     \
 }
 
-inline static AC_RET AddElement(char *buf, const char *element, uint32_t &ptr, uint32_t len)
+static AC_RET AddElement(char *buf, const char *element, uint32_t &ptr, uint32_t len)
 {
     uint32_t str_len = 0;
 
@@ -30,8 +31,8 @@ inline static AC_RET AddElement(char *buf, const char *element, uint32_t &ptr, u
     {
         return AC_ERROR;
     }
-    memcpy(buf + ptr, element, str_len + 1);
-    ptr += str_len + 1;
+    memcpy(buf + ptr, element, str_len);
+    ptr += str_len;
     return AC_OK;
 }
 
@@ -65,6 +66,9 @@ inline static AC_RET MatchType(char *type_buf, AC_DATA_TYPE type)
             break;
         case AC_STRING:
             strncpy(type_buf, "string", TYPE_BUF_LEN - 1);
+            break;
+        case AC_SWITCH:
+            strncpy(type_buf, "switch", TYPE_BUF_LEN - 1);
             break;
         default:
             return AC_ERROR;
@@ -100,6 +104,16 @@ inline static AC_RET TransDataToStr(char *data_buf, AcTreeNode *node, uint16_t i
         case AC_DOUBLE:
             snprintf(data_buf, DATA_BUF_LEN, "%f", ((double *)node->data)[index]);
             break;
+        case AC_SWITCH:
+            if (AC_OFF == ((AcSwitch *)node->data)[index])
+            {
+                strcpy(data_buf, "off");
+            }
+            else
+            {
+                strcpy(data_buf, "on");
+            }
+            break;
         case AC_STRING:
             if (index != 0)
             {
@@ -122,6 +136,8 @@ static AcTreeNode *FindNodeCore(AcTreeNode *node, char *uri, int ptr)
     {
         return nullptr;
     }
+    debug_printer->Info("name:%s uri:%s\n", node->name, uri);
+    osDelay(10);
     while (uri[uri_ptr] != 0 && uri[uri_ptr] != '/')
     {
         if (uri[uri_ptr] != node->name[name_ptr])
@@ -164,6 +180,7 @@ static AC_RET AddValToJsonStr(AcTreeNode *node, char *buf, uint32_t &ptr, uint32
     AddElementWithCheck("\"");
     AddElementWithCheck(data_buf);
     AddElementWithCheck("\"");
+    AddElementWithCheck("}");
     return AC_OK;
 error:
     return AC_ERROR;
@@ -177,14 +194,18 @@ static AC_RET TransToJsonStrCore(AcTreeNode *node, char *buf, uint32_t &ptr, uin
     AddElementWithCheck("\"");
     AddElementWithCheck(node->name);
     AddElementWithCheck("\"");
+    AddElementWithCheck(":");
     if (AC_STRUCT == node->type)
     {
         AddElementWithCheck("{");
-
         AcTreeNode *child = node->GetFirstChild();
 
         while (nullptr != child)
         {
+            if (child != node->GetFirstChild())
+            {
+                AddElementWithCheck(",");
+            }
             if (AC_OK != TransToJsonStrCore(child, buf, ptr, len))
             {
                 goto error;
@@ -200,6 +221,10 @@ static AC_RET TransToJsonStrCore(AcTreeNode *node, char *buf, uint32_t &ptr, uin
 
         while (nullptr != child)
         {
+            if (child != node->GetFirstChild())
+            {
+                AddElementWithCheck(",");
+            }
             if (AC_OK != TransToJsonStrCore(child, buf, ptr, len))
             {
                 goto error;
@@ -208,6 +233,8 @@ static AC_RET TransToJsonStrCore(AcTreeNode *node, char *buf, uint32_t &ptr, uin
         }
 
         AddElementWithCheck("]");
+        debug_printer->Info("result:%s\n", buf);
+        osDelay(10);
     } else if (AC_BASIC_ARRAY == node->type)
     {
         AddElementWithCheck("[");
@@ -217,8 +244,14 @@ static AC_RET TransToJsonStrCore(AcTreeNode *node, char *buf, uint32_t &ptr, uin
             {
                 goto error;
             }
+            if (i < node->len - 1)
+            {
+                AddElementWithCheck(",");
+            }
         }
-        AddElement(buf, "]", ptr, len);
+        AddElementWithCheck("]");
+        debug_printer->Info("result:%s\n", buf);
+        osDelay(10);
     }
     else
     {
@@ -226,6 +259,8 @@ static AC_RET TransToJsonStrCore(AcTreeNode *node, char *buf, uint32_t &ptr, uin
         {
             goto error;
         }
+        debug_printer->Info("result:%s\n", buf);
+        osDelay(10);
     }
     return AC_OK;
     error:
@@ -250,30 +285,24 @@ void AcTreeNode::AddData(void *in_data, AC_DATA_TYPE in_type, const char *in_nam
     len = in_len;
 }
 
-AcTree::AcTree(void *in_data, AC_DATA_TYPE in_type, const char *in_name, uint16_t in_len)
-{
-    _root = new AcTreeNode();
-    _root->AddData(in_data, in_type, in_name, in_len);
-}
-
 AcTreeNode *AcTree::FindNode(AcTreeNode *tree, char *uri)
 {
     return FindNodeCore(tree, uri, 0);
 }
 
-AcTreeNode *AcTree::GetRoot()
-{
-    return _root;
-}
-
-void AcTree::AddNode(AcTreeNode *node)
+void AcTree::AddNode(AcTreeNode* root, AcTreeNode *node)
 {
     AcTreeNode *child = nullptr;
 
-    child = node->GetFirstChild();
-    if (nullptr != child)
+    child = root->_first_child;
+    if (nullptr == child)
     {
-        child = child->GetNeighbor();
+        root->_first_child = node;
+        return;
+    }
+    while (nullptr != child->_neighbor)
+    {
+        child = child->_neighbor;
     }
     child->_neighbor = node;
 }
@@ -282,14 +311,13 @@ void AcTree::AddNode(AcTreeNode *node)
 AC_RET AcTree::TransToJsonStr(AcTreeNode *tree, char *buf, uint32_t len)
 {
     uint32_t ptr = 0;
+    AddElementWithCheck("{");
     if (AC_OK != TransToJsonStrCore(tree, buf, ptr, len))
     {
-        return AC_ERROR;
+        goto error;
     }
+    AddElementWithCheck("}");
     return AC_OK;
-}
-
-AcTree::~AcTree()
-{
-
+    error:
+    return AC_ERROR;
 }

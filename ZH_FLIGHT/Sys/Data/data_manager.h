@@ -17,7 +17,7 @@ template <class T>
 class DataManager
 {
 public:
-    DataManager();
+    explicit DataManager(uint32_t len = 1);
     void Push(T *data);
     void Pop(T *data);
     void Update(T *data);
@@ -28,7 +28,7 @@ private:
 };
 
 template <class T>
-DataManager<T>::DataManager()
+DataManager<T>::DataManager(uint32_t len)
 {
     T init;
     _handler = osMessageQueueNew(1, sizeof(T), NULL);

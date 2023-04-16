@@ -9,6 +9,7 @@
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 #include "sensor.h"
+#include "sys.h"
 
 void Sensor::AddImu(Imu *imu)
 {
@@ -34,8 +35,12 @@ void Sensor::Init()
 
 AcTreeNode *Sensor::CreateIndex()
 {
-    AcTree tree(nullptr, AC_STRUCT, "sensor", 0);
-    // AcTreeNode *node = nullptr;
-    tree.AddNode(imu->CreateIndex());
-    return tree.GetRoot();
+    AcTreeNode *root = new AcTreeNode();
+    AcTreeNode *node = nullptr;
+
+    root->AddData(nullptr, AC_STRUCT, "sensor", 0);
+
+    node = imu->CreateIndex();
+    AcTree::AddNode(root, node);
+    return root;
 }

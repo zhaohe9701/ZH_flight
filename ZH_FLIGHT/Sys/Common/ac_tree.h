@@ -31,15 +31,10 @@ public:
 
 class AcTree
 {
-private:
-    AcTreeNode *_root = nullptr;
 public:
-    AcTree(void *in_data, AC_DATA_TYPE in_type, const char *in_name, uint16_t in_len);
     static AcTreeNode *FindNode(AcTreeNode *tree, char *uri);
-    AcTreeNode *GetRoot();
-    void AddNode(AcTreeNode *node);
+    static void AddNode(AcTreeNode *root, AcTreeNode *node);
     static AC_RET TransToJsonStr(AcTreeNode *tree, char *buf, uint32_t len);
-    ~AcTree();
 };
 
 #endif

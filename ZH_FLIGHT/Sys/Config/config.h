@@ -78,7 +78,7 @@
 #define MESSAGE_TYPE_NUM            5
 #define UART_NUM                    2
 #define MESSAGE_QUEUE_MAX_LENGTH    10
-#define MAX_MESSAGE_LENGTH          256
+#define MAX_MESSAGE_LENGTH          512
 /*遥控*/
 #define TOTAL_CHANNEL_NUM           5
 #define X_CHANNEL                   0
