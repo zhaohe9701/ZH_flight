@@ -22,7 +22,6 @@ public:
     virtual AC_RET ParseMessage(Message &message) = 0;
     virtual MessageHead GetHead() = 0;
     virtual void SetDataManager(void *manager) = 0;
-    virtual void Publish() = 0;
     virtual ~MessageReceiveParser()= default;
 };
 

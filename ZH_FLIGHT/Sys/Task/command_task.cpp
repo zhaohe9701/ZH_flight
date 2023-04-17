@@ -15,7 +15,6 @@ void StaticTask::CommandTask(void)
 {
     for (;;)
     {
-        debug_printer->Info("command_server\n");
         command_server->RunCommandService();
     }
 }

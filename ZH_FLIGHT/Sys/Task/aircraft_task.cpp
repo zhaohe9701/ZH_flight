@@ -238,7 +238,7 @@ void DynamicTask::StartTask(void)
     };
     const osThreadAttr_t commandTask_attributes = {
             .name = "commandTask",
-            .stack_size = 512 * 4,
+            .stack_size = 1024 * 4,
             .priority = (osPriority_t) osPriorityNormal ,
     };
     const osThreadAttr_t transmitDataTask_attributes = {

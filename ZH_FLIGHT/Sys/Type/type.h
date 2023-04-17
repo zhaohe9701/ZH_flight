@@ -38,6 +38,8 @@ enum AC_DATA_TYPE
 };
 
 #define PARAM_NAME_LEN  32
+#define TYPE_BUF_LEN 16
+#define DATA_BUF_LEN 64
 
 class Vec3
 {
@@ -49,8 +51,6 @@ public:
     void Set(float xi, float yi, float zi);
 
     void Clear();
-
-    Vec3 &operator=(Vec3 &src);
 };
 
 class Vec4
@@ -64,6 +64,13 @@ public:
     void Set(float xi, float yi, float zi, float wi);
 
     void Clear();
+};
+
+class Type
+{
+public:
+    static AC_RET MatchType(char *type_buf, AC_DATA_TYPE type);
+    static AC_RET TransDataToStr(char *data_buf, void *data, AC_DATA_TYPE type, uint16_t index);
 };
 
 typedef uint32_t Condition;

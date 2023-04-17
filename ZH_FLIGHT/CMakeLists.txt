@@ -129,7 +129,7 @@ set(SYS_SRC
         Sys/Task/transmit_data_task.cpp
         Sys/Type/type.cpp
         Sys/Common/ac_tree.cpp
-        Sys/Sensor/Imu/imu.cpp Sys/Task/command_task.cpp Sys/Task/receive_data_task.cpp)
+        Sys/Sensor/Imu/imu.cpp Sys/Task/command_task.cpp Sys/Task/receive_data_task.cpp Sys/Json/json.cpp)
 
 set(START_UP_ASM
         startup_stm32h7b0xx.s
@@ -142,7 +142,7 @@ set(SRC
         ${MIDDLEWARES_SRC}
         ${USB_DEVICE_SRC}
         ${SYS_SRC}
-        ${START_UP_ASM} Sys/Task/command_task.cpp Sys/Task/receive_data_task.cpp)
+        ${START_UP_ASM} Sys/Task/command_task.cpp Sys/Task/receive_data_task.cpp Sys/Json/json.cpp)
 
 include_directories(
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Core/Inc>
@@ -179,6 +179,7 @@ include_directories(
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Actuator>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Message>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Remote>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Json>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Protocol>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/StateMachine>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Drivers/STM32H7xx_HAL_Driver/Inc>

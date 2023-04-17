@@ -16,16 +16,11 @@ MessageHead CommandParser::GetHead()
 
 AC_RET CommandParser::ParseMessage(Message &message)
 {
-    _command = &message;
+    _manager->Push(&message);
     return AC_ERROR;
 }
 
 void CommandParser::SetDataManager(void *manager)
 {
     _manager = (DataManager<Message> *)manager;
-}
-
-void CommandParser::Publish()
-{
-    _manager->Push(_command);
 }

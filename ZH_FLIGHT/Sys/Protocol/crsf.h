@@ -20,7 +20,6 @@ public:
     MessageHead GetHead() override;
     AC_RET ParseMessage(Message &message) override;
     void SetDataManager(void *manager) override;
-    void Publish() override;
 
 };
 

@@ -17,7 +17,7 @@
 class RemoteData
 {
 public:
-    uint16_t channel[TOTAL_CHANNEL_NUM];
+    uint16_t channel[TOTAL_CHANNEL_NUM] = {0};
 };
 
 #endif

@@ -22,10 +22,8 @@ public:
     MessageHead GetHead() override;
     AC_RET ParseMessage(Message &message) override;
     void SetDataManager(void *manager) override;
-    void Publish() override;
 private:
     DataManager<Message> *_manager = nullptr;
-    Message *_command;
 };
 
 #endif

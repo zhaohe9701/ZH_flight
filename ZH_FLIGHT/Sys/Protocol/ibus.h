@@ -34,7 +34,6 @@ public:
     MessageHead GetHead() override;
     AC_RET ParseMessage(Message &message) override;
     void SetDataManager(void *manager) override;
-    void Publish() override;
 private:
     uint16_t _channel_data[IBUS_CHANNEL_NUM] = {0};
     DataManager<RemoteData> *_manager = nullptr;

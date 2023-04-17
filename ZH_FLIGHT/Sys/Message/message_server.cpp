@@ -50,7 +50,6 @@ AC_RET MessageReceiveServer::RunReceiveService()
         if (head == _parser[i]->GetHead())
         {
             _parser[i]->ParseMessage(message);
-            _parser[i]->Publish();
             return AC_OK;
         }
     }

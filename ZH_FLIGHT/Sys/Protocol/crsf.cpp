@@ -43,7 +43,8 @@ MessageHead CrsfParser::GetHead()
 
 AC_RET CrsfParser::ParseMessage(Message &message)
 {
-    _ChannelFormat format;
+    _ChannelFormat format = {0};
+    RemoteData data;
     if (message.data[0] != CRSF_HEAD || message.data[2] != CRSF_PAYLOAD || message.data[3] > message.length - 2)
     {
         return AC_ERROR;
@@ -67,17 +68,12 @@ AC_RET CrsfParser::ParseMessage(Message &message)
     _channel_data[14]   = format.ch14;
     _channel_data[15]   = format.ch15;
 
+    memcpy(data.channel, _channel_data, sizeof(uint16_t) * TOTAL_CHANNEL_NUM);
+    _manager->Update(&data);
     return AC_OK;
 }
 
 void CrsfParser::SetDataManager(void *manager)
 {
     _manager = (DataManager<RemoteData>*)manager;
-}
-
-void CrsfParser::Publish()
-{
-    RemoteData data;
-    memcpy(data.channel, _channel_data, sizeof(uint16_t) * TOTAL_CHANNEL_NUM);
-    _manager->Update(&data);
 }

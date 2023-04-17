@@ -5,6 +5,7 @@
 #include "print.h"
 #include "type.h"
 #include "sys.h"
+#include "json.h"
 
 #define GET "get"
 #define SET "set"
@@ -15,10 +16,17 @@
 static int32_t GetUrl(const char *cmd_buf, char *url)
 {
     int i = 0;
-    while (cmd_buf[i] != ' ' && i < MAX_URL_LEN - 1)
+    int j = 0;
+
+    while (' ' == cmd_buf[i])
     {
-        url[i] = cmd_buf[i];
         i++;
+    }
+    while (cmd_buf[i] != ' ' && cmd_buf[i] != '\r' && j < MAX_URL_LEN - 1)
+    {
+        url[j] = cmd_buf[i];
+        i++;
+        j++;
     }
     return i + 1;
 }
@@ -52,7 +60,11 @@ AC_RET CommandServer::RunCommandService()
     int32_t second_param_start = 0;
     do
     {
+        debug_printer->Info("111\n");
+        osDelay(10);
         _command_manager->Pop(&command);
+        debug_printer->Info("222\n");
+        osDelay(10);
         if (0 == command.length)
         {
             continue;
@@ -74,6 +86,9 @@ AC_RET CommandServer::RunCommandService()
         }
     }
     while ('\n' != command.data[command.length - 1]);
+    debug_printer->Info("222\n");
+    osDelay(10);
+    // return AC_OK;
     _cmd_buf[_cmd_ptr - 1] = 0;
     debug_printer->Info("%s\n", _cmd_buf);
     osDelay(1);
@@ -96,6 +111,7 @@ AC_RET CommandServer::RunCommandService()
         _printer->Error("UNKNOWN COMMAND METHOD %s.\n", method);
         goto error;
     }
+
     _RunTempTask();
 
     memset(_cmd_buf, 0, AT_COMMAND_MAX_LEN);
@@ -142,11 +158,13 @@ void CommandServer::_Get(const char *command)
         _printer->Error("CAN NOT FOUND URL.\n");
         return;
     }
-    if (AC_OK != AcTree::TransToJsonStr(node, json_buf, MAX_JSON_LEN - 1))
+    if (AC_OK != Json::TransTreeToJsonStr(node, json_buf, MAX_JSON_LEN - 1))
     {
         _printer->Error("TRANS TREE TO JSON STRING FAILED.\n");
     }
     _printer->Info("%s\n", json_buf);
+    osDelay(10);
+    _printer->Info("Get Finish.\n");
 }
 
 void CommandServer::_Set(const char *command)

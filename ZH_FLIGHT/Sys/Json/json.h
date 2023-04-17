@@ -5,13 +5,13 @@
 #include "ac_tree.h"
 #include "type.h"
 
-#define JSON_STR_MAX_LEN    512
 class Json
 {
 private:
 
 public:
-    AC_RET CreateJsonString(AcTreeNode *root, char *buf);
+    static AC_RET TransTreeToJsonStr(AcTreeNode *tree, char *buf, uint32_t len);
+    static AC_RET TransJsonStrToTree(AcTreeNode *tree, char *buf, uint32_t len);
 };
 
 

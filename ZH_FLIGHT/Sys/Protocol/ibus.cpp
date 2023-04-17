@@ -23,6 +23,8 @@ MessageHead IbusParser::GetHead()
 
 AC_RET IbusParser::ParseMessage(Message &message)
 {
+    RemoteData data;
+
     if (message.data[0] != IBUS_HEAD || message.data[1] != 0x40 || message.length != IBUS_LENGTH)
     {
         return AC_ERROR;
@@ -48,7 +50,8 @@ AC_RET IbusParser::ParseMessage(Message &message)
     _channel_data[16] = ((uint16_t)(message.data[15] & 0xF0) >> 4) | (uint16_t)(message.data[17] & 0xF0) | ((uint16_t)(message.data[19] & 0xF0) << 4);
     _channel_data[17] = ((uint16_t)(message.data[21] & 0xF0) >> 4) | (uint16_t)(message.data[23] & 0xF0) | ((uint16_t)(message.data[25] & 0xF0) << 4);
 
-    
+    memcpy(data.channel, _channel_data, sizeof(uint16_t) * TOTAL_CHANNEL_NUM);
+    _manager->Update(&data);
     return AC_OK;
 }
 
@@ -57,9 +60,3 @@ void IbusParser::SetDataManager(void *manager)
     _manager = (DataManager<RemoteData>*)manager;
 }
 
-void IbusParser::Publish()
-{
-    RemoteData data;
-    memcpy(data.channel, _channel_data, sizeof(uint16_t) * TOTAL_CHANNEL_NUM);
-    _manager->Update(&data);
-}
