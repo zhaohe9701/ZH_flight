@@ -43,39 +43,39 @@ void Vec4::Clear()
     w = 0;
 }
 
-AC_RET Type::MatchType(char *type_str, AC_DATA_TYPE type)
+AC_RET Type::TransTypeToStr(char *type_buf, AC_DATA_TYPE type)
 {
     switch (type)
     {
         case AC_UINT8:
-            strncpy(type_str, "uint8", TYPE_BUF_LEN - 1);
+            strncpy(type_buf, "uint8", TYPE_BUF_LEN - 1);
             break;
         case AC_UINT16:
-            strncpy(type_str, "uint16", TYPE_BUF_LEN - 1);
+            strncpy(type_buf, "uint16", TYPE_BUF_LEN - 1);
             break;
         case AC_UINT32:
-            strncpy(type_str, "uint32", TYPE_BUF_LEN - 1);
+            strncpy(type_buf, "uint32", TYPE_BUF_LEN - 1);
             break;
         case AC_INT8:
-            strncpy(type_str, "int8", TYPE_BUF_LEN - 1);
+            strncpy(type_buf, "int8", TYPE_BUF_LEN - 1);
             break;
         case AC_INT16:
-            strncpy(type_str, "int16", TYPE_BUF_LEN - 1);
+            strncpy(type_buf, "int16", TYPE_BUF_LEN - 1);
             break;
         case AC_INT32:
-            strncpy(type_str, "int32", TYPE_BUF_LEN - 1);
+            strncpy(type_buf, "int32", TYPE_BUF_LEN - 1);
             break;
         case AC_FLOAT:
-            strncpy(type_str, "float", TYPE_BUF_LEN - 1);
+            strncpy(type_buf, "float", TYPE_BUF_LEN - 1);
             break;
         case AC_DOUBLE:
-            strncpy(type_str, "double", TYPE_BUF_LEN - 1);
+            strncpy(type_buf, "double", TYPE_BUF_LEN - 1);
             break;
         case AC_STRING:
-            strncpy(type_str, "string", TYPE_BUF_LEN - 1);
+            strncpy(type_buf, "string", TYPE_BUF_LEN - 1);
             break;
         case AC_SWITCH:
-            strncpy(type_str, "switch", TYPE_BUF_LEN - 1);
+            strncpy(type_buf, "switch", TYPE_BUF_LEN - 1);
             break;
         default:
             return AC_ERROR;
@@ -88,19 +88,19 @@ AC_RET Type::TransDataToStr(char *data_buf, void *data, AC_DATA_TYPE type, uint1
     switch (type)
     {
         case AC_UINT8:
-            snprintf(data_buf, DATA_BUF_LEN, "%u", ((uint8_t *) data)[index]);
+            snprintf(data_buf, DATA_BUF_LEN, "%hhu", ((uint8_t *) data)[index]);
             break;
         case AC_UINT16:
-            snprintf(data_buf, DATA_BUF_LEN, "%u", ((uint16_t *) data)[index]);
+            snprintf(data_buf, DATA_BUF_LEN, "%hu", ((uint16_t *) data)[index]);
             break;
         case AC_UINT32:
             snprintf(data_buf, DATA_BUF_LEN, "%lu", ((uint32_t *) data)[index]);
             break;
         case AC_INT8:
-            snprintf(data_buf, DATA_BUF_LEN, "%d", ((int8_t *) data)[index]);
+            snprintf(data_buf, DATA_BUF_LEN, "%hhd", ((int8_t *) data)[index]);
             break;
         case AC_INT16:
-            snprintf(data_buf, DATA_BUF_LEN, "%d", ((int16_t *) data)[index]);
+            snprintf(data_buf, DATA_BUF_LEN, "%hd", ((int16_t *) data)[index]);
             break;
         case AC_INT32:
             snprintf(data_buf, DATA_BUF_LEN, "%ld", ((int32_t *) data)[index]);
@@ -109,17 +109,10 @@ AC_RET Type::TransDataToStr(char *data_buf, void *data, AC_DATA_TYPE type, uint1
             snprintf(data_buf, DATA_BUF_LEN, "%f", ((float *) data)[index]);
             break;
         case AC_DOUBLE:
-            snprintf(data_buf, DATA_BUF_LEN, "%f", ((double *)data)[index]);
+            snprintf(data_buf, DATA_BUF_LEN, "%lf", ((double *)data)[index]);
             break;
         case AC_SWITCH:
-            if (AC_OFF == ((AcSwitch *)data)[index])
-            {
-                strcpy(data_buf, "off");
-            }
-            else
-            {
-                strcpy(data_buf, "on");
-            }
+            snprintf(data_buf, DATA_BUF_LEN, "0x%hhx", ((uint8_t *) data)[index]);
             break;
         case AC_STRING:
             if (index != 0)
@@ -127,6 +120,91 @@ AC_RET Type::TransDataToStr(char *data_buf, void *data, AC_DATA_TYPE type, uint1
                 return AC_ERROR;
             }
             snprintf(data_buf, DATA_BUF_LEN, "%s", (char*)data);
+            break;
+        default:
+            return AC_ERROR;
+    }
+    return AC_OK;
+}
+
+AC_RET Type::TransStrToType(char *type_buf, AC_DATA_TYPE &type)
+{
+    if (0 == strncmp("uint8", type_buf, TYPE_BUF_LEN))
+    {
+        type = AC_UINT8;
+    } else if (0 == strncmp("uint16", type_buf, TYPE_BUF_LEN))
+    {
+        type = AC_UINT16;
+    } else if (0 == strncmp("uint32", type_buf, TYPE_BUF_LEN))
+    {
+        type = AC_UINT32;
+    } else if (0 == strncmp("int8", type_buf, TYPE_BUF_LEN))
+    {
+        type = AC_INT8;
+    } else if (0 == strncmp("int16", type_buf, TYPE_BUF_LEN))
+    {
+        type = AC_INT16;
+    } else if (0 == strncmp("int32", type_buf, TYPE_BUF_LEN))
+    {
+        type = AC_INT32;
+    } else if (0 == strncmp("float", type_buf, TYPE_BUF_LEN))
+    {
+        type = AC_FLOAT;
+    } else if (0 == strncmp("double", type_buf, TYPE_BUF_LEN))
+    {
+        type = AC_DOUBLE;
+    } else if (0 == strncmp("string", type_buf, TYPE_BUF_LEN))
+    {
+        type = AC_STRING;
+    } else if (0 == strncmp("switch", type_buf, TYPE_BUF_LEN))
+    {
+        type = AC_SWITCH;
+    }
+    else
+    {
+        return AC_ERROR;
+    }
+
+    return AC_OK;
+}
+
+AC_RET Type::TransStrToData(char *data_buf, void *data, AC_DATA_TYPE type, uint16_t index)
+{
+    switch (type)
+    {
+        case AC_UINT8:
+            sscanf(data_buf, "%hhu", ((uint8_t *) data) + index);
+            break;
+        case AC_UINT16:
+            sscanf(data_buf, "%hu", ((uint16_t *) data) + index);
+            break;
+        case AC_UINT32:
+            sscanf(data_buf, "%lu", ((uint32_t *) data) + index);
+            break;
+        case AC_INT8:
+            sscanf(data_buf, "%hhd", ((int8_t *) data) + index);
+            break;
+        case AC_INT16:
+            sscanf(data_buf, "%hd", ((int16_t *) data) + index);
+            break;
+        case AC_INT32:
+            sscanf(data_buf, "%ld", ((int32_t *) data) + index);
+            break;
+        case AC_FLOAT:
+            sscanf(data_buf, "%f", ((float *) data) + index);
+            break;
+        case AC_DOUBLE:
+            sscanf(data_buf, "%lf", ((double *)data) + index);
+            break;
+        case AC_SWITCH:
+            sscanf(data_buf, "0x%hhx", ((uint8_t *) data) + index);
+            break;
+        case AC_STRING:
+            if (index != 0)
+            {
+                return AC_ERROR;
+            }
+            sscanf(data_buf, "%s", (char*)data);
             break;
         default:
             return AC_ERROR;

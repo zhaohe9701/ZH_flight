@@ -69,8 +69,10 @@ public:
 class Type
 {
 public:
-    static AC_RET MatchType(char *type_buf, AC_DATA_TYPE type);
+    static AC_RET TransTypeToStr(char *type_buf, AC_DATA_TYPE type);
     static AC_RET TransDataToStr(char *data_buf, void *data, AC_DATA_TYPE type, uint16_t index);
+    static AC_RET TransStrToType(char *type_buf, AC_DATA_TYPE &type);
+    static AC_RET TransStrToData(char *data_buf, void *data, AC_DATA_TYPE type, uint16_t index);
 };
 
 typedef uint32_t Condition;
