@@ -10,8 +10,8 @@
 class CommandServer
 {
 private:
-    void _Get(const char* command);
-    static void _Set(const char* command);
+    void _Get(char* command);
+    void _Set(char* command);
     static void _RunTempTask();
     DataManager<Message> *_command_manager = nullptr;
     Printer *_printer = nullptr;

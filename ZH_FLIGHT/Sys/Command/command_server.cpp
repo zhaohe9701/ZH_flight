@@ -129,7 +129,7 @@ CommandServer::~CommandServer()
     delete _printer;
 }
 
-void CommandServer::_Get(const char *command)
+void CommandServer::_Get(char *command)
 {
     int32_t ptr = 0;
     AcTreeNode *root = nullptr;
@@ -167,8 +167,39 @@ void CommandServer::_Get(const char *command)
     _printer->Info("Get Finish.\n");
 }
 
-void CommandServer::_Set(const char *command)
+void CommandServer::_Set(char *command)
 {
+    int32_t ptr = 0;
+    AcTreeNode *root = nullptr;
+    AcTreeNode *node = nullptr;
+    char url[MAX_URL_LEN] = {0};
+
+    if (command[ptr] != '/')
+    {
+        _printer->Error("URL SHOULD START WITH '\\'.\n");
+        return;
+    }
+    ptr++;
+
+    root = aircraft->GetIndex();
+    if (nullptr == root)
+    {
+        root = aircraft->CreateIndex();
+    }
+
+    ptr = GetUrl(command + ptr, url);
+    debug_printer->Info("url:%s\n", url);
+
+    node = AcTree::FindNode(root, url);
+    if (nullptr == node)
+    {
+        _printer->Error("CAN NOT FOUND URL.\n");
+        return;
+    }
+    if (AC_OK != Json::TransJsonStrToTree(node, command + ptr, MAX_JSON_LEN - ptr))
+    {
+        _printer->Error("SET DATA FAILED.\n");
+    }
 
 }
 

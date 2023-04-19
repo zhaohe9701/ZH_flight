@@ -43,7 +43,7 @@ void Ms5611::Init()
         _BaroReadRag(PROM_READ + i * 2, 2, buf);
         _calculation[i] = buf[0] << 8 | buf[1];
     }
-    if (_CheckCRC() == false)
+    if (!_CheckCRC())
     {
         UsbPrintf("MS5611 Init Fail\r\n");
     }

@@ -37,7 +37,7 @@ private:
     float _q3 = 0.0f;	
 
     float _dt = 1.0f / (float)ATTITUDE_SLOVE_CYCLE_FREQ;
-    float _r_mat[3][3] = {0};
+    float _r_mat[3][3] = {{0}};
 };
 
 #endif

@@ -213,7 +213,7 @@ void DynamicTask::StartTask(void)
     };
     const osThreadAttr_t imuTask_attributes = {
     .name = "imuTask",
-    .stack_size = 256 * 4,
+    .stack_size = 512 * 4,
     .priority = (osPriority_t) osPriorityNormal ,
     };
     const osThreadAttr_t baroTask_attributes = {

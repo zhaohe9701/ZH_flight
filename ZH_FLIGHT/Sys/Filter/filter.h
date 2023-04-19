@@ -9,7 +9,7 @@
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 #ifndef __FILTER_H__
-#define __FLITER_H__
+#define __FILTER_H__
 
 #define IIR_SHIFT   8
 

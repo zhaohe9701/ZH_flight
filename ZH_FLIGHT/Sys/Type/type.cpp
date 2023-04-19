@@ -10,7 +10,9 @@
  */
 #include <cstring>
 #include <cstdio>
+#include <cstdlib>
 #include "type.h"
+#include "sys.h"
 
 void Vec3::Set(float xi, float yi, float zi)
 {
@@ -88,31 +90,31 @@ AC_RET Type::TransDataToStr(char *data_buf, void *data, AC_DATA_TYPE type, uint1
     switch (type)
     {
         case AC_UINT8:
-            snprintf(data_buf, DATA_BUF_LEN, "%hhu", ((uint8_t *) data)[index]);
+            snprintf(data_buf, DATA_BUF_LEN, "%u", ((uint8_t *) data)[index]);
             break;
         case AC_UINT16:
-            snprintf(data_buf, DATA_BUF_LEN, "%hu", ((uint16_t *) data)[index]);
+            snprintf(data_buf, DATA_BUF_LEN, "%u", ((uint16_t *) data)[index]);
             break;
         case AC_UINT32:
-            snprintf(data_buf, DATA_BUF_LEN, "%lu", ((uint32_t *) data)[index]);
+            snprintf(data_buf, DATA_BUF_LEN, "%u", ((uint32_t *) data)[index]);
             break;
         case AC_INT8:
-            snprintf(data_buf, DATA_BUF_LEN, "%hhd", ((int8_t *) data)[index]);
+            snprintf(data_buf, DATA_BUF_LEN, "%d", ((int8_t *) data)[index]);
             break;
         case AC_INT16:
-            snprintf(data_buf, DATA_BUF_LEN, "%hd", ((int16_t *) data)[index]);
+            snprintf(data_buf, DATA_BUF_LEN, "%d", ((int16_t *) data)[index]);
             break;
         case AC_INT32:
-            snprintf(data_buf, DATA_BUF_LEN, "%ld", ((int32_t *) data)[index]);
+            snprintf(data_buf, DATA_BUF_LEN, "%d", ((int32_t *) data)[index]);
             break;
         case AC_FLOAT:
             snprintf(data_buf, DATA_BUF_LEN, "%f", ((float *) data)[index]);
             break;
         case AC_DOUBLE:
-            snprintf(data_buf, DATA_BUF_LEN, "%lf", ((double *)data)[index]);
+            snprintf(data_buf, DATA_BUF_LEN, "%f", ((double *)data)[index]);
             break;
         case AC_SWITCH:
-            snprintf(data_buf, DATA_BUF_LEN, "0x%hhx", ((uint8_t *) data)[index]);
+            snprintf(data_buf, DATA_BUF_LEN, "0x%x", ((uint8_t *) data)[index]);
             break;
         case AC_STRING:
             if (index != 0)
@@ -170,34 +172,36 @@ AC_RET Type::TransStrToType(char *type_buf, AC_DATA_TYPE &type)
 
 AC_RET Type::TransStrToData(char *data_buf, void *data, AC_DATA_TYPE type, uint16_t index)
 {
+    char **end = nullptr;
+    debug_printer->Info("data: %s\n", data_buf);
     switch (type)
     {
         case AC_UINT8:
-            sscanf(data_buf, "%hhu", ((uint8_t *) data) + index);
+            ((uint8_t *) data)[index] = strtoul(data_buf, end, 10);
             break;
         case AC_UINT16:
-            sscanf(data_buf, "%hu", ((uint16_t *) data) + index);
+            ((uint16_t *) data)[index] = strtoul(data_buf, end, 10);
             break;
         case AC_UINT32:
-            sscanf(data_buf, "%lu", ((uint32_t *) data) + index);
+            ((uint32_t *) data)[index] = strtoul(data_buf, end, 10);
             break;
         case AC_INT8:
-            sscanf(data_buf, "%hhd", ((int8_t *) data) + index);
+            ((int8_t *) data)[index] = strtol(data_buf, end, 10);
             break;
         case AC_INT16:
-            sscanf(data_buf, "%hd", ((int16_t *) data) + index);
+            ((int16_t *) data)[index] = strtol(data_buf, end, 10);
             break;
         case AC_INT32:
-            sscanf(data_buf, "%ld", ((int32_t *) data) + index);
+            ((int32_t *) data)[index] = strtol(data_buf, end, 10);
             break;
         case AC_FLOAT:
-            sscanf(data_buf, "%f", ((float *) data) + index);
+            ((float *) data)[index] = strtof(data_buf, end);
             break;
         case AC_DOUBLE:
-            sscanf(data_buf, "%lf", ((double *)data) + index);
+            ((double *) data)[index] = strtod(data_buf, nullptr);
             break;
         case AC_SWITCH:
-            sscanf(data_buf, "0x%hhx", ((uint8_t *) data) + index);
+            ((uint8_t *) data)[index] = strtoul(data_buf + 2, nullptr, 16);
             break;
         case AC_STRING:
             if (index != 0)
