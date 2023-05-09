@@ -12,6 +12,7 @@
 #define __BARO_H__
 
 #include <stdint.h>
+#include "ac_tree.h"
 
 class BaroData
 {
@@ -28,6 +29,15 @@ public:
     virtual void GetTemperature(BaroData& data) = 0;
     virtual void GetPressure(BaroData& data) = 0;
     virtual void GetAltitude(BaroData& data) = 0;
+    AcTreeNode *CreateIndex();
+protected:
+    char _name[PARAM_NAME_LEN] = "baro";
+    AcSwitch _get_altitude_mark = AC_OFF;
+    AcSwitch _get_pressure_mark = AC_OFF;
+    AcSwitch _get_temp_mark = AC_OFF;
+    uint8_t _id = 0x00;
+
+    uint8_t _test[4] = {1,2,3,4};
 };
 
 #endif

@@ -42,5 +42,9 @@ AcTreeNode *Sensor::CreateIndex()
 
     node = imu->CreateIndex();
     AcTree::AddNode(root, node);
+
+    node = baro->CreateIndex();
+    AcTree::AddNode(root, node);
+
     return root;
 }

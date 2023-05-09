@@ -108,34 +108,34 @@ static AC_RET AddValToJsonStr(AcTreeNode *node, char *buf, uint32_t &ptr, uint32
 {
     char type_buf[TYPE_BUF_LEN] = {0};
     char data_buf[DATA_BUF_LEN] = {0};
-    AddElementWithCheck("{");
-    AddElementWithCheck("\"@t\":");
+    AddElementWithCheck("{")
+    AddElementWithCheck("\"@t\":")
     if (AC_OK != Type::TransTypeToStr(type_buf, node->type))
     {
         debug_printer->Error("trans type to string failed.\n");
         goto error;
     }
-    AddElementWithCheck("\"");
-    AddElementWithCheck(type_buf);
-    AddElementWithCheck("\"");
+    AddElementWithCheck("\"")
+    AddElementWithCheck(type_buf)
+    AddElementWithCheck("\"")
 
-    AddElementWithCheck(",");
-    AddElementWithCheck("\"@v\":");
-    AddElementWithCheck("\"");
+    AddElementWithCheck(",")
+    AddElementWithCheck("\"@v\":")
+    AddElementWithCheck("\"")
     for (uint16_t i = 0; i < node->len; ++i)
     {
         if (AC_OK != Type::TransDataToStr(data_buf, node->data, node->type, i))
         {
             goto error;
         }
-        AddElementWithCheck(data_buf);
+        AddElementWithCheck(data_buf)
         if (i < node->len - 1)
         {
-            AddElementWithCheck(" ");
+            AddElementWithCheck(" ")
         }
     }
-    AddElementWithCheck("\"");
-    AddElementWithCheck("}");
+    AddElementWithCheck("\"")
+    AddElementWithCheck("}")
     return AC_OK;
     error:
     return AC_ERROR;
@@ -191,22 +191,22 @@ AC_RET Json::TransToJsonStrCore(AcTreeNode *node, char *buf, uint32_t &ptr, uint
     }
     if (0 != node->name[0])
     {
-        AddElementWithCheck("\"");
-        AddElementWithCheck(node->name);
-        AddElementWithCheck("\"");
-        AddElementWithCheck(":");
+        AddElementWithCheck("\"")
+        AddElementWithCheck(node->name)
+        AddElementWithCheck("\"")
+        AddElementWithCheck(":")
     }
 
     if (AC_STRUCT == node->type)
     {
-        AddElementWithCheck("{");
+        AddElementWithCheck("{")
         AcTreeNode *child = node->GetFirstChild();
 
         while (nullptr != child)
         {
             if (child != node->GetFirstChild())
             {
-                AddElementWithCheck(",");
+                AddElementWithCheck(",")
             }
             if (AC_OK != TransToJsonStrCore(child, buf, ptr, len))
             {
@@ -214,10 +214,10 @@ AC_RET Json::TransToJsonStrCore(AcTreeNode *node, char *buf, uint32_t &ptr, uint
             }
             child = child->GetNeighbor();
         }
-        AddElementWithCheck("}");
+        AddElementWithCheck("}")
     } else if (AC_STRUCT_ARRAY == node->type)
     {
-        AddElementWithCheck("[");
+        AddElementWithCheck("[")
 
         AcTreeNode *child = node->GetFirstChild();
 
@@ -225,7 +225,7 @@ AC_RET Json::TransToJsonStrCore(AcTreeNode *node, char *buf, uint32_t &ptr, uint
         {
             if (child != node->GetFirstChild())
             {
-                AddElementWithCheck(",");
+                AddElementWithCheck(",")
             }
             if (AC_OK != TransToJsonStrCore(child, buf, ptr, len))
             {
@@ -234,7 +234,7 @@ AC_RET Json::TransToJsonStrCore(AcTreeNode *node, char *buf, uint32_t &ptr, uint
             child = child->GetNeighbor();
         }
 
-        AddElementWithCheck("]");
+        AddElementWithCheck("]")
         debug_printer->Info("result:%s\n", buf);
         osDelay(10);
     }
@@ -335,7 +335,7 @@ AC_RET Json::TransValToTree(AcTreeNode *node, char *buf, uint32_t &ptr, uint32_t
     return AC_ERROR;
 }
 
-AC_RET Json::TransStructArrayToTree(AcTreeNode *node, char *buf, uint32_t &ptr, uint32_t len)
+AC_RET Json::TransArrayToTree(AcTreeNode *node, char *buf, uint32_t &ptr, uint32_t len)
 {
     char element_buf[DATA_BUF_LEN] = {0};
     char next = 0;
@@ -346,6 +346,7 @@ AC_RET Json::TransStructArrayToTree(AcTreeNode *node, char *buf, uint32_t &ptr, 
         ptr++;
         if ('\"' != GetAndGoToNextSymbol(buf, ptr))
         {
+            debug_printer->Error("json format error10.\n");
             goto error;
         }
         if (AC_OK != GetElement(buf, element_buf, ptr, len))
@@ -359,11 +360,13 @@ AC_RET Json::TransStructArrayToTree(AcTreeNode *node, char *buf, uint32_t &ptr, 
         }
         if (':' != GetAndGoToNextSymbol(buf, ptr))
         {
+            debug_printer->Error("json format error11.\n");
             goto error;
         }
         ptr++;
         if ('{' != GetAndGoToNextSymbol(buf, ptr))
         {
+            debug_printer->Error("json format error12.\n");
             goto error;
         }
         if (AC_OK != Json::TransStructToTree(child, buf, ptr, len))
@@ -396,17 +399,21 @@ AC_RET Json::TransStructToTree(AcTreeNode *node, char *buf, uint32_t &ptr, uint3
     ptr++;
     while ('\"' == GetAndGoToNextSymbol(buf, ptr))
     {
+        memset(element_buf, 0, DATA_BUF_LEN);
         if (AC_OK != GetElement(buf, element_buf, ptr, len))
         {
+            debug_printer->Error("1.\n");
             goto error;
         }
         AcTreeNode *child = AcTree::FindChildByName(node, element_buf);
         if (nullptr == child)
         {
+            debug_printer->Error("2.\n");
             goto error;
         }
         if (':' != GetAndGoToNextSymbol(buf, ptr))
         {
+            debug_printer->Error("json format error13.\n");
             goto error;
         }
         ptr++;
@@ -414,19 +421,22 @@ AC_RET Json::TransStructToTree(AcTreeNode *node, char *buf, uint32_t &ptr, uint3
         {
             if ('{' != GetAndGoToNextSymbol(buf, ptr))
             {
+                debug_printer->Error("json format error14.\n");
                 goto error;
             }
             if (AC_OK != TransStructToTree(child, buf, ptr, len))
             {
+                debug_printer->Error("3.\n");
                 goto error;
             }
         } else if (AC_STRUCT_ARRAY == child->type)
         {
             if ('[' != GetAndGoToNextSymbol(buf, ptr))
             {
+                debug_printer->Error("json format error15.\n");
                 goto error;
             }
-            if (AC_OK != TransStructArrayToTree(child, buf, ptr, len))
+            if (AC_OK != TransArrayToTree(child, buf, ptr, len))
             {
                 goto error;
             }
@@ -434,22 +444,26 @@ AC_RET Json::TransStructToTree(AcTreeNode *node, char *buf, uint32_t &ptr, uint3
         {
             if ('{' != GetAndGoToNextSymbol(buf, ptr))
             {
+                debug_printer->Error("json format error16.\n");
                 goto error;
             }
             if (AC_OK != TransValToTree(child, buf, ptr, len))
             {
+                debug_printer->Error("4.\n");
                 goto error;
             }
         }
         next = GetAndGoToNextSymbol(buf, ptr);
         if (',' == next)
         {
+            debug_printer->Info("s1.\n");
             ptr++;
         } else if ('}' == next)
         {
             break;
         } else
         {
+            debug_printer->Error("json format error17.\n");
             goto error;
         }
     }
@@ -462,12 +476,12 @@ AC_RET Json::TransStructToTree(AcTreeNode *node, char *buf, uint32_t &ptr, uint3
 AC_RET Json::TransTreeToJsonStr(AcTreeNode *tree, char *buf, uint32_t len)
 {
     uint32_t ptr = 0;
-    AddElementWithCheck("{");
+    AddElementWithCheck("{")
     if (AC_OK != TransToJsonStrCore(tree, buf, ptr, len))
     {
         goto error;
     }
-    AddElementWithCheck("}");
+    AddElementWithCheck("}")
     return AC_OK;
     error:
     return AC_ERROR;
