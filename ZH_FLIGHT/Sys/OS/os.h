@@ -15,11 +15,29 @@
 #include "cmsis_os2.h"
 #include "queue.h"
 #include "semphr.h"
+inline int is_isr()
+{
+    uint32_t ipsr;
+    __asm volatile ("mrs %0, IPSR" : "=r" (ipsr) );
+    return (ipsr != 0);
+}
+
+
 
 typedef osMutexId_t Mutex;
 typedef osSemaphoreId_t Semaphore;
 typedef osThreadId_t Thread;
 typedef osMessageQueueId_t Queue;
+
+typedef TaskHandle_t ThreadHandle;
+typedef QueueHandle_t QueueHandle;
+typedef SemaphoreHandle_t SemaphoreHandle;
+typedef TaskFunction_t AcFunction;
+typedef UBaseType_t AcPriority;
+
+#define AC_FOREVER 0xFFFFFFFF
+
+#define IS_IN_IRQ() (is_isr() != 0)
 
 #define AcLock(id) osMutexAcquire(id, osWaitForever)
 #define AcUnLock(id) osMutexRelease(id)

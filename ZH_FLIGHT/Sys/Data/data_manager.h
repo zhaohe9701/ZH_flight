@@ -12,57 +12,122 @@
 #define __DATA_MANAGER_H__
 
 #include "os.h"
+#include "type.h"
 
 template <class T>
 class DataManager
 {
 public:
     explicit DataManager(uint32_t len = 1);
-    void Push(T *data);
-    void Pop(T *data);
-    void Update(T *data);
-    void Copy(T *data);
+    AC_RET Push(T *data, uint32_t timeout = AC_FOREVER);
+    AC_RET Pop(T *data, uint32_t timeout = AC_FOREVER);
+    AC_RET Update(T *data);
+    AC_RET Copy(T *data, uint32_t timeout = AC_FOREVER);
     ~DataManager();
 private:
-    Queue _handler;
+    QueueHandle _handler = nullptr;
 };
 
 template <class T>
 DataManager<T>::DataManager(uint32_t len)
 {
-    T init;
-    _handler = osMessageQueueNew(1, sizeof(T), NULL);
-    Push(&init);
+    // T init;
+    _handler = xQueueCreate(1, sizeof(T));
+    // Push(&init);
 }
 
 template <class T>
-void DataManager<T>::Push(T *data)
+AC_RET DataManager<T>::Push(T *data, uint32_t timeout)
 {
-    osMessageQueuePut(_handler, data, 0, osWaitForever);
+    if (IS_IN_IRQ())
+    {
+        BaseType_t yield = pdFALSE;
+        if (pdPASS != xQueueSendToBackFromISR(_handler, data, &yield))
+        {
+            return AC_ERROR;
+        } else
+        {
+            portYIELD_FROM_ISR(yield);
+        }
+    } else
+    {
+        if (pdTRUE != xQueueSendToBack(_handler, data, (TickType_t)timeout))
+        {
+            return AC_ERROR;
+        }
+    }
+    return AC_OK;
 }
 
 template <class T>
-void DataManager<T>::Pop(T *data)
+AC_RET DataManager<T>::Pop(T *data, uint32_t timeout)
 {
-    osMessageQueueGet(_handler, data, NULL, osWaitForever);
+    if (IS_IN_IRQ())
+    {
+        BaseType_t yield = pdFALSE;
+        if (pdTRUE != xQueueReceiveFromISR(_handler, data, &yield))
+        {
+            return AC_ERROR;
+        } else
+        {
+            portYIELD_FROM_ISR(yield);
+        }
+    } else
+    {
+        if (pdTRUE != xQueueReceive(_handler, data, (TickType_t)timeout))
+        {
+            return AC_ERROR;
+        }
+    }
+    return AC_OK;
 }
 
 template <class T>
-void DataManager<T>::Copy(T *data)
+AC_RET DataManager<T>::Copy(T *data, uint32_t timeout)
 {
-    osMessageQueuePeek(_handler, data, NULL, osWaitForever);
+    if (IS_IN_IRQ())
+    {
+        if (pdTRUE != xQueuePeekFromISR(_handler, data))
+        {
+            return AC_ERROR;
+        }
+    } else
+    {
+        if (pdTRUE != xQueuePeek(_handler, data, (TickType_t)timeout))
+        {
+            return AC_ERROR;
+        }
+    }
+    return AC_OK;
 }
 
 template <class T>
-void DataManager<T>::Update(T *data)
+AC_RET DataManager<T>::Update(T *data)
 {
-    osMessageQueueOverwrite(_handler, data);
+    if (IS_IN_IRQ())
+    {
+        BaseType_t yield = pdFALSE;
+        if (pdTRUE != xQueueOverwriteFromISR(_handler, data, &yield))
+        {
+            return AC_ERROR;
+        } else
+        {
+            portYIELD_FROM_ISR(yield);
+        }
+    } else
+    {
+        if (pdTRUE != xQueueOverwrite(_handler, data))
+        {
+            return AC_ERROR;
+        }
+    }
+    return AC_OK;
 }
 
 template <class T>
 DataManager<T>::~DataManager()
 {
-    osMessageQueueDelete(_handler);
+    vQueueDelete(_handler);
 }
 
 #endif

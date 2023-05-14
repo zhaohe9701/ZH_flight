@@ -129,7 +129,7 @@ set(SYS_SRC
         Sys/Task/transmit_data_task.cpp
         Sys/Type/type.cpp
         Sys/Common/ac_tree.cpp
-        Sys/Sensor/Imu/imu.cpp Sys/Task/command_task.cpp Sys/Task/receive_data_task.cpp Sys/Json/json.cpp Sys/Sensor/Baro/baro.cpp)
+        Sys/Sensor/Imu/imu.cpp Sys/Task/command_task.cpp Sys/Task/receive_data_task.cpp Sys/Json/json.cpp Sys/Sensor/Baro/baro.cpp Sys/OS/ac_thread.cpp Sys/OS/ac_thread.h)
 
 set(START_UP_ASM
         startup_stm32h7b0xx.s

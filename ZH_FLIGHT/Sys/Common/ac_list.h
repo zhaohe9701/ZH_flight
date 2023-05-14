@@ -23,8 +23,8 @@ private:
     AcListNode<T> *_next = nullptr;
 public:
     T *data = nullptr;
-    AcListNode<T> *Next();
-    AcListNode<T> *Prev();
+    AcListNode<T> *GetNext();
+    AcListNode<T> *GetPrev();
 };
 
 template <class T>
@@ -38,6 +38,9 @@ public:
     void PushFront(T *data);
     AcListNode<T> *Begin();
     AcListNode<T> *End();
+    AcListNode<T> *Index(int ind);
     ~AcList();
 };
+
+
 #endif

@@ -11,13 +11,13 @@
 #include "ac_list.h"
 
 template <class T>
-AcListNode<T> *AcListNode<T>::Next()
+AcListNode<T> *AcListNode<T>::GetNext()
 {
     return _next;
 }
 
 template <class T>
-AcListNode<T> *AcListNode<T>::Prev()
+AcListNode<T> *AcListNode<T>::GetPrev()
 {
     return _prev;
 }
@@ -67,13 +67,37 @@ AcListNode<T> *AcList<T>::End()
 template <class T>
 AcList<T>::~AcList()
 {
-    AcListNode<T> *node = _head->_next;
+    AcListNode<T> *node = _head->GetNext();
     AcListNode<T> *next_node = nullptr;
     while (node != _head)
     {
-        next_node = node->Next();
+        next_node = node->GetNext();
         delete node;
         node = next_node;
     }
     delete _head;
+}
+
+template<class T>
+AcListNode<T> *AcList<T>::Index(int ind)
+{
+    int i = 0;
+    AcListNode<T> *node = _head->GetNext();
+    while (node != _head)
+    {
+        if (i == ind)
+        {
+            return node;
+        }
+        if (ind > 0)
+        {
+            node = node->GetNext();
+            i++;
+        } else
+        {
+            node = node->GetPrev();
+            i--;
+        }
+    }
+    return nullptr;
 }

@@ -39,6 +39,7 @@
 #include "z_spi.h"
 #include "z_usb.h"
 #include "command_server.h"
+#include "ac_thread.h"
 
 /****************对外暴露任务接口****************/
 extern "C" void ImuTaskInterface(void *argument);
@@ -75,7 +76,11 @@ void TestTaskInterface(void *argument)
     StaticTask::TestTask();
 }
 
+AcThread led_thread;
 osThreadId_t ledTaskHandle;
+osThreadId_t imuTaskHandle;
+osThreadId_t baroTaskHandle;
+osThreadId_t attitudeSolveTaskHandle;
 osThreadId_t testTaskHandle;
 osThreadId_t transmitDataTaskHandle;
 osThreadId_t receiveDataTaskHandle;
@@ -167,7 +172,7 @@ void DynamicTask::StartTask(void)
 
     message_receive_server->AddParser(command_parser);
     /*创建消息发送服务器*/
-    AcQueue<Message> *transmit_queue = new AcQueue<Message>(5);
+    AcQueue<Message> *transmit_queue = new AcQueue<Message>(10);
     message_transmit_server = new MessageTransmitServer(transmit_queue);
     CommunicateInterface *interface = new Usb(0x01);
     message_transmit_server->AddTransmitter(interface);
@@ -219,7 +224,7 @@ void DynamicTask::StartTask(void)
     const osThreadAttr_t baroTask_attributes = {
     .name = "baroTask",
     .stack_size = 256 * 4,
-    .priority = (osPriority_t) osPriorityBelowNormal ,
+    .priority = (osPriority_t) osPriorityNormal ,
     };
 //    const osThreadAttr_t magTask_attributes = {
 //    .name = "magTask",
@@ -251,12 +256,13 @@ void DynamicTask::StartTask(void)
     .stack_size = 256 * 4,
     .priority = (osPriority_t) osPriorityNormal ,
     };
-    testTaskHandle = osThreadNew(ImuTaskInterface, NULL, &imuTask_attributes);
-    testTaskHandle = osThreadNew(BaroTaskInterface, NULL, &baroTask_attributes);
+    imuTaskHandle = osThreadNew(ImuTaskInterface, NULL, &imuTask_attributes);
+    baroTaskHandle = osThreadNew(BaroTaskInterface, NULL, &baroTask_attributes);
     // testTaskHandle = osThreadNew(ImuTaskInterface, NULL, &magTask_attributes);
-    ledTaskHandle = osThreadNew(AttitudeSolveTaskInterface, NULL, &attitudeSolveTask_attributes);
+    attitudeSolveTaskHandle = osThreadNew(AttitudeSolveTaskInterface, NULL, &attitudeSolveTask_attributes);
     testTaskHandle = osThreadNew(TestTaskInterface, NULL, &testTask_attributes);
-    ledTaskHandle = osThreadNew(LightTaskInterface, NULL, &ledTask_attributes);
+    led_thread.Init(LightTaskInterface, "ledTask", 64, 24);
+    // ledTaskHandle = osThreadNew(LightTaskInterface, NULL, &ledTask_attributes);
     transmitDataTaskHandle = osThreadNew(TransmitDataTaskInterface, NULL, &transmitDataTask_attributes);
     receiveDataTaskHandle = osThreadNew(ReceiveDataTaskInterface, NULL, &receiveDataTask_attributes);
     commandTaskHandle = osThreadNew(CommandTaskInterface, NULL, &commandTask_attributes);

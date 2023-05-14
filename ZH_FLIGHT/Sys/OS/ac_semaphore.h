@@ -11,16 +11,16 @@
 #ifndef __AC_SEMAPHORE_H__
 #define __AC_SEMAPHORE_H__
 
-#include "cmsis_os2.h"
+#include "os.h"
 #include "type.h"
 
 class AcSemaphore
 {
 private:
-    osSemaphoreId_t _handle = nullptr;
+    SemaphoreHandle _handler = nullptr;
 public:
     AcSemaphore();
-    AC_RET Get();
+    AC_RET Get(uint32_t timeout = AC_FOREVER);
     AC_RET Give();
 };
 

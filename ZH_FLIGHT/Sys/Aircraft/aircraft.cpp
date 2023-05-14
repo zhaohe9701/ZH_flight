@@ -134,6 +134,7 @@ AC_RET Aircraft::GetAccAndGyro()
     // UsbPrintf("0x%x\r\n", id);
     // UsbPrintf("%d %d %d\r\n", (int)imu_data.acc.x, (int)imu_data.acc.y, (int)imu_data.acc.z);
     _imu_data_manager.Update(&imu_data);
+    // _printer->Info("%d %d %d\r\n", (int)imu_data.acc.x, (int)imu_data.acc.y, (int)imu_data.acc.z);
     return AC_OK;
 }
 
@@ -153,7 +154,7 @@ AC_RET Aircraft::UpdateAttitude()
     MagData mag_data;
 
     _imu_data_manager.Copy(&imu_data);
-    _actual_state_manager.Copy(&actual_state);
+    // _actual_state_manager.Copy(&actual_state);
 
     sensor_data.acc = imu_data.acc;
     sensor_data.gyr = imu_data.gyr;
@@ -229,7 +230,8 @@ AC_RET Aircraft::Test()
 
     _baro_data_manager.Copy(&baro_data);
     _actual_state_manager.Copy(&state);
-    //_printer->Info("%.2f %.2f %.2f %.2f\r\n", state.euler.x, state.euler.y, state.euler.z, baro_data.altitude);
+    // _printer->Info("%.2f %.2f %.2f %.2f\r\n", state.euler.x, state.euler.y, state.euler.z, baro_data.altitude);
+    // _printer->Info("%.2f\r\n", baro_data.altitude);
     return AC_OK;
 }
 

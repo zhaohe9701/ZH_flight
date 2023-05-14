@@ -27,6 +27,7 @@ void StaticTask::ImuTask(void)
     {
         imu_sem->Get();
         aircraft->GetAccAndGyro();
+        // osDelay(1);
     }
 }
     

@@ -24,11 +24,13 @@ public:
     void WriteReg(uint8_t address, uint8_t value) override;
     void WriteRegs(uint8_t address, uint8_t len, uint8_t *value) override;
     static I2C_HandleTypeDef *active_hi2c;
-    static osSemaphoreId_t iic_semaphore;
+    static osSemaphoreId_t receive_semaphore;
 private:
     I2C_HandleTypeDef *_hi2c;
     uint8_t _mem_address = 0;
     uint16_t _device_address;
+    uint8_t _receive_buf[32] = {0};
+    uint8_t _transmit_buf[32] = {0};
     
 };
 
