@@ -4,12 +4,12 @@
  * @Author: zhaohe
  * @Date: 2022-08-20 14:23:56
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-10-20 23:27:34
+ * @LastEditTime: 2022-12-25 01:44:24
  * @FilePath: \ZH_FLIGHT\Sys\Control\AttitudeControl\attitude_controller_interface.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
-#ifndef __ATTITUDE_CONTROLLER_H__
-#define __ATTITUDE_CONTROLLER_H__
+#ifndef __ATTITUDE_CONTROLLER_INTERFACE_H__
+#define __ATTITUDE_CONTROLLER_INTERFACE_H__
 #include "control_param.h"
 #include "control_input_type.h"
 #include "control_output_type.h"

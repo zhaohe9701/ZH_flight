@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-09-25 22:53:22
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-10-22 01:20:57
+ * @LastEditTime: 2022-12-24 20:42:27
  * @FilePath: \ZH_FLIGHT\Sys\Driver\z_pwm.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -71,18 +71,13 @@ uint16_t Pwm::_PwmChannelToMark(uint16_t channel)
     return mark;
 }
 
-
-
-
-
-
-
-void Pwm::Init(TIM_HandleTypeDef *htim, uint16_t channel)
+Pwm::Pwm(TIM_HandleTypeDef *htim, uint16_t channel)
 {
     _htim = htim;
     _channel = channel;
-    
 }
+
+
 
 void Pwm::Output(uint16_t *data, uint16_t length)
 {

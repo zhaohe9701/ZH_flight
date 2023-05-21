@@ -4,94 +4,91 @@
  * @Author: zhaohe
  * @Date: 2022-10-11 15:04:22
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-10-13 22:54:47
+ * @LastEditTime: 2023-02-24 00:16:04
  * @FilePath: \ZH_FLIGHT\Sys\StateMachine\state_machine.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 #include "state_machine.h"
+#include "ac_list.h"
 #include <string.h>
 
-
-RunningState::RunningState(uint8_t my_state)
+AC_RET StateMachine::TransToNextState(Condition condition)
 {
-    _my_state = my_state;
-}
-
-
-void RunningState::AddEventStateMap(uint8_t state, uint8_t *event)
-{
-    memcpy(_map[_reachable_state_num].event, event, EVENT_NUM);
-    _map[_reachable_state_num].state = state;
-    _reachable_state_num++;
-}
-
-void RunningState::AddAction(void (*func)())
-{
-    _action = func;
-}
-
-uint8_t RunningState::GetNextState(uint8_t *event)
-{
-    for (int i = 0; i < _reachable_state_num; ++i)
+    _current_state = state[_current_state].GetNextState(condition);
+    if (_current_state == AS_ERROR)
     {
-        if (_MatchEvent(_map[i].event, event))
-        {
-            return _map[i].state;
-        }
+        return AC_ERROR;
     }
-    return _my_state;
+    return AC_OK;
 }
 
-void RunningState::ExecuteAction()
+StateGroup StateMachine::GetCurrentState()
 {
-    _action();
+    return _current_state;
 }
 
-uint8_t RunningState::GetMyState()
+ActionGroup StateMachine::GetAction()
 {
-    return _my_state;
+    return (ActionGroup)_current_state;
 }
 
-
-
-bool RunningState::_MatchEvent(uint8_t *source, uint8_t *event)
+bool StateMap::IsMatch(Condition trans_condition)
 {
-    for (int i = 0; i < EVENT_NUM; ++i)
+    Condition tmp;
+    tmp = trans_condition & _positive_condition;
+    if (tmp != _positive_condition)
     {
-        if (source[i] != EVENT_IGNORE)
-        {
-            if (source[i] != event[i])
-            {
-                return false;
-            }
-        }
+        return false;
+    }
+
+    tmp = ~trans_condition;
+    tmp = tmp & _negative_condition;
+    if (tmp != _negative_condition)
+    {
+        return false;
     }
     return true;
 }
 
-
-void StateMachine::AddState(RunningState *state)
+void StateMap::AddPositiveCondition(Condition condition)
 {
-    if (_state_index >= STATE_NUM)
+    _positive_condition = condition;
+}
+
+void StateMap::AddNegativeCondition(Condition condition)
+{
+    _negative_condition = condition;
+}
+
+StateGroup StateMap::GetMatchState()
+{
+    return _state;
+}
+
+void State::AddNeighborState(StateGroup neighbor_state, Condition positive, Condition negative)
+{
+    StateMap *state = new StateMap();
+    state->AddPositiveCondition(positive);
+    state->AddNegativeCondition(negative);
+    _neighbor.PushBack(state);
+}
+
+StateGroup State::GetNextState(Condition condition)
+{
+    for(AcListNode<StateMap*> *node = _neighbor.Begin(); node != _neighbor.End(); node = node->GetNext())
     {
-        return;
+        if (node->data->IsMatch(condition))
+        {
+            return node->data->GetMatchState();
+        }
     }
-    _state_set[_state_index] = state;
-    _state_index++;
+    return AS_ERROR;
 }
 
-void StateMachine::SetInitialState(RunningState *state)
+State::~State()
 {
-    _current_state = state;
-}
-
-void StateMachine::TransferState(uint8_t *event)
-{  
-    uint8_t next_state = _current_state->GetNextState(event);
-    _current_state = _state_set[next_state];
-}
-
-void StateMachine::Run()
-{
-    _current_state->ExecuteAction();
+    for(AcListNode<StateMap*> *node = _neighbor.Begin(); node != _neighbor.End(); node = node->GetNext())
+    {
+        delete node->data;
+    }
 }

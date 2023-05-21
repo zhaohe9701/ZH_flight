@@ -4,7 +4,7 @@
  * @Author: zhaohe
  * @Date: 2022-09-24 17:52:30
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-10-09 23:00:44
+ * @LastEditTime: 2022-12-19 23:51:02
  * @FilePath: \ZH_FLIGHT\Sys\AHRS\mahony.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -14,10 +14,10 @@
 #include "ahrs.h"
 
 
-class Mahony : virtual public AttitudeAlgorithm
+class Mahony : virtual public AttitudeSolver
 {
 public:
-    void Update(AircraftState &actual_state, ImuData &imu_data) override;
+    void Update(ActualState &actual_state, SensorData &sensor_data) override;
     void TransformBodyToEarth(float &x, float &y, float &z) override;
     void TransformEarthToBody(float &x, float &y, float &z) override;
 private:
@@ -36,8 +36,8 @@ private:
     float _q2 = 0.0f;
     float _q3 = 0.0f;	
 
-    float _dt = 1.0f / MAIN_CYCLE_FREQ;
-    float _r_mat[3][3] = {0};
+    float _dt = 1.0f / (float)ATTITUDE_SOLVE_CYCLE_FREQ;
+    float _r_mat[3][3] = {{0}};
 };
 
 #endif

@@ -1,10 +1,10 @@
 /*
- * @Description: 
+ * @Description:
  * @Version: 1.0
  * @Author: zhaohe
  * @Date: 2022-10-09 23:18:03
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-10-13 23:07:17
+ * @LastEditTime: 2023-02-24 00:16:26
  * @FilePath: \ZH_FLIGHT\Sys\StateMachine\state_machine.h
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
@@ -12,86 +12,79 @@
 #define __STATE_MACHINE_H__
 
 #include <stdint.h>
+#include "type.h"
+#include "ac_list.h"
 
-#define EVENT_NUM       6
-#define STATE_NUM       7
-#define EVENT_ON        1
-#define EVENT_OFF       0
-#define EVENT_IGNORE    2
+#define EVENT_NUM 6
+#define STATE_NUM 7
 
 /*状态集合定义*/
-enum StateList
+enum StateGroup
 {
-    S_INITIALIZE,
-    S_STANDBY,
-    S_WITE,
-    S_PARAM_SERVICE,
-    S_CALIBRATION,
-    S_MANUAL,
-    S_AUTO
+    AS_ERROR = -1,
+    AS_INITIALIZE,
+    AS_STANDBY,
+    AS_SETTING,
+    AS_CALIBRATION,
+    AS_MANUAL,
+    AS_ALTITUDE,
+    AS_AUTO,
 };
 
-/*时间集合定义*/
+/*动作集合定义*/
+typedef StateGroup ActionGroup;
+
+/*事件集合定义*/
 enum EventList
 {
-    E_UNLOCK,
-    E_PARAM_SERVICE,
-    E_CALIBRATION,
-    E_MANUAL,
-    E_AUTO,
-    E_ZERO_THROTTLE
+    NULL_EVENT          = 0b00000000,
+    INIT_OVER_EVENT     = 0b00000001,
+    UNLOCK_EVENT        = 0b00000010,
+    SETTING_EVENT       = 0b00000100,
+    CALIBRATION_EVENT   = 0b00001000,
+    MANUAL_EVENT        = 0b00010000,
+    ALTITUDE_EVENT      = 0b00100000,
+    AUTO_EVENT          = 0b01000000,
+    ZERO_THROTTLE_EVENT = 0b10000000,
 };
 
-class EventStateMap
+class StateMap
 {
 public:
-    uint8_t event[EVENT_NUM];
-    uint8_t state;
-};
+    bool IsMatch(Condition trans_condition);
+    void AddPositiveCondition(Condition condition);
+    void AddNegativeCondition(Condition condition);
+    StateGroup GetMatchState();
+    StateMap *next = nullptr;
+    StateMap *prev = nullptr;
 
-
-class RunningState
-{
-public:
-    RunningState(uint8_t my_atate);
-
-    void AddEventStateMap(uint8_t state, uint8_t *event);
-
-    void AddAction(void (*func)());
-
-    uint8_t GetNextState(uint8_t *event);
-
-    void ExecuteAction();
-
-    uint8_t GetMyState();
-    
 private:
-    uint8_t _my_state;
+    StateGroup _state;
+    Condition _positive_condition;
+    Condition _negative_condition;
+};
 
-    uint8_t _reachable_state_num = 0;
+class State
+{
+public:
+    State(){};
+    void AddNeighborState(StateGroup neighbor_state, Condition positive, Condition negative);
+    StateGroup GetNextState(Condition _condition);
+    ~State();
 
-    EventStateMap _map[STATE_NUM];
-    
-    void (*_action)() = nullptr;
-
-    uint8_t *_transfer_event;
-
-    bool _MatchEvent(uint8_t *source, uint8_t *event);
+private:
+    AcList<StateMap*> _neighbor;
 };
 
 class StateMachine
 {
 public:
-    void AddState(RunningState *state);
-    void SetInitialState(RunningState *state);
-    void TransferState(uint8_t *event);
-    void Run();
+    AC_RET TransToNextState(Condition condition);
+    StateGroup GetCurrentState();
+    ActionGroup GetAction();
+    State state[STATE_NUM];
 private:
-    uint8_t _state_index = 0;
-    RunningState *_state_set[STATE_NUM];
-    RunningState *_current_state;
+    StateGroup _current_state;
 };
-
-
 
 #endif

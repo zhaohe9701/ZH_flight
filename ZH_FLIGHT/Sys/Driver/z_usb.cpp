@@ -4,65 +4,45 @@
  * @Author: zhaohe
  * @Date: 2022-10-23 22:51:45
  * @LastEditors: zhaohe
- * @LastEditTime: 2022-10-30 04:07:25
- * @FilePath: \H7B0d:\Git\ZH_flight\ZH_FLIGHT\Sys\Driver\z_usb.cpp
+ * @LastEditTime: 2023-03-27 00:15:05
+ * @FilePath: \ZH_FLIGHT\Sys\Driver\z_usb.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 #include "z_usb.h"
-#include "os.h"
+#include "aircraft_state.h"
+#include "cmsis_os2.h"
+#include <stdint.h>
 #include <string.h>
+#include "config.h"
+#include "main.h"
+#include "type.h"
 #include "usbd_cdc_if.h"
 
-extern GlobalVar g_glob_var;
-
-extern "C"
+Usb::Usb(uint8_t mark)
 {
-void UsbIRQHandler(uint8_t *buf)
-{
-    Usb::UsbHandle(buf);
-}
+    _mark = mark;
 }
 
-uint8_t* Usb::receive_buf = nullptr;
-
-void Usb::UsbHandle(uint8_t *buf)
+AC_RET Usb::Transmit(uint8_t *data, uint16_t length)
 {
-    static uint16_t ptr = 0;
-    memcpy(receive_buf + ptr, buf, USB_MAX_RECEIVE);
-    ptr += USB_MAX_RECEIVE;
-    if (buf[USB_MAX_RECEIVE - 1] == 0)
+    if (USBD_OK == CDC_Transmit_HS(data, length))
     {
-        ptr = 0;
-        xQueueSendFromISR(g_glob_var.queue.message_queue, &message, RETURN_IMMEDIATELY);
+        return AC_OK;
+    }
+    else
+    {
+        return AC_ERROR;
     }
 }
 
-
-
-void Usb::Init(uint16_t receive_length_in)
+bool Usb::MatchMark(uint8_t mark)
 {
-    if (nullptr == Usb::receive_buf)
+    if (_mark == mark)
     {
-        Usb::receive_buf = new uint8_t[receive_length_in];
+        return true;
     }
-    receive_length = receive_length_in;
-    message.length = receive_length_in;
-    message.data = new uint8_t[receive_length_in];
-}
-
-uint8_t Usb::Send(uint8_t *data, uint16_t length)
-{
-    return CDC_Transmit_FS(data, length);
-}
-
-Usb::~Usb()
-{
-    if (nullptr != receive_buf)
+    else
     {
-        delete[] receive_buf;
-    }
-    if (nullptr != message.data)
-    {
-        delete[] message.data;
+        return false;
     }
 }
