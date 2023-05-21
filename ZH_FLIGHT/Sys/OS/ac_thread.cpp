@@ -53,10 +53,12 @@ AC_RET AcThread::Resume()
     return AC_ERROR;
 }
 
-//void AcThread::AddTreadToList(AcThread *thread)
-//{
-//    if (nullptr != thread)
-//    {
-//        thread_list.PushBack(thread);
-//    }
-//}
+void AcThread::KillSelf()
+{
+    vTaskDelete(nullptr);
+}
+
+void ThreadManager::AddThread(AcThread &thread)
+{
+    _list.PushBack(thread);
+}

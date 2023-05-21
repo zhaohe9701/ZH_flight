@@ -4,14 +4,7 @@
 #include "aircraft_task.h"
 #include "sys.h"
 
-extern "C" void ReceiveDataTaskInterface(void *argument);
-
-void ReceiveDataTaskInterface(void *argument)
-{
-    StaticTask::ReceiveDataTask();
-}
-
-void StaticTask::ReceiveDataTask(void)
+void AircraftTask::ReceiveDataTask(void *argument)
 {
     for (;;)
     {

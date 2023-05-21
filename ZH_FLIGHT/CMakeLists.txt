@@ -21,7 +21,6 @@ include(target-def.cmake)
 set(CORE_SRC
         Core/Src/main.c
         Core/Src/gpio.c
-        Core/Src/flight_task.c
         Core/Src/stm32h7xx_it.c
         Core/Src/stm32h7xx_hal_msp.c
         Core/Src/system_stm32h7xx.c
@@ -98,7 +97,6 @@ set(SYS_SRC
         Sys/Control/AttitudeControl/pid_attitude_controller.cpp
         Sys/Control/pid_core.cpp
         Sys/Callback/callback.cpp
-        Sys/Common/ac_list.cpp
         Sys/Command/command.cpp
         Sys/Command/command_server.cpp
         Sys/Driver/z_spi.cpp
@@ -122,14 +120,24 @@ set(SYS_SRC
         Sys/Sensor/Baro/ms5611.cpp
         Sys/Sensor/Mag/ak09916.cpp
         Sys/StateMachine/state_machine.cpp
-        Sys/Task/aircraft_task.cpp
         Sys/Task/imu_task.cpp
         Sys/Task/baro_task.cpp
         Sys/Task/attitude_solve_task.cpp
         Sys/Task/transmit_data_task.cpp
         Sys/Type/type.cpp
         Sys/Common/ac_tree.cpp
-        Sys/Sensor/Imu/imu.cpp Sys/Task/command_task.cpp Sys/Task/receive_data_task.cpp Sys/Json/json.cpp Sys/Sensor/Baro/baro.cpp Sys/OS/ac_thread.cpp Sys/OS/ac_thread.h)
+        Sys/Sensor/Imu/imu.cpp
+        Sys/Task/command_task.cpp
+        Sys/Task/receive_data_task.cpp
+        Sys/Json/json.cpp
+        Sys/Sensor/Baro/baro.cpp
+        Sys/OS/ac_thread.cpp
+        Sys/Task/start_task.cpp
+        Sys/Task/control_task.cpp
+        Sys/Task/state_machine_task.cpp
+        Sys/Task/light_task.cpp
+        Sys/Task/test_task.cpp
+        Sys/Task/defaut_task.cpp)
 
 set(START_UP_ASM
         startup_stm32h7b0xx.s

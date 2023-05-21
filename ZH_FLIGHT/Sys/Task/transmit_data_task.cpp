@@ -1,14 +1,7 @@
 #include "aircraft_task.h"
 #include "sys.h"
 
-extern "C" void TransmitDataTaskInterface(void *argument);
-
-void TransmitDataTaskInterface(void *argument)
-{
-    StaticTask::TransmitDataTask();
-}
-
-void StaticTask::TransmitDataTask(void)
+void AircraftTask::TransmitDataTask(void *argument)
 {
     for (;;)
     {

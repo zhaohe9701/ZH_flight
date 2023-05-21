@@ -11,33 +11,24 @@
 #ifndef __AIRCRAFT_TASK_H__
 #define __AIRCRAFT_TASK_H__
 
-class StaticTask
+class AircraftTask
 {
 public:
-    static void ImuTask(void);
-    static void BaroTask(void);
-    static void AttitudeSolveTask(void);
-    static void ControlTask(void);
-    static void StateMachineTask(void);
-    static void LightTask(void);
-    static void ReceiveDataTask(void);
-    static void TransmitDataTask(void);
-    static void CommandTask(void);
-    static void TestTask(void); 
+    static void ImuTask(void *argument);
+    static void BaroTask(void *argument);
+    static void AttitudeSolveTask(void *argument);
+    static void ControlTask(void *argument);
+    static void StateMachineTask(void *argument);
+    static void LightTask(void *argument);
+    static void ReceiveDataTask(void *argument);
+    static void TransmitDataTask(void *argument);
+    static void CommandTask(void *argument);
+    static void TestTask(void *argument);
+    static void StartTask(void *argument);
+    static void DefaultTask(void *argument);
 };
 
-
-
-class DynamicTask
-{
-public:
-    static void StartTask(void);
-    static void ResetTask(void);
-    static void ParamTask(void);
-    static void CalibrateTask(void);
-};
-
-#define ATTITUDE_SLOVE_DELAY_TIME (1000 / ATTITUDE_SLOVE_CYCLE_FREQ)
+#define ATTITUDE_SOLVE_DELAY_TIME (1000 / ATTITUDE_SOLVE_CYCLE_FREQ)
 #define ATTITUDE_CONTROL_DELAY_TIME (1000 / ATTITUDE_CONTROL_CYCLE_FREQ)
 #define POSITION_CONTROL_DELAY_TIME (1000 / POSITION_CONTROL_CYCLE_FREQ)
 #define LIGHT_CONTROL_DELAY_TIME (1000 / LIGHT_CONTROL_CYCLE_FREQ)

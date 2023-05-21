@@ -14,14 +14,7 @@
 #include "main.h"
 #include "sys.h"
 
-extern "C" void ImuTaskInterface(void *argument);
-
-void ImuTaskInterface(void *argument)
-{
-    StaticTask::ImuTask();
-}
-
-void StaticTask::ImuTask(void)
+void AircraftTask::ImuTask(void *argument)
 {
     for (;;)
     {

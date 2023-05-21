@@ -7,7 +7,7 @@
 
 #include "os.h"
 #include "type.h"
-//#include "ac_list.h"
+#include "ac_list.h"
 
 class AcThread
 {
@@ -16,12 +16,17 @@ public:
     void Suspend();
     AC_RET Resume();
     void Kill();
-
-//    static AcList<AcThread> thread_list;
-//    static void AddTreadToList(AcThread *thread);
+    void static KillSelf();
 private:
     ThreadHandle _handle = nullptr;
 };
 
+class ThreadManager
+{
+public:
+    void AddThread(AcThread &thread);
+private:
+    AcList<AcThread> _list;
+};
 
 #endif //__AC_THREAD_H__

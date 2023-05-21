@@ -1,17 +1,8 @@
 #include "aircraft_task.h"
 #include "aircraft.h"
-#include "main.h"
+#include "sys.h"
 
-extern Aircraft *aircraft;
-
-extern "C" void AttitudeSolveTaskInterface(void *argument);
-
-void AttitudeSolveTaskInterface(void *argument)
-{
-    StaticTask::AttitudeSolveTask();
-}
-
-void StaticTask::AttitudeSolveTask(void)
+void AircraftTask::AttitudeSolveTask(void *argument)
 {
     uint32_t previous_wake_time = 0;
     for (;;)
@@ -19,6 +10,6 @@ void StaticTask::AttitudeSolveTask(void)
         previous_wake_time = osKernelGetTickCount();
         /*姿态更新*/
         aircraft->UpdateAttitude();
-        osDelayUntil(previous_wake_time + ATTITUDE_SLOVE_DELAY_TIME);
+        osDelayUntil(previous_wake_time + ATTITUDE_SOLVE_DELAY_TIME);
     }
 }

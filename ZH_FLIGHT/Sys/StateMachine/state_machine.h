@@ -73,7 +73,7 @@ public:
     ~State();
 
 private:
-    AcList<StateMap> _neighbor;
+    AcList<StateMap*> _neighbor;
 };
 
 class StateMachine

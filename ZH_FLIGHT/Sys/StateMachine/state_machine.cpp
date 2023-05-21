@@ -75,7 +75,7 @@ void State::AddNeighborState(StateGroup neighbor_state, Condition positive, Cond
 
 StateGroup State::GetNextState(Condition condition)
 {
-    for(AcListNode<StateMap> *node = _neighbor.Begin(); node != _neighbor.End(); node = node->GetNext())
+    for(AcListNode<StateMap*> *node = _neighbor.Begin(); node != _neighbor.End(); node = node->GetNext())
     {
         if (node->data->IsMatch(condition))
         {
@@ -87,7 +87,7 @@ StateGroup State::GetNextState(Condition condition)
 
 State::~State()
 {
-    for(AcListNode<StateMap> *node = _neighbor.Begin(); node != _neighbor.End(); node = node->GetNext())
+    for(AcListNode<StateMap*> *node = _neighbor.Begin(); node != _neighbor.End(); node = node->GetNext())
     {
         delete node->data;
     }

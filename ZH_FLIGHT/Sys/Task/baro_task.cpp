@@ -11,17 +11,10 @@
 #include "aircraft.h"
 #include "aircraft_task.h"
 #include "cmsis_os2.h"
-#include "main.h"
 #include "sys.h"
 
-extern "C" void BaroTaskInterface(void *argument);
 
-void BaroTaskInterface(void *argument)
-{
-    StaticTask::BaroTask();
-}
-
-void StaticTask::BaroTask(void)
+void AircraftTask::BaroTask(void *argument)
 {
     uint32_t previous_wake_time = 0;
     for (;;)

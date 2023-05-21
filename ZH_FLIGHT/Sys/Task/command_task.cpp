@@ -4,14 +4,7 @@
 #include "aircraft_task.h"
 #include "sys.h"
 
-extern "C" void CommandTaskInterface(void *argument);
-
-void CommandTaskInterface(void *argument)
-{
-    StaticTask::CommandTask();
-}
-
-void StaticTask::CommandTask(void)
+void AircraftTask::CommandTask(void *argument)
 {
     for (;;)
     {
