@@ -17,33 +17,35 @@
 #include "communicate_interface.h"
 #include "message_parser.h"
 #include "ac_queue.h"
+#include "data_manager.h"
+
 class MessageReceiveServer
 {
 public:
-    explicit MessageReceiveServer(AcQueue<Message> *_queue);
+    explicit MessageReceiveServer(uint8_t len = MESSAGE_RECEIVE_QUEUE_LEN);
     void AddParser(MessageReceiveParser *interface);
     AC_RET RunReceiveService();
-    AcQueue<Message> *GetQueueHandle();
+    DataManager<Message> *GetMessageManager();
     ~MessageReceiveServer();
 private:
     MessageReceiveParser *_parser[MESSAGE_TYPE_NUM] = {nullptr};
     static uint8_t _interface_ind;
-    AcQueue<Message> *_queue = nullptr;
+    DataManager<Message> *_manager = nullptr;
 };
 
 
 class MessageTransmitServer
 {
 public:
-    explicit MessageTransmitServer(AcQueue<Message> *queue);
+    MessageTransmitServer(uint8_t len = MESSAGE_TRANSMIT_QUEUE_LEN);
     void AddTransmitter(CommunicateInterface *interface);
     void RunTransmitService();
-    AcQueue<Message> *GetQueueHandle();
+    DataManager<Message> *GetMessageManager();
     ~MessageTransmitServer();
 private:
-    CommunicateInterface *_interface[MESSAGE_TTANSMIT_NUM] = {nullptr};
+    CommunicateInterface *_interface[MESSAGE_TRANSMIT_NUM] = {nullptr};
     static uint8_t _interface_ind;
-    AcQueue<Message> *_queue = nullptr;
+    DataManager<Message> *_manager = nullptr;
     
 };
 

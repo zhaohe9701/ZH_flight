@@ -13,8 +13,8 @@
 
 Imu::Imu()
 {
-    _printer = new Printer(message_transmit_server->GetQueueHandle());
-    _printer->SetInterfaceMark(0x01);
+    _printer = new Printer(message_transmit_server->GetMessageManager());
+    _printer->SetDecPort(0x01);
 }
 
 AcTreeNode *Imu::CreateIndex()

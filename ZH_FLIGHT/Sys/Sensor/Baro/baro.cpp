@@ -27,9 +27,9 @@ AcTreeNode *Baro::CreateIndex()
     node->AddData((void*)&_id, AC_UINT8, "id", 1);
     AcTree::AddNode(root, node);
 
-    node = new AcTreeNode();
-    node->AddData((void*)&_test, AC_UINT8, "test_array", 4);
-    AcTree::AddNode(root, node);
+//    node = new AcTreeNode();
+//    node->AddData((void*)&_test, AC_UINT8, "test_array", 4);
+//    AcTree::AddNode(root, node);
 
     return root;
 }

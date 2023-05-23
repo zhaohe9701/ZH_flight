@@ -21,14 +21,15 @@
 #define INFO    "[INFO]:"
 #define ERROR_LEN   8
 #define INFO_LEN    7
-Printer::Printer(AcQueue<Message> *queue)
+
+Printer::Printer(DataManager<Message> *manager)
 {
-    _queue = queue;
+    _manager = manager;
 }
 
-void Printer::SetInterfaceMark(uint8_t mark)
+void Printer::SetDecPort(uint8_t port)
 {
-    _mark = mark;
+    _port = port;
 }
 
 void Printer::Print(const char *format, ...)
@@ -36,11 +37,10 @@ void Printer::Print(const char *format, ...)
     Message message;
     va_list args;
     va_start(args, format);
-    message.length = vsnprintf((char *)message.data + 1, MAX_PRINT_LENGTH, (char *)format, args);
+    message.length = vsnprintf((char *)message.data, MAX_PRINT_LENGTH, (char *)format, args);
     va_end(args);
-    message.length++;
-    message.data[0] = _mark;
-    _queue->Push(&message);
+    message.dec_port = _port;
+    _manager->Push(&message);
 }
 
 void Printer::Error(const char *format, ...)
@@ -48,12 +48,12 @@ void Printer::Error(const char *format, ...)
     Message message;
     va_list args;
     va_start(args, format);
-    message.length = vsnprintf((char *)message.data + 1 + ERROR_LEN, MAX_PRINT_LENGTH, (char *)format, args);
+    message.length = vsnprintf((char *)message.data + ERROR_LEN, MAX_PRINT_LENGTH, (char *)format, args);
     va_end(args);
-    message.length += ERROR_LEN + 1;
-    message.data[0] = _mark;
-    memcpy(message.data + 1, ERROR, ERROR_LEN);
-    _queue->Push(&message);
+    message.length += ERROR_LEN;
+    message.dec_port = _port;
+    memcpy(message.data, ERROR, ERROR_LEN);
+    _manager->Push(&message);
 }
 
 void Printer::Info(const char *format, ...)
@@ -61,31 +61,33 @@ void Printer::Info(const char *format, ...)
     Message message;
     va_list args;
     va_start(args, format);
-    message.length = vsnprintf((char *)message.data + 1 + INFO_LEN, MAX_PRINT_LENGTH, (char *)format, args);
+    message.length = vsnprintf((char *)message.data + INFO_LEN, MAX_PRINT_LENGTH, (char *)format, args);
     va_end(args);
-    message.length += INFO_LEN + 1;
-    message.data[0] = _mark;
-    memcpy(message.data + 1, INFO, INFO_LEN);
-    _queue->Push(&message);
+    message.length += INFO_LEN;
+    message.dec_port = _port;
+    memcpy(message.data, INFO, INFO_LEN);
+    _manager->Push(&message);
 }
 
 void Printer::Transmit(const char *buf, uint32_t len)
 {
     Message message;
     uint32_t ptr = 0;
+
+    message.dec_port = _port;
     while (ptr < len)
     {
         if (len - ptr >= MAX_MESSAGE_LENGTH)
         {
             message.length = MAX_MESSAGE_LENGTH;
             memcpy(message.data, buf + ptr, MAX_MESSAGE_LENGTH);
-            _queue->Push(&message);
+            _manager->Push(&message);
         }
         else
         {
             message.length = len - ptr;
             memcpy(message.data, buf + ptr, len - ptr);
-            _queue->Push(&message);
+            _manager->Push(&message);
         }
         ptr += MAX_MESSAGE_LENGTH;
     }

@@ -45,7 +45,7 @@ void UsbCallBackHandle(uint8_t *buf, uint32_t len)
     {
         memcpy(receive_message.data + ptr, buf, MAX_MESSAGE_LENGTH - ptr);
         receive_message.length = MAX_MESSAGE_LENGTH;
-        (message_receive_server->GetQueueHandle())->Push(&receive_message);
+        (message_receive_server->GetMessageManager())->Push(&receive_message);
         memset(receive_message.data + 1, 0, MAX_MESSAGE_LENGTH - 1);
         memcpy(receive_message.data + 1, buf + MAX_MESSAGE_LENGTH - ptr, len - (MAX_MESSAGE_LENGTH - ptr));
         ptr = len - (MAX_MESSAGE_LENGTH - ptr) + 1;
@@ -55,7 +55,7 @@ void UsbCallBackHandle(uint8_t *buf, uint32_t len)
     {
         memcpy(receive_message.data + ptr, buf, len);
         receive_message.length = ptr + len;
-        (message_receive_server->GetQueueHandle())->Push(&receive_message);
+        (message_receive_server->GetMessageManager())->Push(&receive_message);
         ptr = 0;
         memset(receive_message.data, 0, MAX_MESSAGE_LENGTH);
     }
@@ -66,7 +66,7 @@ void UsbCallBackHandle(uint8_t *buf, uint32_t len)
         if ('\n' == buf[MAX_MESSAGE_LENGTH])
         {
             receive_message.length = ptr;
-            (message_receive_server->GetQueueHandle())->Push(&receive_message);
+            (message_receive_server->GetMessageManager())->Push(&receive_message);
             ptr = 0;
             memset(receive_message.data, 0, MAX_MESSAGE_LENGTH);
         }

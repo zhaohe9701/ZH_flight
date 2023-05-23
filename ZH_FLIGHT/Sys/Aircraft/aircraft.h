@@ -24,6 +24,8 @@
 #include "actuator_data.h"
 #include "remote_data.h"
 #include "print.h"
+#include "Light/light.h"
+
 class Aircraft
 {
 private:
@@ -33,6 +35,9 @@ private:
     Motor *_motors = nullptr;
     /*打印机*/
     Printer *_printer = nullptr;
+    /*LED*/
+    Led *_led = nullptr;
+
     DataManager<ImuData> _imu_data_manager;
     DataManager<BaroData> _baro_data_manager;
     DataManager<RemoteData> _remote_data_manager;
@@ -63,6 +68,7 @@ public:
     AC_RET ControlAttitude();
     AC_RET ControlAltitude();
     AC_RET ControlMotor();
+    AC_RET ControlLight();
     AC_RET Test();
     ~Aircraft();
 

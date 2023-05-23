@@ -44,8 +44,8 @@ static int32_t GetMethod(const char *cmd_buf, char *method)
 CommandServer::CommandServer()
 {
     _command_manager = new DataManager<Message>(3);
-    _printer = new Printer(message_transmit_server->GetQueueHandle());
-    _printer->SetInterfaceMark(0x01);
+    _printer = new Printer(message_transmit_server->GetMessageManager());
+    _printer->SetDecPort(0x01);
 }
 
 DataManager<Message> *CommandServer::GetManager()
@@ -60,11 +60,7 @@ AC_RET CommandServer::RunCommandService()
     int32_t second_param_start = 0;
     do
     {
-        debug_printer->Info("111\n");
-        osDelay(10);
         _command_manager->Pop(&command);
-        debug_printer->Info("222\n");
-        osDelay(10);
         if (0 == command.length)
         {
             continue;
@@ -86,7 +82,6 @@ AC_RET CommandServer::RunCommandService()
         }
     }
     while ('\n' != command.data[command.length - 1]);
-    debug_printer->Info("222\n");
     osDelay(10);
     // return AC_OK;
     _cmd_buf[_cmd_ptr - 1] = 0;
