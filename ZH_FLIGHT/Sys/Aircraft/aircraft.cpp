@@ -59,10 +59,11 @@ Aircraft::Aircraft()
     /*创建组件*/
     _sensor = new Sensor();
     // _motors = new Motor[MOTOR_NUM]();
+    _led = new Led(LED_GPIO_Port, LED_Pin);
     _attitude_controller = new AttitudeController();
     _attitude_solver = new Mahony();
     _attitude_control_param = new ControlParam();
-    _printer = new Printer(message_transmit_server->GetQueueHandle());
+    _printer = new Printer(message_transmit_server->GetMessageManager());
 }
 
 AC_RET Aircraft::Init()
@@ -88,7 +89,7 @@ AC_RET Aircraft::Init()
     /*传感器初始化*/
     _sensor->Init();
 
-    _printer->SetInterfaceMark(0x01);
+    _printer->SetDecPort(0x01);
 
     _index = CreateIndex();
     // /*电机控制接口*/
@@ -252,12 +253,21 @@ AcTreeNode *Aircraft::CreateIndex()
     root->AddData(nullptr, AC_STRUCT, "aircraft", 0);
 
     node = _sensor->CreateIndex();
-
     AcTree::AddNode(root, node);
+
+    node = _led->CreateIndex();
+    AcTree::AddNode(root, node);
+
     return root;
 }
 
 AcTreeNode *Aircraft::GetIndex()
 {
     return _index;
+}
+
+AC_RET Aircraft::ControlLight()
+{
+    _led->Run();
+    return AC_OK;
 }

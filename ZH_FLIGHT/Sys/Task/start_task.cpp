@@ -59,19 +59,14 @@ void AircraftTask::StartTask(void *argument)
     // event_server->SetInformThread(stateMachineTaskHandle, STATE_MACHINE_SIGNAL);
 
     /*创建消息接收服务器*/
-    AcQueue<Message> *receive_queue = new AcQueue<Message>(3);
-
-    message_receive_server = new MessageReceiveServer(receive_queue);
-
+    message_receive_server = new MessageReceiveServer();
     MessageReceiveParser *ibus_parser = new IbusParser();
     message_receive_server->AddParser(ibus_parser);
-
     MessageReceiveParser *command_parser = new CommandParser();
-
     message_receive_server->AddParser(command_parser);
+
     /*创建消息发送服务器*/
-    AcQueue<Message> *transmit_queue = new AcQueue<Message>(10);
-    message_transmit_server = new MessageTransmitServer(transmit_queue);
+    message_transmit_server = new MessageTransmitServer();
     CommunicateInterface *interface = new Usb(0x01);
     message_transmit_server->AddTransmitter(interface);
 
@@ -79,8 +74,8 @@ void AircraftTask::StartTask(void *argument)
     command_server = new CommandServer();
     command_parser->SetDataManager(command_server->GetManager());
 
-    debug_printer = new Printer(transmit_queue);
-    debug_printer->SetInterfaceMark(0x01);
+    debug_printer = new Printer(message_transmit_server->GetMessageManager());
+    debug_printer->SetDecPort(0x01);
 
     /*创建状态机*/
     // state_machine = new StateMachine();
@@ -120,7 +115,7 @@ void AircraftTask::StartTask(void *argument)
     imu_thread.Init(AircraftTask::ImuTask, "imuTask", 512, 24);
     baro_thread.Init(AircraftTask::BaroTask, "baroTask", 256, 24);
     attitude_solve_thread.Init(AircraftTask::AttitudeSolveTask, "attitudeSolveTask", 256, 24);
-    light_thread.Init(AircraftTask::LightTask, "lightTask", 64, 24);
+    light_thread.Init(AircraftTask::LightTask, "lightTask", 256, 24);
     transmit_data_thread.Init(AircraftTask::TransmitDataTask, "transmitDataTask", 256, 24);
     receive_data_thread.Init(AircraftTask::ReceiveDataTask, "receiveDataTask", 256, 24);
     command_thread.Init(AircraftTask::CommandTask, "commandTask", 1024, 24);

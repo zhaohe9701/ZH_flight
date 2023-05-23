@@ -73,7 +73,9 @@
 /*通信*/
 #define RECEIVE_MESSAGE_QUEUE           queue[0]
 #define TRANSMIT_MESSAGE_QUEUE          queue[1]
-#define MESSAGE_TTANSMIT_NUM        1
+#define MESSAGE_TRANSMIT_QUEUE_LEN  10
+#define MESSAGE_RECEIVE_QUEUE_LEN   5
+#define MESSAGE_TRANSMIT_NUM        1
 #define MESSAGE_RECEIVE_NUM         1
 #define MESSAGE_TYPE_NUM            5
 #define UART_NUM                    2
@@ -106,7 +108,7 @@
 #define ATTITUDE_SOLVE_CYCLE_FREQ   500
 #define ATTITUDE_CONTROL_CYCLE_FREQ 500
 #define POSITION_CONTROL_CYCLE_FREQ 50
-#define LIGHT_CONTROL_CYCLE_FREQ    1
+#define LIGHT_CONTROL_CYCLE_FREQ    1000
 #define DATA_LINK_CYCLE_FREQ        50
 #define BARO_UPDATE_CYCLE_FREQ      20
 /*------------------------------------------------------*/

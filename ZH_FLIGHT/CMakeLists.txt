@@ -137,7 +137,7 @@ set(SYS_SRC
         Sys/Task/state_machine_task.cpp
         Sys/Task/light_task.cpp
         Sys/Task/test_task.cpp
-        Sys/Task/defaut_task.cpp)
+        Sys/Task/defaut_task.cpp Sys/Light/light.cpp Sys/Light/light.h)
 
 set(START_UP_ASM
         startup_stm32h7b0xx.s

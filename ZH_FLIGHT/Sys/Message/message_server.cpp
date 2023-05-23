@@ -22,9 +22,9 @@
 uint8_t MessageReceiveServer::_interface_ind = 0;
 uint8_t MessageTransmitServer::_interface_ind = 0;
 
-MessageReceiveServer::MessageReceiveServer(AcQueue<Message> *queue)
+MessageReceiveServer::MessageReceiveServer(uint8_t len)
 {
-    _queue = queue;
+    _manager = new DataManager<Message>(len);
 }
 
 void MessageReceiveServer::AddParser(MessageReceiveParser *interface)
@@ -43,7 +43,7 @@ AC_RET MessageReceiveServer::RunReceiveService()
     Message message;
     MessageHead head = 0;
 
-    _queue->Pop(&message);
+    _manager->Pop(&message);
     head = message.data[0];
     for (int i = 0; i < _interface_ind; ++i)
     {
@@ -56,15 +56,15 @@ AC_RET MessageReceiveServer::RunReceiveService()
     return AC_ERROR;
 }
 
-AcQueue<Message> *MessageReceiveServer::GetQueueHandle()
+DataManager<Message> *MessageReceiveServer::GetMessageManager()
 {
-    return _queue;
+    return _manager;
 }
 
 MessageReceiveServer::~MessageReceiveServer()
 {
 
-    delete _queue;
+    delete _manager;
 
     for (int i = 0; i < MESSAGE_TYPE_NUM; ++i)
     {
@@ -72,14 +72,16 @@ MessageReceiveServer::~MessageReceiveServer()
     }
 }
 
-MessageTransmitServer::MessageTransmitServer(AcQueue<Message> *queue)
+
+
+MessageTransmitServer::MessageTransmitServer(uint8_t len)
 {
-    _queue = queue;
+    _manager = new DataManager<Message>(len);
 }
 
 void MessageTransmitServer::AddTransmitter(CommunicateInterface *interface)
 {
-    if (_interface_ind > MESSAGE_TTANSMIT_NUM)
+    if (_interface_ind > MESSAGE_TRANSMIT_NUM)
     {
         return;
     }
@@ -90,14 +92,14 @@ void MessageTransmitServer::AddTransmitter(CommunicateInterface *interface)
 void MessageTransmitServer::RunTransmitService()
 {
     Message message;
-    _queue->Pop(&message);
-    uint8_t mark = message.data[0];
+    _manager->Pop(&message);
+    uint8_t mark = message.dec_port;
     for (int i = 0; i < _interface_ind; ++i)
     {
         if (_interface[i]->MatchMark(mark))
         {
             uint8_t try_times = 0;
-            while (try_times < 100 && AC_OK != _interface[i]->Transmit(message.data + 1, message.length))
+            while (try_times < 100 && AC_OK != _interface[i]->Transmit(message.data, message.length))
             {
                 try_times++;
             }
@@ -106,16 +108,16 @@ void MessageTransmitServer::RunTransmitService()
     }
 }
 
-AcQueue<Message> *MessageTransmitServer::GetQueueHandle()
+DataManager<Message> *MessageTransmitServer::GetMessageManager()
 {
-    return _queue;
+    return _manager;
 }
 
 MessageTransmitServer::~MessageTransmitServer()
 {
-    delete _queue;
+    delete _manager;
 
-    for (int i = 0; i < MESSAGE_TTANSMIT_NUM; ++i)
+    for (int i = 0; i < MESSAGE_TRANSMIT_NUM; ++i)
     {
         delete _interface[i];
     }
