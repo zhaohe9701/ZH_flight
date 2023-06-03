@@ -170,88 +170,88 @@
 #define MAG_TS2							0x34
 /***********************************/
 
-void Ak09916::_MasterWriteRag(uint8_t bank, uint8_t address, uint8_t value)
+void Ak09916::_masterWriteRag(uint8_t bank, uint8_t address, uint8_t value)
 {
     if (bank != BANK0)
     {
-        _interface->WriteReg(REG_BANK_SEL & WRITE, bank);
-        _interface->WriteReg(address & WRITE, value);
-        _interface->WriteReg(REG_BANK_SEL & WRITE, BANK0);
+        _interface->writeReg(REG_BANK_SEL & WRITE, bank);
+        _interface->writeReg(address & WRITE, value);
+        _interface->writeReg(REG_BANK_SEL & WRITE, BANK0);
 
     }
     else 
     {
-        _interface->WriteReg(address & WRITE, value);
+        _interface->writeReg(address & WRITE, value);
     }
 }   
 
-void Ak09916::_MasterReadRag(uint8_t bank, uint8_t address, uint8_t length, uint8_t *buf)
+void Ak09916::_masterReadRag(uint8_t bank, uint8_t address, uint8_t length, uint8_t *buf)
 {
 
     if (bank != _last_bank)
     {
-        _interface->WriteReg(REG_BANK_SEL & WRITE, bank);
-        _interface->ReadBytes(address | READ, length, buf);
-        _interface->WriteReg(REG_BANK_SEL & WRITE, BANK0);
+        _interface->writeReg(REG_BANK_SEL & WRITE, bank);
+        _interface->readBytes(address | READ, length, buf);
+        _interface->writeReg(REG_BANK_SEL & WRITE, BANK0);
     }
     else 
     {
-        _interface->ReadBytes(address | READ, length, buf);
+        _interface->readBytes(address | READ, length, buf);
     }
 }
 
-void Ak09916::_LoadIicRegParam()
+void Ak09916::_loadIicRegParam()
 {
     /*磁力计数据输出率为100Hz*/
-    _MasterWriteRag(BANK3, I2C_SLV4_CTRL, 0x0B);
+    _masterWriteRag(BANK3, I2C_SLV4_CTRL, 0x0B);
     HAL_Delay(50);
-    _MasterWriteRag(BANK3, I2C_SLV0_ADDR, IIC_READ | MAG_SLAVE_ADDR);
-    _MasterWriteRag(BANK3, I2C_SLV0_REG, MAG_ST1);
-    _MasterWriteRag(BANK3, I2C_SLV0_CTRL, 0x80 | 8);
+    _masterWriteRag(BANK3, I2C_SLV0_ADDR, IIC_READ | MAG_SLAVE_ADDR);
+    _masterWriteRag(BANK3, I2C_SLV0_REG, MAG_ST1);
+    _masterWriteRag(BANK3, I2C_SLV0_CTRL, 0x80 | 8);
 }
 
-void Ak09916::Init()
+void Ak09916::init()
 {
     uint8_t value = 0x00;
     /*复位I2C主机*/
-    _MasterReadRag(BANK0, USER_CTRL, 1, &value);
+    _masterReadRag(BANK0, USER_CTRL, 1, &value);
     value = value | 0x02;
-    _MasterWriteRag(BANK0, USER_CTRL, value);
+    _masterWriteRag(BANK0, USER_CTRL, value);
     HAL_Delay(100);
     /*使能I2C主机*/
-    _MasterReadRag(BANK0, USER_CTRL, 1, &value);
+    _masterReadRag(BANK0, USER_CTRL, 1, &value);
     value = value | 0x20;
-    _MasterWriteRag(BANK0, USER_CTRL, value);
+    _masterWriteRag(BANK0, USER_CTRL, value);
     HAL_Delay(50);
     /*设置I2C频率*/
-    _MasterWriteRag(BANK3, I2C_MST_CTRL, 0x07);
+    _masterWriteRag(BANK3, I2C_MST_CTRL, 0x07);
     HAL_Delay(50);
     /*软复位*/
-    _MasterWriteRag(BANK3, I2C_SLV0_ADDR, IIC_WRITE | MAG_SLAVE_ADDR);
-    _MasterWriteRag(BANK3, I2C_SLV0_REG, MAG_CNTL3);
-    _MasterWriteRag(BANK3, I2C_SLV0_DO, 0x01);
-    _MasterWriteRag(BANK3, I2C_SLV0_CTRL, 0x81);
+    _masterWriteRag(BANK3, I2C_SLV0_ADDR, IIC_WRITE | MAG_SLAVE_ADDR);
+    _masterWriteRag(BANK3, I2C_SLV0_REG, MAG_CNTL3);
+    _masterWriteRag(BANK3, I2C_SLV0_DO, 0x01);
+    _masterWriteRag(BANK3, I2C_SLV0_CTRL, 0x81);
     HAL_Delay(100);
     /*磁力计配置 100Hz连续测量*/
-    _MasterWriteRag(BANK3, I2C_SLV0_ADDR, IIC_WRITE | MAG_SLAVE_ADDR);
-    _MasterWriteRag(BANK3, I2C_SLV0_REG, MAG_CNTL2);
-    _MasterWriteRag(BANK3, I2C_SLV0_DO, 0x01);
-    _MasterWriteRag(BANK3, I2C_SLV0_CTRL, 0x08);
+    _masterWriteRag(BANK3, I2C_SLV0_ADDR, IIC_WRITE | MAG_SLAVE_ADDR);
+    _masterWriteRag(BANK3, I2C_SLV0_REG, MAG_CNTL2);
+    _masterWriteRag(BANK3, I2C_SLV0_DO, 0x01);
+    _masterWriteRag(BANK3, I2C_SLV0_CTRL, 0x08);
     HAL_Delay(100);
-    _LoadIicRegParam();
+    _loadIicRegParam();
     HAL_Delay(10);
 }
 
-uint8_t Ak09916::GetId()
+uint8_t Ak09916::getId()
 {
     return AK09916_ID;
 }
 
-void Ak09916::GetMagData(MagData &data)
+void Ak09916::getMagData(MagData &data)
 {
     uint8_t buf[8] = {0};
 
-    _MasterReadRag(BANK0, EXT_SLV_SENS_DATA_00, 8, buf);
+    _masterReadRag(BANK0, EXT_SLV_SENS_DATA_00, 8, buf);
     data.mag.x = (int16_t)(buf[2] << 8 | buf[1]);
     data.mag.y = (int16_t)(buf[4] << 8 | buf[3]);
     data.mag.z = (int16_t)(buf[6] << 8 | buf[5]);

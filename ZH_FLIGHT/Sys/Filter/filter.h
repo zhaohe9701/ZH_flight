@@ -16,9 +16,9 @@
 class FirstOrderLPF
 {
 public:
-	void Init(float sample_freq, float cutoff_freq);
-	float Apply(float sample);
-	float Reset(float sample);
+	void init(float sample_freq, float cutoff_freq);
+	float apply(float sample);
+	float reset(float sample);
 
 private:
     float _a1 = 0.0f;

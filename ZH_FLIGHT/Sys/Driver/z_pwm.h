@@ -31,13 +31,13 @@ class Pwm : virtual public MotorInterface
 {
 public:
     Pwm(TIM_HandleTypeDef *htim, uint16_t channel);
-    void Output(uint16_t *data, uint16_t length) override;
-    void Stop() override;
+    void output(uint16_t *data, uint16_t length) override;
+    void stop() override;
 private:
-    bool _IsMe(TIM_HandleTypeDef *htim);
+    bool _isMe(TIM_HandleTypeDef *htim);
     TIM_HandleTypeDef *_htim;
     uint16_t _channel;
-    uint16_t _PwmChannelToMark(uint16_t channel);
+    uint16_t _pwmChannelToMark(uint16_t channel);
 };
 
 

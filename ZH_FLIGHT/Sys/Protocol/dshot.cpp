@@ -16,19 +16,19 @@ Dshot::Dshot(Pwm *pwm_controller)
     _pwm_controller = pwm_controller;
 }
 
-void Dshot::SetMotor(float value)
+void Dshot::setMotor(float value)
 {
     uint16_t int_value = 0;
 
     int_value = THROTTLE_MAP(value);
-    _WriteDigital(_motor_cmd, int_value);
-    _pwm_controller->Output(_motor_cmd, ESC_CMD_BUF_LEN);
+    _writeDigital(_motor_cmd, int_value);
+    _pwm_controller->output(_motor_cmd, ESC_CMD_BUF_LEN);
 }
 
-uint16_t Dshot::_PreparePacket(const uint16_t value, bool requestTelemetry)
+uint16_t Dshot::_preparePacket(const uint16_t value, bool request_telemetry)
 {
     // 油门大小为11位  所以这里先左移一位 添加上请求回传标志共12位
-    uint16_t packet = (value << 1) | (requestTelemetry ? 1 : 0);
+    uint16_t packet = (value << 1) | (request_telemetry ? 1 : 0);
 
     // 将12位数据分为3组 每组4位, 进行异或
     // compute checksum
@@ -46,10 +46,10 @@ uint16_t Dshot::_PreparePacket(const uint16_t value, bool requestTelemetry)
     return packet;
 }
 
-void Dshot::_WriteDigital(uint16_t *motor_cmd, uint16_t value)
+void Dshot::_writeDigital(uint16_t *motor_cmd, uint16_t value)
 {
     value = ((value > 2047) ? 2047 : value);
-    value = _PreparePacket(value, 0);
+    value = _preparePacket(value, 0);
     motor_cmd[0]  = (value & 0x8000) ? ESC_BIT_1 : ESC_BIT_0;
     motor_cmd[1]  = (value & 0x4000) ? ESC_BIT_1 : ESC_BIT_0;
     motor_cmd[2]  = (value & 0x2000) ? ESC_BIT_1 : ESC_BIT_0;

@@ -36,12 +36,12 @@ struct _ChannelFormat
 };
 #pragma pack()
 
-MessageHead CrsfParser::GetHead()
+MessageHead CrsfParser::getHead()
 {
     return CRSF_HEAD;
 }
 
-AC_RET CrsfParser::ParseMessage(Message &message)
+AC_RET CrsfParser::parseMessage(Message &message)
 {
     _ChannelFormat format = {0};
     RemoteData data;
@@ -69,11 +69,11 @@ AC_RET CrsfParser::ParseMessage(Message &message)
     _channel_data[15]   = format.ch15;
 
     memcpy(data.channel, _channel_data, sizeof(uint16_t) * TOTAL_CHANNEL_NUM);
-    _manager->Update(&data);
+    _manager->update(&data);
     return AC_OK;
 }
 
-void CrsfParser::SetDataManager(void *manager)
+void CrsfParser::setDataManager(void *manager)
 {
     _manager = (DataManager<RemoteData>*)manager;
 }

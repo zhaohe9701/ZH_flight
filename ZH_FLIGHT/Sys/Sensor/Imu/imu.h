@@ -27,11 +27,11 @@ class Imu
 {
 public:
     Imu();
-    virtual void Init() = 0;
-    virtual uint8_t GetId() = 0;
-    virtual float GetTemperature() = 0;
-    virtual void GetGyroData(ImuData &data) = 0;
-    virtual void GetAccData(ImuData &data) = 0;
+    virtual void init() = 0;
+    virtual uint8_t getId() = 0;
+    virtual float getTemperature() = 0;
+    virtual void getGyroData(ImuData &data) = 0;
+    virtual void getAccData(ImuData &data) = 0;
     AcTreeNode *CreateIndex();
 
 protected:

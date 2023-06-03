@@ -21,13 +21,13 @@ class Uart : virtual public CommunicateInterface
 {
 public:
     Uart(UART_HandleTypeDef *huart, uint8_t mark);
-    AC_RET Transmit(uint8_t *data, uint16_t length) override;
-    bool MatchMark(uint8_t mark) override;
+    AC_RET transmit(uint8_t *data, uint16_t length) override;
+    bool matchMark(uint8_t mark) override;
     bool IsMe(UART_HandleTypeDef *huart);
 
     Message receive_message;
 
-    static void UartHandle(UART_HandleTypeDef *huart);
+    static void uartHandle(UART_HandleTypeDef *huart);
     static Uart *uart_table[UART_NUM];
     static uint8_t ind;
     

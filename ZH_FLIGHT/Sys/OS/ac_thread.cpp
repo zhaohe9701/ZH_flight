@@ -4,7 +4,7 @@
 
 #include "ac_thread.h"
 
-AC_RET AcThread::Init(AcFunction func, const char *name, uint16_t stack, AcPriority prio, void *param)
+AC_RET AcThread::init(AcFunction func, const char *name, uint16_t stack, AcPriority prio, void *param)
 {
     if (pdPASS == xTaskCreate(func, name, stack, param, prio, &_handle))
     {
@@ -15,7 +15,7 @@ AC_RET AcThread::Init(AcFunction func, const char *name, uint16_t stack, AcPrior
     }
 }
 
-void AcThread::Kill()
+void AcThread::kill()
 {
     if (nullptr != _handle)
     {
@@ -23,7 +23,7 @@ void AcThread::Kill()
     }
 }
 
-void AcThread::Suspend()
+void AcThread::suspend()
 {
     if (nullptr != _handle)
     {
@@ -31,7 +31,7 @@ void AcThread::Suspend()
     }
 }
 
-AC_RET AcThread::Resume()
+AC_RET AcThread::resume()
 {
     if (nullptr != _handle)
     {
@@ -53,12 +53,12 @@ AC_RET AcThread::Resume()
     return AC_ERROR;
 }
 
-void AcThread::KillSelf()
+void AcThread::killSelf()
 {
     vTaskDelete(nullptr);
 }
 
 void ThreadManager::AddThread(AcThread &thread)
 {
-    _list.PushBack(thread);
+    _list.pushBack(thread);
 }

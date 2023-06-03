@@ -22,8 +22,8 @@ private:
     osMessageQueueId_t _handle = nullptr;
 public:
     AcQueue(uint32_t length);
-    AC_RET Push(T *message);
-    AC_RET Pop(T *message);
+    AC_RET push(T *message);
+    AC_RET pop(T *message);
     ~AcQueue();
 };
 
@@ -34,7 +34,7 @@ AcQueue<T>::AcQueue(uint32_t length)
 }
 
 template <class T>
-AC_RET AcQueue<T>::Push(T *message)
+AC_RET AcQueue<T>::push(T *message)
 {
     if (osOK != osMessageQueuePut(_handle, message, 0U, 0))
     {
@@ -44,7 +44,7 @@ AC_RET AcQueue<T>::Push(T *message)
 }
 
 template <class T>
-AC_RET AcQueue<T>::Pop(T *message)
+AC_RET AcQueue<T>::pop(T *message)
 {
     if (osOK != osMessageQueueGet(_handle, message, NULL, osWaitForever))
     {

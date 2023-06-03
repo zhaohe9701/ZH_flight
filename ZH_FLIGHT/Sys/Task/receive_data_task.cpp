@@ -4,10 +4,10 @@
 #include "aircraft_task.h"
 #include "sys.h"
 
-void AircraftTask::ReceiveDataTask(void *argument)
+void AircraftTask::receiveDataTask(void *argument)
 {
     for (;;)
     {
-        message_receive_server->RunReceiveService();
+        message_receive_server->runReceiveService();
     }
 }

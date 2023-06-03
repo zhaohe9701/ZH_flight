@@ -17,9 +17,9 @@ private:
     uint16_t _channel_data[CRSF_CHANNEL_NUM] = {0};
     DataManager<RemoteData> *_manager = nullptr;
 public:
-    MessageHead GetHead() override;
-    AC_RET ParseMessage(Message &message) override;
-    void SetDataManager(void *manager) override;
+    MessageHead getHead() override;
+    AC_RET parseMessage(Message &message) override;
+    void setDataManager(void *manager) override;
 
 };
 

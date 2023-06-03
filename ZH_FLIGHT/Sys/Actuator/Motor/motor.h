@@ -17,9 +17,9 @@
 class Motor
 {
 public:
-    void SetProtocol(MotorProtocolInterface *interface);
-    void EnableMotor();
-    void SetSpeed(float value);
+    void setProtocol(MotorProtocolInterface *interface);
+    void enableMotor();
+    void setSpeed(float value);
 private:
     MotorProtocolInterface *_interface;
 };

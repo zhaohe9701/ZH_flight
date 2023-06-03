@@ -11,18 +11,18 @@
 #include "control_param.h"
 #include <string.h>
 
-void ControlParam::Init(uint8_t size)
+void ControlParam::init(uint8_t size)
 {
     _size = size;
     param = new float[size];
 }
 
-void ControlParam::GetParam(uint8_t *data)
+void ControlParam::getParam(uint8_t *data)
 {
     memcpy(param, data, _size * 4);
 }
 
-void ControlParam::Destroy()
+void ControlParam::destroy()
 {
     if (param != nullptr)
     {

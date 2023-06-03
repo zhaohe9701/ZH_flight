@@ -9,7 +9,7 @@
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 #include "pid_core.h"
-void PidCore::Init(float kp, float ki, float kd, float out_limit, float int_limit, float dt)
+void PidCore::init(float kp, float ki, float kd, float out_limit, float int_limit, float dt)
 {
     _kp = kp;
     _ki = ki;
@@ -19,7 +19,7 @@ void PidCore::Init(float kp, float ki, float kd, float out_limit, float int_limi
     _dt = dt;
 }
 
-float PidCore::Update(float actual, float except)
+float PidCore::update(float actual, float except)
 {
     float error = 0.0f;
     float p = 0.0f;
@@ -50,7 +50,7 @@ float PidCore::Update(float actual, float except)
     // 不完全微分
     if (_diff_filter_fw == ON)
     {
-        d = _diff_filter.Apply(d);
+        d = _diff_filter.apply(d);
     }
 
     // 积分
@@ -63,23 +63,23 @@ float PidCore::Update(float actual, float except)
     return output;
 }
 
-void PidCore::EnableDiffFilter(float sample_freq, float cutoff_freq)
+void PidCore::enableDiffFilter(float sample_freq, float cutoff_freq)
 {
     _diff_filter_fw = ON;
-    _diff_filter.Init(sample_freq, cutoff_freq);
+    _diff_filter.init(sample_freq, cutoff_freq);
 }
 
-void PidCore::DisableDiffFilter()
+void PidCore::disableDiffFilter()
 {
     _diff_filter_fw = OFF;
 }
 
-void PidCore::EnableDiffAhead()
+void PidCore::enableDiffAhead()
 {
     _diff_ahead_fw = ON;
 }
 
-void PidCore::DisableDiffAhead()
+void PidCore::disableDiffAhead()
 {
     _diff_ahead_fw = OFF;
 }
@@ -95,4 +95,9 @@ float PidCore::_Limit(float value, float limit)
         return -limit;
     }
     return value;
+}
+
+void PidCore::reset()
+{
+
 }

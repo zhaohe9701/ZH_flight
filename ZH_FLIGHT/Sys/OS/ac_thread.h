@@ -12,11 +12,11 @@
 class AcThread
 {
 public:
-    AC_RET Init(AcFunction func, const char *name, uint16_t stack, AcPriority prio, void *param = nullptr);
-    void Suspend();
-    AC_RET Resume();
-    void Kill();
-    void static KillSelf();
+    AC_RET init(AcFunction func, const char *name, uint16_t stack, AcPriority prio, void *param = nullptr);
+    void suspend();
+    AC_RET resume();
+    void kill();
+    void static killSelf();
 private:
     ThreadHandle _handle = nullptr;
 };

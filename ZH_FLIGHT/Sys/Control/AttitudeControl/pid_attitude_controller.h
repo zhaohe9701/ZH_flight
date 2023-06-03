@@ -22,8 +22,8 @@ class PidController
 public:
     PidCore iner_pid;
     PidCore outer_pid;
-    void Init();
-    float Update(float expect_attitude, float actual_attitude, float actual_speed);
+    void init();
+    float update(float expect_attitude, float actual_attitude, float actual_speed);
 
     
 };
@@ -32,8 +32,8 @@ public:
 class PidAttitudeController : virtual public AttitudeControllerInterface
 {
 public:
-    void Init(ControlParam *param);
-    void Update(const AttitudeControlInput &control_input, AttitudeControlOutput &control_output) override;
+    void init(ControlParam *param);
+    void update(const AttitudeControlInput &control_input, AttitudeControlOutput &control_output) override;
     PidController pitch;
     PidController roll;
     PidController yaw;

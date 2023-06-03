@@ -17,12 +17,12 @@
 class AttitudeController
 {
 public:
-    void SetMethod(AttitudeControllerInterface *interface);
-    void Init(ControlParam *param);
-    void Update(const ActualState &actual_state, ExpectState &ExpectState, ActuatorData &actuator_value);
+    void setMethod(AttitudeControllerInterface *interface);
+    void init(ControlParam *param);
+    void update(const ActualState &actual_state, ExpectState &ExpectState, ActuatorData &actuator_value);
 private:
     AttitudeControllerInterface *_interface = nullptr;
-    float _Limit(float value);
+    float _limit(float value);
 };
 
 #endif

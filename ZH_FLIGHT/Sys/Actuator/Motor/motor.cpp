@@ -11,18 +11,18 @@
 #include "motor.h"
 
 
-void Motor::SetProtocol(MotorProtocolInterface *interface)
+void Motor::setProtocol(MotorProtocolInterface *interface)
 {
     _interface = interface;
 }
 
-void Motor::EnableMotor()
+void Motor::enableMotor()
 {
 	float value = 0.0f;
-    _interface->SetMotor(value);
+    _interface->setMotor(value);
 }
 
-void Motor::SetSpeed(float value)
+void Motor::setSpeed(float value)
 {
-    _interface->SetMotor(value);
+    _interface->setMotor(value);
 }

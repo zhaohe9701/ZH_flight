@@ -17,12 +17,12 @@
 class Mahony : virtual public AttitudeSolver
 {
 public:
-    void Update(ActualState &actual_state, SensorData &sensor_data) override;
-    void TransformBodyToEarth(float &x, float &y, float &z) override;
-    void TransformEarthToBody(float &x, float &y, float &z) override;
+    void update(ActualState &actual_state, SensorData &sensor_data) override;
+    void transformBodyToEarth(float &x, float &y, float &z) override;
+    void transformEarthToBody(float &x, float &y, float &z) override;
 private:
-    float _InvSqrt(float x);
-    void _ComputeRotationMatrix();
+    float _invSqrt(float x);
+    void _computeRotationMatrix();
 
     float _kp = 0.4f;	
     float _ki = 0.001f;	

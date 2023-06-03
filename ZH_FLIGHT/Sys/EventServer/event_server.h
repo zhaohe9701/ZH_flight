@@ -21,10 +21,10 @@ private:
     Thread _state_machine_thread;
     uint32_t _inform_value;
 public:
-    Condition GetCurrentCondition();
-    void SetInformThread(Thread thread, uint32_t value);
-    void SetEvent(EventList event);
-    void ClearEvent(EventList event);
+    Condition getCurrentCondition();
+    void setInformThread(Thread thread, uint32_t value);
+    void setEvent(EventList event);
+    void clearEvent(EventList event);
 };
 
 #endif

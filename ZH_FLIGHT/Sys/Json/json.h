@@ -8,13 +8,13 @@
 class Json
 {
 private:
-    static AC_RET TransToJsonStrCore(AcTreeNode *node, char *buf, uint32_t &ptr, uint32_t len);
-    static AC_RET TransStructToTree(AcTreeNode *node, char *buf, uint32_t &ptr, uint32_t len);
-    static AC_RET TransArrayToTree(AcTreeNode *node, char *buf, uint32_t &ptr, uint32_t len);
-    static AC_RET TransValToTree(AcTreeNode *node, char *buf, uint32_t &ptr, uint32_t len);
+    static AC_RET transToJsonStrCore(AcTreeNode *node, char *buf, uint32_t &ptr, uint32_t len);
+    static AC_RET transStructToTree(AcTreeNode *node, char *buf, uint32_t &ptr, uint32_t len);
+    static AC_RET transArrayToTree(AcTreeNode *node, char *buf, uint32_t &ptr, uint32_t len);
+    static AC_RET transValToTree(AcTreeNode *node, char *buf, uint32_t &ptr, uint32_t len);
 public:
-    static AC_RET TransTreeToJsonStr(AcTreeNode *tree, char *buf, uint32_t len);
-    static AC_RET TransJsonStrToTree(AcTreeNode *tree, char *buf, uint32_t len);
+    static AC_RET transTreeToJsonStr(AcTreeNode *tree, char *buf, uint32_t len);
+    static AC_RET transJsonStrToTree(AcTreeNode *tree, char *buf, uint32_t len);
 };
 
 

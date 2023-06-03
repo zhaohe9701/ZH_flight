@@ -4,7 +4,7 @@
 #include "aircraft_task.h"
 #include "sys.h"
 
-void AircraftTask::ControlTask(void *argument)
+void AircraftTask::controlTask(void *argument)
 {
     for (;;)
     {
@@ -14,6 +14,6 @@ void AircraftTask::ControlTask(void *argument)
         //aircraft->ControlAltitudeByDirect();
         //aircraft->ControlAltitudeBySensor();
         /*姿态控制*/
-        aircraft->ControlAttitude();
+        aircraft->controlAttitude();
     }
 }

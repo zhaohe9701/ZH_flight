@@ -57,19 +57,19 @@ private:
 public:
 
     Aircraft();
-    AC_RET Init();
-    AcTreeNode *CreateIndex();
-    AcTreeNode *GetIndex();
-    AC_RET SetAction(ActionGroup action);
-    AC_RET GetAccAndGyro();
-    AC_RET GetAltitude();
-    AC_RET GetMagnetic();
-    AC_RET UpdateAttitude();
-    AC_RET ControlAttitude();
-    AC_RET ControlAltitude();
-    AC_RET ControlMotor();
-    AC_RET ControlLight();
-    AC_RET Test();
+    AC_RET init();
+    AcTreeNode *createIndex();
+    AcTreeNode *getIndex();
+    AC_RET setAction(ActionGroup action);
+    AC_RET getAccAndGyro();
+    AC_RET getAltitude();
+    AC_RET getMagnetic();
+    AC_RET updateAttitude();
+    AC_RET controlAttitude();
+    AC_RET controlAltitude();
+    AC_RET controlMotor();
+    AC_RET controlLight();
+    AC_RET test();
     ~Aircraft();
 
 };

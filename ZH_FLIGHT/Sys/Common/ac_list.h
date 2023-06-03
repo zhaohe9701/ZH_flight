@@ -23,8 +23,8 @@ private:
     AcListNode<T> *_next = nullptr;
 public:
     T data;
-    AcListNode<T> *GetNext();
-    AcListNode<T> *GetPrev();
+    AcListNode<T> *getNext();
+    AcListNode<T> *getPrev();
 };
 
 template <class T>
@@ -34,22 +34,22 @@ private:
     AcListNode<T> *_head = nullptr;
 public:
     AcList();
-    void PushBack(T &data);
-    void PushFront(T &data);
-    AcListNode<T> *Begin();
-    AcListNode<T> *End();
-    AcListNode<T> *Index(int ind);
+    void pushBack(T &data);
+    void pushFront(T &data);
+    AcListNode<T> *begin();
+    AcListNode<T> *end();
+    AcListNode<T> *index(int ind);
     ~AcList();
 };
 
 template <class T>
-AcListNode<T> *AcListNode<T>::GetNext()
+AcListNode<T> *AcListNode<T>::getNext()
 {
     return _next;
 }
 
 template <class T>
-AcListNode<T> *AcListNode<T>::GetPrev()
+AcListNode<T> *AcListNode<T>::getPrev()
 {
     return _prev;
 }
@@ -63,7 +63,7 @@ AcList<T>::AcList()
 }
 
 template <class T>
-void AcList<T>::PushBack(T &data)
+void AcList<T>::pushBack(T &data)
 {
     AcListNode<T> *node = new AcListNode<T>();
     node->data = data;
@@ -74,7 +74,7 @@ void AcList<T>::PushBack(T &data)
 }
 
 template <class T>
-void AcList<T>::PushFront(T &data)
+void AcList<T>::pushFront(T &data)
 {
     AcListNode<T> *node = new AcListNode<T>();
     node->data = data;
@@ -85,13 +85,13 @@ void AcList<T>::PushFront(T &data)
 }
 
 template <class T>
-AcListNode<T> *AcList<T>::Begin()
+AcListNode<T> *AcList<T>::begin()
 {
     return _head->_next;
 }
 
 template <class T>
-AcListNode<T> *AcList<T>::End()
+AcListNode<T> *AcList<T>::end()
 {
     return _head;
 }
@@ -99,11 +99,11 @@ AcListNode<T> *AcList<T>::End()
 template <class T>
 AcList<T>::~AcList()
 {
-    AcListNode<T> *node = _head->GetNext();
+    AcListNode<T> *node = _head->getNext();
     AcListNode<T> *next_node = nullptr;
     while (node != _head)
     {
-        next_node = node->GetNext();
+        next_node = node->getNext();
         delete node;
         node = next_node;
     }
@@ -111,10 +111,10 @@ AcList<T>::~AcList()
 }
 
 template<class T>
-AcListNode<T> *AcList<T>::Index(int ind)
+AcListNode<T> *AcList<T>::index(int ind)
 {
     int i = 0;
-    AcListNode<T> *node = _head->GetNext();
+    AcListNode<T> *node = _head->getNext();
     while (node != _head)
     {
         if (i == ind)
@@ -123,11 +123,11 @@ AcListNode<T> *AcList<T>::Index(int ind)
         }
         if (ind > 0)
         {
-            node = node->GetNext();
+            node = node->getNext();
             i++;
         } else
         {
-            node = node->GetPrev();
+            node = node->getPrev();
             i--;
         }
     }

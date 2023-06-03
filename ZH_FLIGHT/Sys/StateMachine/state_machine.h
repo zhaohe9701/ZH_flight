@@ -51,10 +51,10 @@ enum EventList
 class StateMap
 {
 public:
-    bool IsMatch(Condition trans_condition);
-    void AddPositiveCondition(Condition condition);
-    void AddNegativeCondition(Condition condition);
-    StateGroup GetMatchState();
+    bool isMatch(Condition trans_condition);
+    void addPositiveCondition(Condition condition);
+    void addNegativeCondition(Condition condition);
+    StateGroup getMatchState();
     StateMap *next = nullptr;
     StateMap *prev = nullptr;
 
@@ -68,8 +68,8 @@ class State
 {
 public:
     State(){};
-    void AddNeighborState(StateGroup neighbor_state, Condition positive, Condition negative);
-    StateGroup GetNextState(Condition _condition);
+    void addNeighborState(StateGroup neighbor_state, Condition positive, Condition negative);
+    StateGroup getNextState(Condition _condition);
     ~State();
 
 private:
@@ -79,9 +79,9 @@ private:
 class StateMachine
 {
 public:
-    AC_RET TransToNextState(Condition condition);
-    StateGroup GetCurrentState();
-    ActionGroup GetAction();
+    AC_RET transToNextState(Condition condition);
+    StateGroup getCurrentState();
+    ActionGroup getAction();
     State state[STATE_NUM];
 private:
     StateGroup _current_state;

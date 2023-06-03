@@ -83,14 +83,14 @@
 /***********************************/
 
 
-void Icm20689::_ImuWriteRag(uint8_t address, uint8_t value)
+void Icm20689::_imuWriteRag(uint8_t address, uint8_t value)
 {
-    _interface->WriteReg(address & WRITE, value);
+    _interface->writeReg(address & WRITE, value);
 }
 
-void Icm20689::_ImuReadRag(uint8_t address, uint8_t length, uint8_t *buf)
+void Icm20689::_imuReadRag(uint8_t address, uint8_t length, uint8_t *buf)
 {
-    _interface->ReadBytes(address | READ, length, buf);
+    _interface->readBytes(address | READ, length, buf);
 }
 
 Icm20689::Icm20689(SensorInterface *interface)
@@ -98,72 +98,72 @@ Icm20689::Icm20689(SensorInterface *interface)
     _interface = interface;
     strncpy(_name, "ICM20689", PARAM_NAME_LEN);
 }
-void Icm20689::Init()
+void Icm20689::init()
 {
     /*复位芯片*/
-    _ImuWriteRag(PWR_MGMT_1, 0x80);
+    _imuWriteRag(PWR_MGMT_1, 0x80);
     HAL_Delay(200);
     /*选择时钟源*/
-    _ImuWriteRag(PWR_MGMT_1, 0x01);
+    _imuWriteRag(PWR_MGMT_1, 0x01);
     HAL_Delay(100);
     /*禁用iic*/
-    _ImuWriteRag(USER_CTRL, 0x10);
+    _imuWriteRag(USER_CTRL, 0x10);
     HAL_Delay(100);
     /*配置陀螺仪*/
-    _ImuWriteRag(GYRO_CONFIG, 0x03 << 3);
+    _imuWriteRag(GYRO_CONFIG, 0x03 << 3);
     HAL_Delay(100);
     /*配置加速度计*/
-    _ImuWriteRag(ACCEL_CONFIG_1, 0x03 << 3);
+    _imuWriteRag(ACCEL_CONFIG_1, 0x03 << 3);
     HAL_Delay(100);
     /*陀螺仪滤波176Hz*/
-    _ImuWriteRag(CONFIG, 0x01);
+    _imuWriteRag(CONFIG, 0x01);
     HAL_Delay(100);
     /*采样频率1000Hz*/
-    _ImuWriteRag(SMPLRT_DIV, 0x00);
+    _imuWriteRag(SMPLRT_DIV, 0x00);
     HAL_Delay(100);
     /*设置中断低电平脉冲*/
-    _ImuWriteRag(INT_PIN_CFG, 0x10);
+    _imuWriteRag(INT_PIN_CFG, 0x10);
     HAL_Delay(100);
     /*使能数据就绪中断*/
-    _ImuWriteRag(INT_ENABLE, 0x01);
+    _imuWriteRag(INT_ENABLE, 0x01);
     HAL_Delay(100);
     /*使能陀螺仪加速度计*/
-    _ImuWriteRag(PWR_MGMT_2, 0x00);
+    _imuWriteRag(PWR_MGMT_2, 0x00);
     HAL_Delay(100);
-    _id = GetId();
+    _id = getId();
     _gyro_sensitivity = 0.061035;
     _acc_sensitivity = 0.48828;
 
 }
 
-uint8_t Icm20689::GetId()
+uint8_t Icm20689::getId()
 {
     uint8_t id = 0;
-    _ImuReadRag(WHO_AM_I, 1, &id);
+    _imuReadRag(WHO_AM_I, 1, &id);
     return id;
 }
 
-float Icm20689::GetTemperature()
+float Icm20689::getTemperature()
 {
     uint8_t buf[2];
     int16_t raw;
     float temp;
-    _ImuReadRag(TEMP_OUT_H, 2, buf);
+    _imuReadRag(TEMP_OUT_H, 2, buf);
     raw = ((int16_t)buf[0] << 8) | buf[1];
     temp = 25.0f + (float)raw / 326.8f;
     if (AC_ON == _get_temp_mark)
     {
-        _printer->Print("[TEMP] %.2f\n", temp);
+        _printer->print("[TEMP] %.2f\n", temp);
     }
     return temp;
 }
 
-void Icm20689::GetGyroData(ImuData &data)
+void Icm20689::getGyroData(ImuData &data)
 {
     uint8_t buf[6];
     uint16_t gx_raw, gy_raw, gz_raw;
 
-    _ImuReadRag(GYRO_XOUT_H, 6, buf);
+    _imuReadRag(GYRO_XOUT_H, 6, buf);
     
     gx_raw = ((uint16_t)buf[0] << 8) | buf[1];
     gy_raw = ((uint16_t)buf[2] << 8) | buf[3];
@@ -173,16 +173,16 @@ void Icm20689::GetGyroData(ImuData &data)
     data.gyr.z = (float)((int16_t)(gz_raw)-_bias_gyro_z) * _gyro_sensitivity;
     if (AC_ON == _get_gyr_mark)
     {
-        _printer->Print("[GYR] %.2f\t%.2f\t%.2f\n", data.gyr.x, data.gyr.y, data.gyr.z);
+        _printer->print("[GYR] %.2f\t%.2f\t%.2f\n", data.gyr.x, data.gyr.y, data.gyr.z);
     }
 }
 
-void Icm20689::GetAccData(ImuData &data)
+void Icm20689::getAccData(ImuData &data)
 {
     uint8_t buf[6];
     uint16_t ax_raw, ay_raw, az_raw;
 
-    _ImuReadRag(ACCEL_XOUT_H, 6, buf);
+    _imuReadRag(ACCEL_XOUT_H, 6, buf);
     
     ax_raw = ((uint16_t)buf[0] << 8) | buf[1];
     ay_raw = ((uint16_t)buf[2] << 8) | buf[3];
@@ -192,6 +192,6 @@ void Icm20689::GetAccData(ImuData &data)
 	data.acc.z = (float)((int16_t)(az_raw) - _bias_acc_z) * _acc_sensitivity;
     if (AC_ON == _get_acc_mark)
     {
-        _printer->Print("[ACC] %.2f\t%.2f\t%.2f\n", data.acc.x, data.acc.y, data.acc.z);
+        _printer->print("[ACC] %.2f\t%.2f\t%.2f\n", data.acc.x, data.acc.y, data.acc.z);
     }
 }

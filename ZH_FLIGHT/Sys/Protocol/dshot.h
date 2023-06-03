@@ -23,10 +23,10 @@ class Dshot : virtual public MotorProtocolInterface
 {
 public:
     Dshot(Pwm *pwm_controller);
-    void SetMotor(float value) override;
+    void setMotor(float value) override;
 private:
-    uint16_t _PreparePacket(const uint16_t value, bool request_telemetry);
-    void _WriteDigital(uint16_t *motor_cmd, uint16_t value);
+    uint16_t _preparePacket(const uint16_t value, bool request_telemetry);
+    void _writeDigital(uint16_t *motor_cmd, uint16_t value);
     Pwm *_pwm_controller = nullptr;
     uint16_t _motor_cmd[ESC_CMD_BUF_LEN] = {0};
 };

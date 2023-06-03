@@ -17,7 +17,7 @@
  * @param {AttitudeControllerInterface} *interface
  * @return {*}
  */
-void AttitudeController::SetMethod(AttitudeControllerInterface *interface)
+void AttitudeController::setMethod(AttitudeControllerInterface *interface)
 {
     _interface = interface;
 }
@@ -27,10 +27,10 @@ void AttitudeController::SetMethod(AttitudeControllerInterface *interface)
  * @param {ControlParam} *param
  * @return {*}
  */
-void AttitudeController::Init(ControlParam *param)
+void AttitudeController::init(ControlParam *param)
 {
-    _interface->Init();
-    _interface->Init(param);
+    _interface->init();
+    _interface->init(param);
 }
 
 /**
@@ -39,7 +39,7 @@ void AttitudeController::Init(ControlParam *param)
  * @param {ExpectState} &expect_state
  * @return {*}
  */
-void AttitudeController::Update(const ActualState &actual_state, ExpectState &expect_state, ActuatorData &actuator_value)
+void AttitudeController::update(const ActualState &actual_state, ExpectState &expect_state, ActuatorData &actuator_value)
 {
     AttitudeControlInput input;
     AttitudeControlOutput output;
@@ -56,12 +56,12 @@ void AttitudeController::Update(const ActualState &actual_state, ExpectState &ex
     input.actual_palstance_y = actual_state.palstance.y;
     input.actual_palstance_z = actual_state.palstance.z;
 
-    _interface->Update(input, output);
+    _interface->update(input, output);
 
-    actuator_value.motor[0] = _Limit(actuator_value.motor[0] + output.motor1);
-    actuator_value.motor[1] = _Limit(actuator_value.motor[1] + output.motor2);
-    actuator_value.motor[2] = _Limit(actuator_value.motor[2] + output.motor3);
-    actuator_value.motor[3] = _Limit(actuator_value.motor[3] + output.motor4);
+    actuator_value.motor[0] = _limit(actuator_value.motor[0] + output.motor1);
+    actuator_value.motor[1] = _limit(actuator_value.motor[1] + output.motor2);
+    actuator_value.motor[2] = _limit(actuator_value.motor[2] + output.motor3);
+    actuator_value.motor[3] = _limit(actuator_value.motor[3] + output.motor4);
 }
 
 /**
@@ -69,7 +69,7 @@ void AttitudeController::Update(const ActualState &actual_state, ExpectState &ex
  * @param {float} value
  * @return {*}
  */
-float AttitudeController::_Limit(float value)
+float AttitudeController::_limit(float value)
 {
     if (value > MOTOR_OUTPUT_MAX)
     {

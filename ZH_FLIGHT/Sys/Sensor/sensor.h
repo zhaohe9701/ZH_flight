@@ -25,10 +25,10 @@ public:
 class Sensor
 {
 public:
-    void Init();
-    void AddImu(Imu *imu);
-    void AddBaro(Baro *baro);
-    AcTreeNode *CreateIndex();
+    void init();
+    void addImu(Imu *imu);
+    void addBaro(Baro *baro);
+    AcTreeNode *createIndex();
     Imu *imu = nullptr;
     Baro *baro = nullptr;
 };

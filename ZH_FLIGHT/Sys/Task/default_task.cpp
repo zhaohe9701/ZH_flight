@@ -11,14 +11,14 @@ extern "C" void StartDefaultTask(void *argument);
 
 void StartDefaultTask(void *argument)
 {
-    AircraftTask::DefaultTask(nullptr);
+    AircraftTask::defaultTask(nullptr);
 }
 
 
-void AircraftTask::DefaultTask(void *argument)
+void AircraftTask::defaultTask(void *argument)
 {
     AcThread start_thread;
-    start_thread.Init(AircraftTask::StartTask, "startTask", 512, 24);
+    start_thread.init(AircraftTask::startTask, "startTask", 512, 24);
     for (;;)
     {
         osDelay(10);

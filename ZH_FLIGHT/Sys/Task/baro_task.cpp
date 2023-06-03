@@ -14,13 +14,13 @@
 #include "sys.h"
 
 
-void AircraftTask::BaroTask(void *argument)
+void AircraftTask::baroTask(void *argument)
 {
     uint32_t previous_wake_time = 0;
     for (;;)
     {
         previous_wake_time = osKernelGetTickCount();
-        aircraft->GetAltitude();
+        aircraft->getAltitude();
         osDelayUntil(previous_wake_time + BARO_UPDATE_DELAY_TIME);
     }
 }

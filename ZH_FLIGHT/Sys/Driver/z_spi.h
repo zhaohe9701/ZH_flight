@@ -18,16 +18,16 @@ class Spi : public SensorInterface
 {
 public:
     Spi(SPI_HandleTypeDef *hspi, GPIO_TypeDef *cs_port, uint16_t cs_pin);
-    void ReadBytes(uint8_t address, uint8_t len, uint8_t *dataBuf) override;
-    void WriteReg(uint8_t address, uint8_t value) override;
-    void WriteRegs(uint8_t address, uint8_t len, uint8_t *value) override;
+    void readBytes(uint8_t address, uint8_t len, uint8_t *dataBuf) override;
+    void writeReg(uint8_t address, uint8_t value) override;
+    void writeRegs(uint8_t address, uint8_t len, uint8_t *value) override;
 private:
     SPI_HandleTypeDef *_hspi;
     GPIO_TypeDef *_cs_port;
     uint16_t _cs_pin;
 
-    void _Enable();
-    void _Disable();
+    void _enable();
+    void _disable();
 };
 
 #endif

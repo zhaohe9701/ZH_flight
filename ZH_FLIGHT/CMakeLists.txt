@@ -137,7 +137,10 @@ set(SYS_SRC
         Sys/Task/state_machine_task.cpp
         Sys/Task/light_task.cpp
         Sys/Task/test_task.cpp
-        Sys/Task/defaut_task.cpp Sys/Light/light.cpp Sys/Light/light.h)
+        Sys/Task/default_task.cpp
+        Sys/Light/light.cpp
+        Sys/Message/message_manager.cpp
+        )
 
 set(START_UP_ASM
         startup_stm32h7b0xx.s
@@ -177,6 +180,8 @@ include_directories(
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/ExternalLib>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Driver>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Type>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Light>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Message>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Control>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Control/AttitudeControl>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Communicate>

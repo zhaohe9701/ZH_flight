@@ -12,9 +12,9 @@ public:
 class Mag
 {
 public:
-    virtual void Init() = 0;
-    virtual uint8_t GetId() = 0;
-    virtual void GetMagData(MagData &data) = 0;
+    virtual void init() = 0;
+    virtual uint8_t getId() = 0;
+    virtual void getMagData(MagData &data) = 0;
 };
 
 

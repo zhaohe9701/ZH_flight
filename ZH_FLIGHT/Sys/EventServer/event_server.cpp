@@ -10,12 +10,12 @@
  */
 #include "event_server.h"
 
-Condition EventServer::GetCurrentCondition()
+Condition EventServer::getCurrentCondition()
 {
     return _current_condition;
 }
 
-void EventServer::SetInformThread(Thread thread, uint32_t value)
+void EventServer::setInformThread(Thread thread, uint32_t value)
 {
     _state_machine_thread = thread;
     _inform_value = value;
@@ -23,14 +23,14 @@ void EventServer::SetInformThread(Thread thread, uint32_t value)
 
 
 
-void EventServer::SetEvent(EventList event)
+void EventServer::setEvent(EventList event)
 {
     _current_condition = _current_condition | event;
-    AcSignalSet(_state_machine_thread, _inform_value);
+    acSignalSet(_state_machine_thread, _inform_value);
 }
 
-void EventServer::ClearEvent(EventList event)
+void EventServer::clearEvent(EventList event)
 {
     _current_condition = _current_condition & (~event);
-    AcSignalSet(_state_machine_thread, _inform_value);
+    acSignalSet(_state_machine_thread, _inform_value);
 }

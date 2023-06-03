@@ -11,7 +11,7 @@
 #include "mahony.h"
 #include "math_param.h"
 
-void Mahony::Update(ActualState &actual_state, SensorData &sensor_data)
+void Mahony::update(ActualState &actual_state, SensorData &sensor_data)
 {
     float normalise;
     float ex = 0.0f;
@@ -92,7 +92,7 @@ void Mahony::Update(ActualState &actual_state, SensorData &sensor_data)
 #else
     if ((ax != 0.0f) || (ay != 0.0f) || (az != 0.0f))
     {
-        normalise = _InvSqrt(ax * ax + ay * ay + az * az);
+        normalise = _invSqrt(ax * ax + ay * ay + az * az);
         ax *= normalise;
         ay *= normalise;
         az *= normalise;
@@ -120,26 +120,26 @@ void Mahony::Update(ActualState &actual_state, SensorData &sensor_data)
     _q2 += (q0_last * gy - q1_last * gz + q3_last * gx) * halfT;
     _q3 += (q0_last * gz + q1_last * gy - q2_last * gx) * halfT;
 
-    normalise = _InvSqrt(_q0 * _q0 + _q1 * _q1 + _q2 * _q2 + _q3 * _q3);
+    normalise = _invSqrt(_q0 * _q0 + _q1 * _q1 + _q2 * _q2 + _q3 * _q3);
     _q0 *= normalise;
     _q1 *= normalise;
     _q2 *= normalise;
     _q3 *= normalise;
 
     actual_state.quarter.Set(_q1, _q2, _q3, _q0);
-    _ComputeRotationMatrix();
+    _computeRotationMatrix();
 
     actual_state.euler.PITCH = -asinf(_r_mat[2][0]) * RAD2DEG;
     actual_state.euler.ROLL = atan2f(_r_mat[2][1], _r_mat[2][2]) * RAD2DEG;
     actual_state.euler.YAW = atan2f(_r_mat[1][0], _r_mat[0][0]) * RAD2DEG;
 }
 
-float Mahony::_InvSqrt(float x)
+float Mahony::_invSqrt(float x)
 {
     return 1.0f / sqrt(x);
 }
 
-void Mahony::_ComputeRotationMatrix()
+void Mahony::_computeRotationMatrix()
 {
     float q1q1 = _q1 * _q1;
     float q2q2 = _q2 * _q2;
@@ -165,7 +165,7 @@ void Mahony::_ComputeRotationMatrix()
     _r_mat[2][2] = 1.0f - 2.0f * q1q1 - 2.0f * q2q2;
 }
 
-void Mahony::TransformBodyToEarth(float &x, float &y, float &z)
+void Mahony::transformBodyToEarth(float &x, float &y, float &z)
 {
     float ex = 0.0f;
     float ey = 0.0f;
@@ -180,7 +180,7 @@ void Mahony::TransformBodyToEarth(float &x, float &y, float &z)
     z = ez;
 }
 
-void Mahony::TransformEarthToBody(float &x, float &y, float &z)
+void Mahony::transformEarthToBody(float &x, float &y, float &z)
 {
     float bx = 0.0f;
     float by = 0.0f;

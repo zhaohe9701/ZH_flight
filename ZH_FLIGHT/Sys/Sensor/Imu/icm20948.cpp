@@ -170,32 +170,32 @@
 /***********************************/
 
 
-void Icm20948::_ImuWriteRag(uint8_t bank, uint8_t address, uint8_t value)
+void Icm20948::_imuWriteRag(uint8_t bank, uint8_t address, uint8_t value)
 {
     if (bank != BANK0)
     {
-        _interface->WriteReg(REG_BANK_SEL & WRITE, bank);
-        _interface->WriteReg(address & WRITE, value);
-        _interface->WriteReg(REG_BANK_SEL & WRITE, BANK0);
+        _interface->writeReg(REG_BANK_SEL & WRITE, bank);
+        _interface->writeReg(address & WRITE, value);
+        _interface->writeReg(REG_BANK_SEL & WRITE, BANK0);
 
     }
     else
     {
-        _interface->WriteReg(address & WRITE, value);
+        _interface->writeReg(address & WRITE, value);
     }
 }
 
-void Icm20948::_ImuReadRag(uint8_t bank, uint8_t address, uint8_t length, uint8_t *buf)
+void Icm20948::_imuReadRag(uint8_t bank, uint8_t address, uint8_t length, uint8_t *buf)
 {
     if (bank != _last_bank)
     {
-        _interface->WriteReg(REG_BANK_SEL & WRITE, bank);
-        _interface->ReadBytes(address | READ, length, buf);
-        _interface->WriteReg(REG_BANK_SEL & WRITE, BANK0);
+        _interface->writeReg(REG_BANK_SEL & WRITE, bank);
+        _interface->readBytes(address | READ, length, buf);
+        _interface->writeReg(REG_BANK_SEL & WRITE, BANK0);
     }
     else
     {
-        _interface->ReadBytes(address | READ, length, buf);
+        _interface->readBytes(address | READ, length, buf);
     }
 }
 
@@ -204,37 +204,37 @@ Icm20948::Icm20948(SensorInterface *interface)
     _interface = interface;
     strncpy(_name, "ICM20948", PARAM_NAME_LEN);
 }
-void Icm20948::Init()
+void Icm20948::init()
 {
     /*复位芯片*/
-    _ImuWriteRag(BANK0, PWR_MGMT_1, 0x80);
+    _imuWriteRag(BANK0, PWR_MGMT_1, 0x80);
     HAL_Delay(200);
     /*选择时钟源,唤醒芯片*/
-    _ImuWriteRag(BANK0, PWR_MGMT_1, 0x01);
+    _imuWriteRag(BANK0, PWR_MGMT_1, 0x01);
     HAL_Delay(50);
     /*禁用iic*/
-    _ImuWriteRag(BANK0, USER_CTRL, 0x10);
+    _imuWriteRag(BANK0, USER_CTRL, 0x10);
     HAL_Delay(50);
     /*配置陀螺仪*/
-    _ImuWriteRag(BANK2, GYRO_CONFIG_1, 0x07);
+    _imuWriteRag(BANK2, GYRO_CONFIG_1, 0x07);
     HAL_Delay(50);
-    _ImuWriteRag(BANK2, GYRO_SMPLRT_DIV, 0x00);
+    _imuWriteRag(BANK2, GYRO_SMPLRT_DIV, 0x00);
     HAL_Delay(50);
     /*配置加速度计*/
-    _ImuWriteRag(BANK2, ACCEL_CONFIG, 0x07);
+    _imuWriteRag(BANK2, ACCEL_CONFIG, 0x07);
     HAL_Delay(50);
-    _ImuWriteRag(BANK2, ACCEL_SMPLRT_DIV_1, 0x00);
+    _imuWriteRag(BANK2, ACCEL_SMPLRT_DIV_1, 0x00);
     HAL_Delay(50);
-    _ImuWriteRag(BANK2, ACCEL_SMPLRT_DIV_2, 0x00);
+    _imuWriteRag(BANK2, ACCEL_SMPLRT_DIV_2, 0x00);
     HAL_Delay(50);
     /*设置中断低电平脉冲*/
-    _ImuWriteRag(BANK0, INT_PIN_CFG, 0x10);
+    _imuWriteRag(BANK0, INT_PIN_CFG, 0x10);
     HAL_Delay(50);
     /*使能数据就绪中断*/
-    _ImuWriteRag(BANK0, INT_ENABLE, 0x01);
+    _imuWriteRag(BANK0, INT_ENABLE, 0x01);
     HAL_Delay(50);
     /*使能陀螺仪加速度计*/
-    _ImuWriteRag(BANK0, PWR_MGMT_2, 0x00);
+    _imuWriteRag(BANK0, PWR_MGMT_2, 0x00);
     HAL_Delay(50);
 
     _gyro_sensitivity = 0.061035;
@@ -242,34 +242,34 @@ void Icm20948::Init()
 
 }
 
-uint8_t Icm20948::GetId()
+uint8_t Icm20948::getId()
 {
     uint8_t id = 0;
-    _ImuReadRag(BANK0, WHO_AM_I, 1, &id);
+    _imuReadRag(BANK0, WHO_AM_I, 1, &id);
     return id;
 }
 
-float Icm20948::GetTemperature()
+float Icm20948::getTemperature()
 {
     uint8_t buf[2];
     int16_t raw;
     float temp;
-    _ImuReadRag(BANK0, TEMP_OUT_H, 2, buf);
+    _imuReadRag(BANK0, TEMP_OUT_H, 2, buf);
     raw = ((int16_t)buf[0] << 8) | buf[1];
     temp = 25.0f + (float)raw / 326.8f;
     if (AC_ON == _get_temp_mark)
     {
-        _printer->Print("[TEMP] %.2f\n", temp);
+        _printer->print("[TEMP] %.2f\n", temp);
     }
     return temp;
 }
 
-void Icm20948::GetGyroData(ImuData &data)
+void Icm20948::getGyroData(ImuData &data)
 {
     uint8_t buf[6];
     uint16_t gx_raw, gy_raw, gz_raw;
 
-    _ImuReadRag(BANK0, GYRO_XOUT_H, 6, buf);
+    _imuReadRag(BANK0, GYRO_XOUT_H, 6, buf);
     
     gx_raw = ((uint16_t)buf[0] << 8) | buf[1];
     gy_raw = ((uint16_t)buf[2] << 8) | buf[3];
@@ -279,16 +279,16 @@ void Icm20948::GetGyroData(ImuData &data)
     data.gyr.z = (float)((int16_t)(gz_raw)-_bias_gyro_z) * _gyro_sensitivity;
     if (AC_ON == _get_gyr_mark)
     {
-        _printer->Print("[GYR] %.2f\t%.2f\t%.2f\n", data.gyr.x, data.gyr.y, data.gyr.z);
+        _printer->print("[GYR] %.2f\t%.2f\t%.2f\n", data.gyr.x, data.gyr.y, data.gyr.z);
     }
 }
 
-void Icm20948::GetAccData(ImuData &data)
+void Icm20948::getAccData(ImuData &data)
 {
     uint8_t buf[6];
     uint16_t ax_raw, ay_raw, az_raw;
 
-    _ImuReadRag(BANK0, ACCEL_XOUT_H, 6, buf);
+    _imuReadRag(BANK0, ACCEL_XOUT_H, 6, buf);
     
     ax_raw = ((uint16_t)buf[0] << 8) | buf[1];
     ay_raw = ((uint16_t)buf[2] << 8) | buf[3];
@@ -298,6 +298,6 @@ void Icm20948::GetAccData(ImuData &data)
 	data.acc.z = (float)((int16_t)(az_raw) - _bias_acc_z) * _acc_sensitivity;
     if (AC_ON == _get_acc_mark)
     {
-        _printer->Print("[ACC] %.2f\t%.2f\t%.2f\n", data.acc.x, data.acc.y, data.acc.z);
+        _printer->print("[ACC] %.2f\t%.2f\t%.2f\n", data.acc.x, data.acc.y, data.acc.z);
     }
 }

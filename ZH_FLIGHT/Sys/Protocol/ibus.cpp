@@ -16,12 +16,12 @@
 
 #define IBUS_HEAD 0x20
 
-MessageHead IbusParser::GetHead()
+MessageHead IbusParser::getHead()
 {
     return IBUS_HEAD;
 }
 
-AC_RET IbusParser::ParseMessage(Message &message)
+AC_RET IbusParser::parseMessage(Message &message)
 {
     RemoteData data;
 
@@ -51,11 +51,11 @@ AC_RET IbusParser::ParseMessage(Message &message)
     _channel_data[17] = ((uint16_t)(message.data[21] & 0xF0) >> 4) | (uint16_t)(message.data[23] & 0xF0) | ((uint16_t)(message.data[25] & 0xF0) << 4);
 
     memcpy(data.channel, _channel_data, sizeof(uint16_t) * TOTAL_CHANNEL_NUM);
-    _manager->Update(&data);
+    _manager->update(&data);
     return AC_OK;
 }
 
-void IbusParser::SetDataManager(void *manager)
+void IbusParser::setDataManager(void *manager)
 {
     _manager = (DataManager<RemoteData>*)manager;
 }

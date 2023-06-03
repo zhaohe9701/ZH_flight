@@ -27,7 +27,7 @@ MessageReceiveServer::MessageReceiveServer(uint8_t len)
     _manager = new DataManager<Message>(len);
 }
 
-void MessageReceiveServer::AddParser(MessageReceiveParser *interface)
+void MessageReceiveServer::addParser(MessageReceiveParser *interface)
 {
     _parser[_interface_ind] = interface;
     if (_interface_ind > MESSAGE_TYPE_NUM)
@@ -38,25 +38,25 @@ void MessageReceiveServer::AddParser(MessageReceiveParser *interface)
     _interface_ind++;
 }
 
-AC_RET MessageReceiveServer::RunReceiveService()
+AC_RET MessageReceiveServer::runReceiveService()
 {
     Message message;
     MessageHead head = 0;
 
-    _manager->Pop(&message);
+    _manager->pop(&message);
     head = message.data[0];
     for (int i = 0; i < _interface_ind; ++i)
     {
-        if (head == _parser[i]->GetHead())
+        if (head == _parser[i]->getHead())
         {
-            _parser[i]->ParseMessage(message);
+            _parser[i]->parseMessage(message);
             return AC_OK;
         }
     }
     return AC_ERROR;
 }
 
-DataManager<Message> *MessageReceiveServer::GetMessageManager()
+DataManager<Message> *MessageReceiveServer::getMessageManager()
 {
     return _manager;
 }
@@ -79,7 +79,7 @@ MessageTransmitServer::MessageTransmitServer(uint8_t len)
     _manager = new DataManager<Message>(len);
 }
 
-void MessageTransmitServer::AddTransmitter(CommunicateInterface *interface)
+void MessageTransmitServer::addTransmitter(CommunicateInterface *interface)
 {
     if (_interface_ind > MESSAGE_TRANSMIT_NUM)
     {
@@ -89,17 +89,17 @@ void MessageTransmitServer::AddTransmitter(CommunicateInterface *interface)
     _interface_ind++;
 }
 
-void MessageTransmitServer::RunTransmitService()
+void MessageTransmitServer::runTransmitService()
 {
     Message message;
-    _manager->Pop(&message);
+    _manager->pop(&message);
     uint8_t mark = message.dec_port;
     for (int i = 0; i < _interface_ind; ++i)
     {
-        if (_interface[i]->MatchMark(mark))
+        if (_interface[i]->matchMark(mark))
         {
             uint8_t try_times = 0;
-            while (try_times < 100 && AC_OK != _interface[i]->Transmit(message.data, message.length))
+            while (try_times < 100 && AC_OK != _interface[i]->transmit(message.data, message.length))
             {
                 try_times++;
             }
@@ -108,7 +108,7 @@ void MessageTransmitServer::RunTransmitService()
     }
 }
 
-DataManager<Message> *MessageTransmitServer::GetMessageManager()
+DataManager<Message> *MessageTransmitServer::getMessageManager()
 {
     return _manager;
 }

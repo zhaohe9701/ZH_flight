@@ -44,30 +44,30 @@ static int32_t GetMethod(const char *cmd_buf, char *method)
 CommandServer::CommandServer()
 {
     _command_manager = new DataManager<Message>(3);
-    _printer = new Printer(message_transmit_server->GetMessageManager());
-    _printer->SetDecPort(0x01);
+    _printer = new Printer(message_transmit_server->getMessageManager());
+    _printer->setDecPort(0x01);
 }
 
-DataManager<Message> *CommandServer::GetManager()
+DataManager<Message> *CommandServer::getManager()
 {
     return _command_manager;
 }
 
-AC_RET CommandServer::RunCommandService()
+AC_RET CommandServer::runCommandService()
 {
     Message command;
     char method[MAX_METHOD_LEN] = {0};
     int32_t second_param_start = 0;
     do
     {
-        _command_manager->Pop(&command);
+        _command_manager->pop(&command);
         if (0 == command.length)
         {
             continue;
         }
         if ('$' != command.data[0])
         {
-            _printer->Error("NOT COMMAND HEAD.\n");
+            _printer->error("NOT COMMAND HEAD.\n");
             goto error;
         }
         if (_cmd_ptr + command.length - 1 < AT_COMMAND_MAX_LEN - 1)
@@ -77,7 +77,7 @@ AC_RET CommandServer::RunCommandService()
         }
         else
         {
-            _printer->Error("COMMAND BUF OVERFLOW.\n");
+            _printer->error("COMMAND BUF OVERFLOW.\n");
             goto error;
         }
     }
@@ -85,29 +85,29 @@ AC_RET CommandServer::RunCommandService()
     osDelay(10);
     // return AC_OK;
     _cmd_buf[_cmd_ptr - 1] = 0;
-    debug_printer->Info("%s\n", _cmd_buf);
+    debug_printer->info("%s\n", _cmd_buf);
     osDelay(1);
     if (_cmd_ptr < MAX_METHOD_LEN)
     {
-        _printer->Error("COMMAND ERROR.\n");
+        _printer->error("COMMAND ERROR.\n");
         goto error;
     }
     second_param_start = GetMethod(_cmd_buf, method);
     if (0 == strcmp(method, GET))
     {
-        _Get(_cmd_buf + second_param_start);
+        _get(_cmd_buf + second_param_start);
     }
     else if (0 == strcmp(method, SET))
     {
-        _Set(_cmd_buf + second_param_start);
+        _set(_cmd_buf + second_param_start);
     }
     else
     {
-        _printer->Error("UNKNOWN COMMAND METHOD %s.\n", method);
+        _printer->error("UNKNOWN COMMAND METHOD %s.\n", method);
         goto error;
     }
 
-    _RunTempTask();
+    _runTempTask();
 
     memset(_cmd_buf, 0, AT_COMMAND_MAX_LEN);
     _cmd_ptr = 0;
@@ -124,7 +124,7 @@ CommandServer::~CommandServer()
     delete _printer;
 }
 
-void CommandServer::_Get(char *command)
+void CommandServer::_get(char *command)
 {
     int32_t ptr = 0;
     AcTreeNode *root = nullptr;
@@ -134,35 +134,35 @@ void CommandServer::_Get(char *command)
 
     if (command[ptr] != '/')
     {
-        _printer->Error("URL SHOULD START WITH '\\'.\n");
+        _printer->error("URL SHOULD START WITH '\\'.\n");
         return;
     }
     ptr++;
 
-    root = aircraft->GetIndex();
+    root = aircraft->getIndex();
     if (nullptr == root)
     {
-        root = aircraft->CreateIndex();
+        root = aircraft->createIndex();
     }
 
     GetUrl(command + ptr, url);
-    debug_printer->Info("url:%s\n", url);
-    node = AcTree::FindNode(root, url);
+    debug_printer->info("url:%s\n", url);
+    node = AcTree::findNode(root, url);
     if (nullptr == node)
     {
-        _printer->Error("CAN NOT FOUND URL.\n");
+        _printer->error("CAN NOT FOUND URL.\n");
         return;
     }
-    if (AC_OK != Json::TransTreeToJsonStr(node, json_buf, MAX_JSON_LEN - 1))
+    if (AC_OK != Json::transTreeToJsonStr(node, json_buf, MAX_JSON_LEN - 1))
     {
-        _printer->Error("TRANS TREE TO JSON STRING FAILED.\n");
+        _printer->error("TRANS TREE TO JSON STRING FAILED.\n");
     }
-    _printer->Info("%s\n", json_buf);
+    _printer->info("%s\n", json_buf);
     osDelay(10);
-    _printer->Info("Get Finish.\n");
+    _printer->info("Get Finish.\n");
 }
 
-void CommandServer::_Set(char *command)
+void CommandServer::_set(char *command)
 {
     int32_t ptr = 0;
     AcTreeNode *root = nullptr;
@@ -171,34 +171,34 @@ void CommandServer::_Set(char *command)
 
     if (command[ptr] != '/')
     {
-        _printer->Error("URL SHOULD START WITH '\\'.\n");
+        _printer->error("URL SHOULD START WITH '\\'.\n");
         return;
     }
     ptr++;
 
-    root = aircraft->GetIndex();
+    root = aircraft->getIndex();
     if (nullptr == root)
     {
-        root = aircraft->CreateIndex();
+        root = aircraft->createIndex();
     }
 
     ptr = GetUrl(command + ptr, url);
-    debug_printer->Info("url:%s\n", url);
+    debug_printer->info("url:%s\n", url);
 
-    node = AcTree::FindNode(root, url);
+    node = AcTree::findNode(root, url);
     if (nullptr == node)
     {
-        _printer->Error("CAN NOT FOUND URL.\n");
+        _printer->error("CAN NOT FOUND URL.\n");
         return;
     }
-    if (AC_OK != Json::TransJsonStrToTree(node, command + ptr, MAX_JSON_LEN - ptr))
+    if (AC_OK != Json::transJsonStrToTree(node, command + ptr, MAX_JSON_LEN - ptr))
     {
-        _printer->Error("SET DATA FAILED.\n");
+        _printer->error("SET DATA FAILED.\n");
     }
 
 }
 
-void CommandServer::_RunTempTask()
+void CommandServer::_runTempTask()
 {
 
 }

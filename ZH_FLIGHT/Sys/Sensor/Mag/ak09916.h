@@ -17,15 +17,15 @@
 class Ak09916 : virtual public Mag
 {
 public:
-    void Init();
-    uint8_t GetId();
-    void GetMagData(MagData &data);
+    void init() override;
+    uint8_t getId() override;
+    void getMagData(MagData &data) override;
 private:
     uint8_t _last_bank = 0xFF;
     SensorInterface *_interface = nullptr;
-    void _MasterWriteRag(uint8_t bank, uint8_t address, uint8_t value);
-    void _MasterReadRag(uint8_t bank, uint8_t address, uint8_t length, uint8_t *buf);
-    void _LoadIicRegParam();
+    void _masterWriteRag(uint8_t bank, uint8_t address, uint8_t value);
+    void _masterReadRag(uint8_t bank, uint8_t address, uint8_t length, uint8_t *buf);
+    void _loadIicRegParam();
 
 };
 #endif

@@ -17,18 +17,18 @@ Spi::Spi(SPI_HandleTypeDef *hspi, GPIO_TypeDef *cs_port, uint16_t cs_pin)
     _cs_pin = cs_pin;
 }
 
-void Spi::ReadBytes(uint8_t address, uint8_t len, uint8_t *dataBuf)
+void Spi::readBytes(uint8_t address, uint8_t len, uint8_t *dataBuf)
 {
-    _Enable();
+    _enable();
     HAL_SPI_Transmit(_hspi, &address, 1, 0x01f4);
     HAL_SPI_Receive(_hspi, dataBuf, len, 0x01f4);
-    _Disable();
+    _disable();
 }
 
-void Spi::WriteReg(uint8_t address, uint8_t value)
+void Spi::writeReg(uint8_t address, uint8_t value)
 {
     uint8_t ret = 0;
-    _Enable();
+    _enable();
     while (HAL_SPI_GetState(_hspi) == HAL_SPI_STATE_BUSY_TX_RX)
     {
     };
@@ -39,13 +39,13 @@ void Spi::WriteReg(uint8_t address, uint8_t value)
     };
     HAL_SPI_TransmitReceive(_hspi, &value, &ret, 1, 0x01f4);
 
-    _Disable();
+    _disable();
 }
 
-void Spi::WriteRegs(uint8_t address, uint8_t len, uint8_t *value)
+void Spi::writeRegs(uint8_t address, uint8_t len, uint8_t *value)
 {
     uint8_t ret = 0;
-    _Enable();
+    _enable();
     while (HAL_SPI_GetState(_hspi) == HAL_SPI_STATE_BUSY_TX_RX)
     {
     };
@@ -56,15 +56,15 @@ void Spi::WriteRegs(uint8_t address, uint8_t len, uint8_t *value)
     };
     HAL_SPI_TransmitReceive(_hspi, value, &ret, len, 0x01f4);
 
-    _Disable();
+    _disable();
 }
 
-void Spi::_Enable()
+void Spi::_enable()
 {
     HAL_GPIO_WritePin(_cs_port, _cs_pin, GPIO_PIN_RESET);
 }
 
-void Spi::_Disable()
+void Spi::_disable()
 {
     HAL_GPIO_WritePin(_cs_port, _cs_pin, GPIO_PIN_SET);
 }

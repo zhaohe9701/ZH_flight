@@ -16,9 +16,9 @@
 class ControlParam
 {
 public:
-    void Init(uint8_t size);
-    void GetParam(uint8_t *data);
-    void Destroy();
+    void init(uint8_t size);
+    void getParam(uint8_t *data);
+    void destroy();
 
     float *param = nullptr;
     uint8_t _size = 0;

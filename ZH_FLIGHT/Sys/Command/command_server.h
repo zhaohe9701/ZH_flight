@@ -10,17 +10,17 @@
 class CommandServer
 {
 private:
-    void _Get(char* command);
-    void _Set(char* command);
-    static void _RunTempTask();
+    void _get(char* command);
+    void _set(char* command);
+    static void _runTempTask();
     DataManager<Message> *_command_manager = nullptr;
     Printer *_printer = nullptr;
     char _cmd_buf[AT_COMMAND_MAX_LEN] = {0};
     int32_t _cmd_ptr = 0;
 public:
     CommandServer();
-    DataManager<Message> *GetManager();
-    AC_RET RunCommandService();
+    DataManager<Message> *getManager();
+    AC_RET runCommandService();
     ~CommandServer();
 };
 

@@ -16,7 +16,7 @@ Mpu6X00::Mpu6X00(SensorInterface *interface)
     _interface = interface;
 }
 
-void Mpu6X00::Init()
+void Mpu6X00::init()
 {
     //UsbPrintf("WRITE1\n");
     HAL_Delay(1000);
@@ -54,7 +54,7 @@ void Mpu6X00::Init()
     //UsbPrintf("IMU INIT SUCCESS\n");
 }
 
-uint8_t Mpu6X00::GetId()
+uint8_t Mpu6X00::getId()
 {
     uint8_t id;
     //_interface->ReadBytes(MPU_DEVICE_ID_REG, 1, &id);
@@ -63,7 +63,7 @@ uint8_t Mpu6X00::GetId()
     return id;
 }
 
-float Mpu6X00::GetTemperature()
+float Mpu6X00::getTemperature()
 {
     uint8_t buf[2];
     short raw;
@@ -81,7 +81,7 @@ float Mpu6X00::GetTemperature()
  * @param {float} *gz
  * @return {*}
  */
-void Mpu6X00::GetGyroData(ImuData &data)
+void Mpu6X00::getGyroData(ImuData &data)
 {
     uint8_t buf[6];
     _interface->ReadBytes(MPU_GYRO_XOUTH_REG, 6, buf);
@@ -103,7 +103,7 @@ void Mpu6X00::GetGyroData(ImuData &data)
  * @param {float} *az
  * @return {*}
  */
-void Mpu6X00::GetAccData(ImuData &data)
+void Mpu6X00::getAccData(ImuData &data)
 {
     uint8_t buf[6];
     _interface->ReadBytes(MPU_ACCEL_XOUTH_REG, 6, buf);
@@ -119,7 +119,7 @@ void Mpu6X00::GetAccData(ImuData &data)
 
 
 
-uint8_t Mpu6X00::_GetLpfValue(const uint8_t frq)
+uint8_t Mpu6X00::_getLpfValue(const uint8_t frq)
 {
     uint8_t lpf = 0x01;
     switch (frq)
@@ -139,7 +139,7 @@ uint8_t Mpu6X00::_GetLpfValue(const uint8_t frq)
     return lpf;
 }
 
-float Mpu6X00::_GetAccLsb(uint8_t afs)
+float Mpu6X00::_getAccLsb(uint8_t afs)
 {
     float lsb = 4096.0f;
     switch (afs)
@@ -166,7 +166,7 @@ float Mpu6X00::_GetAccLsb(uint8_t afs)
     return lsb;
 }
 
-float Mpu6X00::_GetGyroLsb(uint8_t afs)
+float Mpu6X00::_getGyroLsb(uint8_t afs)
 {
     float lsb = 16.4f;
     switch (afs)
@@ -193,7 +193,7 @@ float Mpu6X00::_GetGyroLsb(uint8_t afs)
     return lsb;
 }
 
-void Mpu6X00::_GetGyroRawData(int16_t *gx, int16_t *gy, int16_t *gz)
+void Mpu6X00::_getGyroRawData(int16_t *gx, int16_t *gy, int16_t *gz)
 {
     uint8_t buf[6];
     _interface->ReadBytes(MPU_GYRO_XOUTH_REG, 6, buf);
@@ -206,7 +206,7 @@ void Mpu6X00::_GetGyroRawData(int16_t *gx, int16_t *gy, int16_t *gz)
 	*gy = (int16_t)(gy_raw);
 	*gz = (int16_t)(gz_raw);
 }
-void Mpu6X00::_GetAccRawData(int16_t *ax, int16_t *ay, int16_t *az)
+void Mpu6X00::_getAccRawData(int16_t *ax, int16_t *ay, int16_t *az)
 {
     uint8_t buf[6];
     _interface->ReadBytes(MPU_ACCEL_XOUTH_REG, 6, buf);

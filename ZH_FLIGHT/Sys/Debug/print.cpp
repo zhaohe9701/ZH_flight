@@ -27,12 +27,12 @@ Printer::Printer(DataManager<Message> *manager)
     _manager = manager;
 }
 
-void Printer::SetDecPort(uint8_t port)
+void Printer::setDecPort(uint8_t port)
 {
     _port = port;
 }
 
-void Printer::Print(const char *format, ...)
+void Printer::print(const char *format, ...)
 {
     Message message;
     va_list args;
@@ -40,10 +40,10 @@ void Printer::Print(const char *format, ...)
     message.length = vsnprintf((char *)message.data, MAX_PRINT_LENGTH, (char *)format, args);
     va_end(args);
     message.dec_port = _port;
-    _manager->Push(&message);
+    _manager->push(&message);
 }
 
-void Printer::Error(const char *format, ...)
+void Printer::error(const char *format, ...)
 {
     Message message;
     va_list args;
@@ -53,10 +53,10 @@ void Printer::Error(const char *format, ...)
     message.length += ERROR_LEN;
     message.dec_port = _port;
     memcpy(message.data, ERROR, ERROR_LEN);
-    _manager->Push(&message);
+    _manager->push(&message);
 }
 
-void Printer::Info(const char *format, ...)
+void Printer::info(const char *format, ...)
 {
     Message message;
     va_list args;
@@ -66,10 +66,10 @@ void Printer::Info(const char *format, ...)
     message.length += INFO_LEN;
     message.dec_port = _port;
     memcpy(message.data, INFO, INFO_LEN);
-    _manager->Push(&message);
+    _manager->push(&message);
 }
 
-void Printer::Transmit(const char *buf, uint32_t len)
+void Printer::transmit(const char *buf, uint32_t len)
 {
     Message message;
     uint32_t ptr = 0;
@@ -81,13 +81,13 @@ void Printer::Transmit(const char *buf, uint32_t len)
         {
             message.length = MAX_MESSAGE_LENGTH;
             memcpy(message.data, buf + ptr, MAX_MESSAGE_LENGTH);
-            _manager->Push(&message);
+            _manager->push(&message);
         }
         else
         {
             message.length = len - ptr;
             memcpy(message.data, buf + ptr, len - ptr);
-            _manager->Push(&message);
+            _manager->push(&message);
         }
         ptr += MAX_MESSAGE_LENGTH;
     }

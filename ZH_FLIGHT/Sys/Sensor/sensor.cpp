@@ -11,40 +11,40 @@
 #include "sensor.h"
 #include "sys.h"
 
-void Sensor::AddImu(Imu *imu)
+void Sensor::addImu(Imu *imu)
 {
     this->imu = imu;
 }
 
-void Sensor::AddBaro(Baro *baro)
+void Sensor::addBaro(Baro *baro)
 {
     this->baro = baro;
 }
 
-void Sensor::Init()
+void Sensor::init()
 {
     if (nullptr != imu)
     {
-        imu->Init();
+        imu->init();
     }
     if (nullptr != baro)
     {
-        baro->Init();
+        baro->init();
     }
 }
 
-AcTreeNode *Sensor::CreateIndex()
+AcTreeNode *Sensor::createIndex()
 {
     AcTreeNode *root = new AcTreeNode();
     AcTreeNode *node = nullptr;
 
-    root->AddData(nullptr, AC_STRUCT, "sensor", 0);
+    root->addData(nullptr, AC_STRUCT, "sensor", 0);
 
     node = imu->CreateIndex();
-    AcTree::AddNode(root, node);
+    AcTree::addNode(root, node);
 
-    node = baro->CreateIndex();
-    AcTree::AddNode(root, node);
+    node = baro->createIndex();
+    AcTree::addNode(root, node);
 
     return root;
 }

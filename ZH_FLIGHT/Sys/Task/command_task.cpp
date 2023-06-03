@@ -4,10 +4,10 @@
 #include "aircraft_task.h"
 #include "sys.h"
 
-void AircraftTask::CommandTask(void *argument)
+void AircraftTask::commandTask(void *argument)
 {
     for (;;)
     {
-        command_server->RunCommandService();
+        command_server->runCommandService();
     }
 }

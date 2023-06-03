@@ -25,11 +25,11 @@ public:
 class Baro
 {
 public:
-    virtual void Init() = 0;
-    virtual void GetTemperature(BaroData& data) = 0;
-    virtual void GetPressure(BaroData& data) = 0;
-    virtual void GetAltitude(BaroData& data) = 0;
-    AcTreeNode *CreateIndex();
+    virtual void init() = 0;
+    virtual void getTemperature(BaroData& data) = 0;
+    virtual void getPressure(BaroData& data) = 0;
+    virtual void getAltitude(BaroData& data) = 0;
+    AcTreeNode *createIndex();
 protected:
     char _name[PARAM_NAME_LEN] = "baro";
     AcSwitch _get_altitude_mark = AC_OFF;

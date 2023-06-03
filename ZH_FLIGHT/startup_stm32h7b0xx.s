@@ -219,7 +219,7 @@ g_pfnVectors:
   .word     I2C3_EV_IRQHandler                /* I2C3 event                   */
   .word     I2C3_ER_IRQHandler                /* I2C3 error                   */
   .word     OTG_HS_EP1_OUT_IRQHandler         /* USB OTG HS End Point 1 Out   */
-  .word     OTG_HS_EP1_IN_IRQHandler          /* USB OTG HS End Point 1 In    */
+  .word     OTG_HS_EP1_IN_IRQHandler          /* USB OTG HS end Point 1 In    */
   .word     OTG_HS_WKUP_IRQHandler            /* USB OTG HS Wakeup through EXTI */
   .word     OTG_HS_IRQHandler                 /* USB OTG HS                   */
   .word     DCMI_PSSI_IRQHandler              /* DCMI, PSSI                   */

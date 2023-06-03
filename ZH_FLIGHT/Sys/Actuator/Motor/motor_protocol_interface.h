@@ -14,7 +14,7 @@
 class MotorProtocolInterface
 {
 public:
-    virtual void SetMotor(float value) = 0;
+    virtual void setMotor(float value) = 0;
 };
 
 #endif

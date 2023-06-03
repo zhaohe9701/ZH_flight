@@ -19,17 +19,17 @@
 class MessageReceiveParser
 {
 public:
-    virtual AC_RET ParseMessage(Message &message) = 0;
-    virtual MessageHead GetHead() = 0;
-    virtual void SetDataManager(void *manager) = 0;
+    virtual AC_RET parseMessage(Message &message) = 0;
+    virtual MessageHead getHead() = 0;
+    virtual void setDataManager(void *manager) = 0;
     virtual ~MessageReceiveParser()= default;
 };
 
 class MessageTransmitParser
 {
 public:
-    virtual AC_RET ParseMessage(void *message) = 0;
-    virtual void SetInterfaceMark(uint8_t mark) = 0;
-    virtual void Publish() = 0;
+    virtual AC_RET parseMessage(void *message) = 0;
+    virtual void setInterfaceMark(uint8_t mark) = 0;
+    virtual void publish() = 0;
 };
 #endif

@@ -11,12 +11,12 @@
 #include "attitude_controller_interface.h"
 #include "config.h"
 
-void AttitudeControllerInterface::Init()
+void AttitudeControllerInterface::init()
 {
     return;
 }
 
-void AttitudeControllerInterface::Init(const ControlParam *param)
+void AttitudeControllerInterface::init(const ControlParam *param)
 {
     return;
 }

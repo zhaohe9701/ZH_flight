@@ -14,18 +14,18 @@
 class AircraftTask
 {
 public:
-    static void ImuTask(void *argument);
-    static void BaroTask(void *argument);
-    static void AttitudeSolveTask(void *argument);
-    static void ControlTask(void *argument);
-    static void StateMachineTask(void *argument);
-    static void LightTask(void *argument);
-    static void ReceiveDataTask(void *argument);
-    static void TransmitDataTask(void *argument);
-    static void CommandTask(void *argument);
-    static void TestTask(void *argument);
-    static void StartTask(void *argument);
-    static void DefaultTask(void *argument);
+    static void imuTask(void *argument);
+    static void baroTask(void *argument);
+    static void attitudeSolveTask(void *argument);
+    static void controlTask(void *argument);
+    static void stateMachineTask(void *argument);
+    static void lightTask(void *argument);
+    static void receiveDataTask(void *argument);
+    static void transmitDataTask(void *argument);
+    static void commandTask(void *argument);
+    static void testTask(void *argument);
+    static void startTask(void *argument);
+    static void defaultTask(void *argument);
 };
 
 #define ATTITUDE_SOLVE_DELAY_TIME (1000 / ATTITUDE_SOLVE_CYCLE_FREQ)

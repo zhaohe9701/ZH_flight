@@ -13,8 +13,8 @@
 
 Imu::Imu()
 {
-    _printer = new Printer(message_transmit_server->GetMessageManager());
-    _printer->SetDecPort(0x01);
+    _printer = new Printer(message_transmit_server->getMessageManager());
+    _printer->setDecPort(0x01);
 }
 
 AcTreeNode *Imu::CreateIndex()
@@ -22,24 +22,24 @@ AcTreeNode *Imu::CreateIndex()
     AcTreeNode *root = new AcTreeNode();
     AcTreeNode *node = nullptr;
 
-    root->AddData(nullptr, AC_STRUCT, _name, 0);
+    root->addData(nullptr, AC_STRUCT, _name, 0);
 
 
     node = new AcTreeNode();
-    node->AddData((void*)&_get_acc_mark, AC_SWITCH, "get_acc", 1);
-    AcTree::AddNode(root, node);
+    node->addData((void *) &_get_acc_mark, AC_SWITCH, "get_acc", 1);
+    AcTree::addNode(root, node);
 
     node = new AcTreeNode();
-    node->AddData((void*)&_get_gyr_mark, AC_SWITCH, "get_gyro", 1);
-    AcTree::AddNode(root, node);
+    node->addData((void *) &_get_gyr_mark, AC_SWITCH, "get_gyro", 1);
+    AcTree::addNode(root, node);
 
     node = new AcTreeNode();
-    node->AddData((void*)&_get_temp_mark, AC_SWITCH, "get_temperature", 1);
-    AcTree::AddNode(root, node);
+    node->addData((void *) &_get_temp_mark, AC_SWITCH, "get_temperature", 1);
+    AcTree::addNode(root, node);
 
     node = new AcTreeNode();
-    node->AddData((void*)&_id, AC_UINT8, "id", 1);
-    AcTree::AddNode(root, node);
+    node->addData((void *) &_id, AC_UINT8, "id", 1);
+    AcTree::addNode(root, node);
 
     return root;
 }

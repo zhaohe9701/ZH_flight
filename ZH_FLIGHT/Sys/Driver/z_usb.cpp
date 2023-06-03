@@ -23,7 +23,7 @@ Usb::Usb(uint8_t mark)
     _mark = mark;
 }
 
-AC_RET Usb::Transmit(uint8_t *data, uint16_t length)
+AC_RET Usb::transmit(uint8_t *data, uint16_t length)
 {
     if (USBD_OK == CDC_Transmit_HS(data, length))
     {
@@ -35,7 +35,7 @@ AC_RET Usb::Transmit(uint8_t *data, uint16_t length)
     }
 }
 
-bool Usb::MatchMark(uint8_t mark)
+bool Usb::matchMark(uint8_t mark)
 {
     if (_mark == mark)
     {

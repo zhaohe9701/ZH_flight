@@ -100,19 +100,19 @@ class Mpu6X00 : virtual public Imu
 {
 public:
     Mpu6X00(SensorInterface *interface);
-    void Init() override;
-    uint8_t GetId() override;
-    float GetTemperature() override;
-    void GetGyroData(ImuData &data) override;
-    void GetAccData(ImuData &data) override;
+    void init() override;
+    uint8_t getId() override;
+    float getTemperature() override;
+    void getGyroData(ImuData &data) override;
+    void getAccData(ImuData &data) override;
 private:
     SensorInterface *_interface = nullptr;
 
-    uint8_t _GetLpfValue(const uint8_t frq);
-    float _GetAccLsb(uint8_t afs);
-    float _GetGyroLsb(uint8_t afs);
-    void _GetGyroRawData(int16_t *gx, int16_t *gy, int16_t *gz);
-    void _GetAccRawData(int16_t *ax, int16_t *ay, int16_t *az);
+    uint8_t _getLpfValue(const uint8_t frq);
+    float _getAccLsb(uint8_t afs);
+    float _getGyroLsb(uint8_t afs);
+    void _getGyroRawData(int16_t *gx, int16_t *gy, int16_t *gz);
+    void _getAccRawData(int16_t *ax, int16_t *ay, int16_t *az);
     
     float _acc_sensitivity = 0.488f;
     float _gyro_sensitivity = 0.00763f;

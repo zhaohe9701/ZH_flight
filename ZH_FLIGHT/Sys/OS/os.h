@@ -39,15 +39,7 @@ typedef UBaseType_t AcPriority;
 
 #define IS_IN_IRQ() (is_isr() != 0)
 
-#define AcLock(id) osMutexAcquire(id, osWaitForever)
-#define AcUnLock(id) osMutexRelease(id)
-#define AcWaitSemaphore(id) osSemaphoreAcquire(id, osWaitForever)
-#define AcReleaseSemaphore(id) osSemaphoreRelease(id)
-#define AcSignalSet(dec, value) osThreadFlagsSet(dec, value);
-#define AcSignalWait(value) osThreadFlagsWait(value, osFlagsWaitAll, osWaitForever);
-
-
-osStatus_t osMessageQueuePeek (osMessageQueueId_t mq_id, void *msg_ptr, uint8_t *msg_prio, uint32_t timeout);
-osStatus_t osMessageQueueOverwrite (osMessageQueueId_t mq_id, const void *msg_ptr);
+#define acSignalSet(dec, value) osThreadFlagsSet(dec, value);
+#define acSignalWait(value) osThreadFlagsWait(value, osFlagsWaitAll, osWaitForever);
 
 #endif

@@ -14,12 +14,12 @@
 #include "main.h"
 #include "sys.h"
 
-void AircraftTask::ImuTask(void *argument)
+void AircraftTask::imuTask(void *argument)
 {
     for (;;)
     {
-        imu_sem->Get();
-        aircraft->GetAccAndGyro();
+        imu_sem->get();
+        aircraft->getAccAndGyro();
         // osDelay(1);
     }
 }

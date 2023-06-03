@@ -21,20 +21,19 @@ class Led
 {
 public:
     explicit Led(GPIO_TypeDef *port, uint16_t pin, uint16_t pwm_freq = 1000, uint16_t base_freq = 50);
-    void SetPattern(LIGHT_PATTERN pattern);
-    void Run();
-    void SetToHighTrigger();
-    void SetToLowTrigger();
-    AcTreeNode *CreateIndex();
+    void setPattern(LIGHT_PATTERN pattern);
+    void run();
+    void setToHighTrigger();
+    void setToLowTrigger();
+    AcTreeNode *createIndex();
 private:
-    void _Breathe();
-    void _SlowFlashing();
-    void _FastFlashing();
-    void _PulseFlashing();
-    bool _ShouldLightUp(uint16_t current, uint16_t thr);
-    void _LightUp();
-    void _LightDown();
-    uint16_t _GetTime();
+    void _breathe();
+    void _slowFlashing();
+    void _fastFlashing();
+    void _pulseFlashing();
+    void _lightUp();
+    void _lightDown();
+    uint16_t _getTime();
     bool _high_trigger = false;
     uint16_t _res = 20;
     LIGHT_PATTERN _pattern = FAST_FLASHING;

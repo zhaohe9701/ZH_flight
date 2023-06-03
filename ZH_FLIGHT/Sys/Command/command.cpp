@@ -9,18 +9,18 @@
 
 #define COMMAND_HEAD 0x24
 
-MessageHead CommandParser::GetHead()
+MessageHead CommandParser::getHead()
 {
     return COMMAND_HEAD;
 }
 
-AC_RET CommandParser::ParseMessage(Message &message)
+AC_RET CommandParser::parseMessage(Message &message)
 {
-    _manager->Push(&message);
+    _manager->push(&message);
     return AC_ERROR;
 }
 
-void CommandParser::SetDataManager(void *manager)
+void CommandParser::setDataManager(void *manager)
 {
     _manager = (DataManager<Message> *)manager;
 }

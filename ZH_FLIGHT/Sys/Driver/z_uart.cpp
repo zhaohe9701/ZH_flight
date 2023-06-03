@@ -36,7 +36,7 @@ void UartIRQHandler(UART_HandleTypeDef *huart)
         /*清楚空闲中断标志（否则会一直不断进入中断）*/
         __HAL_UART_CLEAR_IDLEFLAG(huart);     
         /*调用中断处理函数*/
-        Uart::UartHandle(huart);
+        Uart::uartHandle(huart);
     }
 }
 
@@ -47,7 +47,7 @@ uint8_t Uart::ind = 0;
  * @param {UART_HandleTypeDef} *huart 串口句柄
  * @return {*}
  */
-void Uart::UartHandle(UART_HandleTypeDef *huart)
+void Uart::uartHandle(UART_HandleTypeDef *huart)
 {
     for (int i = 0; i < ind; ++i)
     {
@@ -84,7 +84,7 @@ Uart::Uart(UART_HandleTypeDef *huart, uint8_t mark)
  * @param {uint8_t} *data
  * @return {*}
  */
-AC_RET Uart::Transmit(uint8_t *data, uint16_t length)
+AC_RET Uart::transmit(uint8_t *data, uint16_t length)
 {
     if(HAL_OK == HAL_UART_Transmit_DMA(_huart, data, length))
     {
@@ -96,7 +96,7 @@ AC_RET Uart::Transmit(uint8_t *data, uint16_t length)
     }
 }
 
-bool Uart::MatchMark(uint8_t mark)
+bool Uart::matchMark(uint8_t mark)
 {
     if (mark == _mark)
     {

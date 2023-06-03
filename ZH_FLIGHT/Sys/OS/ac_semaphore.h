@@ -20,8 +20,8 @@ private:
     SemaphoreHandle _handler = nullptr;
 public:
     AcSemaphore();
-    AC_RET Get(uint32_t timeout = AC_FOREVER);
-    AC_RET Give();
+    AC_RET get(uint32_t timeout = AC_FOREVER);
+    AC_RET give();
 };
 
 #endif

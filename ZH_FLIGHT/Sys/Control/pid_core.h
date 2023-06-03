@@ -23,13 +23,13 @@
 class PidCore
 {
 public:
-    void Init(float kp, float ki, float kd, float out_limit, float int_limit, float dt);
-    float Update(float actual, float except);
-    void EnableDiffFilter(float sample_freq, float cutoff_freq);
-    void DisableDiffFilter();
-    void EnableDiffAhead();
-    void DisableDiffAhead();
-    void Reset();
+    void init(float kp, float ki, float kd, float out_limit, float int_limit, float dt);
+    float update(float actual, float except);
+    void enableDiffFilter(float sample_freq, float cutoff_freq);
+    void disableDiffFilter();
+    void enableDiffAhead();
+    void disableDiffAhead();
+    void reset();
 
 private:
     float _kp = 0.0f;

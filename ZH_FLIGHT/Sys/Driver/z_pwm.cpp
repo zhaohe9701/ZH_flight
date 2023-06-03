@@ -48,7 +48,7 @@ void PwmCallbackHandle(TIM_HandleTypeDef *htim)
 
 
 
-uint16_t Pwm::_PwmChannelToMark(uint16_t channel)
+uint16_t Pwm::_pwmChannelToMark(uint16_t channel)
 {
     uint16_t mark = 0x00U;
     switch (channel)
@@ -79,19 +79,19 @@ Pwm::Pwm(TIM_HandleTypeDef *htim, uint16_t channel)
 
 
 
-void Pwm::Output(uint16_t *data, uint16_t length)
+void Pwm::output(uint16_t *data, uint16_t length)
 {
     HAL_TIM_PWM_Start_DMA(_htim, _channel, (uint32_t *)data, length);
 }
 
-void Pwm::Stop()
+void Pwm::stop()
 {
     HAL_TIM_PWM_Stop_DMA(_htim, _channel);
 }
 
-bool Pwm::_IsMe(TIM_HandleTypeDef *htim)
+bool Pwm::_isMe(TIM_HandleTypeDef *htim)
 {
-    if (htim == _htim && htim->Channel == _PwmChannelToMark(_channel))
+    if (htim == _htim && htim->Channel == _pwmChannelToMark(_channel))
     {
         return true;
     }

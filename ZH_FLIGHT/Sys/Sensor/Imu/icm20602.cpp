@@ -99,54 +99,54 @@
 
 
 
-void Icm20602::_ImuWriteRag(uint8_t address, uint8_t value)
+void Icm20602::_imuWriteRag(uint8_t address, uint8_t value)
 {
-    _interface->WriteReg(address & WRITE, value);
+    _interface->writeReg(address & WRITE, value);
 }
 
-void Icm20602::_ImuReadRag(uint8_t address, uint8_t length, uint8_t *buf)
+void Icm20602::_imuReadRag(uint8_t address, uint8_t length, uint8_t *buf)
 {
-    _interface->ReadBytes(address | READ, length, buf);
+    _interface->readBytes(address | READ, length, buf);
 }
 
 Icm20602::Icm20602(SensorInterface *interface)
 {
     _interface = interface;
 }
-void Icm20602::Init()
+void Icm20602::init()
 {
     /*复位芯片*/
-    _ImuWriteRag(PWR_MGMT_1, 0x80);
+    _imuWriteRag(PWR_MGMT_1, 0x80);
     HAL_Delay(100);
     /*复位信号*/
-    _ImuWriteRag(SIGNAL_PATH_RESET, 0x03);
+    _imuWriteRag(SIGNAL_PATH_RESET, 0x03);
     HAL_Delay(100);
     /*使能芯片*/
-    _ImuWriteRag(PWR_MGMT_1, 0x01);
+    _imuWriteRag(PWR_MGMT_1, 0x01);
     HAL_Delay(100);
     /*屏蔽I2C*/
-    _ImuWriteRag(I2C_IF, 0x40);
+    _imuWriteRag(I2C_IF, 0x40);
     HAL_Delay(100);
     /*使能陀螺仪加速度计*/
-    _ImuWriteRag(PWR_MGMT_2, 0x00);
+    _imuWriteRag(PWR_MGMT_2, 0x00);
     HAL_Delay(100);
     /*采样频率1000Hz*/
-    _ImuWriteRag(SMPLRT_DIV, 0x00);
+    _imuWriteRag(SMPLRT_DIV, 0x00);
     HAL_Delay(100);
     /*陀螺仪滤波250Hz*/
-    _ImuWriteRag(CONFIG, 0x01);
+    _imuWriteRag(CONFIG, 0x01);
     HAL_Delay(100);
     /*陀螺仪量程2000DPS*/
-    _ImuWriteRag(GYRO_CONFIG, 0x18 | 0x00);
+    _imuWriteRag(GYRO_CONFIG, 0x18 | 0x00);
     HAL_Delay(100);
     /*加速度计量程16G*/
-    _ImuWriteRag(ACCEL_CONFIG, 0x18);
+    _imuWriteRag(ACCEL_CONFIG, 0x18);
     HAL_Delay(100);
     /*设置中断低电平脉冲*/
-    _ImuWriteRag(INT_PIN_CFG, 0x10);
+    _imuWriteRag(INT_PIN_CFG, 0x10);
     HAL_Delay(100);
     /*使能数据就绪中断*/
-    _ImuWriteRag(INT_ENABLE, 0x01);
+    _imuWriteRag(INT_ENABLE, 0x01);
     HAL_Delay(100);
 
     _gyro_sensitivity = 0.061035;
@@ -154,30 +154,30 @@ void Icm20602::Init()
 
 }
 
-uint8_t Icm20602::GetId()
+uint8_t Icm20602::getId()
 {
     uint8_t id = 0;
-    _ImuReadRag(WHO_AM_I, 1, &id);
+    _imuReadRag(WHO_AM_I, 1, &id);
     return id;
 }
 
-float Icm20602::GetTemperature()
+float Icm20602::getTemperature()
 {
     uint8_t buf[2];
     int16_t raw;
     float temp;
-    _ImuReadRag(TEMP_OUT_H, 2, buf);
+    _imuReadRag(TEMP_OUT_H, 2, buf);
     raw = ((int16_t)buf[0] << 8) | buf[1];
     temp = 25.0f + (float)raw / 326.8f;
     return temp;
 }
 
-void Icm20602::GetGyroData(ImuData &data)
+void Icm20602::getGyroData(ImuData &data)
 {
     uint8_t buf[6];
     uint16_t gx_raw, gy_raw, gz_raw;
 
-    _ImuReadRag(GYRO_XOUT_H, 6, buf);
+    _imuReadRag(GYRO_XOUT_H, 6, buf);
     
     gx_raw = ((uint16_t)buf[0] << 8) | buf[1];
     gy_raw = ((uint16_t)buf[2] << 8) | buf[3];
@@ -188,12 +188,12 @@ void Icm20602::GetGyroData(ImuData &data)
     data.gyr.z = (float)((int16_t)(gz_raw)-_bias_gyro_z) * _gyro_sensitivity;
 }
 
-void Icm20602::GetAccData(ImuData &data)
+void Icm20602::getAccData(ImuData &data)
 {
     uint8_t buf[6];
     uint16_t ax_raw, ay_raw, az_raw;
 
-    _ImuReadRag(ACCEL_XOUT_H, 6, buf);
+    _imuReadRag(ACCEL_XOUT_H, 6, buf);
     
     ax_raw = ((uint16_t)buf[0] << 8) | buf[1];
     ay_raw = ((uint16_t)buf[2] << 8) | buf[3];

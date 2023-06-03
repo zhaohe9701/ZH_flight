@@ -51,7 +51,7 @@ MessageTransmitServer *message_transmit_server = nullptr;
 CommandServer *command_server = nullptr;
 Printer *debug_printer = nullptr;
 
-void AircraftTask::StartTask(void *argument)
+void AircraftTask::startTask(void *argument)
 {
     imu_sem = new AcSemaphore();
     /*创建事件服务器*/
@@ -61,21 +61,21 @@ void AircraftTask::StartTask(void *argument)
     /*创建消息接收服务器*/
     message_receive_server = new MessageReceiveServer();
     MessageReceiveParser *ibus_parser = new IbusParser();
-    message_receive_server->AddParser(ibus_parser);
+    message_receive_server->addParser(ibus_parser);
     MessageReceiveParser *command_parser = new CommandParser();
-    message_receive_server->AddParser(command_parser);
+    message_receive_server->addParser(command_parser);
 
     /*创建消息发送服务器*/
     message_transmit_server = new MessageTransmitServer();
     CommunicateInterface *interface = new Usb(0x01);
-    message_transmit_server->AddTransmitter(interface);
+    message_transmit_server->addTransmitter(interface);
 
     /*创建命令服务器*/
     command_server = new CommandServer();
-    command_parser->SetDataManager(command_server->GetManager());
+    command_parser->setDataManager(command_server->getManager());
 
-    debug_printer = new Printer(message_transmit_server->GetMessageManager());
-    debug_printer->SetDecPort(0x01);
+    debug_printer = new Printer(message_transmit_server->getMessageManager());
+    debug_printer->setDecPort(0x01);
 
     /*创建状态机*/
     // state_machine = new StateMachine();
@@ -100,7 +100,7 @@ void AircraftTask::StartTask(void *argument)
     /*创建飞行器对象*/
     aircraft = new Aircraft();
     /*初始化飞行器*/
-    aircraft->Init();
+    aircraft->init();
     /*置位初始化完成事件*/
     // event_server->SetEvent(INIT_OVER_EVENT);
 
@@ -112,14 +112,14 @@ void AircraftTask::StartTask(void *argument)
     AcThread transmit_data_thread;
     AcThread receive_data_thread;
     AcThread command_thread;
-    imu_thread.Init(AircraftTask::ImuTask, "imuTask", 512, 24);
-    baro_thread.Init(AircraftTask::BaroTask, "baroTask", 256, 24);
-    attitude_solve_thread.Init(AircraftTask::AttitudeSolveTask, "attitudeSolveTask", 256, 24);
-    light_thread.Init(AircraftTask::LightTask, "lightTask", 256, 24);
-    transmit_data_thread.Init(AircraftTask::TransmitDataTask, "transmitDataTask", 256, 24);
-    receive_data_thread.Init(AircraftTask::ReceiveDataTask, "receiveDataTask", 256, 24);
-    command_thread.Init(AircraftTask::CommandTask, "commandTask", 1024, 24);
-    test_thread.Init(AircraftTask::TestTask, "testTask", 512, 24);
+    imu_thread.init(AircraftTask::imuTask, "imuTask", 512, 24);
+    baro_thread.init(AircraftTask::baroTask, "baroTask", 256, 24);
+    attitude_solve_thread.init(AircraftTask::attitudeSolveTask, "attitudeSolveTask", 256, 24);
+    light_thread.init(AircraftTask::lightTask, "lightTask", 256, 24);
+    transmit_data_thread.init(AircraftTask::transmitDataTask, "transmitDataTask", 256, 24);
+    receive_data_thread.init(AircraftTask::receiveDataTask, "receiveDataTask", 256, 24);
+    command_thread.init(AircraftTask::commandTask, "commandTask", 1024, 24);
+    test_thread.init(AircraftTask::testTask, "testTask", 512, 24);
     thread_manager.AddThread(light_thread);
     thread_manager.AddThread(imu_thread);
     thread_manager.AddThread(baro_thread);
@@ -128,5 +128,5 @@ void AircraftTask::StartTask(void *argument)
     thread_manager.AddThread(transmit_data_thread);
     thread_manager.AddThread(receive_data_thread);
     thread_manager.AddThread(command_thread);
-    AcThread::KillSelf();
+    AcThread::killSelf();
 }

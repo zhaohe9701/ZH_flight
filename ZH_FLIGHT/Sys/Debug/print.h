@@ -23,11 +23,11 @@ class Printer
 {
 public:
     explicit Printer(DataManager<Message> *manager);
-    void SetDecPort(uint8_t port);
-    void Print(const char *format, ...);
-    void Error(const char *format, ...);
-    void Info(const char *format, ...);
-    void Transmit(const char *buf, uint32_t len);
+    void setDecPort(uint8_t port);
+    void print(const char *format, ...);
+    void error(const char *format, ...);
+    void info(const char *format, ...);
+    void transmit(const char *buf, uint32_t len);
 private:
     uint8_t _port = 0x00;
     DataManager<Message> *_manager = nullptr;

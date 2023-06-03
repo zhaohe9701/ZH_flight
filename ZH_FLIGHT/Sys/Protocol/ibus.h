@@ -31,9 +31,9 @@
 class IbusParser : virtual public MessageReceiveParser
 {
 public:
-    MessageHead GetHead() override;
-    AC_RET ParseMessage(Message &message) override;
-    void SetDataManager(void *manager) override;
+    MessageHead getHead() override;
+    AC_RET parseMessage(Message &message) override;
+    void setDataManager(void *manager) override;
 private:
     uint16_t _channel_data[IBUS_CHANNEL_NUM] = {0};
     DataManager<RemoteData> *_manager = nullptr;

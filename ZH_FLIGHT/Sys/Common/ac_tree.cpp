@@ -25,13 +25,13 @@ static AcTreeNode *FindNodeCore(AcTreeNode *node, char *uri, int ptr)
     {
         return nullptr;
     }
-    debug_printer->Info("name:%s uri:%s\n", node->name, uri);
+    debug_printer->info("name:%s uri:%s\n", node->name, uri);
     osDelay(10);
     while (uri[uri_ptr] != 0 && uri[uri_ptr] != '/')
     {
         if (uri[uri_ptr] != node->name[name_ptr])
         {
-            return FindNodeCore(node->GetNeighbor(), uri, ptr);
+            return FindNodeCore(node->getNeighbor(), uri, ptr);
         }
         uri_ptr++;
         name_ptr++;
@@ -42,21 +42,21 @@ static AcTreeNode *FindNodeCore(AcTreeNode *node, char *uri, int ptr)
     } else
     {
         uri_ptr++;
-        return FindNodeCore(node->GetFirstChild(), uri, uri_ptr);
+        return FindNodeCore(node->getFirstChild(), uri, uri_ptr);
     }
 }
 
-AcTreeNode *AcTreeNode::GetFirstChild()
+AcTreeNode *AcTreeNode::getFirstChild()
 {
     return _first_child;
 }
 
-AcTreeNode *AcTreeNode::GetNeighbor()
+AcTreeNode *AcTreeNode::getNeighbor()
 {
     return _neighbor;
 }
 
-void AcTreeNode::AddData(void *in_data, AC_DATA_TYPE in_type, const char *in_name, uint16_t in_len)
+void AcTreeNode::addData(void *in_data, AC_DATA_TYPE in_type, const char *in_name, uint16_t in_len)
 {
     data = in_data;
     type = in_type;
@@ -64,12 +64,12 @@ void AcTreeNode::AddData(void *in_data, AC_DATA_TYPE in_type, const char *in_nam
     len = in_len;
 }
 
-AcTreeNode *AcTree::FindNode(AcTreeNode *tree, char *uri)
+AcTreeNode *AcTree::findNode(AcTreeNode *tree, char *uri)
 {
     return FindNodeCore(tree, uri, 0);
 }
 
-void AcTree::AddNode(AcTreeNode* root, AcTreeNode *node)
+void AcTree::addNode(AcTreeNode* root, AcTreeNode *node)
 {
     AcTreeNode *child = nullptr;
 
@@ -86,7 +86,7 @@ void AcTree::AddNode(AcTreeNode* root, AcTreeNode *node)
     child->_neighbor = node;
 }
 
-AcTreeNode *AcTree::FindChildByName(AcTreeNode *parent, char *name)
+AcTreeNode *AcTree::findChildByName(AcTreeNode *parent, char *name)
 {
     AcTreeNode *child = nullptr;
 

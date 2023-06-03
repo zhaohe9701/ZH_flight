@@ -45,7 +45,7 @@ void Vec4::Clear()
     w = 0;
 }
 
-AC_RET Type::TransTypeToStr(char *type_buf, AC_DATA_TYPE type)
+AC_RET Type::transTypeToStr(char *type_buf, AC_DATA_TYPE type)
 {
     switch (type)
     {
@@ -85,7 +85,7 @@ AC_RET Type::TransTypeToStr(char *type_buf, AC_DATA_TYPE type)
     return AC_OK;
 }
 
-AC_RET Type::TransDataToStr(char *data_buf, void *data, AC_DATA_TYPE type, uint16_t index)
+AC_RET Type::transDataToStr(char *data_buf, void *data, AC_DATA_TYPE type, uint16_t index)
 {
     switch (type)
     {
@@ -129,7 +129,7 @@ AC_RET Type::TransDataToStr(char *data_buf, void *data, AC_DATA_TYPE type, uint1
     return AC_OK;
 }
 
-AC_RET Type::TransStrToType(char *type_buf, AC_DATA_TYPE &type)
+AC_RET Type::transStrToType(char *type_buf, AC_DATA_TYPE &type)
 {
     if (0 == strncmp("uint8", type_buf, TYPE_BUF_LEN))
     {
@@ -170,10 +170,10 @@ AC_RET Type::TransStrToType(char *type_buf, AC_DATA_TYPE &type)
     return AC_OK;
 }
 
-AC_RET Type::TransStrToData(char *data_buf, void *data, AC_DATA_TYPE type, uint16_t index)
+AC_RET Type::transStrToData(char *data_buf, void *data, AC_DATA_TYPE type, uint16_t index)
 {
     char **end = nullptr;
-    debug_printer->Info("data: %s\n", data_buf);
+    debug_printer->info("data: %s\n", data_buf);
     switch (type)
     {
         case AC_UINT8:

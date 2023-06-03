@@ -141,32 +141,32 @@
 /***********************************/
 
 
-void Icm42688::_ImuWriteRag(uint8_t bank, uint8_t address, uint8_t value)
+void Icm42688::_imuWriteRag(uint8_t bank, uint8_t address, uint8_t value)
 {
     if (bank != BANK0)
     {
-        _interface->WriteReg(REG_BANK_SEL & WRITE, bank);
-        _interface->WriteReg(address & WRITE, value);
-        _interface->WriteReg(REG_BANK_SEL & WRITE, BANK0);
+        _interface->writeReg(REG_BANK_SEL & WRITE, bank);
+        _interface->writeReg(address & WRITE, value);
+        _interface->writeReg(REG_BANK_SEL & WRITE, BANK0);
 
     }
     else 
     {
-        _interface->WriteReg(address & WRITE, value);
+        _interface->writeReg(address & WRITE, value);
     }
 }   
 
-void Icm42688::_ImuReadRag(uint8_t bank, uint8_t address, uint8_t length, uint8_t *buf)
+void Icm42688::_imuReadRag(uint8_t bank, uint8_t address, uint8_t length, uint8_t *buf)
 {
     if (bank != _last_bank)
     {
-        _interface->WriteReg(REG_BANK_SEL & WRITE, bank);
-        _interface->ReadBytes(address | READ, length, buf);
-        _interface->WriteReg(REG_BANK_SEL & WRITE, BANK0);
+        _interface->writeReg(REG_BANK_SEL & WRITE, bank);
+        _interface->readBytes(address | READ, length, buf);
+        _interface->writeReg(REG_BANK_SEL & WRITE, BANK0);
     }
     else 
     {
-        _interface->ReadBytes(address | READ, length, buf);
+        _interface->readBytes(address | READ, length, buf);
     }
 }
 
@@ -174,34 +174,34 @@ Icm42688::Icm42688(SensorInterface *interface)
 {
     _interface = interface;
 }
-void Icm42688::Init()
+void Icm42688::init()
 {
     /*复位芯片*/
-    _ImuWriteRag(BANK0, DEVICE_CONFIG, 0x01);
+    _imuWriteRag(BANK0, DEVICE_CONFIG, 0x01);
     HAL_Delay(200);
     /*配置陀螺仪*/
-    _ImuWriteRag(BANK0, GYRO_CONFIG0, 0x06);
+    _imuWriteRag(BANK0, GYRO_CONFIG0, 0x06);
     HAL_Delay(50);
-    _ImuWriteRag(BANK0, GYRO_CONFIG1, 0x16);            
+    _imuWriteRag(BANK0, GYRO_CONFIG1, 0x16);
     HAL_Delay(50);
     /*配置加速度计*/
-    _ImuWriteRag(BANK0, ACCEL_CONFIG0, 0x06);
+    _imuWriteRag(BANK0, ACCEL_CONFIG0, 0x06);
     HAL_Delay(50);
-    _ImuWriteRag(BANK0, ACCEL_CONFIG1, 0x0D);
+    _imuWriteRag(BANK0, ACCEL_CONFIG1, 0x0D);
 
     HAL_Delay(50);
-    _ImuWriteRag(BANK0, GYRO_ACCEL_CONFIG0, 0x22); // BW = 200Hz
+    _imuWriteRag(BANK0, GYRO_ACCEL_CONFIG0, 0x22); // BW = 200Hz
     HAL_Delay(50);
     /*设置中断高电平脉冲*/
-    _ImuWriteRag(BANK0, INT_CONFIG, 0x03);
+    _imuWriteRag(BANK0, INT_CONFIG, 0x03);
     HAL_Delay(50);
-    _ImuWriteRag(BANK0, INT_CONFIG0, 0x80);
+    _imuWriteRag(BANK0, INT_CONFIG0, 0x80);
     HAL_Delay(50);
     /*使能数据就绪中断*/
-    _ImuWriteRag(BANK0, INT_SOURCE0, 0x08);
+    _imuWriteRag(BANK0, INT_SOURCE0, 0x08);
     HAL_Delay(50);
     /*使能陀螺仪加速度计*/
-    _ImuWriteRag(BANK0, PWR_MGMT0, 0x0F);
+    _imuWriteRag(BANK0, PWR_MGMT0, 0x0F);
     HAL_Delay(50);
 
     _gyro_sensitivity = 0.061035;
@@ -209,30 +209,30 @@ void Icm42688::Init()
 
 }
 
-uint8_t Icm42688::GetId()
+uint8_t Icm42688::getId()
 {
     uint8_t id = 0;
-    _ImuReadRag(BANK0, WHO_AM_I, 1, &id);
+    _imuReadRag(BANK0, WHO_AM_I, 1, &id);
     return id;
 }
 
-float Icm42688::GetTemperature()
+float Icm42688::getTemperature()
 {
     uint8_t buf[2];
     int16_t raw;
     float temp;
-    _ImuReadRag(BANK0, TEMP_DATA1, 2, buf);
+    _imuReadRag(BANK0, TEMP_DATA1, 2, buf);
     raw = ((int16_t)buf[0] << 8) | buf[1];
     temp = 25.0f + (float)raw / 326.8f;
     return temp;
 }
 
-void Icm42688::GetGyroData(ImuData &data)
+void Icm42688::getGyroData(ImuData &data)
 {
     uint8_t buf[6];
     uint16_t gx_raw, gy_raw, gz_raw;
 
-    _ImuReadRag(BANK0, GYRO_DATA_X1, 6, buf);
+    _imuReadRag(BANK0, GYRO_DATA_X1, 6, buf);
     
     gx_raw = ((uint16_t)buf[0] << 8) | buf[1];
     gy_raw = ((uint16_t)buf[2] << 8) | buf[3];
@@ -242,12 +242,12 @@ void Icm42688::GetGyroData(ImuData &data)
     data.gyr.z = (float)((int16_t)(gz_raw)-_bias_gyro_z) * _gyro_sensitivity;
 }
 
-void Icm42688::GetAccData(ImuData &data)
+void Icm42688::getAccData(ImuData &data)
 {
     uint8_t buf[6];
     uint16_t ax_raw, ay_raw, az_raw;
 
-    _ImuReadRag(BANK0, ACCEL_DATA_X1, 6, buf);
+    _imuReadRag(BANK0, ACCEL_DATA_X1, 6, buf);
     
     ax_raw = ((uint16_t)buf[0] << 8) | buf[1];
     ay_raw = ((uint16_t)buf[2] << 8) | buf[3];

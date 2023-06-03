@@ -32,31 +32,31 @@ Ms5611::Ms5611(SensorInterface *interface)
 {
     _interface = interface;
 }
-void Ms5611::Init()
+void Ms5611::init()
 {
     HAL_Delay(500);
-    _BaroWriteRag(RESET, 0, nullptr);
+    _baroWriteRag(RESET, 0, nullptr);
     HAL_Delay(500);
     for (int i = 0; i < 8; ++i)
     {
         uint8_t buf[2] = {0};
-        _BaroReadRag(PROM_READ + i * 2, 2, buf);
+        _baroReadRag(PROM_READ + i * 2, 2, buf);
         _calculation[i] = buf[0] << 8 | buf[1];
     }
-    if (!_CheckCRC())
+    if (!_checkCRC())
     {
         UsbPrintf("MS5611 Init Fail\r\n");
     }
     HAL_Delay(500);
 }
-void Ms5611::GetTemperature(BaroData& data)
+void Ms5611::getTemperature(BaroData& data)
 {
     uint8_t buf[3] = {0};
     uint32_t temperature_raw = 0;
 
-    _BaroWriteRag(OSR_4096_D2, 0, nullptr);
+    _baroWriteRag(OSR_4096_D2, 0, nullptr);
     osDelay(10);
-    _BaroReadRag(ADC_READ, 3, buf);
+    _baroReadRag(ADC_READ, 3, buf);
     temperature_raw = buf[0] << 16 | buf[1] << 8 | buf[2];
 
     _dt = (int64_t)temperature_raw - ((uint64_t)_calculation[5] * 256);
@@ -65,7 +65,7 @@ void Ms5611::GetTemperature(BaroData& data)
     data.temperature = (float)_temperature / 100.0f;
 }
 
-void Ms5611::GetPressure(BaroData& data)
+void Ms5611::getPressure(BaroData& data)
 {
     uint8_t buf[3] = {0};
     uint32_t pressure_raw = 0;
@@ -73,9 +73,9 @@ void Ms5611::GetPressure(BaroData& data)
     int64_t off = ((int64_t)_calculation[2] << 16) + (((int64_t)_calculation[4] * _dt) >> 7);
     int64_t sens = ((int64_t)_calculation[1] << 15) + (((int64_t)_calculation[3] * _dt) >> 8);
 
-    _BaroWriteRag(OSR_4096_D1, 0, nullptr);
+    _baroWriteRag(OSR_4096_D1, 0, nullptr);
     osDelay(10);
-    _BaroReadRag(ADC_READ, 3, buf);
+    _baroReadRag(ADC_READ, 3, buf);
     pressure_raw = buf[0] << 16 | buf[1] << 8 | buf[2];
 
     if (_temperature < 2000)
@@ -99,15 +99,15 @@ void Ms5611::GetPressure(BaroData& data)
     data.pressure = (float)_pressure;
 }
 
-void Ms5611::GetAltitude(BaroData& data)
+void Ms5611::getAltitude(BaroData& data)
 {
-    GetTemperature(data);
-    GetPressure(data);
+    getTemperature(data);
+    getPressure(data);
     float altitude = (1.0f - powf(_pressure / 101325.0f, 0.190295f)) * 4433000.0f;
     data.altitude = altitude;
 }
 
-bool Ms5611::_CheckCRC()
+bool Ms5611::_checkCRC()
 {
     int32_t i, j;
     uint32_t res = 0;
@@ -143,12 +143,12 @@ bool Ms5611::_CheckCRC()
         return false;
     }
 }
-void Ms5611::_BaroWriteRag(uint8_t address, uint8_t length, uint8_t *value)
+void Ms5611::_baroWriteRag(uint8_t address, uint8_t length, uint8_t *value)
 {
-    _interface->WriteRegs(address, length, value);
+    _interface->writeRegs(address, length, value);
 }
 
-void Ms5611::_BaroReadRag(uint8_t address, uint8_t length, uint8_t *buf)
+void Ms5611::_baroReadRag(uint8_t address, uint8_t length, uint8_t *buf)
 {
-    _interface->ReadBytes(address, length, buf);
+    _interface->readBytes(address, length, buf);
 }

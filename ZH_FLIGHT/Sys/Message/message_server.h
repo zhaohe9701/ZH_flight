@@ -23,9 +23,9 @@ class MessageReceiveServer
 {
 public:
     explicit MessageReceiveServer(uint8_t len = MESSAGE_RECEIVE_QUEUE_LEN);
-    void AddParser(MessageReceiveParser *interface);
-    AC_RET RunReceiveService();
-    DataManager<Message> *GetMessageManager();
+    void addParser(MessageReceiveParser *interface);
+    AC_RET runReceiveService();
+    DataManager<Message> *getMessageManager();
     ~MessageReceiveServer();
 private:
     MessageReceiveParser *_parser[MESSAGE_TYPE_NUM] = {nullptr};
@@ -38,9 +38,9 @@ class MessageTransmitServer
 {
 public:
     MessageTransmitServer(uint8_t len = MESSAGE_TRANSMIT_QUEUE_LEN);
-    void AddTransmitter(CommunicateInterface *interface);
-    void RunTransmitService();
-    DataManager<Message> *GetMessageManager();
+    void addTransmitter(CommunicateInterface *interface);
+    void runTransmitService();
+    DataManager<Message> *getMessageManager();
     ~MessageTransmitServer();
 private:
     CommunicateInterface *_interface[MESSAGE_TRANSMIT_NUM] = {nullptr};

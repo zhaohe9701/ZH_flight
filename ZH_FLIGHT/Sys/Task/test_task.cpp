@@ -4,11 +4,11 @@
 #include "aircraft_task.h"
 #include "sys.h"
 
-void AircraftTask::TestTask(void *argument)
+void AircraftTask::testTask(void *argument)
 {
     for(;;)
     {
-        aircraft->Test();
+        aircraft->test();
         osDelay(10);
     }
 }

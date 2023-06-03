@@ -14,7 +14,7 @@ RemoteChannelMapper::RemoteChannelMapper()
     _channel_map[LOCK_CHANNEL] = LOCK_CHANNEL;
 }
 
-AcTreeNode* RemoteChannelMapper::ParamRegister()
+AcTreeNode* RemoteChannelMapper::paramRegister()
 {
     AcTreeNode *root = new AcTreeNode();
     strcpy(root->name, "RemoteChannel");

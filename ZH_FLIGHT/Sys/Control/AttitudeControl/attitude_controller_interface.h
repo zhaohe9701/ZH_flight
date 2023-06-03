@@ -19,9 +19,9 @@
 class AttitudeControllerInterface
 {
 public:
-    virtual void Init(const ControlParam *param);
-    virtual void Init();
-    virtual void Update(const AttitudeControlInput &control_input, AttitudeControlOutput &control_output) = 0;
+    virtual void init(const ControlParam *param);
+    virtual void init();
+    virtual void update(const AttitudeControlInput &control_input, AttitudeControlOutput &control_output) = 0;
 };
 
 #endif

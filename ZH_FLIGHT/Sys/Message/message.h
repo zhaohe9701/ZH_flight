@@ -14,14 +14,13 @@
 #include "config.h"
 #include <stdint.h>
 
-#define END_INDEX 0
-
 class Message
 {
 public:
     uint8_t src_port = 0x00;                /* 源地址 */
     uint8_t dec_port = 0x00;                /* 目的地址 */
-    uint8_t ind = 0;                        /* 消息包索引，从1开始，0代表最后一个包 */
+    uint8_t ind = 0;                        /* 消息包索引，从0开始 */
+    uint8_t pkg_num = 1;                    /* 消息包数量 */
     uint8_t data[MAX_MESSAGE_LENGTH] = {0}; /* 消息体 */
     uint16_t length = 0;                    /* 消息体长度 */
     uint16_t seq = 0x0000;                  /* 消息序号 */

@@ -20,9 +20,9 @@ class Iic : public SensorInterface
 {
 public:
     Iic(I2C_HandleTypeDef *hi2c, uint16_t device_address);
-    void ReadBytes(uint8_t address, uint8_t len, uint8_t *dataBuf) override;
-    void WriteReg(uint8_t address, uint8_t value) override;
-    void WriteRegs(uint8_t address, uint8_t len, uint8_t *value) override;
+    void readBytes(uint8_t address, uint8_t len, uint8_t *dataBuf) override;
+    void writeReg(uint8_t address, uint8_t value) override;
+    void writeRegs(uint8_t address, uint8_t len, uint8_t *value) override;
     static I2C_HandleTypeDef *active_hi2c;
     static osSemaphoreId_t receive_semaphore;
 private:

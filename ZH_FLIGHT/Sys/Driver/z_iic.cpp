@@ -31,7 +31,7 @@ Iic::Iic(I2C_HandleTypeDef *hi2c, uint16_t device_address)
     }
 }
 
-void Iic::ReadBytes(uint8_t address, uint8_t len, uint8_t *dataBuf)
+void Iic::readBytes(uint8_t address, uint8_t len, uint8_t *dataBuf)
 {
     while (HAL_I2C_GetState(_hi2c) != HAL_I2C_STATE_READY)
     {
@@ -55,7 +55,7 @@ void Iic::ReadBytes(uint8_t address, uint8_t len, uint8_t *dataBuf)
     }
 }
 
-void Iic::WriteReg(uint8_t address, uint8_t value)
+void Iic::writeReg(uint8_t address, uint8_t value)
 {
     while (HAL_I2C_GetState(_hi2c) != HAL_I2C_STATE_READY)
     {
@@ -66,7 +66,7 @@ void Iic::WriteReg(uint8_t address, uint8_t value)
     osKernelUnlock();
 }
 
-void Iic::WriteRegs(uint8_t address, uint8_t len, uint8_t *value)
+void Iic::writeRegs(uint8_t address, uint8_t len, uint8_t *value)
 {
     if (0 == len)
     {

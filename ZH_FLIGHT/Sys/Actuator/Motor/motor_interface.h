@@ -15,8 +15,8 @@
 class MotorInterface
 {
 public:
-    virtual void Output(uint16_t *data, uint16_t length) = 0;
-    virtual void Stop() = 0;
+    virtual void output(uint16_t *data, uint16_t length) = 0;
+    virtual void stop() = 0;
     virtual ~MotorInterface() = 0;
 };
 

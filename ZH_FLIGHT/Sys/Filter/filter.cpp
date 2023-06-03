@@ -12,7 +12,7 @@
 #include "math_param.h"
 #include <math.h>
 
-void FirstOrderLPF::Init(float sample_freq, float cutoff_freq)
+void FirstOrderLPF::init(float sample_freq, float cutoff_freq)
 {
     _SetCutoffFreq(sample_freq, cutoff_freq);
 }
@@ -31,7 +31,7 @@ void FirstOrderLPF::_SetCutoffFreq(float sample_freq, float cutoff_freq)
     _delay_element_2 = 0.0f;
 }
 
-float FirstOrderLPF::Apply(float sample)
+float FirstOrderLPF::apply(float sample)
 {
     float delay_element_0 = sample - _delay_element_1 * _a1 - _delay_element_2 * _a2;
 	if (!isfinite(delay_element_0)) 
@@ -47,7 +47,7 @@ float FirstOrderLPF::Apply(float sample)
 	return output;
 }
 
-float FirstOrderLPF::Reset(float sample)
+float FirstOrderLPF::reset(float sample)
 {
     float dval = sample / (_b0 + _b1 + _b2);
 	_delay_element_1 = dval;

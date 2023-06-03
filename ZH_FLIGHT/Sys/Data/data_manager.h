@@ -19,10 +19,10 @@ class DataManager
 {
 public:
     explicit DataManager(uint32_t len = 1);
-    AC_RET Push(T *data, uint32_t timeout = AC_FOREVER);
-    AC_RET Pop(T *data, uint32_t timeout = AC_FOREVER);
-    AC_RET Update(T *data);
-    AC_RET Copy(T *data, uint32_t timeout = AC_FOREVER);
+    AC_RET push(T *data, uint32_t timeout = AC_FOREVER);
+    AC_RET pop(T *data, uint32_t timeout = AC_FOREVER);
+    AC_RET update(T *data);
+    AC_RET copy(T *data, uint32_t timeout = AC_FOREVER);
     ~DataManager();
 private:
     QueueHandle _handler = nullptr;
@@ -37,7 +37,7 @@ DataManager<T>::DataManager(uint32_t len)
 }
 
 template <class T>
-AC_RET DataManager<T>::Push(T *data, uint32_t timeout)
+AC_RET DataManager<T>::push(T *data, uint32_t timeout)
 {
     if (IS_IN_IRQ())
     {
@@ -60,7 +60,7 @@ AC_RET DataManager<T>::Push(T *data, uint32_t timeout)
 }
 
 template <class T>
-AC_RET DataManager<T>::Pop(T *data, uint32_t timeout)
+AC_RET DataManager<T>::pop(T *data, uint32_t timeout)
 {
     if (IS_IN_IRQ())
     {
@@ -83,7 +83,7 @@ AC_RET DataManager<T>::Pop(T *data, uint32_t timeout)
 }
 
 template <class T>
-AC_RET DataManager<T>::Copy(T *data, uint32_t timeout)
+AC_RET DataManager<T>::copy(T *data, uint32_t timeout)
 {
     if (IS_IN_IRQ())
     {
@@ -102,7 +102,7 @@ AC_RET DataManager<T>::Copy(T *data, uint32_t timeout)
 }
 
 template <class T>
-AC_RET DataManager<T>::Update(T *data)
+AC_RET DataManager<T>::update(T *data)
 {
     if (IS_IN_IRQ())
     {

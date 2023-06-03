@@ -21,7 +21,7 @@ private:
     uint8_t _channel_map[TOTAL_CHANNEL_NUM];
 public:
     RemoteChannelMapper();
-    AcTreeNode* ParamRegister();
+    AcTreeNode* paramRegister();
     ~RemoteChannelMapper();
 };
 

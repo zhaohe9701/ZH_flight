@@ -20,9 +20,9 @@ private:
     AcTreeNode *_first_child = nullptr;
     AcTreeNode *_neighbor = nullptr;
 public:
-    AcTreeNode *GetFirstChild();
-    AcTreeNode *GetNeighbor();
-    void AddData(void *in_data, AC_DATA_TYPE in_type, const char *in_name, uint16_t in_len);
+    AcTreeNode *getFirstChild();
+    AcTreeNode *getNeighbor();
+    void addData(void *in_data, AC_DATA_TYPE in_type, const char *in_name, uint16_t in_len);
     char name[PARAM_NAME_LEN] = {0};
     AC_DATA_TYPE type = AC_NULL;
     uint16_t len = 0;
@@ -32,9 +32,9 @@ public:
 class AcTree
 {
 public:
-    static AcTreeNode *FindNode(AcTreeNode *tree, char *uri);
-    static void AddNode(AcTreeNode *root, AcTreeNode *node);
-    static AcTreeNode *FindChildByName(AcTreeNode *parent, char *name);
+    static AcTreeNode *findNode(AcTreeNode *tree, char *uri);
+    static void addNode(AcTreeNode *root, AcTreeNode *node);
+    static AcTreeNode *findChildByName(AcTreeNode *parent, char *name);
 };
 
 #endif

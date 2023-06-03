@@ -17,7 +17,7 @@ AcSemaphore::AcSemaphore()
     xSemaphoreGive (_handler);
 }
 
-AC_RET AcSemaphore::Give()
+AC_RET AcSemaphore::give()
 {
     if (IS_IN_IRQ())
     {
@@ -43,7 +43,7 @@ AC_RET AcSemaphore::Give()
     return AC_OK;
 }
 
-AC_RET AcSemaphore::Get(uint32_t timeout)
+AC_RET AcSemaphore::get(uint32_t timeout)
 {
     if (IS_IN_IRQ())
     {
