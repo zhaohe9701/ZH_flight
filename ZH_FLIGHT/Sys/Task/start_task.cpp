@@ -16,7 +16,7 @@
 #include "baro.h"
 #include "icm20689.h"
 #include "communicate_interface.h"
-#include "message.h"
+#include "data.h"
 #include "message_parser.h"
 #include "ms5611.h"
 #include "imu.h"

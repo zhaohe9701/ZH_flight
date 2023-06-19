@@ -80,7 +80,11 @@
 #define MESSAGE_TYPE_NUM            5
 #define UART_NUM                    2
 #define MESSAGE_QUEUE_MAX_LENGTH    10
-#define MAX_MESSAGE_LENGTH          512
+#define MAX_MESSAGE_LENGTH          64
+#define MAX_USB_BUF_LEN             1024
+
+#define USB_PORT_NUMBER             0x01
+#define UART_PORT_NUMBER            0x02
 /*遥控*/
 #define TOTAL_CHANNEL_NUM           5
 #define X_CHANNEL                   0

@@ -2,7 +2,7 @@
 #define __COMMAND_SERVER_H__
 
 #include "data_manager.h"
-#include "message.h"
+#include "data.h"
 #include "print.h"
 #include "type.h"
 
@@ -13,13 +13,13 @@ private:
     void _get(char* command);
     void _set(char* command);
     static void _runTempTask();
-    DataManager<Message> *_command_manager = nullptr;
+    MessageManager *_command_manager = nullptr;
     Printer *_printer = nullptr;
     char _cmd_buf[AT_COMMAND_MAX_LEN] = {0};
     int32_t _cmd_ptr = 0;
 public:
     CommandServer();
-    DataManager<Message> *getManager();
+    MessageManager *getManager();
     AC_RET runCommandService();
     ~CommandServer();
 };

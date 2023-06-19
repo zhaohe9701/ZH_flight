@@ -15,17 +15,17 @@
 #include "communicate_interface.h"
 #include "config.h"
 #include "type.h"
-#include "message.h"
+#include "data.h"
 
 class Uart : virtual public CommunicateInterface
 {
 public:
     Uart(UART_HandleTypeDef *huart, uint8_t mark);
     AC_RET transmit(uint8_t *data, uint16_t length) override;
-    bool matchMark(uint8_t mark) override;
+    bool matchPort(uint8_t mark) override;
     bool IsMe(UART_HandleTypeDef *huart);
 
-    Message receive_message;
+    MessageData receive_message;
 
     static void uartHandle(UART_HandleTypeDef *huart);
     static Uart *uart_table[UART_NUM];

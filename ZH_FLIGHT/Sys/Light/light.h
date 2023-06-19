@@ -5,7 +5,7 @@
 #ifndef __LIGHT_H__
 #define __LIGHT_H__
 
-#include <cstdint>
+#include <stdint.h>
 #include "main.h"
 #include "ac_tree.h"
 

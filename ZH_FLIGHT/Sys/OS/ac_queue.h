@@ -12,7 +12,7 @@
 #define __AC_QUEUE_H__
 
 #include "cmsis_os2.h"
-#include "message.h"
+#include "data.h"
 #include "type.h"
 
 template <class T>

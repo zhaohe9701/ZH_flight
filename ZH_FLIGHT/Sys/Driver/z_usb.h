@@ -23,7 +23,7 @@ class Usb : virtual public CommunicateInterface
 public:
     Usb(uint8_t mark);
     AC_RET transmit(uint8_t *data, uint16_t length) override;
-    bool matchMark(uint8_t mark) override;
+    bool matchPort(uint8_t mark) override;
     
     uint8_t _mark;
 };

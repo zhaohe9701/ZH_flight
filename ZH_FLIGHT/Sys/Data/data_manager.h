@@ -13,6 +13,7 @@
 
 #include "os.h"
 #include "type.h"
+#include "main.h"
 
 template <class T>
 class DataManager
@@ -32,7 +33,7 @@ template <class T>
 DataManager<T>::DataManager(uint32_t len)
 {
     // T init;
-    _handler = xQueueCreate(1, sizeof(T));
+    _handler = xQueueCreate(len, sizeof(T));
     // Push(&init);
 }
 
@@ -42,7 +43,7 @@ AC_RET DataManager<T>::push(T *data, uint32_t timeout)
     if (IS_IN_IRQ())
     {
         BaseType_t yield = pdFALSE;
-        if (pdPASS != xQueueSendToBackFromISR(_handler, data, &yield))
+        if (pdTRUE != xQueueSendToBackFromISR(_handler, data, &yield))
         {
             return AC_ERROR;
         } else

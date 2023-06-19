@@ -18,19 +18,23 @@
 #include "message_parser.h"
 #include "ac_queue.h"
 #include "data_manager.h"
+#include "message_manager.h"
 
+#define RECEIVE_SERVER_BUF_LEN 1024
+#define TRANSMIT_SERVER_BUF_LEN 1024
 class MessageReceiveServer
 {
 public:
     explicit MessageReceiveServer(uint8_t len = MESSAGE_RECEIVE_QUEUE_LEN);
     void addParser(MessageReceiveParser *interface);
     AC_RET runReceiveService();
-    DataManager<Message> *getMessageManager();
+    MessageManager *getMessageManager();
     ~MessageReceiveServer();
 private:
     MessageReceiveParser *_parser[MESSAGE_TYPE_NUM] = {nullptr};
     static uint8_t _interface_ind;
-    DataManager<Message> *_manager = nullptr;
+    MessageManager *_manager = nullptr;
+    uint8_t _buffer[RECEIVE_SERVER_BUF_LEN] = {0};
 };
 
 
@@ -40,13 +44,13 @@ public:
     MessageTransmitServer(uint8_t len = MESSAGE_TRANSMIT_QUEUE_LEN);
     void addTransmitter(CommunicateInterface *interface);
     void runTransmitService();
-    DataManager<Message> *getMessageManager();
+    MessageManager *getMessageManager();
     ~MessageTransmitServer();
 private:
     CommunicateInterface *_interface[MESSAGE_TRANSMIT_NUM] = {nullptr};
     static uint8_t _interface_ind;
-    DataManager<Message> *_manager = nullptr;
-    
+    MessageManager *_manager = nullptr;
+    uint8_t _buffer[TRANSMIT_SERVER_BUF_LEN] = {0};
 };
 
 #endif

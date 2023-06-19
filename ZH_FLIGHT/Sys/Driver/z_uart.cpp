@@ -96,7 +96,7 @@ AC_RET Uart::transmit(uint8_t *data, uint16_t length)
     }
 }
 
-bool Uart::matchMark(uint8_t mark)
+bool Uart::matchPort(uint8_t mark)
 {
     if (mark == _mark)
     {

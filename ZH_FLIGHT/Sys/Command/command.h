@@ -14,16 +14,17 @@
 #include "data_manager.h"
 #include "message_parser.h"
 #include "type.h"
-#include "message.h"
+#include "data.h"
+#include "message_manager.h"
 
 class CommandParser : virtual public MessageReceiveParser
 {
 public:
     MessageHead getHead() override;
-    AC_RET parseMessage(Message &message) override;
+    AC_RET parseMessage(uint8_t *buf, uint32_t len) override;
     void setDataManager(void *manager) override;
 private:
-    DataManager<Message> *_manager = nullptr;
+    MessageManager *_manager = nullptr;
 };
 
 #endif

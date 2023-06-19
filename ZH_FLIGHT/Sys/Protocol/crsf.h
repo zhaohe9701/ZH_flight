@@ -18,7 +18,7 @@ private:
     DataManager<RemoteData> *_manager = nullptr;
 public:
     MessageHead getHead() override;
-    AC_RET parseMessage(Message &message) override;
+    AC_RET parseMessage(uint8_t *buf, uint32_t len) override;
     void setDataManager(void *manager) override;
 
 };

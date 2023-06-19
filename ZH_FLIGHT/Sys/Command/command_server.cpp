@@ -1,7 +1,7 @@
 #include <cstring>
 #include "command_server.h"
 #include "data_manager.h"
-#include "message.h"
+#include "data.h"
 #include "print.h"
 #include "type.h"
 #include "sys.h"
@@ -43,47 +43,27 @@ static int32_t GetMethod(const char *cmd_buf, char *method)
 }
 CommandServer::CommandServer()
 {
-    _command_manager = new DataManager<Message>(3);
+    _command_manager = new MessageManager(3);
     _printer = new Printer(message_transmit_server->getMessageManager());
     _printer->setDecPort(0x01);
 }
 
-DataManager<Message> *CommandServer::getManager()
+MessageManager *CommandServer::getManager()
 {
     return _command_manager;
 }
 
 AC_RET CommandServer::runCommandService()
 {
-    Message command;
+    Message message;
     char method[MAX_METHOD_LEN] = {0};
     int32_t second_param_start = 0;
-    do
-    {
-        _command_manager->pop(&command);
-        if (0 == command.length)
-        {
-            continue;
-        }
-        if ('$' != command.data[0])
-        {
-            _printer->error("NOT COMMAND HEAD.\n");
-            goto error;
-        }
-        if (_cmd_ptr + command.length - 1 < AT_COMMAND_MAX_LEN - 1)
-        {
-            memcpy(_cmd_buf + _cmd_ptr, command.data + 1, command.length - 1);
-            _cmd_ptr += command.length - 1;
-        }
-        else
-        {
-            _printer->error("COMMAND BUF OVERFLOW.\n");
-            goto error;
-        }
-    }
-    while ('\n' != command.data[command.length - 1]);
-    osDelay(10);
-    // return AC_OK;
+
+    message.buf = (uint8_t *)_cmd_buf;
+    message.len = AT_COMMAND_MAX_LEN;
+
+    _command_manager->receive(message);
+    _cmd_ptr = message.len;
     _cmd_buf[_cmd_ptr - 1] = 0;
     debug_printer->info("%s\n", _cmd_buf);
     osDelay(1);

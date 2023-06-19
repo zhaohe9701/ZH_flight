@@ -35,7 +35,7 @@ AC_RET Usb::transmit(uint8_t *data, uint16_t length)
     }
 }
 
-bool Usb::matchMark(uint8_t mark)
+bool Usb::matchPort(uint8_t mark)
 {
     if (_mark == mark)
     {

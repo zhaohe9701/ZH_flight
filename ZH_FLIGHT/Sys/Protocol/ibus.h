@@ -32,7 +32,7 @@ class IbusParser : virtual public MessageReceiveParser
 {
 public:
     MessageHead getHead() override;
-    AC_RET parseMessage(Message &message) override;
+    AC_RET parseMessage(uint8_t *buf, uint32_t len) override;
     void setDataManager(void *manager) override;
 private:
     uint16_t _channel_data[IBUS_CHANNEL_NUM] = {0};

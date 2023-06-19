@@ -10,7 +10,7 @@
  */
 #include "print.h"
 #include "ac_queue.h"
-#include "message.h"
+#include "data.h"
 #include "stm32h7xx.h"
 #include "type.h"
 #include <stdarg.h>
@@ -22,7 +22,7 @@
 #define ERROR_LEN   8
 #define INFO_LEN    7
 
-Printer::Printer(DataManager<Message> *manager)
+Printer::Printer(MessageManager *manager)
 {
     _manager = manager;
 }
@@ -37,10 +37,11 @@ void Printer::print(const char *format, ...)
     Message message;
     va_list args;
     va_start(args, format);
-    message.length = vsnprintf((char *)message.data, MAX_PRINT_LENGTH, (char *)format, args);
+    message.len = vsnprintf(_buffer, MAX_PRINT_LENGTH, (char *)format, args);
     va_end(args);
+    message.buf = (uint8_t *)_buffer;
     message.dec_port = _port;
-    _manager->push(&message);
+    _manager->transmit(message);
 }
 
 void Printer::error(const char *format, ...)
@@ -48,12 +49,13 @@ void Printer::error(const char *format, ...)
     Message message;
     va_list args;
     va_start(args, format);
-    message.length = vsnprintf((char *)message.data + ERROR_LEN, MAX_PRINT_LENGTH, (char *)format, args);
+    message.len = vsnprintf(_buffer + ERROR_LEN, MAX_PRINT_LENGTH, (char *)format, args);
     va_end(args);
-    message.length += ERROR_LEN;
+    message.len += ERROR_LEN;
+    memcpy(_buffer, ERROR, ERROR_LEN);
+    message.buf = (uint8_t *)_buffer;
     message.dec_port = _port;
-    memcpy(message.data, ERROR, ERROR_LEN);
-    _manager->push(&message);
+    _manager->transmit(message);
 }
 
 void Printer::info(const char *format, ...)
@@ -61,34 +63,20 @@ void Printer::info(const char *format, ...)
     Message message;
     va_list args;
     va_start(args, format);
-    message.length = vsnprintf((char *)message.data + INFO_LEN, MAX_PRINT_LENGTH, (char *)format, args);
+    message.len = vsnprintf(_buffer + INFO_LEN, MAX_PRINT_LENGTH, (char *)format, args);
     va_end(args);
-    message.length += INFO_LEN;
+    message.len += INFO_LEN;
+    memcpy(_buffer, INFO, INFO_LEN);
+    message.buf = (uint8_t *)_buffer;
     message.dec_port = _port;
-    memcpy(message.data, INFO, INFO_LEN);
-    _manager->push(&message);
+    _manager->transmit(message);
 }
 
-void Printer::transmit(const char *buf, uint32_t len)
+void Printer::transmit(char *buf, uint32_t len)
 {
     Message message;
-    uint32_t ptr = 0;
-
+    message.len = len;
+    message.buf = (uint8_t *)buf;
     message.dec_port = _port;
-    while (ptr < len)
-    {
-        if (len - ptr >= MAX_MESSAGE_LENGTH)
-        {
-            message.length = MAX_MESSAGE_LENGTH;
-            memcpy(message.data, buf + ptr, MAX_MESSAGE_LENGTH);
-            _manager->push(&message);
-        }
-        else
-        {
-            message.length = len - ptr;
-            memcpy(message.data, buf + ptr, len - ptr);
-            _manager->push(&message);
-        }
-        ptr += MAX_MESSAGE_LENGTH;
-    }
+    _manager->transmit(message);
 }

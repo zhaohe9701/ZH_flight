@@ -9,7 +9,7 @@
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
 #include "ac_queue.h"
-#include "message.h"
+#include "data.h"
 #include <stdint.h>
 #include <string.h>
 #include "config.h"
@@ -24,7 +24,7 @@ uint8_t MessageTransmitServer::_interface_ind = 0;
 
 MessageReceiveServer::MessageReceiveServer(uint8_t len)
 {
-    _manager = new DataManager<Message>(len);
+    _manager = new MessageManager(len);
 }
 
 void MessageReceiveServer::addParser(MessageReceiveParser *interface)
@@ -40,30 +40,32 @@ void MessageReceiveServer::addParser(MessageReceiveParser *interface)
 
 AC_RET MessageReceiveServer::runReceiveService()
 {
-    Message message;
     MessageHead head = 0;
-
-    _manager->pop(&message);
-    head = message.data[0];
-    for (int i = 0; i < _interface_ind; ++i)
-    {
-        if (head == _parser[i]->getHead())
-        {
-            _parser[i]->parseMessage(message);
-            return AC_OK;
-        }
-    }
+    Message message;
+    message.buf = _buffer;
+    message.len = RECEIVE_SERVER_BUF_LEN;
+    _manager->receive(message);
+    UsbPrintf("%s\n", _buffer);
+    memset(_buffer, 0, 1024);
+//    head = _buffer[0];
+//    for (int i = 0; i < _interface_ind; ++i)
+//    {
+//        if (head == _parser[i]->getHead())
+//        {
+//            _parser[i]->parseMessage(_buffer, len);
+//            return AC_OK;
+//        }
+//    }
     return AC_ERROR;
 }
 
-DataManager<Message> *MessageReceiveServer::getMessageManager()
+MessageManager *MessageReceiveServer::getMessageManager()
 {
     return _manager;
 }
 
 MessageReceiveServer::~MessageReceiveServer()
 {
-
     delete _manager;
 
     for (int i = 0; i < MESSAGE_TYPE_NUM; ++i)
@@ -76,7 +78,7 @@ MessageReceiveServer::~MessageReceiveServer()
 
 MessageTransmitServer::MessageTransmitServer(uint8_t len)
 {
-    _manager = new DataManager<Message>(len);
+    _manager = new MessageManager(len);
 }
 
 void MessageTransmitServer::addTransmitter(CommunicateInterface *interface)
@@ -92,14 +94,17 @@ void MessageTransmitServer::addTransmitter(CommunicateInterface *interface)
 void MessageTransmitServer::runTransmitService()
 {
     Message message;
-    _manager->pop(&message);
-    uint8_t mark = message.dec_port;
+
+    message.buf = _buffer;
+    message.len = TRANSMIT_SERVER_BUF_LEN;
+    _manager->receive(message);
+    uint8_t port = message.dec_port;
     for (int i = 0; i < _interface_ind; ++i)
     {
-        if (_interface[i]->matchMark(mark))
+        if (_interface[i]->matchPort(port))
         {
             uint8_t try_times = 0;
-            while (try_times < 100 && AC_OK != _interface[i]->transmit(message.data, message.length))
+            while (try_times < 100 && AC_OK != _interface[i]->transmit(_buffer, message.len))
             {
                 try_times++;
             }
@@ -108,7 +113,7 @@ void MessageTransmitServer::runTransmitService()
     }
 }
 
-DataManager<Message> *MessageTransmitServer::getMessageManager()
+MessageManager *MessageTransmitServer::getMessageManager()
 {
     return _manager;
 }

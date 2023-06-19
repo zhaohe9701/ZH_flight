@@ -14,13 +14,16 @@ MessageHead CommandParser::getHead()
     return COMMAND_HEAD;
 }
 
-AC_RET CommandParser::parseMessage(Message &message)
+AC_RET CommandParser::parseMessage(uint8_t *buf, uint32_t len)
 {
-    _manager->push(&message);
+    Message message;
+    message.buf = buf;
+    message.len = len;
+    _manager->transmit(message);
     return AC_ERROR;
 }
 
 void CommandParser::setDataManager(void *manager)
 {
-    _manager = (DataManager<Message> *)manager;
+    _manager = (MessageManager*)manager;
 }

@@ -12,25 +12,27 @@
 #define __PRINT_H__
 
 #include "ac_queue.h"
-#include "message.h"
+#include "data.h"
 #include "type.h"
 #include "data_manager.h"
-#include <cstdint>
+#include "message_manager.h"
+#include <stdint.h>
 
-#define MAX_PRINT_LENGTH MAX_MESSAGE_LENGTH
+#define MAX_PRINT_LENGTH 1024
 
 class Printer
 {
 public:
-    explicit Printer(DataManager<Message> *manager);
+    explicit Printer(MessageManager *manager);
     void setDecPort(uint8_t port);
     void print(const char *format, ...);
     void error(const char *format, ...);
     void info(const char *format, ...);
-    void transmit(const char *buf, uint32_t len);
+    void transmit(char *buf, uint32_t len);
 private:
     uint8_t _port = 0x00;
-    DataManager<Message> *_manager = nullptr;
+    MessageManager *_manager = nullptr;
+    char _buffer[MAX_PRINT_LENGTH] = {0};
 };
 
 #endif

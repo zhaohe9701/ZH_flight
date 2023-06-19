@@ -5,23 +5,29 @@
 #include <cstring>
 #include "message_manager.h"
 
-AC_RET MessageManager::transmit(char *buf, uint32_t len, uint8_t src_port, uint8_t dec_port, uint32_t timeout)
+AC_RET MessageManager::transmit(Message &message)
 {
     uint32_t ptr = 0;
     uint8_t ind = 0;
     uint16_t seq = ++_src_seq;
-    while (ptr < len)
+    uint8_t pkg_num = message.len / MAX_MESSAGE_LENGTH;
+    if (message.len % MAX_MESSAGE_LENGTH != 0)
     {
-        Message message;
-        if (len - ptr > MAX_MESSAGE_LENGTH)
+        pkg_num++;
+    }
+    while (ptr < message.len)
+    {
+        MessageData message_data;
+        if (message.len - ptr > MAX_MESSAGE_LENGTH)
         {
-            memcpy(message.data, buf + ptr, MAX_MESSAGE_LENGTH);
-            message.src_port = src_port;
-            message.dec_port = dec_port;
-            message.length = MAX_MESSAGE_LENGTH;
-            message.ind = ind;
-            message.seq = seq;
-            if (AC_OK != _manager->push(&message, timeout))
+            memcpy(message_data.data, message.buf + ptr, MAX_MESSAGE_LENGTH);
+            message_data.src_port = message.src_port;
+            message_data.dec_port = message.dec_port;
+            message_data.length = MAX_MESSAGE_LENGTH;
+            message_data.ind = ind;
+            message_data.seq = seq;
+            message_data.pkg_num = pkg_num;
+            if (AC_OK != _manager->push(&message_data, message.timeout))
             {
                 return AC_ERROR;
             }
@@ -29,85 +35,91 @@ AC_RET MessageManager::transmit(char *buf, uint32_t len, uint8_t src_port, uint8
             ptr += MAX_MESSAGE_LENGTH;
         } else
         {
-            memcpy(message.data, buf + ptr, len - ptr);
-            message.src_port = src_port;
-            message.dec_port = dec_port;
-            message.length = len - ptr;
-            message.ind = ind;
-            message.seq = seq;
-            if (AC_OK != _manager->push(&message, timeout))
+            memcpy(message_data.data, message.buf + ptr, message.len - ptr);
+            message_data.src_port = message.src_port;
+            message_data.dec_port = message.dec_port;
+            message_data.length = message.len - ptr;
+            message_data.ind = ind;
+            message_data.seq = seq;
+            message_data.pkg_num = pkg_num;
+            if (AC_OK != _manager->push(&message_data, AC_FOREVER))
             {
                 return AC_ERROR;
             }
-            ptr = len;
+            ptr = message.len;
         }
     }
     return AC_OK;
 }
 
-AC_RET MessageManager::receive(char *buf, uint32_t &len, uint8_t src_port, uint8_t dec_port, uint32_t timeout)
+AC_RET MessageManager::receive(Message &message)
 {
-    Message message;
+    MessageData message_data;
     uint32_t tmp_len = 0;
     uint32_t count = 0;
     uint16_t seq = 0;
     uint8_t not_received_pkg_num = 0;
-    if (AC_OK != _manager->pop(&message, timeout))
+    if (AC_OK != _manager->pop(&message_data, message.timeout))
     {
         return AC_ERROR;
     }
-    if (len < (uint32_t)message.ind * MAX_MESSAGE_LENGTH + (uint32_t)message.length)
+    if (message.len < (uint32_t)message_data.ind * MAX_MESSAGE_LENGTH + (uint32_t)message_data.length)
     {
-        len = 0;
+        message.len = 0;
         return AC_ERROR;
     }
-    if (message.ind == message.pkg_num - 1)
+    if (message_data.ind == message_data.pkg_num - 1)
     {
-        tmp_len = message.ind * MAX_MESSAGE_LENGTH + message.length;
+        tmp_len = message_data.ind * MAX_MESSAGE_LENGTH + message_data.length;
     }
-    seq = message.seq;
-    memcpy(buf + message.ind * MAX_MESSAGE_LENGTH, message.data, message.length);
-    not_received_pkg_num = --message.pkg_num;
+    seq = message_data.seq;
+    memcpy(message.buf + message_data.ind * MAX_MESSAGE_LENGTH, message_data.data, message_data.length);
+    not_received_pkg_num = --message_data.pkg_num;
     while (not_received_pkg_num > 0)
     {
-        if (AC_OK != _manager->pop(&message, timeout))
+        if (AC_OK != _manager->pop(&message_data, message.timeout))
         {
             return AC_ERROR;
         }
-        if (message.seq != seq)  /* 不是同一条消息，放回队列*/
+        if (message_data.seq != seq)  /* 不是同一条消息，放回队列*/
         {
             count++;
             if (count >= _que_len)  /* 连续放回次数超过队列长度，抛弃，防止死锁 */
             {
-                memset(buf, 0, len);
+                memset(message.buf, 0, message.len);
                 return AC_ERROR;
             }
-            if (AC_OK != _manager->push(&message, timeout))
+            if (AC_OK != _manager->push(&message_data, message.timeout))
             {
                 return AC_ERROR;
             }
         } else
         {
             count = 0;
-            if ((uint32_t)len < (uint32_t)message.ind * MAX_MESSAGE_LENGTH + (uint32_t)message.length)
+            if ((uint32_t)message.len < (uint32_t)message_data.ind * MAX_MESSAGE_LENGTH + (uint32_t)message_data.length)
             {
-                len = 0;
+                message.len = 0;
                 return AC_ERROR;
             }
-            if (message.ind == message.pkg_num - 1)
+            if (message_data.ind == message_data.pkg_num - 1)
             {
-                tmp_len = message.ind * MAX_MESSAGE_LENGTH + message.length;
+                tmp_len = message_data.ind * MAX_MESSAGE_LENGTH + message_data.length;
             }
-            memcpy(buf + message.ind * MAX_MESSAGE_LENGTH, message.data, message.length);
+            memcpy(message.buf + message_data.ind * MAX_MESSAGE_LENGTH, message_data.data, message_data.length);
             not_received_pkg_num--;
         }
     }
-    len = tmp_len;
+    message.len = tmp_len;
     return AC_OK;
 }
 
 MessageManager::MessageManager(uint32_t len)
 {
-    _manager = new DataManager<Message>(len);
+    _manager = new DataManager<MessageData>(len);
     _que_len = len;
+}
+
+MessageManager::~MessageManager()
+{
+    delete _manager;
 }

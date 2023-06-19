@@ -19,7 +19,7 @@ class CommunicateInterface
 {
 public:
     virtual AC_RET transmit(uint8_t *data, uint16_t length) = 0;
-    virtual bool matchMark(uint8_t mark) = 0;
+    virtual bool matchPort(uint8_t mark) = 0;
     virtual ~CommunicateInterface(){}
 };
 
