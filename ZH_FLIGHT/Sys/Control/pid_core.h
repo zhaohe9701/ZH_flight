@@ -50,7 +50,7 @@ private:
 
     FirstOrderLPF _diff_filter;
     
-    float _Limit(float value, float limit);
+    float _limit(float value, float limit);
 };
 
 #endif

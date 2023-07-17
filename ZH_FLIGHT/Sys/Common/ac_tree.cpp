@@ -25,8 +25,7 @@ static AcTreeNode *FindNodeCore(AcTreeNode *node, char *uri, int ptr)
     {
         return nullptr;
     }
-    debug_printer->info("name:%s uri:%s\n", node->name, uri);
-    osDelay(10);
+    // debug_printer->info("name:%s uri:%s\n", node->name, uri);
     while (uri[uri_ptr] != 0 && uri[uri_ptr] != '/')
     {
         if (uri[uri_ptr] != node->name[name_ptr])

@@ -11,11 +11,26 @@
 #ifndef __COMMAND_H__
 #define __COMMAND_H__
 
+#define MAX_URL_LEN 128
+#define MAX_JSON_LEN 512
 #include "data_manager.h"
 #include "message_parser.h"
 #include "type.h"
 #include "data.h"
 #include "message_manager.h"
+
+enum CommandMethod
+{
+    AT_GET = 0,
+    AT_SET = 1
+};
+class CommandData
+{
+public:
+    CommandMethod method = AT_GET;
+    char url[MAX_URL_LEN] = {0};
+    char data[MAX_JSON_LEN] = {0};
+};
 
 class CommandParser : virtual public MessageReceiveParser
 {
@@ -24,7 +39,7 @@ public:
     AC_RET parseMessage(uint8_t *buf, uint32_t len) override;
     void setDataManager(void *manager) override;
 private:
-    MessageManager *_manager = nullptr;
+    DataManager<CommandData> *_manager = nullptr;
 };
 
 #endif

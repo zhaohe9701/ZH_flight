@@ -16,8 +16,7 @@
 #include "motor.h"
 #include "aircraft_state.h"
 #include "config.h"
-#include "attitude_controller.h"
-#include "control_param.h"
+#include "default_attitude_controller.h"
 #include "ahrs.h"
 #include "state_machine.h"
 #include "data_manager.h"
@@ -41,13 +40,11 @@ private:
     DataManager<ImuData> _imu_data_manager;
     DataManager<BaroData> _baro_data_manager;
     DataManager<RemoteData> _remote_data_manager;
-    DataManager<ActualState> _actual_state_manager;
-    DataManager<ExpectState> _expect_state_manager;
+    DataManager<ActualAttitudeState> _actual_state_manager;
+    DataManager<ExpectAttitudeState> _expect_state_manager;
     DataManager<ActuatorData> _expect_actuator_manager;
     /*姿态控制器*/
     AttitudeController *_attitude_controller = nullptr;
-    /*控制参数*/
-    ControlParam *_attitude_control_param = nullptr;
     /*姿态解算器*/
     AttitudeSolver *_attitude_solver = nullptr;
     /*当前动作*/

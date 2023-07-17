@@ -10,13 +10,15 @@
  */
 #ifndef __AIRCRAFT_STATE_H__
 #define __AIRCRAFT_STATE_H__
+
 #include "type.h"
 #include "os.h"
 #include "config.h"
 #include "cmsis_os2.h"
-#define PITCH x
-#define ROLL y
-#define YAW z
+
+#define PITCH   x
+#define ROLL    y
+#define YAW     z
 
 #define MOTOR1 x
 #define MOTOR2 y
@@ -35,35 +37,68 @@ enum FlyLock
     FLY_LOCK,
     FLY_UNLOCK,
 };
-class ActualState
+class ActualAttitudeState
 {
 public:
     Vec3 euler;
-    Vec3 palstance;
-    Vec3 velocity;
-    Vec3 gps_coor;
-    Vec3 relative_pos;
-    Vec3 acceleration;
+    Vec3 ang_acc;
     Vec4 quarter;
 };
 
-class ExpectState
+class ExpectAttitudeState
 {
 public:
     Vec3 euler;
-    Vec3 palstance;
-    Vec3 velocity;
-    Vec3 gps_coor;
-    Vec3 relative_pos;
-    Vec3 acceleration;
     Vec4 quarter;
+};
 
-    Pattern pattern = MANUAL_PATTERN;
-    FlyLock locker = FLY_LOCK;
-    float throttle = 0.0f;
+class AttitudeState
+{
+public:
+    ActualAttitudeState actual;         /* 实际姿态 */
+    ExpectAttitudeState expect;         /* 期望姿态 */
+};
+
+class ActualPositionState
+{
+public:
+    Vec3 coordinate;                    /* 实际坐标 */
+    Vec3 gps;                           /* 实际经纬度 */
+    Vec3 baro_altitude;                 /* 气压高度 */
+    Vec3 laser_altitude;                /* 激光高度 */
+};
+
+class ExpectPositionState
+{
+public:
+    Vec3 coordinate;                    /* 期望坐标 */
+    Vec3 gps;                           /* 期望经纬度 */
+    Vec3 altitude;                      /* 期望高度 */
+};
+
+class PositionState
+{
+public:
+    ActualPositionState actual;         /* 实际位置 */
+    ExpectPositionState expect;         /* 期望位置 */
+};
+class UsualState
+{
+public:
+    uint16_t voltage = 0;               /* 电压 */
+    uint16_t battery = 0;               /* 电量 */
+    FlyLock is_lock = FLY_UNLOCK;       /* 是否解锁 */
+    Pattern pattern = MANUAL_PATTERN;   /* 飞行模式 */
+    float temperature = 0.0;            /* 温度 */
 };
 
 
-
+class AircraftState
+{
+public:
+    AttitudeState attitude_state;       /* 姿态 */
+    PositionState position_state;       /* 位置 */
+    UsualState usual_state;             /* 通用 */
+};
 #endif
 

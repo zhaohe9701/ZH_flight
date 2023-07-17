@@ -235,8 +235,6 @@ AC_RET Json::transToJsonStrCore(AcTreeNode *node, char *buf, uint32_t &ptr, uint
         }
 
         addElementWithCheck("]")
-        debug_printer->info("result:%s\n", buf);
-        osDelay(10);
     }
     else
     {
@@ -244,8 +242,6 @@ AC_RET Json::transToJsonStrCore(AcTreeNode *node, char *buf, uint32_t &ptr, uint
         {
             goto error;
         }
-        debug_printer->info("result:%s\n", buf);
-        osDelay(10);
     }
     return AC_OK;
     error:
@@ -259,7 +255,6 @@ AC_RET Json::transValToTree(AcTreeNode *node, char *buf, uint32_t &ptr, uint32_t
     ptr++;
     if ('\"' != getAndGoToNextSymbol(buf, ptr))
     {
-        debug_printer->error("json format error1.\n");
         goto error;
     }
     if (AC_OK != getElement(buf, element_buf, ptr, len))
@@ -268,37 +263,31 @@ AC_RET Json::transValToTree(AcTreeNode *node, char *buf, uint32_t &ptr, uint32_t
     }
     if (0 != strncmp("@t", element_buf, DATA_BUF_LEN))
     {
-        debug_printer->error("error type key %s.\n", element_buf);
         goto error;
     }
     if (':' != getAndGoToNextSymbol(buf, ptr))
     {
-        debug_printer->error("json format error2.\n");
         goto error;
     }
     ptr++;
     if ('\"' != getAndGoToNextSymbol(buf, ptr))
     {
-        debug_printer->error("json format error3.\n");
         goto error;
     }
     memset(element_buf, 0, DATA_BUF_LEN);
     if (AC_OK != getElement(buf, element_buf, ptr, len))
-    {
-        debug_printer->error("get type error4.\n");
+    {;
         goto error;
     }
     checkTypeWithTreeNode(node, element_buf);
 
     if (',' != getAndGoToNextSymbol(buf, ptr))
     {
-        debug_printer->error("json format error5.\n");
         goto error;
     }
     ptr++;
     if ('\"' != getAndGoToNextSymbol(buf, ptr))
     {
-        debug_printer->error("json format error6.\n");
         goto error;
     }
     memset(element_buf, 0, DATA_BUF_LEN);
@@ -309,24 +298,20 @@ AC_RET Json::transValToTree(AcTreeNode *node, char *buf, uint32_t &ptr, uint32_t
     }
     if (0 != strncmp("@v", element_buf, DATA_BUF_LEN))
     {
-        debug_printer->error("error type value %s.\n", element_buf);
         goto error;
     }
     if (':' != getAndGoToNextSymbol(buf, ptr))
     {
-        debug_printer->error("json format error7.\n");
         goto error;
     }
     ptr++;
     if ('\"' != getAndGoToNextSymbol(buf, ptr))
     {
-        debug_printer->error("json format error8.\n");
         goto error;
     }
     addValueToTreeNode(node, buf, ptr, len);
     if ('}' != getAndGoToNextSymbol(buf, ptr))
     {
-        debug_printer->error("json format error9.\n");
         goto error;
     }
     ptr++;
@@ -346,7 +331,6 @@ AC_RET Json::transArrayToTree(AcTreeNode *node, char *buf, uint32_t &ptr, uint32
         ptr++;
         if ('\"' != getAndGoToNextSymbol(buf, ptr))
         {
-            debug_printer->error("json format error10.\n");
             goto error;
         }
         if (AC_OK != getElement(buf, element_buf, ptr, len))
@@ -360,13 +344,11 @@ AC_RET Json::transArrayToTree(AcTreeNode *node, char *buf, uint32_t &ptr, uint32
         }
         if (':' != getAndGoToNextSymbol(buf, ptr))
         {
-            debug_printer->error("json format error11.\n");
             goto error;
         }
         ptr++;
         if ('{' != getAndGoToNextSymbol(buf, ptr))
         {
-            debug_printer->error("json format error12.\n");
             goto error;
         }
         if (AC_OK != Json::transStructToTree(child, buf, ptr, len))
@@ -402,18 +384,15 @@ AC_RET Json::transStructToTree(AcTreeNode *node, char *buf, uint32_t &ptr, uint3
         memset(element_buf, 0, DATA_BUF_LEN);
         if (AC_OK != getElement(buf, element_buf, ptr, len))
         {
-            debug_printer->error("1.\n");
             goto error;
         }
         AcTreeNode *child = AcTree::findChildByName(node, element_buf);
         if (nullptr == child)
         {
-            debug_printer->error("2.\n");
             goto error;
         }
         if (':' != getAndGoToNextSymbol(buf, ptr))
         {
-            debug_printer->error("json format error13.\n");
             goto error;
         }
         ptr++;
@@ -421,19 +400,16 @@ AC_RET Json::transStructToTree(AcTreeNode *node, char *buf, uint32_t &ptr, uint3
         {
             if ('{' != getAndGoToNextSymbol(buf, ptr))
             {
-                debug_printer->error("json format error14.\n");
                 goto error;
             }
             if (AC_OK != transStructToTree(child, buf, ptr, len))
             {
-                debug_printer->error("3.\n");
                 goto error;
             }
         } else if (AC_STRUCT_ARRAY == child->type)
         {
             if ('[' != getAndGoToNextSymbol(buf, ptr))
             {
-                debug_printer->error("json format error15.\n");
                 goto error;
             }
             if (AC_OK != transArrayToTree(child, buf, ptr, len))
@@ -444,26 +420,22 @@ AC_RET Json::transStructToTree(AcTreeNode *node, char *buf, uint32_t &ptr, uint3
         {
             if ('{' != getAndGoToNextSymbol(buf, ptr))
             {
-                debug_printer->error("json format error16.\n");
                 goto error;
             }
             if (AC_OK != transValToTree(child, buf, ptr, len))
             {
-                debug_printer->error("4.\n");
                 goto error;
             }
         }
         next = getAndGoToNextSymbol(buf, ptr);
         if (',' == next)
         {
-            debug_printer->info("s1.\n");
             ptr++;
         } else if ('}' == next)
         {
             break;
         } else
         {
-            debug_printer->error("json format error17.\n");
             goto error;
         }
     }

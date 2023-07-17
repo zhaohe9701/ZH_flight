@@ -72,7 +72,7 @@ void Printer::info(const char *format, ...)
     _manager->transmit(message);
 }
 
-void Printer::transmit(char *buf, uint32_t len)
+void Printer::transmit(uint8_t *buf, uint32_t len)
 {
     Message message;
     message.len = len;

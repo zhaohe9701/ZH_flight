@@ -28,19 +28,19 @@ private:
 	float _b2 = 0.0f;
 	float _delay_element_1 = 0.0f;
 	float _delay_element_2 = 0.0f;
-	void _SetCutoffFreq(float sample_freq, float cutoff_freq);
+	void _setCutoffFreq(float sample_freq, float cutoff_freq);
 };
 
 class SecondOrderLPF
 {
 public:
-	void Init(float sample_freq, float cutoff_freq);
-	float Apply(float sample);
-	float Reset(float sample);
+	void init(float sample_freq, float cutoff_freq);
+	float apply(float sample);
+	float reset(float sample);
 
 private:
     float _alpha = 0.0f;
 	float _pre_output = 0.0f;
-	void _SetCutoffFreq(float sample_freq, float cutoff_freq);
+	void _setCutoffFreq(float sample_freq, float cutoff_freq);
 };
 #endif

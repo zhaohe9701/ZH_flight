@@ -30,18 +30,20 @@
 
 #include "motor_interface.h"
 #include "motor_protocol_interface.h"
-#include "dshot.h"
+#include "Dshot/dshot.h"
 #include "z_pwm.h"
 
 #include "aircraft.h"
 #include "mahony.h"
 
-#include "attitude_controller_interface.h"
-#include "pid_attitude_controller.h"
+#include "attitude_controller.h"
 
 #include "global_var.h"
 
 #include "data_manager.h"
+
+#include "Mavlink/Core/common/mavlink.h"
+#include "Mavlink/Core/mavlink_types.h"
 
 extern "C"
 {
@@ -60,9 +62,8 @@ Aircraft::Aircraft()
     _sensor = new Sensor();
     // _motors = new Motor[MOTOR_NUM]();
     _led = new Led(LED_GPIO_Port, LED_Pin);
-    _attitude_controller = new AttitudeController();
+    _attitude_controller = new DefaultAttitudeController();
     _attitude_solver = new Mahony();
-    _attitude_control_param = new ControlParam();
     _printer = new Printer(message_transmit_server->getMessageManager());
 }
 
@@ -135,7 +136,7 @@ AC_RET Aircraft::getAccAndGyro()
     // UsbPrintf("0x%x\r\n", id);
     // UsbPrintf("%d %d %d\r\n", (int)imu_data.acc.x, (int)imu_data.acc.y, (int)imu_data.acc.z);
     _imu_data_manager.update(&imu_data);
-    // _printer->Info("%d %d %d\r\n", (int)imu_data.acc.x, (int)imu_data.acc.y, (int)imu_data.acc.z);
+    //_printer->info("%d %d %d\r\n", (int)imu_data.acc.x, (int)imu_data.acc.y, (int)imu_data.acc.z);
     return AC_OK;
 }
 
@@ -149,7 +150,7 @@ AC_RET Aircraft::getAltitude()
 
 AC_RET Aircraft::updateAttitude()
 {
-    ActualState actual_state;
+    ActualAttitudeState actual_state;
     SensorData sensor_data;
     ImuData imu_data;
     MagData mag_data;
@@ -172,8 +173,7 @@ AC_RET Aircraft::updateAttitude()
 AC_RET Aircraft::controlAttitude()
 {
     ActionGroup current_action = _current_action;
-    ActualState actual_state;
-    ExpectState expect_state;
+    AttitudeState state;
     ActuatorData expect_actuator = {{0}};
 
     if (current_action != AS_AUTO     && 
@@ -183,9 +183,9 @@ AC_RET Aircraft::controlAttitude()
         return AC_OK;
     }
 
-    _actual_state_manager.copy(&actual_state);
-    _expect_state_manager.copy(&expect_state);
-    _attitude_controller->update(actual_state, expect_state, expect_actuator);
+    _actual_state_manager.copy(&state.actual);
+    _expect_state_manager.copy(&state.expect);
+    _attitude_controller->update(state, expect_actuator);
     _expect_actuator_manager.update(&expect_actuator);
     return AC_OK;
 }
@@ -226,13 +226,13 @@ AC_RET Aircraft::controlMotor()
 
 AC_RET Aircraft::test()
 {
-    ActualState state;
-    BaroData baro_data;
-
-    _baro_data_manager.copy(&baro_data);
-    _actual_state_manager.copy(&state);
-    // _printer->Info("%.2f %.2f %.2f %.2f\r\n", state.euler.x, state.euler.y, state.euler.z, baro_data.altitude);
-    // _printer->Info("%.2f\r\n", baro_data.altitude);
+    uint8_t *buf = nullptr;
+    mavlink_message_t msg_t;
+    int len = mavlink_msg_mission_count_pack(255, 1, &msg_t, 1, 0, 5, MAV_MISSION_TYPE_MISSION);
+    buf = new uint8_t[len];
+    mavlink_msg_to_send_buffer(buf, &msg_t);
+    // _printer->transmit(buf, len);
+    // _printer->info("test run\n");
     return AC_OK;
 }
 
@@ -241,7 +241,6 @@ Aircraft::~Aircraft()
     delete _sensor;
     delete[] _motors;
     delete _attitude_controller;
-    delete _attitude_control_param;
     delete _attitude_solver;
 }
 

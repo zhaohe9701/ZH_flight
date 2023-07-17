@@ -18,7 +18,7 @@
 class AttitudeSolver
 {
 public:
-    virtual void update(ActualState &actual_state, SensorData &sensor_data) = 0;
+    virtual void update(ActualAttitudeState &actual_state, SensorData &sensor_data) = 0;
     virtual void transformBodyToEarth(float &x, float &y, float &z) = 0;
     virtual void transformEarthToBody(float &x, float &y, float &z) = 0;
     virtual ~AttitudeSolver(){};

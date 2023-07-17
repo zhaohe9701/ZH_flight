@@ -28,7 +28,7 @@ public:
     void print(const char *format, ...);
     void error(const char *format, ...);
     void info(const char *format, ...);
-    void transmit(char *buf, uint32_t len);
+    void transmit(uint8_t *buf, uint32_t len);
 private:
     uint8_t _port = 0x00;
     MessageManager *_manager = nullptr;

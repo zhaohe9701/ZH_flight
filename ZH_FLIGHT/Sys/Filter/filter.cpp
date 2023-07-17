@@ -14,10 +14,10 @@
 
 void FirstOrderLPF::init(float sample_freq, float cutoff_freq)
 {
-    _SetCutoffFreq(sample_freq, cutoff_freq);
+    _setCutoffFreq(sample_freq, cutoff_freq);
 }
 
-void FirstOrderLPF::_SetCutoffFreq(float sample_freq, float cutoff_freq)
+void FirstOrderLPF::_setCutoffFreq(float sample_freq, float cutoff_freq)
 {
     float fr = sample_freq / cutoff_freq;
     float ohm = tanf(PI / fr);
@@ -52,30 +52,30 @@ float FirstOrderLPF::reset(float sample)
     float dval = sample / (_b0 + _b1 + _b2);
 	_delay_element_1 = dval;
 	_delay_element_2 = dval;
-	return Apply(sample);
+	return apply(sample);
 }
 
 
 
-void SecondOrderLPF::Init(float sample_freq, float cutoff_freq)
+void SecondOrderLPF::init(float sample_freq, float cutoff_freq)
 {
-    _SetCutoffFreq(sample_freq, cutoff_freq);
+    _setCutoffFreq(sample_freq, cutoff_freq);
 }
 
-void SecondOrderLPF::_SetCutoffFreq(float sample_freq, float cutoff_freq)
+void SecondOrderLPF::_setCutoffFreq(float sample_freq, float cutoff_freq)
 {
     _alpha = (2.0f * PI * cutoff_freq) / (2.0f * PI * cutoff_freq + sample_freq);
 }
 
-float SecondOrderLPF::Apply(float sample)
+float SecondOrderLPF::apply(float sample)
 {
     float output = _pre_output + _alpha * (sample - _pre_output);
     _pre_output = output;
 	return output;
 }
 
-float SecondOrderLPF::Reset(float sample)
+float SecondOrderLPF::reset(float sample)
 {
     _pre_output = 0.0f;
-    return Apply(sample);
+    return apply(sample);
 }

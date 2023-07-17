@@ -92,9 +92,7 @@ set(SYS_SRC
         Sys/Actuator/Motor/motor.cpp
         Sys/AHRS/mahony.cpp
         Sys/AHRS/vqf.cpp
-        Sys/Control/AttitudeControl/attitude_controller.cpp
-        Sys/Control/AttitudeControl/attitude_controller_interface.cpp
-        Sys/Control/AttitudeControl/pid_attitude_controller.cpp
+        Sys/Control/AttitudeControl/default_attitude_controller.cpp
         Sys/Control/pid_core.cpp
         Sys/Callback/callback.cpp
         Sys/Command/command.cpp
@@ -108,9 +106,9 @@ set(SYS_SRC
         Sys/EventServer/event_server.cpp
         Sys/Message/message_server.cpp
         Sys/OS/ac_semaphore.cpp
-        Sys/Protocol/dshot.cpp
-        Sys/Protocol/ibus.cpp
-        Sys/Protocol/crsf.cpp
+        Sys/Protocol/Dshot/dshot.cpp
+        Sys/Protocol/Ibus/ibus.cpp
+        Sys/Protocol/Crsf/crsf.cpp
         Sys/Remote/remote_channel.cpp
         Sys/Sensor/sensor.cpp
         Sys/Sensor/Imu/icm20602.cpp
@@ -140,7 +138,7 @@ set(SYS_SRC
         Sys/Task/default_task.cpp
         Sys/Light/light.cpp
         Sys/Message/message_manager.cpp
-        )
+        Sys/Filter/filter.cpp)
 
 set(START_UP_ASM
         startup_stm32h7b0xx.s
@@ -193,6 +191,10 @@ include_directories(
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Message>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Remote>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Json>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Protocol>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Protocol>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Protocol>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Protocol>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/Protocol>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Sys/StateMachine>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Drivers/STM32H7xx_HAL_Driver/Inc>

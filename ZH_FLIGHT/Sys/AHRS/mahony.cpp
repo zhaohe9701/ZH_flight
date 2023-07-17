@@ -11,7 +11,7 @@
 #include "mahony.h"
 #include "math_param.h"
 
-void Mahony::update(ActualState &actual_state, SensorData &sensor_data)
+void Mahony::update(ActualAttitudeState &actual_state, SensorData &sensor_data)
 {
     float normalise;
     float ex = 0.0f;
@@ -29,8 +29,7 @@ void Mahony::update(ActualState &actual_state, SensorData &sensor_data)
     float q2_last = 0.0f;
     float q3_last = 0.0f;
 
-    actual_state.palstance.Set(sensor_data.gyr.y, sensor_data.gyr.x, sensor_data.gyr.z);
-    actual_state.acceleration.Set(sensor_data.acc.x, sensor_data.acc.y, sensor_data.acc.z);
+    actual_state.ang_acc.Set(sensor_data.gyr.y, sensor_data.gyr.x, sensor_data.gyr.z);
 
 #ifdef MAGNETOMETER
     float mx = sensor_data.mag.x;

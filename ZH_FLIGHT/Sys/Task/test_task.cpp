@@ -9,6 +9,6 @@ void AircraftTask::testTask(void *argument)
     for(;;)
     {
         aircraft->test();
-        osDelay(10);
+        osDelay(1000);
     }
 }

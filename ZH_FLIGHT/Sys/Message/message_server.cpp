@@ -8,16 +8,12 @@
  * @FilePath: \ZH_FLIGHT\Sys\Message\message_server.cpp
  * Copyright (C) 2022 zhaohe. All rights reserved.
  */
-#include "ac_queue.h"
-#include "data.h"
-#include <stdint.h>
+
 #include <string.h>
 #include "config.h"
-#include "main.h"
 #include "message_parser.h"
 #include "type.h"
 #include "message_server.h"
-#include "sys.h"
 
 uint8_t MessageReceiveServer::_interface_ind = 0;
 uint8_t MessageTransmitServer::_interface_ind = 0;
@@ -44,18 +40,18 @@ AC_RET MessageReceiveServer::runReceiveService()
     Message message;
     message.buf = _buffer;
     message.len = RECEIVE_SERVER_BUF_LEN;
-    _manager->receive(message);
-    UsbPrintf("%s\n", _buffer);
     memset(_buffer, 0, 1024);
-//    head = _buffer[0];
-//    for (int i = 0; i < _interface_ind; ++i)
-//    {
-//        if (head == _parser[i]->getHead())
-//        {
-//            _parser[i]->parseMessage(_buffer, len);
-//            return AC_OK;
-//        }
-//    }
+    _manager->receive(message);
+    head = _buffer[0];
+    for (int i = 0; i < _interface_ind; ++i)
+    {
+        if (head == _parser[i]->getHead())
+        {
+            _parser[i]->parseMessage(_buffer, message.len);
+            UsbPrintf("%s", _buffer);
+            return AC_OK;
+        }
+    }
     return AC_ERROR;
 }
 

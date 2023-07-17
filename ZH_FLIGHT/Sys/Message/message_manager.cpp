@@ -73,6 +73,7 @@ AC_RET MessageManager::receive(Message &message)
         tmp_len = message_data.ind * MAX_MESSAGE_LENGTH + message_data.length;
     }
     seq = message_data.seq;
+    message.dec_port = message_data.dec_port;
     memcpy(message.buf + message_data.ind * MAX_MESSAGE_LENGTH, message_data.data, message_data.length);
     not_received_pkg_num = --message_data.pkg_num;
     while (not_received_pkg_num > 0)

@@ -30,7 +30,7 @@
 #include "state_machine.h"
 #include "event_server.h"
 #include "message_server.h"
-#include "ibus.h"
+#include "Ibus/ibus.h"
 #include "communicate_interface.h"
 #include "z_iic.h"
 #include "z_spi.h"
@@ -117,7 +117,7 @@ void AircraftTask::startTask(void *argument)
     attitude_solve_thread.init(AircraftTask::attitudeSolveTask, "attitudeSolveTask", 256, 24);
     light_thread.init(AircraftTask::lightTask, "lightTask", 256, 24);
     transmit_data_thread.init(AircraftTask::transmitDataTask, "transmitDataTask", 256, 24);
-    receive_data_thread.init(AircraftTask::receiveDataTask, "receiveDataTask", 256, 24);
+    receive_data_thread.init(AircraftTask::receiveDataTask, "receiveDataTask", 512, 24);
     command_thread.init(AircraftTask::commandTask, "commandTask", 1024, 24);
     test_thread.init(AircraftTask::testTask, "testTask", 512, 24);
     thread_manager.AddThread(light_thread);

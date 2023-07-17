@@ -30,7 +30,7 @@ float PidCore::update(float actual, float except)
     error = except - actual;
 
     // 积分限幅
-    _integral = _Limit(_integral + error * _dt, _int_limit);
+    _integral = _limit(_integral + error * _dt, _int_limit);
 
     // 比例
     p = _kp * error;
@@ -84,7 +84,7 @@ void PidCore::disableDiffAhead()
     _diff_ahead_fw = OFF;
 }
 
-float PidCore::_Limit(float value, float limit)
+float PidCore::_limit(float value, float limit)
 {
     if (value > limit)
     {
