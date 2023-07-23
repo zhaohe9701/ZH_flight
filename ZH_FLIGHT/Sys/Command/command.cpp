@@ -8,6 +8,7 @@
 #define COMMAND_HEAD 0x24
 #define GET "get"
 #define SET "set"
+#define DOWNLOAD "download"
 #define MAX_METHOD_LEN 10
 MessageHead CommandParser::getHead()
 {
@@ -28,6 +29,9 @@ AC_RET CommandParser::parseMessage(uint8_t *buf, uint32_t len)
     } else if (0 == strcmp(SET, method))
     {
         command.method = AT_SET;
+    } else if (0 == strcmp(DOWNLOAD, method))
+    {
+        command.method = AT_DOWNLOAD;
     } else
     {
         return AC_ERROR;

@@ -13,6 +13,7 @@ class CommandServer
 private:
     void _get(CommandData &command);
     void _set(CommandData &command);
+    void _download(CommandData &command);
     static void _runTempTask();
     DataManager<CommandData> *_manager = nullptr;
     Printer *_printer = nullptr;

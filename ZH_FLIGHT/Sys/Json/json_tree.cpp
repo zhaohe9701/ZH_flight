@@ -211,9 +211,65 @@ error:
     return AC_ERROR;
 }
 
-AC_RET toCapability(char *buf, uint32_t &ptr, uint32_t len, AC_DATA_TYPE parent_type)
+AC_RET JsonTree::toCapabilitySet(char *buf, uint32_t &ptr, uint32_t len, AC_DATA_TYPE parent_type)
 {
-
+    if (AC_ARRAY != parent_type)
+    {
+        appendString(buf, "\"", ptr, len);
+        appendString(buf, name, ptr, len);
+        appendString(buf, "\":", ptr, len);
+    }
+    if (AC_STRUCT == type)
+    {
+        if (nullptr == _first_child)
+        {
+            return AC_OK;
+        }
+        appendString(buf, "{", ptr, len);
+        if (AC_OK != _first_child->toCapabilitySet(buf, ptr, len, type))
+        {
+            goto error;
+        }
+        appendString(buf, "}", ptr, len);
+    }   else if (AC_ARRAY == type)
+    {
+        if (nullptr == _first_child)
+        {
+            return AC_OK;
+        }
+        appendString(buf, "[", ptr, len);
+        if (AC_OK != _first_child->toCapabilitySet(buf, ptr, len, type))
+        {
+            goto error;
+        }
+        appendString(buf, "]", ptr, len);
+    } else
+    {
+        char type_str[DATA_BUF_LEN] = {0};
+        appendString(buf, "\"", ptr, len);
+        if (AC_OK != Type::transTypeToStr(type_str, type))
+        {
+            goto error;
+        }
+        appendString(buf, type_str, ptr, len);
+        appendString(buf, "\"", ptr, len);
+    }
+    if (AC_ROOT == parent_type)
+    {
+        return AC_OK;
+    }
+    if (nullptr == _neighbor)
+    {
+        return AC_OK;
+    }
+    appendString(buf, ",", ptr, len);
+    if (AC_OK != _neighbor->toCapabilitySet(buf, ptr, len, parent_type))
+    {
+        goto error;
+    }
+    return AC_OK;
+    error:
+    return AC_ERROR;
 }
 
 AC_RET JsonTree::toBin(uint8_t *bin, uint32_t &ptr, uint32_t len)
@@ -343,6 +399,20 @@ AC_RET JsonTree::toString(char *buf, uint32_t len)
     appendString(buf, "}", ptr, len);
     return AC_OK;
 error:
+    return AC_ERROR;
+}
+
+AC_RET JsonTree::toCapabilitySet(char *buf, uint32_t len)
+{
+    uint32_t ptr = 0;
+    appendString(buf, "{", ptr, len);
+    if (AC_OK != toCapabilitySet(buf, ptr, len, AC_ROOT))
+    {
+        goto error;
+    }
+    appendString(buf, "}", ptr, len);
+    return AC_OK;
+    error:
     return AC_ERROR;
 }
 

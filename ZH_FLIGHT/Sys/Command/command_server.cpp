@@ -33,6 +33,9 @@ AC_RET CommandServer::runCommandService()
     } else if (AT_SET == command.method)
     {
         _set(command);
+    } else if (AT_DOWNLOAD == command.method)
+    {
+        _download(command);
     } else
     {
         goto error;
@@ -100,6 +103,24 @@ void CommandServer::_set(CommandData &command)
     {
         _printer->error("SET DATA FAILED.\n");
     }
+}
+
+void CommandServer::_download(CommandData &command)
+{
+    JsonTree *root = nullptr;
+    char json_buf[MAX_RESULT_LEN] = {0};
+
+    root = aircraft->getIndex();
+    if (nullptr == root)
+    {
+        root = aircraft->createIndex();
+    }
+
+    if (AC_OK != root->toCapabilitySet(json_buf, MAX_RESULT_LEN - 1))
+    {
+        _printer->error("TRANS TREE TO JSON STRING FAILED.\n");
+    }
+    _printer->info("%s\n", json_buf);
 }
 
 void CommandServer::_runTempTask()

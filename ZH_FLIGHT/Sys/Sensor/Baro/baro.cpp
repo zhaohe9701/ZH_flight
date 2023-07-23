@@ -29,12 +29,20 @@ JsonTree *Baro::createIndex()
 
     JsonTree *array = new JsonTree();
     array->addData(nullptr, AC_ARRAY, "test_array");
-    for (int i = 0; i < 4; ++i)
-    {
-        node = new JsonTree();
-        node->addData((void*)&_test[i], AC_UINT8, "");
-        array->addChild(node);
-    }
+
+    node = new JsonTree();
+    node->addData((void*)&_test[0], AC_UINT8, "1");
+    array->addChild(node);
+    node = new JsonTree();
+    node->addData((void*)&_test[1], AC_UINT8, "2");
+    array->addChild(node);
+    node = new JsonTree();
+    node->addData((void*)&_test[2], AC_UINT8, "3");
+    array->addChild(node);
+    node = new JsonTree();
+    node->addData((void*)&_test[3], AC_UINT8, "4");
+    array->addChild(node);
+
     root->addChild(array);
 //    node = new AcTreeNode();
 //    node->addData((void*)&_test, AC_UINT8, "test_array", 4);

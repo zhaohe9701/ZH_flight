@@ -22,7 +22,8 @@
 enum CommandMethod
 {
     AT_GET = 0,
-    AT_SET = 1
+    AT_SET = 1,
+    AT_DOWNLOAD = 2,
 };
 class CommandData
 {
