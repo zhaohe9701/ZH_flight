@@ -21,6 +21,9 @@ enum AC_RET
 
 enum AC_DATA_TYPE
 {
+    AC_ROOT,
+    AC_STRUCT,
+    AC_ARRAY,
     AC_UINT8,
     AC_UINT16,
     AC_UINT32,
@@ -31,10 +34,8 @@ enum AC_DATA_TYPE
     AC_DOUBLE,
     AC_STRING,
     AC_NULL,
-    AC_SWITCH,
-    AC_STRUCT,
-    AC_BASIC_ARRAY,
-    AC_STRUCT_ARRAY
+    AC_SWITCH
+
 };
 
 #define PARAM_NAME_LEN  32
@@ -70,9 +71,9 @@ class Type
 {
 public:
     static AC_RET transTypeToStr(char *type_buf, AC_DATA_TYPE type);
-    static AC_RET transDataToStr(char *data_buf, void *data, AC_DATA_TYPE type, uint16_t index);
+    static AC_RET transDataToStr(char *data_buf, void *data, AC_DATA_TYPE type);
     static AC_RET transStrToType(char *type_buf, AC_DATA_TYPE &type);
-    static AC_RET transStrToData(char *data_buf, void *data, AC_DATA_TYPE type, uint16_t index);
+    static AC_RET transStrToData(char *data_buf, void *data, AC_DATA_TYPE type);
 };
 
 typedef uint32_t Condition;

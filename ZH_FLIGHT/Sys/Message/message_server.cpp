@@ -48,7 +48,6 @@ AC_RET MessageReceiveServer::runReceiveService()
         if (head == _parser[i]->getHead())
         {
             _parser[i]->parseMessage(_buffer, message.len);
-            UsbPrintf("%s", _buffer);
             return AC_OK;
         }
     }
@@ -99,8 +98,8 @@ void MessageTransmitServer::runTransmitService()
     {
         if (_interface[i]->matchPort(port))
         {
-            uint8_t try_times = 0;
-            while (try_times < 100 && AC_OK != _interface[i]->transmit(_buffer, message.len))
+            uint16_t try_times = 0;
+            while (try_times < 1000 && AC_OK != _interface[i]->transmit(_buffer, message.len))
             {
                 try_times++;
             }

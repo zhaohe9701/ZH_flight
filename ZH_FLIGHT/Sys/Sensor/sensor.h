@@ -28,7 +28,7 @@ public:
     void init();
     void addImu(Imu *imu);
     void addBaro(Baro *baro);
-    AcTreeNode *createIndex();
+    JsonTree *createIndex();
     Imu *imu = nullptr;
     Baro *baro = nullptr;
 };

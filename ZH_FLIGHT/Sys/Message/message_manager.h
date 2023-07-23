@@ -6,6 +6,7 @@
 #include "data_manager.h"
 #include "data.h"
 #include "message.h"
+#include "ac_semaphore.h"
 
 #ifndef __MESSAGE_MANAGER_H__
 #define __MESSAGE_MANAGER_H__
@@ -19,8 +20,7 @@ public:
     ~MessageManager();
 private:
     DataManager<MessageData> *_manager = nullptr;
-    uint32_t _que_len = 0;
-    uint16_t _src_seq = 0;
+    AcSemaphore _mutex;
 };
 
 #endif

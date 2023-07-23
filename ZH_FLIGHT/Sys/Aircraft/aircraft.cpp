@@ -244,23 +244,23 @@ Aircraft::~Aircraft()
     delete _attitude_solver;
 }
 
-AcTreeNode *Aircraft::createIndex()
+JsonTree *Aircraft::createIndex()
 {
-    AcTreeNode *root = new AcTreeNode();
-    AcTreeNode *node = nullptr;
+    JsonTree *root = new JsonTree();
+    JsonTree *node = nullptr;
 
-    root->addData(nullptr, AC_STRUCT, "aircraft", 0);
+    root->addData(nullptr, AC_STRUCT, "aircraft");
 
     node = _sensor->createIndex();
-    AcTree::addNode(root, node);
+    root->addChild(node);
 
     node = _led->createIndex();
-    AcTree::addNode(root, node);
+    root->addChild(node);
 
     return root;
 }
 
-AcTreeNode *Aircraft::getIndex()
+JsonTree *Aircraft::getIndex()
 {
     return _index;
 }

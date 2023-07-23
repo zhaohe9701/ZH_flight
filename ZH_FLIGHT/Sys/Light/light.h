@@ -7,7 +7,7 @@
 
 #include <stdint.h>
 #include "main.h"
-#include "ac_tree.h"
+#include "json_tree.h"
 
 enum LIGHT_PATTERN
 {
@@ -25,7 +25,7 @@ public:
     void run();
     void setToHighTrigger();
     void setToLowTrigger();
-    AcTreeNode *createIndex();
+    JsonTree *createIndex();
 private:
     void _breathe();
     void _slowFlashing();

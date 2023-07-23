@@ -50,13 +50,13 @@ private:
     /*当前动作*/
     volatile ActionGroup _current_action = AS_INITIALIZE;
 
-    AcTreeNode *_index = nullptr;
+    JsonTree *_index = nullptr;
 public:
 
     Aircraft();
     AC_RET init();
-    AcTreeNode *createIndex();
-    AcTreeNode *getIndex();
+    JsonTree *createIndex();
+    JsonTree *getIndex();
     AC_RET setAction(ActionGroup action);
     AC_RET getAccAndGyro();
     AC_RET getAltitude();

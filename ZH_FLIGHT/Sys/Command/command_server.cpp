@@ -5,13 +5,13 @@
 #include "print.h"
 #include "type.h"
 #include "sys.h"
-#include "json.h"
+#include "json_tree.h"
 
 #define MAX_RESULT_LEN 1024
 
 CommandServer::CommandServer()
 {
-    _manager = new DataManager<CommandData>();
+    _manager = new DataManager<CommandData>(2);
     _printer = new Printer(message_transmit_server->getMessageManager());
     _printer->setDecPort(0x01);
 }
@@ -56,8 +56,8 @@ CommandServer::~CommandServer()
 
 void CommandServer::_get(CommandData &command)
 {
-    AcTreeNode *root = nullptr;
-    AcTreeNode *node = nullptr;
+    JsonTree *root = nullptr;
+    JsonTree *node = nullptr;
     char json_buf[MAX_RESULT_LEN] = {0};
 
     root = aircraft->getIndex();
@@ -65,13 +65,14 @@ void CommandServer::_get(CommandData &command)
     {
         root = aircraft->createIndex();
     }
-    node = AcTree::findNode(root, command.url + 1);
+    _printer->info("URL:%s\n", command.url);
+    node = root->findNode(command.url);
     if (nullptr == node)
     {
         _printer->error("CAN NOT FOUND URL.\n");
         return;
     }
-    if (AC_OK != Json::transTreeToJsonStr(node, json_buf, MAX_RESULT_LEN - 1))
+    if (AC_OK != node->toString(json_buf, MAX_RESULT_LEN - 1))
     {
         _printer->error("TRANS TREE TO JSON STRING FAILED.\n");
     }
@@ -80,9 +81,8 @@ void CommandServer::_get(CommandData &command)
 
 void CommandServer::_set(CommandData &command)
 {
-    int32_t ptr = 0;
-    AcTreeNode *root = nullptr;
-    AcTreeNode *node = nullptr;
+    JsonTree *root = nullptr;
+    JsonTree *node = nullptr;
 
     root = aircraft->getIndex();
     if (nullptr == root)
@@ -90,17 +90,16 @@ void CommandServer::_set(CommandData &command)
         root = aircraft->createIndex();
     }
 
-    node = AcTree::findNode(root, command.url);
+    node = root->findNode(command.url);
     if (nullptr == node)
     {
         _printer->error("CAN NOT FOUND URL.\n");
         return;
     }
-    if (AC_OK != Json::transJsonStrToTree(node, command.data, MAX_JSON_LEN - ptr))
+    if (AC_OK != node->fromString(command.data))
     {
         _printer->error("SET DATA FAILED.\n");
     }
-
 }
 
 void CommandServer::_runTempTask()

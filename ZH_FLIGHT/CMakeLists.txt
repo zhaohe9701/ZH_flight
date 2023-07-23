@@ -123,11 +123,9 @@ set(SYS_SRC
         Sys/Task/attitude_solve_task.cpp
         Sys/Task/transmit_data_task.cpp
         Sys/Type/type.cpp
-        Sys/Common/ac_tree.cpp
         Sys/Sensor/Imu/imu.cpp
         Sys/Task/command_task.cpp
         Sys/Task/receive_data_task.cpp
-        Sys/Json/json.cpp
         Sys/Sensor/Baro/baro.cpp
         Sys/OS/ac_thread.cpp
         Sys/Task/start_task.cpp
@@ -138,7 +136,8 @@ set(SYS_SRC
         Sys/Task/default_task.cpp
         Sys/Light/light.cpp
         Sys/Message/message_manager.cpp
-        Sys/Filter/filter.cpp)
+        Sys/Filter/filter.cpp
+        Sys/Json/json_tree.cpp)
 
 set(START_UP_ASM
         startup_stm32h7b0xx.s
@@ -151,7 +150,8 @@ set(SRC
         ${MIDDLEWARES_SRC}
         ${USB_DEVICE_SRC}
         ${SYS_SRC}
-        ${START_UP_ASM} Sys/Task/command_task.cpp Sys/Task/receive_data_task.cpp Sys/Json/json.cpp Sys/Sensor/Baro/baro.cpp)
+        ${START_UP_ASM}
+        )
 
 include_directories(
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Core/Inc>

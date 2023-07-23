@@ -12,7 +12,7 @@
 #define __BARO_H__
 
 #include <stdint.h>
-#include "ac_tree.h"
+#include "json_tree.h"
 
 class BaroData
 {
@@ -29,7 +29,7 @@ public:
     virtual void getTemperature(BaroData& data) = 0;
     virtual void getPressure(BaroData& data) = 0;
     virtual void getAltitude(BaroData& data) = 0;
-    AcTreeNode *createIndex();
+    JsonTree *createIndex();
 protected:
     char _name[PARAM_NAME_LEN] = "baro";
     AcSwitch _get_altitude_mark = AC_OFF;

@@ -12,7 +12,7 @@
 #ifndef __IMU_H__
 #define __IMU_H__
 
-#include "ac_tree.h"
+#include "json_tree.h"
 #include "sensor_interface.h"
 #include "type.h"
 #include "print.h"
@@ -32,7 +32,7 @@ public:
     virtual float getTemperature() = 0;
     virtual void getGyroData(ImuData &data) = 0;
     virtual void getAccData(ImuData &data) = 0;
-    AcTreeNode *CreateIndex();
+    JsonTree *CreateIndex();
 
 protected:
     Printer *_printer = nullptr;

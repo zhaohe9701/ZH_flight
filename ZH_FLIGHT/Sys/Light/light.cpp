@@ -168,16 +168,16 @@ void Led::run()
     }
 }
 
-AcTreeNode *Led::createIndex()
+JsonTree *Led::createIndex()
 {
-    AcTreeNode *root = new AcTreeNode();
-    AcTreeNode *node = nullptr;
+    JsonTree *root = new JsonTree();
+    JsonTree *node = nullptr;
 
-    root->addData(nullptr, AC_STRUCT, "led", 0);
+    root->addData(nullptr, AC_STRUCT, "led");
 
-    node = new AcTreeNode();
-    node->addData((void *) &_pattern, AC_INT8, "light_pattern", 1);
-    AcTree::addNode(root, node);
+    node = new JsonTree();
+    node->addData((void *) &_pattern, AC_INT8, "light_pattern");
+    root->addChild(node);
 
     return root;
 }

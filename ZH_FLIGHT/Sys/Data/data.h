@@ -19,11 +19,9 @@ class MessageData
 public:
     uint8_t src_port = 0x00;                /* 源地址 */
     uint8_t dec_port = 0x00;                /* 目的地址 */
-    uint8_t ind = 0;                        /* 消息包索引，从0开始 */
-    uint8_t pkg_num = 1;                    /* 消息包数量 */
+    uint8_t end_flag = 0x01;                /* 是否为最后一包 */
     uint8_t data[MAX_MESSAGE_LENGTH] = {0}; /* 消息体 */
     uint16_t length = 0;                    /* 消息体长度 */
-    uint16_t seq = 0x0000;                  /* 消息序号 */
 };
 
 #endif

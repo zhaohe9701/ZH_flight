@@ -21,7 +21,7 @@ AC_RET CommandParser::parseMessage(uint8_t *buf, uint32_t len)
 
     sscanf((char*)buf, "$%s %s %s", method, command.url, command.data);
 
-    debug_printer->info("METHOD:%s URL:%s DATA:%s", method, command.url, command.data);
+    debug_printer->info("METHOD:%s URL:%s DATA:%s\n", method, command.url, command.data);
     if (0 == strcmp(GET, method))
     {
         command.method = AT_GET;

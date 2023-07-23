@@ -215,7 +215,7 @@ AC_RET Json::transToJsonStrCore(AcTreeNode *node, char *buf, uint32_t &ptr, uint
             child = child->getNeighbor();
         }
         addElementWithCheck("}")
-    } else if (AC_STRUCT_ARRAY == node->type)
+    } else if (AC_ARRAY == node->type)
     {
         addElementWithCheck("[")
 
@@ -406,7 +406,7 @@ AC_RET Json::transStructToTree(AcTreeNode *node, char *buf, uint32_t &ptr, uint3
             {
                 goto error;
             }
-        } else if (AC_STRUCT_ARRAY == child->type)
+        } else if (AC_ARRAY == child->type)
         {
             if ('[' != getAndGoToNextSymbol(buf, ptr))
             {
@@ -466,7 +466,7 @@ AC_RET Json::transJsonStrToTree(AcTreeNode *tree, char *buf, uint32_t len)
     {
         goto error;
     }
-    if (AC_STRUCT == tree->type || AC_STRUCT_ARRAY == tree->type)
+    if (AC_STRUCT == tree->type || AC_ARRAY == tree->type)
     {
         if (AC_OK != transStructToTree(tree, buf, ptr, len))
         {
