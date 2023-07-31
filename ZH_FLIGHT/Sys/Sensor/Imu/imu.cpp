@@ -22,8 +22,11 @@ JsonTree *Imu::CreateIndex()
     JsonTree *root = new JsonTree();
     JsonTree *node = nullptr;
 
-    root->addData(nullptr, AC_STRUCT, _name);
+    root->addData(nullptr, AC_STRUCT, "IMU");
 
+    node = new JsonTree();
+    node->addData((void *) &_name, AC_STRING, "type");
+    root->addChild(node);
 
     node = new JsonTree();
     node->addData((void *) &_get_acc_mark, AC_SWITCH, "get_acc");

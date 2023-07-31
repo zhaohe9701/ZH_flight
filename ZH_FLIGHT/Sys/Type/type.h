@@ -38,6 +38,11 @@ enum AC_DATA_TYPE
 
 };
 
+enum AC_RELATION
+{
+    AC_AND,
+    AC_OR
+};
 #define PARAM_NAME_LEN  32
 #define TYPE_BUF_LEN 16
 #define DATA_BUF_LEN 64
@@ -53,6 +58,7 @@ public:
 
     void Clear();
 };
+
 
 class Vec4
 {

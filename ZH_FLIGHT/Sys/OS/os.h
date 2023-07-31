@@ -15,6 +15,7 @@
 #include "cmsis_os2.h"
 #include "queue.h"
 #include "semphr.h"
+#include "event_groups.h"
 inline int is_isr()
 {
     uint32_t ipsr;

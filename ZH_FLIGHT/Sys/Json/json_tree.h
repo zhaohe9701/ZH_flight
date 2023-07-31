@@ -2,6 +2,8 @@
 #define __JSON_TREE_H__
 
 #include "type.h"
+#include "command.h"
+
 class JsonTree
 {
 public:
@@ -10,7 +12,7 @@ private:
     JsonTree *_first_child = nullptr;
     JsonTree *_neighbor = nullptr;
     JsonTree *findNode(char *url, uint32_t &ptr);
-    AC_RET toString(char *buf, uint32_t &ptr, uint32_t len, AC_DATA_TYPE parent_type);
+    AC_RET toString(char *buf, uint32_t &ptr, uint32_t len, AC_DATA_TYPE parent_type, CommandMethod command_method);
     AC_RET toCapabilitySet(char *buf, uint32_t &ptr, uint32_t len, AC_DATA_TYPE parent_type);
     AC_RET toBin(uint8_t *bin, uint32_t &ptr, uint32_t len);
     AC_RET fromString(char *buf, uint32_t &ptr);

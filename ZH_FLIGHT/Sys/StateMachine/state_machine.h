@@ -14,77 +14,57 @@
 #include <stdint.h>
 #include "type.h"
 #include "ac_list.h"
+#include "ac_action.h"
+#include "config.h"
+#include "data_manager.h"
 
-#define EVENT_NUM 6
-#define STATE_NUM 7
+typedef uint8_t EventSet[EVENT_NUM];
 
-/*状态集合定义*/
-enum StateGroup
+struct Event
 {
-    AS_ERROR = -1,
-    AS_INITIALIZE,
-    AS_STANDBY,
-    AS_SETTING,
-    AS_CALIBRATION,
-    AS_MANUAL,
-    AS_ALTITUDE,
-    AS_AUTO,
+    uint16_t name = 0;
+    uint8_t value = 0;
 };
 
-/*动作集合定义*/
-typedef StateGroup ActionGroup;
-
-/*事件集合定义*/
-enum EventList
-{
-    NULL_EVENT          = 0b00000000,
-    INIT_OVER_EVENT     = 0b00000001,
-    UNLOCK_EVENT        = 0b00000010,
-    SETTING_EVENT       = 0b00000100,
-    CALIBRATION_EVENT   = 0b00001000,
-    MANUAL_EVENT        = 0b00010000,
-    ALTITUDE_EVENT      = 0b00100000,
-    AUTO_EVENT          = 0b01000000,
-    ZERO_THROTTLE_EVENT = 0b10000000,
-};
-
-class StateMap
+class EventGroup
 {
 public:
-    bool isMatch(Condition trans_condition);
-    void addPositiveCondition(Condition condition);
-    void addNegativeCondition(Condition condition);
-    StateGroup getMatchState();
-    StateMap *next = nullptr;
-    StateMap *prev = nullptr;
-
+    void set(const EventSet event);
+    void set(Event &event);
+    bool operator==(EventGroup &events);
+    bool operator!=(EventGroup &events);
 private:
-    StateGroup _state;
-    Condition _positive_condition;
-    Condition _negative_condition;
+    EventSet _event = {0};
 };
 
 class State
 {
+    struct ST
+    {
+        State* state = nullptr;
+        EventGroup* events = nullptr;
+    };
 public:
-    State(){};
-    void addNeighborState(StateGroup neighbor_state, Condition positive, Condition negative);
-    StateGroup getNextState(Condition _condition);
-    ~State();
-
+    State *trans(EventGroup &events);
+    AC_RET addNextState(State *state, EventGroup *events);
+    void setAction(ActionGroup &action);
+    ActionGroup getAction();
 private:
-    AcList<StateMap*> _neighbor;
+    AcList<ST> _st_list;
+    ActionGroup _action;
 };
 
 class StateMachine
 {
 public:
-    AC_RET transToNextState(Condition condition);
-    StateGroup getCurrentState();
-    ActionGroup getAction();
-    State state[STATE_NUM];
+    StateMachine();
+    AC_RET setCurrentState(State *state);
+    AC_RET run();
 private:
-    StateGroup _current_state;
+    State *_current_state = nullptr;
+    EventGroup _current_event;
+    DataManager<Event> *_event_manager = nullptr;
+    ActionManager *_action_manager = nullptr;
 };
 
 #endif

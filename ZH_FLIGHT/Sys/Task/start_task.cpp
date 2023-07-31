@@ -28,7 +28,6 @@
 #include "print.h"
 #include "sensor_interface.h"
 #include "state_machine.h"
-#include "event_server.h"
 #include "message_server.h"
 #include "Ibus/ibus.h"
 #include "communicate_interface.h"
@@ -37,7 +36,7 @@
 #include "z_usb.h"
 #include "command_server.h"
 #include "ac_thread.h"
-
+#include "Crsf/crsf.h"
 
 
 ThreadManager thread_manager;
@@ -45,7 +44,6 @@ ThreadManager thread_manager;
 AcSemaphore *imu_sem = nullptr;
 Aircraft *aircraft = nullptr;
 StateMachine *state_machine = nullptr;
-EventServer *event_server = nullptr;
 MessageReceiveServer *message_receive_server = nullptr;
 MessageTransmitServer *message_transmit_server = nullptr;
 CommandServer *command_server = nullptr;
@@ -60,8 +58,8 @@ void AircraftTask::startTask(void *argument)
 
     /*创建消息接收服务器*/
     message_receive_server = new MessageReceiveServer();
-    MessageReceiveParser *ibus_parser = new IbusParser();
-    message_receive_server->addParser(ibus_parser);
+    MessageReceiveParser *crsf_parser = new CrsfParser();
+    message_receive_server->addParser(crsf_parser);
     MessageReceiveParser *command_parser = new CommandParser();
     message_receive_server->addParser(command_parser);
 
@@ -118,7 +116,7 @@ void AircraftTask::startTask(void *argument)
     light_thread.init(AircraftTask::lightTask, "lightTask", 256, 24);
     transmit_data_thread.init(AircraftTask::transmitDataTask, "transmitDataTask", 256, 24);
     receive_data_thread.init(AircraftTask::receiveDataTask, "receiveDataTask", 512, 24);
-    command_thread.init(AircraftTask::commandTask, "commandTask", 1024, 24);
+    command_thread.init(AircraftTask::commandTask, "commandTask", 2048, 24);
     test_thread.init(AircraftTask::testTask, "testTask", 512, 24);
     thread_manager.AddThread(light_thread);
     thread_manager.AddThread(imu_thread);

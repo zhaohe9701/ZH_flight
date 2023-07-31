@@ -31,7 +31,9 @@
 #define MUTEX_NUM           2
 
 /*状态机*/
-#define STATE_MACHINE_SIGNAL    0x01
+#define EVENT_NUM           8
+#define EVENT_QUEUE_LEN     4
+
 /*传感器*/
 #define IMU1                Icm20689
 #define IMU1_INTERFACE_OBJ  hspi1
@@ -86,7 +88,7 @@
 #define USB_PORT_NUMBER             0x01
 #define UART_PORT_NUMBER            0x02
 /*遥控*/
-#define TOTAL_CHANNEL_NUM           5
+#define TOTAL_CHANNEL_NUM           8
 #define X_CHANNEL                   0
 #define Y_CHANNEL                   1
 #define Z_CHANNEL                   2

@@ -10,85 +10,113 @@
  */
 #include "state_machine.h"
 #include "ac_list.h"
-#include <string.h>
 
-AC_RET StateMachine::transToNextState(Condition condition)
+void EventGroup::set(const EventSet event)
 {
-    _current_state = state[_current_state].getNextState(condition);
-    if (_current_state == AS_ERROR)
+    for (int i = 0; i < EVENT_NUM; ++i)
     {
-        return AC_ERROR;
+        _event[i] = event[i];
     }
-    return AC_OK;
 }
 
-StateGroup StateMachine::getCurrentState()
+void EventGroup::set(Event &event)
 {
-    return _current_state;
+    _event[event.name] = event.value;
 }
 
-ActionGroup StateMachine::getAction()
+bool EventGroup::operator==(EventGroup &events)
 {
-    return (ActionGroup)_current_state;
-}
-
-bool StateMap::isMatch(Condition trans_condition)
-{
-    Condition tmp;
-    tmp = trans_condition & _positive_condition;
-    if (tmp != _positive_condition)
+    for (int i = 0; i < EVENT_NUM; ++i)
     {
-        return false;
-    }
-
-    tmp = ~trans_condition;
-    tmp = tmp & _negative_condition;
-    if (tmp != _negative_condition)
-    {
-        return false;
+        if (_event[i] != events._event[i])
+        {
+            return false;
+        }
     }
     return true;
 }
 
-void StateMap::addPositiveCondition(Condition condition)
+bool EventGroup::operator!=(EventGroup &events)
 {
-    _positive_condition = condition;
-}
-
-void StateMap::addNegativeCondition(Condition condition)
-{
-    _negative_condition = condition;
-}
-
-StateGroup StateMap::getMatchState()
-{
-    return _state;
-}
-
-void State::addNeighborState(StateGroup neighbor_state, Condition positive, Condition negative)
-{
-    StateMap *state = new StateMap();
-    state->addPositiveCondition(positive);
-    state->addNegativeCondition(negative);
-    _neighbor.pushBack(state);
-}
-
-StateGroup State::getNextState(Condition _condition)
-{
-    for(AcListNode<StateMap*> *node = _neighbor.begin(); node != _neighbor.end(); node = node->getNext())
+    for (int i = 0; i < EVENT_NUM; ++i)
     {
-        if (node->data->isMatch(_condition))
+        if (_event[i] != events._event[i])
         {
-            return node->data->getMatchState();
+            return true;
         }
     }
-    return AS_ERROR;
+    return false;
 }
 
-State::~State()
+State *State::trans(EventGroup &events)
 {
-    for(AcListNode<StateMap*> *node = _neighbor.begin(); node != _neighbor.end(); node = node->getNext())
+    for (AcListNode<ST> *st = _st_list.begin(); st != _st_list.end(); st = st->getNext())
     {
-        delete node->data;
+        if (*(st->data.events) == events)
+        {
+            return st->data.state;
+        }
     }
+    return nullptr;
+}
+
+AC_RET State::addNextState(State *state, EventGroup *events)
+{
+    if (nullptr == state || nullptr == events)
+    {
+        return AC_ERROR;
+    }
+    ST st;
+    st.state = state;
+    st.events = events;
+    _st_list.pushBack(st);
+    return AC_OK;
+}
+
+void State::setAction(ActionGroup &action)
+{
+    _action = action;
+}
+
+ActionGroup State::getAction()
+{
+    return _action;
+}
+
+StateMachine::StateMachine()
+{
+    _event_manager = new DataManager<Event>(EVENT_QUEUE_LEN);
+    _action_manager = new ActionManager();
+}
+
+AC_RET StateMachine::setCurrentState(State *state)
+{
+    if (nullptr == state)
+    {
+        return AC_ERROR;
+    }
+    _current_state = state;
+    return AC_OK;
+}
+
+AC_RET StateMachine::run()
+{
+    Event event;
+    ActionGroup action = 0;
+    State *temp_state = nullptr;
+
+    if (AC_OK != _event_manager->pop(&event))
+    {
+        return AC_ERROR;
+    }
+    _current_event.set(event);
+    temp_state = _current_state->trans(_current_event);
+    if (nullptr == temp_state)
+    {
+        return AC_ERROR;
+    }
+    _current_state = temp_state;
+    action = _current_state->getAction();
+    _action_manager->give(action);
+    return AC_OK;
 }

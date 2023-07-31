@@ -48,7 +48,6 @@ private:
     /*姿态解算器*/
     AttitudeSolver *_attitude_solver = nullptr;
     /*当前动作*/
-    volatile ActionGroup _current_action = AS_INITIALIZE;
 
     JsonTree *_index = nullptr;
 public:
@@ -57,7 +56,6 @@ public:
     AC_RET init();
     JsonTree *createIndex();
     JsonTree *getIndex();
-    AC_RET setAction(ActionGroup action);
     AC_RET getAccAndGyro();
     AC_RET getAltitude();
     AC_RET getMagnetic();

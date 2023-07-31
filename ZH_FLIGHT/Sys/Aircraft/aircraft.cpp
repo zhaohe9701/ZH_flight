@@ -45,10 +45,7 @@
 #include "Mavlink/Core/common/mavlink.h"
 #include "Mavlink/Core/mavlink_types.h"
 
-extern "C"
-{
-GlobalVar system_var;
-}
+
 
 extern SPI_HandleTypeDef hspi1;
 extern SPI_HandleTypeDef hspi2;
@@ -121,11 +118,6 @@ AC_RET Aircraft::init()
     return AC_OK;
 }
 
-AC_RET Aircraft::setAction(ActionGroup action)
-{
-    _current_action = action;
-    return AC_OK;
-}
 
 AC_RET Aircraft::getAccAndGyro()
 {
@@ -172,16 +164,10 @@ AC_RET Aircraft::updateAttitude()
 
 AC_RET Aircraft::controlAttitude()
 {
-    ActionGroup current_action = _current_action;
     AttitudeState state;
     ActuatorData expect_actuator = {{0}};
 
-    if (current_action != AS_AUTO     && 
-        current_action != AS_MANUAL   && 
-        current_action != AS_ALTITUDE)
-    {
-        return AC_OK;
-    }
+
 
     _actual_state_manager.copy(&state.actual);
     _expect_state_manager.copy(&state.expect);
@@ -194,27 +180,15 @@ AC_RET Aircraft::controlAttitude()
 
 AC_RET Aircraft::controlAltitude()
 {
-    ActionGroup current_action = _current_action;
-    if (current_action != AS_ALTITUDE)
-    {
-        return AC_OK;
-    }
+
 
     return AC_OK;
 }
 
 AC_RET Aircraft::controlMotor()
 {
-    ActionGroup current_action = _current_action;
     ActuatorData expect_actuator;
 
-    if (current_action != AS_AUTO       &&
-        current_action != AS_MANUAL     && 
-        current_action != AS_ALTITUDE   &&
-        current_action != AS_INITIALIZE)
-    {
-        return AC_OK;
-    }
 
     _expect_actuator_manager.copy(&expect_actuator);
     for (int i = 0; i < MOTOR_NUM; ++i)

@@ -150,7 +150,7 @@ void JsonTree::addData(void *in_data, AC_DATA_TYPE in_type, const char *in_name)
     strncpy(name, in_name, PARAM_NAME_LEN);
 }
 
-AC_RET JsonTree::toString(char *buf, uint32_t &ptr, uint32_t len, AC_DATA_TYPE parent_type)
+AC_RET JsonTree::toString(char *buf, uint32_t &ptr, uint32_t len, AC_DATA_TYPE parent_type, CommandMethod command_method)
 {
     if (AC_ARRAY != parent_type)
     {
@@ -165,7 +165,7 @@ AC_RET JsonTree::toString(char *buf, uint32_t &ptr, uint32_t len, AC_DATA_TYPE p
             return AC_OK;
         }
         appendString(buf, "{", ptr, len);
-        if (AC_OK != _first_child->toString(buf, ptr, len, type))
+        if (AC_OK != _first_child->toString(buf, ptr, len, type, command_method))
         {
             goto error;
         }
@@ -177,7 +177,7 @@ AC_RET JsonTree::toString(char *buf, uint32_t &ptr, uint32_t len, AC_DATA_TYPE p
             return AC_OK;
         }
         appendString(buf, "[", ptr, len);
-        if (AC_OK != _first_child->toString(buf, ptr, len, type))
+        if (AC_OK != _first_child->toString(buf, ptr, len, type, command_method))
         {
             goto error;
         }
@@ -186,10 +186,20 @@ AC_RET JsonTree::toString(char *buf, uint32_t &ptr, uint32_t len, AC_DATA_TYPE p
     {
         char data_str[DATA_BUF_LEN] = {0};
         appendString(buf, "\"", ptr, len);
-        if (AC_OK != Type::transDataToStr(data_str, data, type))
+        if (AT_GET == command_method)
         {
-            goto error;
+            if (AC_OK != Type::transDataToStr(data_str, data, type))
+            {
+                goto error;
+            }
+        } else if (AT_DOWNLOAD == command_method)
+        {
+            if (AC_OK != Type::transTypeToStr(data_str, type))
+            {
+                goto error;
+            }
         }
+
         appendString(buf, data_str, ptr, len);
         appendString(buf, "\"", ptr, len);
     }
@@ -202,7 +212,7 @@ AC_RET JsonTree::toString(char *buf, uint32_t &ptr, uint32_t len, AC_DATA_TYPE p
         return AC_OK;
     }
     appendString(buf, ",", ptr, len);
-    if (AC_OK != _neighbor->toString(buf, ptr, len, parent_type))
+    if (AC_OK != _neighbor->toString(buf, ptr, len, parent_type, command_method))
     {
         goto error;
     }
@@ -211,66 +221,6 @@ error:
     return AC_ERROR;
 }
 
-AC_RET JsonTree::toCapabilitySet(char *buf, uint32_t &ptr, uint32_t len, AC_DATA_TYPE parent_type)
-{
-    if (AC_ARRAY != parent_type)
-    {
-        appendString(buf, "\"", ptr, len);
-        appendString(buf, name, ptr, len);
-        appendString(buf, "\":", ptr, len);
-    }
-    if (AC_STRUCT == type)
-    {
-        if (nullptr == _first_child)
-        {
-            return AC_OK;
-        }
-        appendString(buf, "{", ptr, len);
-        if (AC_OK != _first_child->toCapabilitySet(buf, ptr, len, type))
-        {
-            goto error;
-        }
-        appendString(buf, "}", ptr, len);
-    }   else if (AC_ARRAY == type)
-    {
-        if (nullptr == _first_child)
-        {
-            return AC_OK;
-        }
-        appendString(buf, "[", ptr, len);
-        if (AC_OK != _first_child->toCapabilitySet(buf, ptr, len, type))
-        {
-            goto error;
-        }
-        appendString(buf, "]", ptr, len);
-    } else
-    {
-        char type_str[DATA_BUF_LEN] = {0};
-        appendString(buf, "\"", ptr, len);
-        if (AC_OK != Type::transTypeToStr(type_str, type))
-        {
-            goto error;
-        }
-        appendString(buf, type_str, ptr, len);
-        appendString(buf, "\"", ptr, len);
-    }
-    if (AC_ROOT == parent_type)
-    {
-        return AC_OK;
-    }
-    if (nullptr == _neighbor)
-    {
-        return AC_OK;
-    }
-    appendString(buf, ",", ptr, len);
-    if (AC_OK != _neighbor->toCapabilitySet(buf, ptr, len, parent_type))
-    {
-        goto error;
-    }
-    return AC_OK;
-    error:
-    return AC_ERROR;
-}
 
 AC_RET JsonTree::toBin(uint8_t *bin, uint32_t &ptr, uint32_t len)
 {
@@ -279,7 +229,6 @@ AC_RET JsonTree::toBin(uint8_t *bin, uint32_t &ptr, uint32_t len)
 
 AC_RET JsonTree::fromString(char *buf, uint32_t &ptr)
 {
-    debug_printer->info("NAME:%s\n", name);
     skipSpace(buf, ptr);
     if (AC_STRUCT == type)
     {
@@ -392,7 +341,7 @@ AC_RET JsonTree::toString(char *buf, uint32_t len)
 {
     uint32_t ptr = 0;
     appendString(buf, "{", ptr, len);
-    if (AC_OK != toString(buf, ptr, len, AC_ROOT))
+    if (AC_OK != toString(buf, ptr, len, AC_ROOT, AT_GET))
     {
         goto error;
     }
@@ -406,7 +355,7 @@ AC_RET JsonTree::toCapabilitySet(char *buf, uint32_t len)
 {
     uint32_t ptr = 0;
     appendString(buf, "{", ptr, len);
-    if (AC_OK != toCapabilitySet(buf, ptr, len, AC_ROOT))
+    if (AC_OK != toString(buf, ptr, len, AC_ROOT, AT_DOWNLOAD))
     {
         goto error;
     }

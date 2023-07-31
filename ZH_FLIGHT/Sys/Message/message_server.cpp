@@ -14,6 +14,7 @@
 #include "message_parser.h"
 #include "type.h"
 #include "message_server.h"
+#include "sys.h"
 
 uint8_t MessageReceiveServer::_interface_ind = 0;
 uint8_t MessageTransmitServer::_interface_ind = 0;
@@ -43,6 +44,7 @@ AC_RET MessageReceiveServer::runReceiveService()
     memset(_buffer, 0, 1024);
     _manager->receive(message);
     head = _buffer[0];
+    debug_printer->info("HEAD:%x\n", head);
     for (int i = 0; i < _interface_ind; ++i)
     {
         if (head == _parser[i]->getHead())

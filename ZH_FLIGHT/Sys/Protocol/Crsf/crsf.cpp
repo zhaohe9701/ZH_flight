@@ -12,14 +12,15 @@
 #include "default_attitude_controller.h"
 #include "rtwtypes.h"
 #include "type.h"
+#include "sys.h"
 #include <string.h>
 
 #define getBit(x, n) (((x) & ((unsigned long long)1 << (sizeof(x) * 8 - 1 - (n)))) != 0)
 #define setBit(x, v, n) ((x) | ((v) << (n)))
 
-AC_RET CrsfParser::_decode(const uint8_t *bin, uint16_t *axis, int bit_num, int axis_num)
+AC_RET CrsfParser::_decode(const uint8_t *bin, uint16_t *axis, int bit_num, int len)
 {
-    for (int i = 0; i < bit_num * axis_num; ++i)
+    for (int i = 0; i < 8 * len; ++i)
     {
         int bi = i / 8;
         int di = i / bit_num;
@@ -38,15 +39,17 @@ MessageHead CrsfParser::getHead()
 AC_RET CrsfParser::parseMessage(uint8_t *buf, uint32_t len)
 {
     RemoteData data;
+    debug_printer->info("RUN CRSF len:%d\n", len);
     if (buf[0] != CRSF_HEAD || buf[2] != CRSF_PAYLOAD || buf[1] >len - 2)
     {
         return AC_ERROR;
     }
     uint16_t axis[CRSF_CHANNEL_NUM] = {0};
-    _decode(buf + 3, axis, CRSF_BIT_LEN, CRSF_CHANNEL_NUM);
+    _decode(buf + 3, axis, CRSF_BIT_LEN, buf[1] - 2);
 
     memcpy(data.channel, axis, sizeof(uint16_t) * TOTAL_CHANNEL_NUM);
-    _manager->update(&data);
+    debug_printer->info("c1:%d c2:%d c3:%d c4:%d c5:%d c6:%d c7:%d c8:%d\n", data.channel[0], data.channel[1], data.channel[2], data.channel[3], data.channel[4], data.channel[5], data.channel[6], data.channel[7]);
+    //_manager->update(&data);
     return AC_OK;
 }
 

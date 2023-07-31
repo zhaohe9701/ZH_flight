@@ -103,7 +103,6 @@ set(SYS_SRC
         Sys/Driver/z_usb.cpp
         Sys/Driver/z_pwm.cpp
         Sys/Debug/print.cpp
-        Sys/EventServer/event_server.cpp
         Sys/Message/message_server.cpp
         Sys/OS/ac_semaphore.cpp
         Sys/Protocol/Dshot/dshot.cpp
@@ -137,7 +136,7 @@ set(SYS_SRC
         Sys/Light/light.cpp
         Sys/Message/message_manager.cpp
         Sys/Filter/filter.cpp
-        Sys/Json/json_tree.cpp)
+        Sys/Json/json_tree.cpp Sys/OS/ac_action.cpp)
 
 set(START_UP_ASM
         startup_stm32h7b0xx.s

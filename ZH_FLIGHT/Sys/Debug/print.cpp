@@ -17,10 +17,10 @@
 #include <stdio.h>
 #include <string.h>
 
-#define ERROR   "[ERROR]:"
-#define INFO    "[INFO]:"
-#define ERROR_LEN   8
-#define INFO_LEN    7
+#define ERROR   "$[ERROR]:"
+#define INFO    "$[INFO]:"
+#define ERROR_LEN   9
+#define INFO_LEN    8
 
 Printer::Printer(MessageManager *manager)
 {
@@ -37,8 +37,9 @@ void Printer::print(const char *format, ...)
     Message message;
     va_list args;
     va_start(args, format);
-    message.len = vsnprintf(_buffer, MAX_PRINT_LENGTH, (char *)format, args);
+    message.len = vsnprintf(_buffer + 1, MAX_PRINT_LENGTH, (char *)format, args) + 1;
     va_end(args);
+    _buffer[0] = '$';
     message.buf = (uint8_t *)_buffer;
     message.dec_port = _port;
     _manager->transmit(message);
